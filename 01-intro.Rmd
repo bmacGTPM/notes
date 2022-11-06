@@ -27,8 +27,16 @@ Discussion
 
 ## EV Charging Stations data
 
+Code folding test. This isn't working :(
 
-```{r nice-fig2, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r class.source = "fold-show"}
+head(mtcars)
+
+```
+
+
+
+```{r nice-fig2, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center', class.source = "fold-show"}
 par(mar = c(4, 4, .1, .1))
 plot(pressure, type = 'b', pch = 19)
 ```
