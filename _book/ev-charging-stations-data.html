@@ -24,7 +24,7 @@
 <meta name="author" content="Brian Macdonald" />
 
 
-<meta name="date" content="2022-11-05" />
+<meta name="date" content="2022-11-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,7 +159,7 @@ div.csl-indent {
 <li><a href="./">S&DS 361 Notes</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#getting-started" id="toc-getting-started"><span class="toc-section-number">1</span> Getting started</a>
+<li><a href="index.html#url-your-book-url-like-httpsbookdown.orgyihuibookdown" id="toc-url-your-book-url-like-httpsbookdown.orgyihuibookdown"><span class="toc-section-number">1</span> url: your book url like <span>https://bookdown.org/yihui/bookdown</span></a>
 <ul>
 <li><a href="packages.html#packages" id="toc-packages"><span class="toc-section-number">1.1</span> Packages</a></li>
 <li><a href="objectives.html#objectives" id="toc-objectives"><span class="toc-section-number">1.2</span> Objectives</a></li>
@@ -218,19 +218,35 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="ev-charging-stations-data" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> EV Charging Stations data</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="ev-charging-stations-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
-<span id="cb2-2"><a href="ev-charging-stations-data.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<p>Code folding test. This isn’t working :(</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb1-1"><a href="ev-charging-stations-data.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3
+##                   carb
+## Mazda RX4            4
+## Mazda RX4 Wag        4
+## Datsun 710           1
+## Hornet 4 Drive       1
+## Hornet Sportabout    2
+## Valiant              1</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb3-1"><a href="ev-charging-stations-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb3-2"><a href="ev-charging-stations-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig2"></span>
 <img src="_main_files/figure-html/nice-fig2-1.png" alt="Here is a nice figure!" width="80%" />
 <p class="caption">
 Figure 2.1: Here is a nice figure!
 </p>
 </div>
-<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="captioned-figures-and-tables.html#fig:nice-fig">3.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="captioned-figures-and-tables.html#tab:nice-tab">3.1</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="ev-charging-stations-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb3-2"><a href="ev-charging-stations-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb3-3"><a href="ev-charging-stations-data.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
-<span id="cb3-4"><a href="ev-charging-stations-data.html#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="#fig:nice-fig"><strong>??</strong></a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="#tab:nice-tab"><strong>??</strong></a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="ev-charging-stations-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb4-2"><a href="ev-charging-stations-data.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb4-3"><a href="ev-charging-stations-data.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb4-4"><a href="ev-charging-stations-data.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab2">Table 2.1: </span>Here is a nice table!</caption>
 <thead>
@@ -459,20 +475,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
