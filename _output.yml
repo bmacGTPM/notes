@@ -1,7 +1,6 @@
 bookdown::gitbook:
   css: style.css
   split_by: section
-  code_folding: show
   config:
     toc:
       before: |
@@ -11,10 +10,4 @@ bookdown::gitbook:
       collapse: section
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf", "epub"]
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
+  code_folding: hide
