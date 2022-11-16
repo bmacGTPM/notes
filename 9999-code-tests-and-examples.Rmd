@@ -2,7 +2,7 @@
 
 ## Code folding test
 
-Code folding test. This isn't working :(. Doesn't matter if `code_folding` is `show` or `hide` in the `_output.yml` file. Neither of these work. 
+Code folding test. This is not working :(. Does not matter if `code_folding` is `show` or `hide` in the `_output.yml` file. Neither of these work. 
 
 ```{r class.source = "fold-show"}
 head(mtcars)
@@ -15,7 +15,8 @@ head(mtcars)
 ## Scrollable code blocks test
 
 Height of code. This changes for all code blocks?
-  ```{css, echo=FALSE}
+
+```{css, echo=FALSE}
 pre {
   max-height: 300px;
   overflow-y: auto;
@@ -27,6 +28,7 @@ pre[class] {
 ```
 
 Height of output
+
 ```{css, echo=FALSE}
 .scroll-100 {
   max-height: 100px;
@@ -62,6 +64,7 @@ Note that those are both scrollable and hideable.
 
 
 See https://rstudio.github.io/DT/ and https://rstudio.github.io/DT/options.html for options. 
+
 ```{r}
 library(DT)
 datatable(mtcars, 
@@ -121,7 +124,7 @@ ddt
 ## Shiny app
 
 ```{r}
-include_app('https://bmac.shinyapps.io/CLTapp/')
+knitr::include_app('https://bmac.shinyapps.io/CLTapp/')
 ```
 
 ## Stuff removed from _output.yml
