@@ -2,5 +2,5 @@ Package: placeholder
 Type: Book
 Title: Does not matter.
 Version: 0.0.1
-Imports: bookdown, tidyverse, knitr, scales, plotly, DT
+Imports: bookdown, tidyverse, knitr, scales, plotly, DT, shiny
 Remotes: rstudio/bookdown
