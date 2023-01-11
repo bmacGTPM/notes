@@ -1,0 +1,296 @@
+# (APPENDIX) Appendix {-}
+
+
+
+Topics:
+
+Function from `dplyr`
+
+- `filter`, `select`, `mutate`, `rename`, `summarize`, `arrange`, `group_by`, `*_join`, `pivot_longer`, `pivot_wider`, `ifelse`, `case_when`
+- String multiple commands together with pipe operator
+
+`ggplot` and related functions
+
+- geom_’s: `geom_point`, `geom_jitter`, `geom_smooth`, `geom_line`, `geom_bar`, `geom_histogram`, `geom_tile`, `geom_segment`
+- `facet_wrap`, `facet_grid`
+
+
+# Data exploration with `dplyr`
+
+
+## Intro to NBA games data
+We will start by working with game summary data, which provides the teams, game date, and game score, and other information for every regular season and playoff game. We can do a pretty decent job of answering many of these questions with this data. 
+
+
+First let's load in some packages we'll use.
+
+```{r results=FALSE}
+library(tidyverse)
+```
+
+The `tidyverse` is "an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures" (https://www.tidyverse.org/). There are a variety of cheatsheets made available by Posit (formerly R Studio) here: https://posit.co/resources/cheatsheets/
+
+Now we'll load in the data and look at the first two rows and last two rows. 
+```{r}
+d = readRDS('data/games.rds')
+head(d,2)
+tail(d,2)
+```
+
+
+
+The data frame contains game summary data for several leagues: NBA, NHL, NFL, MLB, CFB, and MCBB. 
+
+```{r}
+table(d$lg)
+```
+
+over many seasons
+
+```{r}
+head(table(d$season, d$lg))
+tail(table(d$season, d$lg),30)
+```
+See Chapter 2 for an explanation of the data. 
+
+## Choosing rows with `filter`
+
+For now, we'll focus on the NBA data from the 2021-22 season. Using base R syntax, we could start by choosing the rows we want to work with by subsetting our data frame like this to choose only the rows where the column `lg` is `nba` and the column `season` is `2022`.
+
+```{r}
+temp = d[d$lg=='nba' & d$season==2022,]
+head(temp,2)
+```
+
+Since we are going to start learning `tidyverse`, we'll show an alternative approach using the `filter` function from the `dplyr` package.  
+
+```{r}
+temp = filter(d, lg=='nba' & season==2022)
+head(temp,2)
+```
+
+First argument is the data frame, and the remain argument is a logical expression that determines what rows we want. Note that we write `lg` instead of `d$lg`. The function understands that the data frame is `d`, and columns have `d` can be referred to without using `d$`. Many `tidyverse` functions work similarly and reduce repeated typing of data frames, dollar signs, quotation marks, etc.
+
+## Pipe Operator
+Instead of using `filter` in this way, we'll typically use the pipe. The pipe operator `%>%`, which is a nice way to string together many operations in a readable way. 
+
+```{r}
+temp = filter(d, lg=='nba' & season==2022)
+temp = d %>% filter(lg=='nba' & season==2022) ## same
+```
+
+The way to read this is that the object, often a data frame, to the left of the pipe (in this case, `d`) is piped into the first argument of the function to the right of the pipe (`filter`). The result of filter can them be piped into another function, say `head`
+
+```{r}
+temp = d %>% 
+  filter(lg=='nba' & season==2022) %>%
+  head()
+temp  
+```
+
+Note that after every `%>%` we put a new line. The usefulness of pipe will become more apparent as we string together more operations. 
+
+One final note: in filter we can write `,` instead of `&`, which speeds up typing.
+
+```{r}
+temp = d %>% filter(lg=='nba' & season==2022)
+temp = d %>% filter(lg=='nba', season==2022) ## same
+```
+
+
+## Choosing columns with `select`
+Let's get rid of some columns we won't use. In base R, we could subset columns like this
+```{r}
+temp = d[,c('date', 'away', 'home', 
+            'ascore', 'hscore', 'gid')]
+head(temp)
+```
+
+In tidyverse, we can use `select` and avoid typing quotes repeatedly.
+```{r}
+temp = d %>% select(date, away, home, ascore, hscore, gid)
+head(temp)
+```
+
+Note that we can also use `-` to specify which columns we *don't* want. This is equivalent to the above
+```{r}
+temp = d %>% select(-lg, -season, -season.type, -gkey)
+head(temp)
+```
+
+
+If we want to do choose rows and columns in the same step, we can string  filter and select together using the pipe. Let's finalize this data by saving as the object `d` instead of `temp`, and also add in that we want only regular season data.
+
+```{r}
+d = d %>% 
+  filter(lg=='nba', season==2022, season.type=='reg') %>%
+  select(date, away, home, ascore, hscore, gid)
+head(d)
+```
+
+We put a new line after every `%>%`.
+
+## Checking data types with `str`
+
+Let's make sure the columns all have the data types we expect. 
+
+```{r}
+str(d)
+```
+
+That shows the column name, the data type (`Date`, `chr` for character, or `num` for numeric) and shows the first few entries. Fortunately, our `date` column is `Date` format, and our score columns are numeric format.
+
+## Add/Edit columns with `mutate`
+
+We can add columns to our data frame, or edit existing columns, by using `mutate`. Here we'll add a column for home score differential. 
+
+```{r}
+d = d %>% 
+  mutate(diff = hscore - ascore)
+head(d)
+```
+
+## Ordering rows with `arrange`
+If we want to find the game with the smallest `diff` (the most negative `diff`), we could order the rows by `diff`. 
+
+```{r}
+d %>% arrange(diff)
+```
+To order for largest to smallest, use `desc()`. 
+```{r}
+d %>% arrange(desc(diff))
+```
+To break ties, we could include another column in arrange. Let's break ties by using `hscore`, so that if `diff` is the same, the row with the higher `hscore` comes first. 
+
+```{r}
+d %>% arrange(desc(diff), desc(hscore))
+```
+
+## Summaries using `summarise`
+
+Now that we have our data set, we can start answering some questions that we had. Let's start with trying to determine what impacts that outcomes of games. We expected the teams involved, which team is playing at home, and travel miles leading up to the game are all important. Let's see if we find evidence of that in the data. 
+
+First we'll look at home advantage. Let's find the mean of the columns `ascore`, `hscore` and `diff`. 
+
+```{r}
+d %>% 
+  summarise(mean.ascore = mean(ascore), 
+            mean.hscore = mean(hscore), 
+            mean.diff = mean(diff))
+```
+This suggests that in 2021-22, the home team score about 1.72 points more than the away team on average. 
+
+Note that functions other than `mean` (e.g. `sum` and `sd`) can be used with `summarise` and we'll do that later.
+
+You can use `summarise` or `summarize` (`s` or `z`). I usually use `s` only because it is easier to type. 
+
+
+## Gluing data.frames using `bind_rows`
+
+Suppose we want to find average score by team. We'll have to rearrange the data a little since teams can appear in both the home and away column. Ideally, we would have one column with the team name, and one column with the score. Each game would then have two rows, one for the away team and one for the home team. We'll create two data.frames, one for home teams and one for away teams, and then bind them together using `bind_rows`. 
+
+```{r}
+da = d %>% select(date, away, ascore, home, hscore, gid) %>% mutate(ha = 'away')
+dh = d %>% select(date, home, hscore, away, ascore, gid) %>% mutate(ha = 'home')
+colnames(da) = c('date', 'team', 'score',  'opp', 'opp.score', 'gid', 'ha')
+colnames(dh) = c('date', 'team', 'score',  'opp', 'opp.score', 'gid', 'ha')
+dd = bind_rows(da, dh) %>% 
+  arrange(date, gid)
+head(dd)
+```
+
+We see the same games, teams, and scores at the top, but now we have two rows for each game. 
+
+## Summaries by team using `group_by` 
+
+Now we can find average points scored by each team. When we use `group_by`, whatever operations come next will be done separately for each group. 
+
+```{r}
+dd %>% 
+  group_by(team) %>%
+  summarise(score=mean(score), 
+            opp.score = mean(opp.score))
+```
+Here the `summarise` operations that we saw before is performed separately on each `team` instead of for the entire data frame.  
+
+Sometimes it can help to visualize this in our minds by pretending that `group_by(team)` gives you separate data frames for each team. Then whatever operation comes next is performed on each of those data frame. 
+
+## Using `mutate` and `group_by`
+
+When we add/edit a column with `mutate` after `group_by` has been used, the operation is performed on each group separately. For example, for each team and each game, let's find how many days have passed since the team's previous game. 
+```{r}
+dd = dd %>%
+  arrange(date) %>%
+  group_by(team) %>%
+  mutate(days.rest = c(NA, diff(date)))
+
+## Let's look at one team
+dd %>% filter(team=='PHI')
+```
+
+## Using `mutate` and `ifelse`
+
+Let's add a column to the data set that indicates the location of the game. We had this explicitly before (we had a column `home`) but lost it when we rearranged our data. We'll also create a column for the previous location. 
+
+```{r}
+dd = dd %>%
+  mutate(loc = ifelse(ha=='home', team, opp), 
+         prev.loc = lag(loc))
+dd %>% filter(team=='PHI')
+```
+## Rearranging data with `pivot_wider` and `pivot_longer`
+We would like to distance traveled from the previous game to our data frame. To do this we can use this distance matrix. 
+
+```{r}
+dm = read.csv('data/distance.matrix.nba.csv')
+colnames(dm)[1] = 'loc'
+head(dm)
+```
+
+This will be easier to join with our other data frame if we rearrange this so that it has two columns, `team1` and `team2`. We can use `pivot_longer` to do this. 
+
+```{r}
+dm = dm %>% 
+  pivot_longer(cols = - loc, 
+               names_to = 'prev.loc', 
+               values_to = 'miles')
+head(dm)
+```
+The inverse operation is `pivot_wider`. This gets us back where we started
+
+```{r}
+dm %>%
+  pivot_wider(id_cols = 'loc', 
+              names_from='prev.loc', 
+              values_from='miles') %>% 
+  head()
+```
+
+## Joining two data frames with `left_join`
+
+Now that `dm` is two columns we can work on join the distance information with our data frame. 
+
+```{r}
+dd = dd %>% 
+  left_join(dm, by=c('loc', 'prev.loc'))
+dd %>% filter(team=='PHI')
+```
+
+There is now a column `miles` that gives the distance between the current game's location and the location of that team's previous game. 
+
+
+The `left` in `left_join` means that we want to keep all rows of the first data frame (in this case `dd`), even if there is no match in the second data frame (in this case `dm`). We do not necessarily want to keep all the rows of the second data frame. 
+
+- `right_join` - keep all rows of the second data frame, regardless whether or not there is a match.
+- `inner_join` - keep only rows in the first data frame where there is a match. (All rows in 1st AND 2nd)
+- `full_join` - keep all rows from both data frames, regardless of whether there is a match. (All rows in 1st OR 2nd).
+
+## For more information
+
+The book [R for Data Science](https://r4ds.had.co.nz/) is a great resource for `tidyverse`. 
+
+The `tidyverse` [website](https://www.tidyverse.org/) has links to main pages for `tidyverse` packages (e.g. `dplyr` [vignette](https://dplyr.tidyverse.org/) and `ggplot2` [vignette](https://ggplot2.tidyverse.org/)). 
+
+Posit (formerly R Studio) has a [collection of cheetsheets](https://posit.co/resources/cheatsheets/) for these packages. 
+
+
