@@ -1,0 +1,28 @@
+# Interactive viz with plotly and ggplotly
+
+Give reference page. Explain how to read it. Nested lists, each level down is new list.
+
+Give theme page also. Basically give everything that I often want to remember.
+Plotly examples here https://plotly.com/r/
+ 
+
+## Plotly formatting options
+
+link the single page reference
+
+explain how to read
+
+show simple example
+
+show layoutpub for lots of what is possible.
+
+## Lesson Objectives
+
+### Discussion
+
+- What questions about EV charging stations are you interested in answering? 
+- Introduce the data
+- How can you answer those with this data? Can some of them not be answered? Possibly update your list of questions. 
+- Live coding. We’ll start answering those questions in class. 
+
+ 
