@@ -1,0 +1,127 @@
+# Data visualization with `ggplot`
+
+First let's prep our data set using our code from the last section. 
+```{r}
+d = readRDS('data/games.rds')
+d = d %>% 
+  filter(lg=='nba', 
+         season %in% 2022, 
+         season.type=='reg') %>%
+  select(date, away, home, ascore, hscore, season, gid) 
+
+da = d %>% select(date, away, ascore, home, hscore, season, gid) %>% mutate(ha = 'away')
+dh = d %>% select(date, home, hscore, away, ascore, season, gid) %>% mutate(ha = 'home')
+cols = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
+colnames(da) = cols
+colnames(dh) = cols
+
+dd = bind_rows(da, dh) %>% 
+  arrange(date) 
+head(dd,2)
+```
+
+
+## Scatter plot with `geom_point`
+
+```{r fig.width=5, fig.height=5}
+ggplot(d, aes(x=ascore, y=hscore))+
+  geom_point()
+```
+
+## Trend line with `geom_smooth`
+
+## Scatter plot with `geom_jitter`
+
+When there are a lot of overlapping points in a plot, it can help to use `geom_jitter` in place of `geom_point`.
+
+```{r fig.height=6, fig.width=6}
+ggplot(d, aes(x=hscore, y=home))+
+  geom_point()
+```
+
+That has a lot of points plotted on top of one another. `geom_jitter` adds randomness to the points so that don't overlap as much. Here we add a little randomness in the vertical direction, and none on the horiztonal direction. 
+```{r fig.height=6, fig.width=6}
+ggplot(d, aes(x=hscore, y=home))+
+  geom_jitter(height=0.2, width=0)
+```
+
+
+## Bar plot `geom_bar`
+
+
+```{r}
+dg = dd %>% 
+  group_by(team) %>%
+  summarise(score=mean(score), 
+            opp.score = mean(opp.score))
+head(dg)
+```
+```{r}
+ggplot(dg, aes(x=score, y=team))+
+  geom_bar(stat='identity')
+```
+
+## Text with `geom_text`
+
+
+
+## Histogram with `geom_histogram`
+Histogram of points scored
+```{r}
+ggplot(dd, aes(x=score))+
+  geom_histogram(color='black', binwidth = 5)
+```
+
+## Line plot with `geom_line`
+```{r}
+ggplot(dd %>% filter(team=='PHI'), aes(x=date, y=score))+
+  geom_line()
+```
+
+
+## Grid plot with `geom_tile`
+
+Let's show how often teams play against one another. 
+```{r}
+dg = d %>%
+  group_by(home, away) %>%
+  summarise(games = n())
+head(dg)
+```
+
+```{r fig.width=6, fig.width=6}
+ggplot(dg, aes(x=home, 
+               y=away, 
+               fill=as.numeric(games), 
+               color='black')) + 
+  geom_tile()
+
+df <- data.frame(
+  x = rep(c(2, 5, 7, 9, 12), 2),
+  y = rep(c(1, 2), each = 5),
+  z = factor(rep(1:5, each = 2)),
+  w = rep(diff(c(0, 4, 6, 8, 10, 14)), 2)
+)
+ggplot(df, aes(x, y)) +
+  geom_tile(aes(color = z, fill = w))
+
+```
+
+## Faceting with `facet_wrap`
+
+We can make separate plots based on one of the columns in the data. Here we make separate histograms for home and away teams (`ha`) and stack them on top of each other by selecting `rows=2`. 
+
+```{r}
+ggplot(dd, aes(x=score))+
+  geom_histogram(binwidth=5, color='black')+
+  facet_wrap(~ha, nrow=2)
+```
+
+
+## For more information
+
+The book [R for Data Science](https://r4ds.had.co.nz/) is a great resource for `tidyverse`. 
+
+The `tidyverse` [website](https://www.tidyverse.org/) has links to main pages for `tidyverse` packages (e.g. `dplyr` [vignette](https://dplyr.tidyverse.org/) and `ggplot2` [vignette](https://ggplot2.tidyverse.org/)). 
+
+Posit (formerly R Studio) has a [collection of cheetsheets](https://posit.co/resources/cheatsheets/) for these packages. 
