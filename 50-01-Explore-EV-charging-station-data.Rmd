@@ -1,8 +1,12 @@
-# Explore EV charging station data
+# (PART) EV charging stations {-}
 
-## Lesson Objectives
+# Explore EV Charging Station data
 
-### Discussion
+Under construction
+
+# Introduction 
+
+## Discussion
 
 - What questions about EV charging stations are you interested in answering? 
 - Introduce the data
