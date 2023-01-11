@@ -1,17 +1,5 @@
 # Code tests and examples
 
-## Code folding test
-
-Code folding test. This is not working :(. Does not matter if `code_folding` is `show` or `hide` in the `_output.yml` file. Neither of these work. 
-
-```{r class.source = "fold-show"}
-head(mtcars)
-```
-
-```{r class.source = "fold-hide"}
-head(mtcars)
-```
-
 ## Scrollable code blocks test
 
 Height of code. This changes for all code blocks?
@@ -61,8 +49,6 @@ Note that those are both scrollable and hideable.
 
 ## `DT` test
 
-
-
 See https://rstudio.github.io/DT/ and https://rstudio.github.io/DT/options.html for options. 
 
 ```{r}
@@ -93,7 +79,7 @@ ddt = d %>%
             rownames = T,
             filter = 'top',
             style = 'bootstrap',
-            class = 'table-condensed table-hover table-responsive ', # table-nowrap didn't work
+            class = 'display nowrap compact', #'table-condensed table-hover table-responsive ', # table-nowrap didn't work
             extensions = c('ColReorder',  'FixedHeader', 'KeyTable', 'Buttons'),
             # escape=9, ## was for if you have HTML.  like HTML for the arrows
             options = list(
@@ -105,26 +91,68 @@ ddt = d %>%
               buttons = c('copy', 'csv', 'excel'),
               pageLength=1000,
               columnDefs=list(list(orderSequence = c('desc', 'asc'), targets = '_all' ))
-            ),
-            callback=JS(js) ## use the JS defined above
+               
+            )#,
+            #callback=JS(js) ## use the JS defined above
   )
-
-ddt = ddt %>% 
-  formatStyle('mpg', background = styleColorBar(mtcars$mpg, 'lightblue')) %>%
-  formatStyle('wt',
-              backgroundSize = '97% 90%',
-              backgroundRepeat = 'no-repeat',
-              backgroundPosition = 'center') %>%
-  formatPercentage('perc', 1)
 ddt
+# ddt = ddt %>% 
+#   formatStyle('mpg', background = styleColorBar(mtcars$mpg, 'lightblue')) %>%
+#   formatStyle('wt',
+#               backgroundSize = '97% 90%',
+#               backgroundRepeat = 'no-repeat',
+#               backgroundPosition = 'center') %>%
+#   formatPercentage('perc', 1)
+# ddt
+```
+
+Unfortunately it doesn't show order-column. Compact doesn't work in bookdown, but does work in shiny for some reason.
+
+## Shiny app
+
+External
+
+```{r}
+knitr::include_app('https://bmac.shinyapps.io/CLTapp/')
+```
+
+In-line. Sadly this looks like it only takes a screen shot. It's not interactive. This can be done in R Markdown but the `bookdown` reference manual only talks about embedding external apps. 
+
+Referencing datatables with links: https://stackoverflow.com/questions/49819892/cross-referencing-dtdatatable-in-bookdown
+
+Styling options: https://datatables.net/manual/styling/classes
+
+Reference: https://rstudio.github.io/DT/
+
+```{r, echo=FALSE}
+library(shiny)
+shinyApp(
+
+  ui = fluidPage(
+    selectInput("region", "Region:",
+                choices = colnames(WorldPhones)),
+    plotOutput("phonePlot")
+  ),
+
+  server = function(input, output) {
+    output$phonePlot = renderPlot({
+      barplot(WorldPhones[,input$region]*1000,
+              ylab = "Number of Telephones", xlab = "Year")
+    })
+  },
+
+  options = list(height = 500)
+)
 ```
 
 
 
-## Shiny app
+## Stuff I want to remember
 
-```{r}
-knitr::include_app('https://bmac.shinyapps.io/CLTapp/')
+Code for selecting x range for checking normality and residuals in a linear regression model.
+```
+dragmode = 'select', 
+selectdirection = 'h', ## for selecting an x range
 ```
 
 ## Stuff removed from _output.yml
