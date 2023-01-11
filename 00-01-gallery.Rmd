@@ -1,0 +1,38 @@
+# Gallery
+
+For easy browsing and navigating, we start with a gallery of tables and visualizations that we will make, along with hyperlinks to where each table or visualization is located.
+
+## Formatting with `pubtheme`
+
+The plots in this gallery use the package `pubtheme`, which contains a `ggplot` theme `theme_pub` for creating data journalism-style data visualizations with color palettes and formatting similar to those used by media organizations like BBC, NY Times, and ESPN. Several templates for scatter plot, line plots, etc., are provided for easy copying/pasting at the package's Github page, https://github.com/bmacGTPM/pubtheme. Installation instructions are at that page as well. 
+
+As an example, `pubtheme` turns a `ggplot` like this
+
+```{r fig.height=6, fig.width=7}
+restore.ggplot.defaults()
+ggplot(mtcars, aes(x=wt, y=mpg, color=as.factor(cyl)))+
+  geom_point(aes(size=mpg))
+```
+
+into this
+
+```{r fig.height=7, fig.width=6}
+dg = mtcars %>% 
+  select(wt, mpg, cyl)
+
+title = "Title in Upper Lower" 
+g = ggplot(mtcars, aes(x=wt, y=mpg, color=as.factor(cyl)))+
+  geom_point(aes(size=mpg))+
+  labs(title    = title,
+       subtitle = 'Optional Subtitle In Upper Lower',
+       caption  = "Optional caption, giving additional info or Twitter handle",
+       x = 'Horizontal Axis Label in Upper Lower',
+       y = 'Vertical Axis Label in Upper Lower')+
+  scale_x_continuous(limits=c(0, 6), breaks=c(0, 3, 6), oob=squish, labels=comma)+
+  scale_y_continuous(limits=c(0,40), breaks=c(0,20,40), oob=squish, labels=comma)+
+  coord_cartesian(clip='off', expand=FALSE)+
+  scale_size(range=c(2,6))+
+  theme_pub(type='scatter', base_size = 36/3) 
+print(g)
+```
+
