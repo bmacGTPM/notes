@@ -14,7 +14,7 @@ Packages and functions:
     - `filter`, `select`, `mutate`, `rename`, `summarize`, `arrange`, `group_by`, `*_join`, `pivot_longer`, `pivot_wider`, `ifelse`, `case_when`
     - String multiple commands together with pipe operator
 - `ggplot`
-    - geom_’s: `geom_point`, `geom_jitter`, `geom_smooth`, `geom_line`, `geom_bar`, `geom_histogram`, `geom_tile`, `geom_segment`
+    - geom_’s: `geom_point`, `geom_jitter`, `geom_smooth`, `geom_line`, `geom_bar`, `geom_histogram`, `geom_tile`, `geom_segment`, `geom_text`
     - `facet_wrap`, `facet_grid`
 - `ggplotly` and `plotly`
 - `pubtheme`, a package that contains a `ggplot` theme `theme_pub` and a `plotly` layout called `layoutpub` for creating data journalism-style data visualizations with color palettes and formatting similar to those used by media organizations like BBC, NY Times, and ESPN.

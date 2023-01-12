@@ -15,5 +15,5 @@ inst/resources/gitbook/js/app.min.js.map
 ^reference$
 ^pkgdown$
 ^tests/manual$
-^99*
-^50*
+^99.*
+^50.*

@@ -119,11 +119,11 @@ ggplot(d, aes(x=hscore, y=home))+
 
 When there are a lot of overlapping points in a plot, it can also help to use `geom_jitter` in place of `geom_point`. 
 
-We use `geom_jitter` to add randomness to the points so that don't overlap as much. Here we add a little randomness in the vertical direction, and none on the horizontal direction. This is often useful when plotting discrete variables. We include `alpha=0.5` and `size=1` as well, which make the points transparent and smaller. 
+We use `geom_jitter` to add randomness to the points so that don't overlap as much. Here we add a little randomness in the vertical direction, and none on the horizontal direction. We include `alpha=0.5` for some extra help.
 
 ```{r fig.height=6, fig.width=6}
 ggplot(d, aes(x=hscore, y=home))+
-  geom_jitter(alpha=0.5, size=1, height=0.2, width=0)
+  geom_jitter(alpha=0.5, height=0.2, width=0)
 ```
 
 ## Bar plot `geom_bar`
