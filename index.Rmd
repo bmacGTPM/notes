@@ -1,7 +1,7 @@
 --- 
 title: "S&DS 361 Data Analysis Notes"
 author: "Brian Macdonald"
-date: "`r Sys.Date()`"
+date: "Updated `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
