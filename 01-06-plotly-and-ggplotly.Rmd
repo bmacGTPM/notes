@@ -18,11 +18,5 @@ show layoutpub for lots of what is possible.
 
 ## Lesson Objectives
 
-### Discussion
-
-- What questions about EV charging stations are you interested in answering? 
-- Introduce the data
-- How can you answer those with this data? Can some of them not be answered? Possibly update your list of questions. 
-- Live coding. We’ll start answering those questions in class. 
 
  
