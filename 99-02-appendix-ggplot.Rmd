@@ -1,0 +1,330 @@
+# Data visualization with `ggplot`
+
+First let's prep our data set using our code from the last section. 
+```{r}
+library(tidyverse)
+d = readRDS('data/games.rds')
+d = d %>% 
+  filter(lg=='nba', 
+         season %in% 2022) %>%
+  select(date, away, home, ascore, hscore, season, season.type, gid) %>%
+  mutate(season.type = factor(season.type, levels=c('reg', 'post')))
+
+da = d %>% select(date, away, ascore, home, hscore, season, season.type, gid) %>% mutate(ha = 'away')
+dh = d %>% select(date, home, hscore, away, ascore, season, season.type, gid) %>% mutate(ha = 'home')
+cols = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'season.type', 'gid', 'ha')
+colnames(da) = cols
+colnames(dh) = cols
+
+dd = bind_rows(da, dh) %>% 
+  arrange(date) 
+head(dd,2)
+```
+
+
+## Scatter plot with `geom_point`
+
+```{r fig.width=5, fig.height=5}
+ggplot(d, aes(x=ascore, y=hscore))+
+  geom_point()
+```
+
+## Color, size, shape
+
+We can color by any variable in the data set by putting `color=variable` inside `aes()`. In this case, we’ll choose the categorical variable `season.type`.
+```{r}
+ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+  geom_point()
+```
+If we want to change the color of all points to the same color, we can specify that color inside `geom_point()` instead.
+
+```{r}
+ggplot(d, aes(x=ascore, y=hscore))+
+  geom_point(color='gray')
+```
+
+Likewise, we can size each point, or change the shape of each point, based on column in the data. 
+
+```{r}
+ggplot(d, aes(x=ascore, y=hscore, 
+              color = season.type, 
+              size = season.type, 
+              shape = season.type))+
+  geom_point()
+```
+
+(You normally wouldn't choose all three to be the same column, this is just for illustration.)
+
+
+## Formatting with the `pubtheme` package
+
+We can use the `pubtheme` package to change the default formatting of our figures. We can copy and paste templates here https://github.com/bmacGTPM/pubtheme and modify them for our data. Here we copy and paste the scatter plot template and change `x` to `ascore`, `y` to `hscore`, and edit the axis `limits` and the `breaks`, which say where the grid line should be. Don't worry to much about understand all of these options right now, we'll discuss those in the main text. 
+```{r fig.height=7, fig.width=6}
+library(pubtheme)
+title = "Home Team Points vs Away Team Points" 
+g = ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+  geom_point()+
+  labs(title    = title,
+       x = 'Away Team Points',
+       y = 'Home Team Points')+
+  scale_x_continuous(limits=c(65, 165), breaks=c(65,110,165), oob=squish, labels=comma)+
+  scale_y_continuous(limits=c(65, 165), breaks=c(65,110,165), oob=squish, labels=comma)+
+  coord_cartesian(clip='off', expand=FALSE)+
+  scale_size(range=c(2,6))+
+  theme_pub(type='scatter', base_size = 36/3) 
+print(g)
+restore.ggplot.defaults()
+```
+
+## Trend line with `geom_smooth`
+
+We can add a trendline to our scatter plot using `geom_smooth` after `geom_point`. 
+```{r}
+ggplot(d, aes(x=ascore, y=hscore))+
+  geom_point()+
+  geom_smooth()
+```
+
+By default it will be a smooth curve as opposed to a line. For a line, use `method='lm'` (`lm` is the function used for linear regression).
+
+```{r}
+ggplot(d, aes(x=ascore, y=hscore))+
+  geom_point()+
+  geom_smooth(method='lm')
+```
+
+
+## Grouping observations with `group`
+
+If you use color, then you get separate trendlines for each group.
+```{r}
+ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+  geom_point()+
+  geom_smooth(method='lm')
+```
+If group isn’t specified, ggplot assumes it should group by color. If we want to group by something other than what we are coloring by, we can specify it. Or we can say NA to say don’t group and get a single line.
+
+```{r}
+ggplot(d, aes(x=ascore, y=hscore, color=season.type, group=NA))+
+  geom_point()+
+  geom_smooth(method='lm')
+```
+
+## Faceting with `facet_wrap`
+
+For categorical variables, we can create a separate window for each value of that variable. Here we make separate scatter plots for each season.type, `reg` and `post`. Note that if we use `geom_smooth`, there’s a line for each window and color.
+
+```{r}
+ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+  geom_point()+
+  geom_smooth(method='lm')+
+  facet_wrap(~season.type)
+```
+
+## Transparency using `alpha`
+If there are lots of overlapping points, and we can adjust the transparency using `alpha`.
+
+First here is a plot using `geom_point` that has a lot of points plotted on top of one another.
+
+```{r fig.height=6, fig.width=6}
+ggplot(d, aes(x=hscore, y=home))+
+  geom_point()
+```
+
+Now we add `alpha=0.5`, which means we want points to be halfway between transparent and opaque (1=opaque, 0=transparent).
+
+```{r fig.height=6, fig.width=6}
+ggplot(d, aes(x=hscore, y=home))+
+  geom_point(alpha=0.5)
+```
+
+## Scatter plot with `geom_jitter`
+
+When there are a lot of overlapping points in a plot, it can also help to use `geom_jitter` in place of `geom_point`. 
+
+We use `geom_jitter` to add randomness to the points so that don't overlap as much. Here we add a little randomness in the vertical direction, and none on the horizontal direction. This is often useful when plotting discrete variables. We include `alpha=0.5` and `size=1` as well, which make the points transparent and smaller. 
+
+```{r fig.height=6, fig.width=6}
+ggplot(d, aes(x=hscore, y=home))+
+  geom_jitter(alpha=0.5, size=1, height=0.2, width=0)
+```
+
+## Bar plot `geom_bar`
+
+We can make bar plots using `geom_bar` like this. 
+
+```{r}
+ggplot(dd, aes(x=score, y=team))+
+  geom_bar(stat='identity')
+```
+That counts the number of point score by each team. Note that we put `stat='identity'` inside `geom_bar()`. 
+
+## Color bars using `fill`
+We can also use color our bars using the `fill` aesthetic. 
+
+```{r}
+ggplot(dd, aes(x=score, y=team, fill=season.type))+
+  geom_bar(stat='identity')
+```
+
+Typically you use `fill`. Note that `color` affects only the border.
+
+```{r}
+ggplot(dd, aes(x=score, y=team, color=season.type))+
+  geom_bar(stat='identity')
+```
+
+That's not ideal. We didn't notice before, but it is drawing a little bar for each individual game and then stacking them together. You may want to aggregate the data first like this:
+
+```{r}
+dg = dd %>%
+  group_by(team, season.type) %>%
+  summarise(score = sum(score))
+
+ggplot(dg, aes(x=score, y=team, color=season.type))+
+  geom_bar(stat='identity')
+```
+You'll may often use `fill` and not notice this issue, but it is something to be aware of. 
+
+Even with our first bar plot it would be better to aggregate first for reasons we'll see when we try to use `geom_text` below. This plot looks the same, but there is one bar per team instead of one bar per game:
+```{r}
+dg = dd %>% 
+  group_by(team) %>%
+  summarise(score=sum(score)) 
+ggplot(dg, aes(x=score, y=team))+
+  geom_bar(stat='identity')
+```
+
+## Side-by-side bar charts with `position_dodge`
+Stacked bar are often not desired, so you can 
+```{r}
+## remove teams with no `post` data.
+dg = dd %>%
+  group_by(team, season.type) %>%
+  summarise(score = sum(score))
+post.teams = unique(dg$team[dg$season.type=='post'])
+dg = dg %>% filter(team %in% post.teams)
+ggplot(dg, aes(x=score, y=team, fill=season.type))+
+  geom_bar(stat='identity', position=position_dodge(), color='black')
+```
+
+## Text with `geom_text`
+We can add text to a plot using `label` aesthetic and `geom_text`. Let's add text to the bar plot we made after aggregating the data.  
+
+```{r}
+dg = dd %>% 
+  group_by(team) %>%
+  summarise(score=sum(score)) 
+ggplot(dg, aes(x=score, y=team, label=score))+
+  geom_bar(stat='identity')+
+  geom_text(hjust=0)
+```
+
+Note that without aggregating the bar plot looks the same, but it will plot separate text for each row in the data. 
+
+```{r}
+ggplot(dd, aes(x=score, y=team, label=score))+
+  geom_bar(stat='identity')+
+  geom_text(hjust=0)
+```
+To use `geom_text` with `position_dodge`, add `label` like before, but also add `group`. 
+```{r fig.height=6}
+dg = dd %>%
+  group_by(team, season.type) %>%
+  summarise(score = sum(score), .groups='keep')
+post.teams = unique(dg$team[dg$season.type=='post'])
+dg = dg %>% filter(team %in% post.teams)
+ggplot(dg, aes(x=score, y=team, fill=season.type, label=score, group=season.type))+
+  geom_bar(stat='identity', position=position_dodge(width=.9), color='black')+
+  geom_text(hjust=-.1, position=position_dodge(width=.9))
+```
+
+
+## Histogram with `geom_histogram`
+Histogram of points scored
+```{r}
+ggplot(dd, aes(x=score))+
+  geom_histogram(color='black', binwidth = 5)
+```
+
+We can use the `fill` aesthetic here too. 
+```{r}
+ggplot(dd, aes(x=score, fill=season.type))+
+  geom_histogram(color='black', binwidth = 5)
+```
+
+## Line plot with `geom_line`
+```{r}
+dg = dd %>% filter(team=='PHI')
+ggplot(dg, aes(x=date, y=score))+
+  geom_line()
+```
+
+For multiple line plots, you can `color` by a column. 
+
+```{r}
+dg = dd %>% filter(team %in% c('PHI', 'GSW'))
+ggplot(dg, aes(x=date, y=score, color=team))+
+  geom_line()
+```
+
+That automatically `group`s by the `color` variable. You can also supply just `group` and get two lines with the same color. 
+
+```{r}
+dg = dd %>% filter(team %in% c('PHI', 'GSW'))
+ggplot(dg, aes(x=date, y=score, group=team))+
+  geom_line()
+```
+
+## Grid plot with `geom_tile`
+
+Let's show how often teams play against one another. 
+```{r}
+dg = d %>%
+  filter(season.type=='reg') %>%
+  group_by(home, away) %>%
+  summarise(games = n())
+head(dg)
+```
+
+```{r fig.width=6, fig.width=7}
+ggplot(dg, aes(x=home, 
+               y=away, 
+               fill=as.character(games))) + 
+  geom_tile(color='black')
+```
+
+## Customizing with `theme`
+
+The labels on the x-axis are tough to see in the previous plot. Let's rotate them by 90 degrees (`angle=90`), right justify (`hjust=1`) and center them around the tick mark (`vjust=0.3` looks better than `vjust=0.5`) using `theme`.
+
+```{r fig.width=6, fig.width=7}
+ggplot(dg, aes(x=home, 
+               y=away, 
+               fill=as.character(games))) + 
+  geom_tile(color='black')+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.3, hjust=1))
+```
+
+We'll discuss `theme` more in the main text. You can see all the `theme` options here https://ggplot2.tidyverse.org/reference/theme.html. 
+## Quick interactive plots with `ggplotly`
+
+We can make any of these plots interactive using `ggplotly`. By default, a tooltip is created that shows whatever aesthetics are used inside `aes()`. 
+```{r}
+library(plotly)
+g = ggplot(d, aes(x=ascore, y=hscore))+
+  geom_point()
+ggplotly(g)
+```
+
+We'll discuss this, and `plot_ly` function more in the main text. 
+
+## For more information
+
+The book [R for Data Science](https://r4ds.had.co.nz/) is a great resource for `tidyverse`. 
+
+The `tidyverse` [website](https://www.tidyverse.org/) has links to main pages for `tidyverse` packages (e.g. `dplyr` [vignette](https://dplyr.tidyverse.org/) and `ggplot2` [vignette](https://ggplot2.tidyverse.org/)). 
+
+Posit (formerly R Studio) has a [collection of cheetsheets](https://posit.co/resources/cheatsheets/) for these packages.
+
+Many more examples are in the Gallery, and further explained through this book, especially in the early chapters. 

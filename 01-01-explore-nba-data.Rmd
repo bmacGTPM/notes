@@ -1,0 +1,97 @@
+# (PART) Explore NBA data with `tidyverse` {-}
+
+# Introduction
+
+In this section, we will 
+
+- Get experience asking interesting questions, and developing a strategy to answer those questions using data
+- Gain comfort with coding and working hands-on with data
+- Practice interactive data exploration and visualization with base R, `tidyverse` (mostly `dplyr` and `ggplot2`), `plotly`, and other tools.
+
+Packages and functions:
+
+- `dplyr`
+    - `filter`, `select`, `mutate`, `rename`, `summarize`, `arrange`, `group_by`, `*_join`, `pivot_longer`, `pivot_wider`, `ifelse`, `case_when`
+    - String multiple commands together with pipe operator
+- `ggplot`
+    - geom_’s: `geom_point`, `geom_jitter`, `geom_smooth`, `geom_line`, `geom_bar`, `geom_histogram`, `geom_tile`, `geom_segment`, `geom_text`
+    - `facet_wrap`, `facet_grid`
+- `ggplotly` and `plotly`
+- `pubtheme`, a package that contains a `ggplot` theme `theme_pub` and a `plotly` layout called `layoutpub` for creating data journalism-style data visualizations with color palettes and formatting similar to those used by media organizations like BBC, NY Times, and ESPN.
+- `DT`
+
+We will assume basic familiarity with `dplyr` and `ggplot2` functions. See Appendix A for a refresher or an introduction. 
+
+## What questions can we ask?
+
+There are several questions we can ask about teams. Many of these can be asked about players too (as well as many other questions), but for we'll focus on teams now.
+
+**Team strength**
+
+- Can we estimate how good a team has been? 
+- Can we estimate how good a team will be going forward? 
+- Can we decompose a team's strength into offense, defense, and other components?
+
+**Game outcomes**
+
+- How likely is it that a team will win their next game? 
+- How many points a team will score in their next game?
+- By how many points will a team outscore, or be outscored, in their next game?
+
+**Season outcomes**
+
+- Can we predict how many wins that team will have this season? - What chance does the team have of making the playoffs? 
+- To what extent does the strength of a team's division impact how likely they are to make the playoffs? 
+
+**Schedule**
+
+- Does a team's travel miles impact the outcome of a game? If so, are west coast teams at a disadvantage because they travel more? 
+- Does altitude (e.g. playing in Colorado, Utah, etc) impact the outcome of a game?  
+- Does the amount of rest between games impact a team's chance of winning? Are back-to-back games harder to win? 
+
+Eventually we'll answer all of these questions, to some extent, starting the team strength, game outcomes, and schedule related questions.
+
+## Intro to NBA games data
+We will start by working with game summary data, which provides the teams, game date, and game score, and other information for every regular season and playoff game. We can do a pretty decent job of answering many of these questions with this data. 
+
+
+First let's load in some packages we'll use, load the data, and look at the first and last two rows.
+
+```{r results=FALSE}
+library(tidyverse)
+library(pubtheme)
+d = readRDS('data/games.rds')
+head(d,2)
+tail(d,2)
+```
+
+Here is a description of the columns in this data frame.
+
+- `date`. The date of the game
+- `away`. The away team
+- `home`. The home team
+- `ascore`. The away team's score
+- `hscore`. The home team's score
+- `lg`. The league abbreviation.
+- `season`. The season in which the game took place. 
+- `season.type`. Regular season `reg` or postseason `post`.
+- `gid`. Game ID from the leagues website, ESPN or other data source.
+- `gkey`. Primary **key** for that **g**ame. 
+
+Note that `season` is a numeric column. For leagues whose regular season spans two years (e.g. NBA 2021-22, NHL 2021-22), the later year is used as the `season` (e.g. 2022). For other leagues where the regular season only spans one year (e.g. MLB, NFL), that year is used, so 2022 refers to the MLB season that started in Spring of 2022 and the NFL season that started in Fall of 2022. 
+
+We won't use the `gkey` column much for now. It is there to distinguish games from different leagues that may have the same `gid`. It is also more readable than `gid`.
+
+Each row in the data frame contains game summary data for one game from one of several leagues (NBA, NHL, NFL, MLB, CFB, and MCBB) 
+
+```{r}
+table(d$lg)
+```
+
+over many seasons
+
+```{r}
+table(d$season, d$lg) %>% head()
+table(d$season, d$lg) %>% tail(30)
+```
+

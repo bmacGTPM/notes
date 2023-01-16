@@ -1,0 +1,14 @@
+# Locations and mapping
+
+## Maps with `ggplot` 
+
+## Maps with `leaflet`
+
+## Maps with `ggmap`
+
+## Maps with `plotly`
+
+
+
+
+There are a ton of other options for visualizations via the `htmlwidgets` package. See the gallery here: https://gallery.htmlwidgets.org/.

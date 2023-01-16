@@ -1,0 +1,207 @@
+# Exploring and summarizing game data
+
+For now, we'll focus on the NBA data from the 2021-22 season. We work with regular season games only, and remove any columns we won't use in the near term. 
+
+```{r}
+d = d %>% 
+  filter(lg=='nba', season %in% 2021:2022, season.type=='reg') %>%
+  select(date, away, home, ascore, hscore, season, gid)
+head(d)
+```
+
+## Interactive tables with `DT`
+
+Often we'll take a peak at data frames by using `head` or `tail`, or by printing the entire data frame. Sometimes it can be useful to display a data frame as a interactive table that we can play around with. We can do this using `datatable` from the `DT` package. With its default usage, we can sort by any column and search for any term.
+
+```{r}
+library(DT)
+datatable(d)
+```
+## Recommended options with `DT`
+
+```{r}
+datatable(d, 
+          width=480,
+          class='display compact nowrap', 
+          rownames=F, 
+          filter = 'top',
+          style='auto',
+          extensions = c('ColReorder',  'FixedHeader', 'KeyTable', 'Buttons'),
+          options = list(
+            orderClasses=T, ## highlight the ordered column 
+            #autowidth=T,  ##
+            dom = 'Brtip', ## https://datatables.net/reference/option/dom
+            buttons = c('copy', 'csv', 'excel'), ## download buttons
+            pageLength=30, ## rows per page
+            columnDefs=list(list(orderSequence = c('desc', 'asc'),
+                                 targets = '_all' )) ## sort desc first
+          # initComplete = JS( ## change colors of rows.
+          #      "function(settings, json) {",
+          #      paste0("$('tr.odd').css({'background-color': '", publightgray, "'});"),
+          #      paste0("$('tr.even').css({'background-color': '", pubbackgray, "'});"),
+          #      "}"))
+          )
+          
+          )
+          
+
+```
+
+More examples and options can be found here https://rstudio.github.io/DT or here https://datatables.net/examples/index. Also note that in https://rstudio.github.io/DT/options.html it says 
+
+> When there are some options that you want to set for multiple tables produced from the same R session, you can use the global option named DT.options. For example:"
+>
+> ```options(DT.options = list(pageLength = 5, language = list(search = 'Filter:')))```
+
+## Home advantage
+
+Let's see if we can detect any sort of home advantage. The easiest way to do this is to find the average margin of victory by the home team. 
+
+```{r}
+d %>% 
+  mutate(diff = hscore - ascore) %>%
+  summarise(avg.diff = mean(diff))
+  
+```
+
+
+## Home advantage by team
+
+We might think that home advantage by team, if certain venues are particularly difficult to play in. Let's see how much variation there is in home advantage. It will be more appropriate to do this in the context of regression later but for now we can look at score differential when they are the home team, score differential when they are the away team, and the difference between those. 
+
+```{r}
+dh = d %>%
+  mutate(diff = hscore - ascore) %>%
+  group_by(home) %>%
+  summarise(diff = mean(diff))
+da = d %>%
+  mutate(diff = ascore - hscore) %>%
+  group_by(away) %>%
+  summarise(diff = mean(diff))
+head(dh)
+dha = dh %>% 
+  left_join(da, by=c('home'='away'), suffix=c('.h', '.a')) %>%
+  mutate(diff = diff.h - diff.a) %>% 
+  arrange(desc(diff))
+head(dha)
+```
+
+
+
+## Points previous vs current season
+Let's see if a team's average points scored from the previous season is related to their points scored in the current season.  First, we'll have to rearrange the data a little since teams can appear in both the home and away column. Ideally, we would have one column with the team name, and one column with the score. Each game would then have two rows, one for the away team and one for the home team. Here is one way to do that:
+
+```{r}
+da = d %>% select(date, away, ascore, home, hscore, season, gid) %>% mutate(ha = 'away')
+dh = d %>% select(date, home, hscore, away, ascore, season, gid) %>% mutate(ha = 'home')
+colnames(da) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
+colnames(dh) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
+dd = bind_rows(da, dh) %>% 
+  arrange(date, gid)
+head(dd)
+```
+Note that, for example, the first two rows correspond to the first game, and contain the same information that was in the first row of the previous data frame. 
+
+Now we can compute average points scored by team for each season. 
+
+```{r}
+ds = dd %>%
+  group_by(team, season) %>%
+  summarise(score= mean(score))
+head(ds)
+```
+We now have two rows per team, one for each season. If we want a scatter plot, we'll `pivot_wider` to have a column for each season. We don't want column names that start with a number (we would have to use the tick marks ``` `2022` ``` all the time), so we'll rename those too.
+
+```{r}
+ds = ds %>%
+  pivot_wider(id_cols=team, 
+              names_from=season, 
+              values_from=score) %>%
+  rename(s2021 = `2021`, 
+         s2022 = `2022`)
+head(ds)
+```
+Now we can make a scatter plot. 
+
+```{r}
+ggplot(ds, aes(x=s2021, y=s2022, label=team))+
+  geom_point()+
+  geom_text(hjust=-.1)
+```
+
+Current and previous season performances are related, despite the fact that some players, coaches, and front office personnel change teams in the offseason. Also, note the correlation is about `r round(cor(ds$s2021, ds$s2022),2)`:
+
+```{r}
+cor(ds$s2021, ds$s2022)
+```
+
+
+## Formatting with `pubtheme`
+The previous plot was functional and told us what we wanted to know. But let's start using `pubtheme`.  We'll copy and paste the scatter plot code from here and edit it for our data. 
+
+```{r fig.height=6, fig.width=6}
+title = 'Average Points in 2021-22 vs 2020-21'
+g = ggplot(ds, aes(x=s2021, y=s2022, label=team))+
+  geom_point()+
+  geom_text(hjust=-.1)+
+  labs(title = title,
+       x = 'Average Points in 2020-21 Season',
+       y = 'Average Points in 2021-22 Season')+
+  scale_x_continuous(limits=c(103, 121), breaks=c(103,112,121), oob=squish, labels=comma)+
+  scale_y_continuous(limits=c(103, 121), breaks=c(103,112,121), oob=squish, labels=comma)+
+  coord_cartesian(clip='off', expand=FALSE)+
+  theme_pub(type='scatter', base_size = 36/3) 
+print(g)
+```
+A few notes about the additional code for this plot
+
+- We can specify the `title` (and optionally `subtitle`), `x` axis label, `y` axis label, and an optional `caption` with `labs`. We omitted the `subtitle` and `caption` as there was no need.
+- With `scale_x_continuous` (resp. `scale_y_continuous`) we can specify the left and right (resp. upper and lower) `limits` for the axis, as well as where the grid lines show (`breaks`). `oob=squish` means if a point is slighly out of bounds, squish it in so that it is shown. `labels=comma` means if we have a number like `1000000` on the axis ticks, we want it to display with commas like `1,000,000`
+- `coord_cartesian(clip='off', expand=FALSE)` means if a point or some text is slightly outside the plotting range, we don't want it to be clipped, we still want to show it, and we don't want to `expand` the plot range, we want it to be exactly what we specified in `limits`. The default is to expand by 5% on each side. 
+
+
+## Scoring vs stronger/weaker opponents
+
+```{r}
+dd = dd %>% 
+  left_join(dd %>%
+              group_by(team) %>%
+              summarise(avg.pts.allowed = mean(opp.score)), 
+            by=c('opp'='team'))
+head(dd)
+```
+
+```{r}
+tms = read.csv('data/nba.teams.csv')
+tms = tms %>% 
+  arrange(conf, div) %>%
+  mutate(conf = paste0(toupper(substr(conf,1,1)), substr(conf, 2, nchar(conf))),
+         div  = paste0(toupper(substr(div ,1,1)), substr( div, 2, nchar( div))), 
+         div  = factor(div, levels=unique(div)))
+head(tms)
+
+dg = dd %>%
+  left_join(tms %>% select(-conf), by='team') %>%
+  group_by(div) %>%
+  mutate(group = as.character(as.numeric(as.factor(team))))
+head(dg)
+```
+
+
+```{r fig.width=6, fig.height=5}
+title = "Points Scored vs Average Opp Points Allowed" 
+g = ggplot(dg, aes(x=avg.pts.allowed, y=score, group=group, color=group))+
+  geom_jitter(width=0.1, height=0.1, alpha=0.1, show.legend = F, size=.75)+
+  geom_smooth(method='lm', show.legend=F, alpha=0.1, se=F, size=1)+
+  facet_wrap(~div, nrow=2) +
+  labs(title    = title,
+       x = 'Avg Points Allowed by Opponent',
+       y = 'Points Scored in the Game')+
+  scale_x_continuous(limits=c(105, 118), breaks=c(105, 112, 119), oob=squish, labels=comma)+
+  scale_y_continuous(limits=c(80,150), breaks=c(80,115,150), oob=squish, labels=comma)+
+  coord_cartesian(clip='off', expand=FALSE)+
+  theme_pub(type='scatter', base_size = 36/3, facet=T) 
+print(g)
+```
+
+

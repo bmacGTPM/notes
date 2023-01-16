@@ -11,3 +11,4 @@ bookdown::gitbook:
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf", "epub"]
   code_folding: hide
+  table_css: FALSE

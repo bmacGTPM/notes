@@ -12,3 +12,16 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+part{
+  color: black
+}
+
+/* overwrite some settings from _book\libs\gitbook-2.6.7\css\style.css */ 
+/* list-style:outside is supposed to make the second line align with first line, but it's not working. */
+.book .book-summary ul.summary li span{
+  cursor:not-allowed;
+  opacity:1;
+  white-space:normal;
+  list-style:outside; 
+} 

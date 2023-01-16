@@ -1,0 +1,108 @@
+# Travel distances
+
+We'd like to explore the relationship between travel distance and game outcomes. First we need the distance between every pair of cities. Instead of the distance matrix format, we'll want one row per pair of cities, with columns location, previous locations, and miles between them. 
+
+```{r}
+dm = read.csv('data/distance.matrix.nba.csv')
+colnames(dm)[1] = 'prev.loc'
+head(dm)
+
+dm = dm %>% 
+  pivot_longer(cols = - prev.loc, 
+               names_to = 'loc', 
+               values_to = 'miles')
+head(dm)
+
+dg = dm %>% 
+  left_join(tms %>% select(team, div), 
+            by = c('prev.loc'='team')) %>%
+  left_join(tms %>% select(team, div), 
+            by = c('loc'='team'), suffix=c('.1', '.2')) %>%
+  mutate(prev.loc = factor(prev.loc, levels=rev(teams.order)), 
+         loc      = factor(loc     , levels=teams.order))
+head(dg)
+```
+## Grid plot of distance matrix
+
+```{r fig.width=6, fig.height=7}
+title = "Miles Between Each Pair of Teams" 
+g = ggplot(dg, aes(x=loc, y=prev.loc, fill=miles))+
+  geom_tile(linewidth=0.4, show.legend = F) +
+  facet_grid(div.1 ~ div.2, drop = T, scales='free')+
+  scale_fill_gradient(low = pubbackgray,
+                      high = pubred,
+                      na.value = 'white',
+                      oob=squish) +
+  labs(title    = title,
+       x = 'Home Team', 
+       y = 'Away Team')+  ## Optional. 
+  geom_vline(xintercept=1:(length(unique(dg$loc ))+1)-.5, color=pubdarkgray, linewidth=0.2)+ # vert  lines between each square
+  geom_hline(yintercept=1:(length(unique(dg$prev.loc))+1)-.5, color=pubdarkgray, linewidth=0.2)+ # horiz lines 
+  scale_x_discrete(expand = c(0, 0), position='top')+
+  scale_y_discrete(expand = c(0, 0)) +
+  theme_pub(type='grid', base_size=36/4)+
+  theme(axis.text.x.top = element_text(angle = 90, vjust = .5, hjust = 0), 
+        panel.spacing = unit(10 * 1/1440 * 20 * 9/36, "in"))
+
+print(g)
+```
+
+## Total distance traveled by team
+
+```{r}
+dd = dd %>% 
+  group_by(team) %>%
+  mutate(loc = ifelse(ha=='home', team, opp), 
+         prev.loc = lag(loc), 
+         prev.loc = ifelse(is.na(prev.loc), team, prev.loc)) %>%
+  left_join(dm, by=c('loc', 'prev.loc'))
+dd %>% filter(team=='PHI')
+```
+
+```{r}
+dg = dd %>%
+  group_by(team) %>%
+  summarise(miles = sum(miles)) %>%
+  arrange(miles) %>%
+  left_join(tms, by='team') %>%
+  mutate(team = factor(team, levels=team))
+head(dg)
+```
+
+```{r}
+max.x =  max(dg$miles)+50000
+title = "Distance travel by each team" 
+g = ggplot(dg, aes(x=miles, y=team))+
+  geom_bar(stat='identity', aes(x=max.x), color=NA, fill=publightgray, width=0.8)+ ## optional background bars. 
+  geom_bar(stat='identity', fill=pubred, color=NA, width=0.8)+ 
+  geom_text(aes(label=round(miles,2)), hjust=-0.1)+ ## optional numbers with reasonable number of digits
+  facet_wrap(~div, scales='free', ncol=3)+
+  labs(title    = title,
+       x = 'Miles Traveled', ## Optional. 
+       y = NULL)+  ## Optional. Upper Lower.
+  scale_x_continuous(limits=c(0,max.x))+ 
+  theme_pub(type='bar', base_size=36/3) 
+print(g)
+```
+
+
+## Travel distance and game outcomes
+
+Now let's see if there is any relationship between points scored and miles. 
+
+```{r}
+title = "Points Scored vs Miles" 
+g = ggplot(dd, aes(x=miles, y=score))+
+  geom_jitter(height=0, width=50, alpha=0.5)+
+  geom_smooth(method='lm', color=pubred)+
+  labs(title    = title,
+       x = 'Miles Traveled From Previous Game',
+       y = 'Points Scored')+
+  scale_x_continuous(limits=c(0, 3000), breaks=c(0, 1500, 3000), oob=squish, labels=comma)+
+  scale_y_continuous(limits=c(70, 160), breaks=c(70, 115,  160), oob=squish, labels=comma)+
+  coord_cartesian(clip='off', expand=FALSE)+
+  theme_pub(type='scatter', base_size = 36/3) 
+print(g)
+```
+
+This relationship looks slightly decreasing but isn't that strong. 
