@@ -25,7 +25,7 @@ We will start by working with game summary data, which provides the teams, game 
 First let's load in some packages we'll use.
 
 ```{r results=FALSE}
-library(tidyverse)
+library(tidyverse) ## or you can load just dplyr
 ```
 
 The `tidyverse` is "an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures" (https://www.tidyverse.org/). There are a variety of cheatsheets made available by Posit (formerly R Studio) here: https://posit.co/resources/cheatsheets/

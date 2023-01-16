@@ -1,6 +1,6 @@
 # Gallery
 
-For easy browsing and navigating, we start with a gallery of tables and visualizations that we will make, along with hyperlinks to where each table or visualization is located.
+For easy browsing and navigating, we start with a gallery of tables and visualizations that we will make, along with hyperlinks to where each table or visualization is located in this book.
 
 ## Formatting with `pubtheme`
 
@@ -8,7 +8,7 @@ The plots in this gallery use the package `pubtheme`, which contains a `ggplot` 
 
 As an example, `pubtheme` turns a `ggplot` like this
 
-```{r fig.height=6, fig.width=7}
+```{r fig.height=6, fig.width=7, class.source='fold-hide'}
 restore.ggplot.defaults()
 ggplot(mtcars, aes(x=wt, y=mpg, color=as.factor(cyl)))+
   geom_point(aes(size=mpg))
@@ -36,3 +36,5 @@ g = ggplot(mtcars, aes(x=wt, y=mpg, color=as.factor(cyl)))+
 print(g)
 ```
 
+## ggplot
+Gallery is coming soon!
