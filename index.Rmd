@@ -65,11 +65,9 @@ library(pubtheme)
 
 These are course notes for S&DS 361 Data Analysis. 
 
-The notes cover data exploration and visualization (Part 1), linear regression (Part 2), zzz. 
-
 **Prerequisites.** It is assumed you have had a introductory course in probability and statistics, have some experience with R, linear regression, and matrix algebra. 
 
-**Errors.** If you notice any errors in these notes, please submit a [pull request](https://github.com/bmacGTPM/361/pulls).
+**Errors.** If you notice any errors in these notes, please submit a [pull request](https://github.com/bmacGTPM/notes/pulls).
 
 ## Preparation
 
