@@ -69,6 +69,8 @@ These are course notes for S&DS 361 Data Analysis.
 
 **Errors.** If you notice any errors in these notes, please submit a [pull request](https://github.com/bmacGTPM/notes/pulls).
 
+**Data.** The data used in these notes can be found at https://github.com/bmacGTPM/notes/tree/main/data.
+
 ## Preparation
 
 ### Packages

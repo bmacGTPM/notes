@@ -2,6 +2,7 @@
 
 First let's prep our data set using our code from the last section. 
 ```{r}
+restore.ggplot.defaults()
 library(tidyverse)
 d = readRDS('data/games.rds')
 d = d %>% 
@@ -73,7 +74,9 @@ g = ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
   scale_size(range=c(2,6))+
   theme_pub(type='scatter', base_size = 36/3) 
 print(g)
-restore.ggplot.defaults()
+
+## go back to using ggplot defaults for now
+restore.ggplot.defaults() 
 ```
 
 ## Trend line with `geom_smooth`
@@ -146,7 +149,7 @@ We use `geom_jitter` to add randomness to the points so that don't overlap as mu
 
 ```{r fig.height=6, fig.width=6}
 ggplot(d, aes(x=hscore, y=home))+
-  geom_jitter(alpha=0.5, size=1, height=0.2, width=0)
+  geom_jitter(alpha=0.5, size=1, height=0.2, width=0.4)
 ```
 
 ## Bar plot `geom_bar`
@@ -184,7 +187,8 @@ dg = dd %>%
 ggplot(dg, aes(x=score, y=team, color=season.type))+
   geom_bar(stat='identity')
 ```
-You'll may often use `fill` and not notice this issue, but it is something to be aware of. 
+
+You may often use `fill` and not notice this issue, but it is something to be aware of. 
 
 Even with our first bar plot it would be better to aggregate first for reasons we'll see when we try to use `geom_text` below. This plot looks the same, but there is one bar per team instead of one bar per game:
 ```{r}
@@ -204,6 +208,8 @@ dg = dd %>%
   summarise(score = sum(score))
 post.teams = unique(dg$team[dg$season.type=='post'])
 dg = dg %>% filter(team %in% post.teams)
+
+## plot
 ggplot(dg, aes(x=score, y=team, fill=season.type))+
   geom_bar(stat='identity', position=position_dodge(), color='black')
 ```
@@ -217,7 +223,7 @@ dg = dd %>%
   summarise(score=sum(score)) 
 ggplot(dg, aes(x=score, y=team, label=score))+
   geom_bar(stat='identity')+
-  geom_text(hjust=0)
+  geom_text(hjust=-0.1)
 ```
 
 Note that without aggregating the bar plot looks the same, but it will plot separate text for each row in the data. 
@@ -239,6 +245,7 @@ ggplot(dg, aes(x=score, y=team, fill=season.type, label=score, group=season.type
   geom_text(hjust=-.1, position=position_dodge(width=.9))
 ```
 
+You can use `geom_text` with `geom_point`, `geom_line`, etc as well. 
 
 ## Histogram with `geom_histogram`
 Histogram of points scored
@@ -307,6 +314,7 @@ ggplot(dg, aes(x=home,
 ```
 
 We'll discuss `theme` more in the main text. You can see all the `theme` options here https://ggplot2.tidyverse.org/reference/theme.html. 
+
 ## Quick interactive plots with `ggplotly`
 
 We can make any of these plots interactive using `ggplotly`. By default, a tooltip is created that shows whatever aesthetics are used inside `aes()`. 

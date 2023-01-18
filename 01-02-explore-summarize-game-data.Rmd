@@ -153,6 +153,7 @@ g = ggplot(ds, aes(x=s2021, y=s2022, label=team))+
   theme_pub(type='scatter', base_size = 36/3) 
 print(g)
 ```
+
 A few notes about the additional code for this plot
 
 - We can specify the `title` (and optionally `subtitle`), `x` axis label, `y` axis label, and an optional `caption` with `labs`. We omitted the `subtitle` and `caption` as there was no need.

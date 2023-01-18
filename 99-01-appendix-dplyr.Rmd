@@ -141,8 +141,14 @@ str(d)
 That shows the column name, the data type (`Date`, `chr` for character, or `num` for numeric) and shows the first few entries. Fortunately, our `date` column is `Date` format, and our score columns are numeric format.
 
 ## Add/Edit columns with `mutate`
+Let's add a column to our data frame for home score differential (home score minus away score). We can add columns to our data frame, or edit existing columns, in base R like this.
 
-We can add columns to our data frame, or edit existing columns, by using `mutate`. Here we'll add a column for home score differential. 
+```{r}
+d$diff = d$hscore - d$ascore
+head(d)
+```
+
+This can also be done by using `mutate`. 
 
 ```{r}
 d = d %>% 
@@ -151,20 +157,34 @@ head(d)
 ```
 
 ## Ordering rows with `arrange`
-If we want to find the game with the smallest `diff` (the most negative `diff`), we could order the rows by `diff`. 
+If we want to find the game with the smallest `diff` (the most negative `diff`), we could order the rows by `diff`, using `order` in base R.  
 
 ```{r}
-d %>% arrange(diff)
+head(d[order(d$diff),])
+```
+Instead we could use `arrange` from `dplyr` like this:
+
+```{r}
+d %>% 
+  arrange(diff) %>%
+  head()
 ```
 To order for largest to smallest, use `desc()`. 
 ```{r}
-d %>% arrange(desc(diff))
+d %>% 
+  arrange(desc(diff)) %>%
+  head()
 ```
 To break ties, we could include another column in arrange. Let's break ties by using `hscore`, so that if `diff` is the same, the row with the higher `hscore` comes first. 
 
 ```{r}
-d %>% arrange(desc(diff), desc(hscore))
+d %>% 
+  arrange(desc(diff), 
+          desc(hscore)) %>%
+  head()
 ```
+
+
 
 ## Summaries using `summarise`
 
