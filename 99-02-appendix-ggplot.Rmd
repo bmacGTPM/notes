@@ -79,6 +79,24 @@ print(g)
 restore.ggplot.defaults() 
 ```
 
+## `ggsave`
+
+Use `ggsave` instead of clicking Export, Save As in R Studio. When using `pubtheme` choose 
+`base_size=36` and `width=20`, as is done in the template. The `height=20` option can be changed if you need to change the dimension of the plot. 
+
+```{r eval=F}
+## Save to a file
+gg = g + theme_pub(type='scatter', base_size=36)
+  
+ggsave(filename=paste0("img/", gsub("%", " Perc", title), ".jpg"), 
+       plot=gg,
+       width=20,   ## don't change
+       height=20,  ## ok to change 
+       units='in', ## don't change
+       dpi=72)     ## don't change
+```
+
+
 ## Trend line with `geom_smooth`
 
 We can add a trendline to our scatter plot using `geom_smooth` after `geom_point`. 
@@ -158,7 +176,8 @@ We can make bar plots using `geom_bar` like this.
 
 ```{r}
 ggplot(dd, aes(x=score, y=team))+
-  geom_bar(stat='identity')
+  geom_col()
+  #geom_bar(stat='identity')
 ```
 That counts the number of point score by each team. Note that we put `stat='identity'` inside `geom_bar()`. 
 
@@ -174,7 +193,8 @@ Typically you use `fill`. Note that `color` affects only the border.
 
 ```{r}
 ggplot(dd, aes(x=score, y=team, color=season.type))+
-  geom_bar(stat='identity')
+  geom_col()
+  #geom_bar(stat='identity')
 ```
 
 That's not ideal. We didn't notice before, but it is drawing a little bar for each individual game and then stacking them together. You may want to aggregate the data first like this:
@@ -315,6 +335,30 @@ ggplot(dg, aes(x=home,
 
 We'll discuss `theme` more in the main text. You can see all the `theme` options here https://ggplot2.tidyverse.org/reference/theme.html. 
 
+Other ways to modify ggplots are listed in the function reference https://ggplot2.tidyverse.org/reference/. 
+
+## Maps
+
+```{r}
+## load lat/lon data
+ll = read.csv('data/nba.venue.lat.long.csv')
+head(ll)
+```
+```{r}
+dg = ll %>% select(team, lat, long)
+
+title = "Location of NBA Teams"
+g = ggplot(dg, aes(x=long, y=lat, label=team))+
+  borders('state', colour=publightgray)+
+  geom_point(color=pubred)+
+  geom_text(hjust=rep(c(-0.1, 1.1), 16))+
+  labs(title    = title)+
+  coord_cartesian(expand=F, clip='off')+
+  theme_pub(type='map', base_size = 36/3)
+g
+```
+
+
 ## Quick interactive plots with `ggplotly`
 
 We can make any of these plots interactive using `ggplotly`. By default, a tooltip is created that shows whatever aesthetics are used inside `aes()`. 
@@ -328,6 +372,11 @@ ggplotly(g)
 We'll discuss this, and `plot_ly` function more in the main text. 
 
 ## For more information
+
+The `ggplot` function reference is here https://ggplot2.tidyverse.org/reference/
+
+
+You can see all the `theme` options here https://ggplot2.tidyverse.org/reference/theme.html. 
 
 The book [R for Data Science](https://r4ds.had.co.nz/) is a great resource for `tidyverse`. 
 
