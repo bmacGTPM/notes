@@ -65,11 +65,11 @@ library(pubtheme)
 
 These are course notes for S&DS 361 Data Analysis. 
 
-The notes cover data exploration and visualization (Part 1), linear regression (Part 2), zzz. 
-
 **Prerequisites.** It is assumed you have had a introductory course in probability and statistics, have some experience with R, linear regression, and matrix algebra. 
 
-**Errors.** If you notice any errors in these notes, please submit a [pull request](https://github.com/bmacGTPM/361/pulls).
+**Errors.** If you notice any errors in these notes, please submit a [pull request](https://github.com/bmacGTPM/notes/pulls).
+
+**Data.** The data used in these notes can be found at https://github.com/bmacGTPM/notes/tree/main/data.
 
 ## Preparation
 
@@ -112,7 +112,7 @@ If you get any sort of "permission denied" errors when trying to install the pac
 
 
 ### Bookmarks
-Bookmark this book https://bmacgtpm.github.io/book/ and the pubtheme Github page https://github.com/bmacGTPM/pubtheme.
+Bookmark this book https://bmacgtpm.github.io/notes/ and the pubtheme Github page https://github.com/bmacGTPM/pubtheme.
 
 
 ## Learning Objectives
