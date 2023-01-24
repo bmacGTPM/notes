@@ -112,7 +112,7 @@ If you get any sort of "permission denied" errors when trying to install the pac
 
 
 ### Bookmarks
-Bookmark this book https://bmacgtpm.github.io/book/ and the pubtheme Github page https://github.com/bmacGTPM/pubtheme.
+Bookmark this book https://bmacgtpm.github.io/notes/ and the pubtheme Github page https://github.com/bmacGTPM/pubtheme.
 
 
 ## Learning Objectives
