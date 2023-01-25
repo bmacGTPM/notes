@@ -68,8 +68,8 @@ g = ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
   labs(title    = title,
        x = 'Away Team Points',
        y = 'Home Team Points')+
-  scale_x_continuous(limits=c(65, 165), breaks=c(65,110,165), oob=squish, labels=comma)+
-  scale_y_continuous(limits=c(65, 165), breaks=c(65,110,165), oob=squish, labels=comma)+
+  scale_x_continuous(limits=c(65, 165), breaks=c(65,115,165), oob=squish, labels=comma)+
+  scale_y_continuous(limits=c(65, 165), breaks=c(65,115,165), oob=squish, labels=comma)+
   coord_cartesian(clip='off', expand=FALSE)+
   scale_size(range=c(2,6))+
   theme_pub(type='scatter', base_size = 36/3) 
