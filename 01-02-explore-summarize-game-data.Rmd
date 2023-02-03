@@ -3,6 +3,7 @@
 For now, we'll focus on the NBA data from the 2021-22 season. We work with regular season games only, and remove any columns we won't use in the near term. 
 
 ```{r}
+d = readRDS('data/games.rds')
 d = d %>% 
   filter(lg=='nba', season %in% 2021:2022, season.type=='reg') %>%
   select(date, away, home, ascore, hscore, season, gid)

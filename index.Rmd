@@ -58,7 +58,8 @@ library(pubtheme)
 # library(devtools)
 # library(splines)
 # library(RecordLinkage)
-
+# library(rsconnect)
+# library(grid)
 
 
 ```
@@ -103,6 +104,8 @@ install.packages("randomForest")
 install.packages("devtools")
 install.packages("splines")
 install.packages("RecordLinkage")
+install.packages("rsconnect")
+install.packages('grid')
 
 ## Install packages from my GitHub
 devtools::install_github("bmacGTPM/pubtheme")

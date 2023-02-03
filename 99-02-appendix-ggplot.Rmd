@@ -344,6 +344,8 @@ Other ways to modify ggplots are listed in the function reference https://ggplot
 ll = read.csv('data/nba.venue.lat.long.csv')
 head(ll)
 ```
+
+
 ```{r}
 dg = ll %>% select(team, lat, long)
 
