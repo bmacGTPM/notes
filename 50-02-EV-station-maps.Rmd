@@ -1,0 +1,118 @@
+# Maps
+
+## Stations in US and Canada
+
+```{r}
+title = "Level 2 and Level 3 Charging Stations in US and Canada"
+g = ggplot(d, aes(x=lon, y=lat, size=lev23))+
+  borders('state', colour=publightgray)+
+  geom_point(alpha=.1, color=pubred, show.legend = F)+
+  labs(title    = title)+
+  coord_cartesian(expand=F)+
+  theme_pub(type='map', base_size = 36/3)
+g
+```
+
+## Level 2 and Level 3 stations
+
+```{r fig.width=8, fig.height=3.5}
+dg = d %>% 
+  pivot_longer(cols = c(lev2, lev3)) %>%
+  filter(value!=0)
+
+title = "Level 2 and Level 3 Charging Stations in US and Canada"
+g = ggplot(dg, aes(x=lon, y=lat, size=value))+
+  borders('state', colour=publightgray)+
+  geom_point(alpha=.1, color=pubred, show.legend = F)+
+  facet_wrap(~name)+
+  labs(title    = title)+
+  coord_cartesian(expand=F)+
+  theme_pub(type='map', base_size = 36/3)
+g
+```
+
+## Level 2 Charging Stations by Network
+```{r fig.height=5, fig.width=8}
+dg = d %>%
+  filter(lev2 > 0) %>% 
+  filter(status=='avail')
+
+title = "Level 2 Charging Station Locations in US and Canada"
+g = ggplot(dg, aes(x=lon, y=lat, color=network2, size=lev2))+
+  borders('usa', colour=publightgray)+
+  geom_point(alpha=.2, show.legend = F)+
+  facet_wrap(~network2)+
+  labs(title    = title, 
+       caption  = 'As of Jan 15, 2023. Data: https://afdc.energy.gov/')+
+  #lims(x=c(-130,-62), y=c(23, 51))+
+  coord_cartesian(expand=F)+
+  scale_color_manual(
+    values = c('orange', pubdarkgray, pubred,  ## let's use approximate
+               'forestgreen', pubblue, pubmediumgray))+     ## company colors
+  scale_size(range=c(.75,3))+
+  theme_pub(type='map', base_size = 36/3)+
+  theme(legend.justification = 'center')#+ 
+  #guides(color=guide_legend(nrow=2,byrow=TRUE, hjust=0.5), size='none')
+g
+```
+
+
+## Level 3 Charging Stations by Network
+
+```{r fig.height=5, fig.width=8}
+dg = d %>%
+  filter(lev3 > 0) %>% 
+  filter(status=='avail')
+
+title = "Level 3 Charging Station Locations in US and Canada"
+g = ggplot(dg, aes(x=lon, y=lat, color=network3, size=lev3))+
+  borders('usa', colour=publightgray)+
+  geom_point(alpha=.3, show.legend = F)+
+  facet_wrap(~network3)+
+  labs(title    = title, 
+       caption  = 'As of Jan 15, 2023. Data: https://afdc.energy.gov/')+
+  #lims(x=c(-130,-62), y=c(23, 51))+
+  coord_cartesian(expand=F)+
+  scale_color_manual(
+    values = c(pubred  , 'darkturquoise', 'navy',          ## let's use approx
+               'darkorange', pubdarkgray, pubmediumgray))+ ## company colors
+  scale_size(range=c(.75,3))+
+  theme_pub(type='map', base_size = 36/3)+
+  theme(legend.justification = 'center')#+ 
+g
+```
+
+
+## Level 2 Charging Stations Animation (coming soon)
+
+## Level 3 Charging Stations Animation (coming soon)
+
+## Interative map with Leaflet
+
+```{r}
+dg = d %>% 
+  filter(state=='CT') %>%
+  mutate(label=paste0(network, '<br>', 
+                      station.name, '<br>',
+                      street.address, '<br>', 
+                      city, ', ', state, ' ', zip, '<p>', 
+                      'Level 2: ', lev2, '<br>',
+                      'Level 3: ', lev3))
+head(dg,2)
+```
+
+```{r fig.height=7, fig.width=9}
+leaflet(data=dg, height=540, width=720) %>% 
+  addTiles() %>% ## adds the background map
+  addCircleMarkers(lng = ~lon,      ## add points 
+                   lat = ~lat,
+                   radius = 5,
+                   color  = 'black',
+                   stroke = FALSE, ## remove the border
+                   fillOpacity = 0.5,
+                   label = ~lapply(label, HTML), ## show a label when you hover
+                   popup = ~label) %>% ## show a label when you click
+  setView(lng=-72.79458, lat=41.51979, zoom=9) 
+```
+
+This is an interactive map with `leaflet`. There are labels that show the EV network, station name, street address, city, state, zip, and the number Level 2 and Level 3 charging stations. The dots are sized by the number of chargers at that location. Since our computer gets slow showing all the points, we are plotting just the locations in CT. 
