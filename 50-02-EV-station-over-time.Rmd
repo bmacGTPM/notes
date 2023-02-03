@@ -1,0 +1,106 @@
+# Growth over time
+
+## Level 2 Charging Stations Over Time
+```{r}
+dg = d %>%
+  filter(status=='avail', open.date>='2010-01-01', lev2>0) %>%
+  group_by(open.date, network2) %>%
+  summarise(lev2=sum(lev2, na.rm=T)) %>%
+  ungroup() %>%
+  complete(open.date, network2, fill=list(lev2=0)) %>%
+  arrange(open.date) %>%
+  group_by(network2) %>%
+  mutate(cumul.lev2 = cumsum(lev2)) 
+tail(dg,10)
+
+dmax = dg %>%
+  filter(cumul.lev2==max(cumul.lev2), 
+         open.date==max(open.date)) 
+dmax
+```
+
+```{r fig.width=7, fig.height=7}
+library(grid)
+title = "Level 2 Charging Stations Over Time" 
+g = ggplot(dg, aes(x=open.date, y=cumul.lev2, color=network2, label=network2))+
+  geom_text(data=dmax, hjust=0, show.legend = F, nudge_x = 100)+
+  geom_line(show.legend=F)+
+  geom_point(data=dmax, show.legend = F)+
+  labs(title    = title,
+       caption  = 'As of Jan 15, 2023. Data: https://afdc.energy.gov/',
+       x = 'Open Date', 
+       y = 'Cumulative Number of Level 2 Charging Stations')+  
+  scale_x_date(
+    # limits = as.Date(c('2010-01-01', 
+    #                    '2023-01-15')),
+               breaks = seq.Date(from= as.Date('2010-01-01'), 
+                                 to  = as.Date('2023-01-01'), by='year'), 
+               date_labels = '%Y') +
+  scale_y_continuous(labels=comma, limits=c(0,54000), breaks=c(0, 27000, 54000))+ 
+  scale_color_manual(
+    values = c('orange', pubdarkgray, pubred,  ## let's use approximate
+               'forestgreen', pubblue, pubmediumgray))+     ## company colors
+  coord_cartesian(clip='off', expand=FALSE)+
+  theme_pub(type='line', base_size=36/3) + 
+  theme(legend.title=element_blank(), 
+        plot.margin = margin(t =  70*1/72*12/36,
+                             r = 300*1/72*12/36,
+                             b =  50*1/72*12/36,
+                             l =  50*1/72*12/36, unit='in'))
+g
+```
+
+
+
+## Level 3 Charging Stations Over Time
+
+```{r}
+dg = d %>%
+  filter(status=='avail', open.date>='2010-01-01', lev3>0) %>%
+  group_by(open.date, network3) %>%
+  summarise(lev3=sum(lev3, na.rm=T)) %>%
+  ungroup() %>%
+  complete(open.date, network3, fill=list(lev3=0)) %>%
+  arrange(open.date) %>%
+  group_by(network3) %>%
+  mutate(cumul.lev3 = cumsum(lev3))
+tail(dg,10)
+
+dmax = dg %>%
+  filter(cumul.lev3==max(cumul.lev3), 
+         open.date==max(open.date)) 
+dmax
+```
+
+
+```{r fig.width=7, fig.height=7}
+title = "Level 3 Charging Stations Over Time" 
+g = ggplot(dg, aes(x=open.date, y=cumul.lev3, color=network3, label=network3))+
+  geom_text(data=dmax, hjust=0, show.legend = F, nudge_x = 100)+
+  geom_line(show.legend=F)+
+  geom_point(data=dmax, show.legend = F)+
+  labs(title    = title,
+       caption  = 'As of Jan 15, 2023. Data: https://afdc.energy.gov/',
+       x = 'Open Date', 
+       y = 'Cumulative Number of Level 3 Charging Stations')+  
+  scale_x_date(
+    # limits = as.Date(c('2010-01-01', 
+    #                    '2023-01-15')),
+               breaks = seq.Date(from= as.Date('2010-01-01'), 
+                                 to  = as.Date('2023-01-01'), by='year'), 
+               date_labels = '%Y') +
+  scale_y_continuous(labels=comma, limits=c(0,20000), breaks=c(0, 10000, 20000))+ 
+  scale_color_manual(
+    values = c(pubred  , 'darkturquoise', 'navy',          ## let's use approx
+               'darkorange', pubdarkgray, pubmediumgray))+ ## company colors
+  coord_cartesian(clip='off', expand=FALSE)+
+  theme_pub(type='line', base_size=36/3) + 
+  theme(legend.title=element_blank(), 
+        plot.margin = margin(t =  70*1/72*12/36,
+                             r = 300*1/72*12/36,
+                             b =  50*1/72*12/36,
+                             l =  50*1/72*12/36, unit='in'))
+g
+```
+
+
