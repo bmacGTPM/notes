@@ -116,3 +116,52 @@ leaflet(data=dg, height=540, width=720) %>%
 ```
 
 This is an interactive map with `leaflet`. There are labels that show the EV network, station name, street address, city, state, zip, and the number Level 2 and Level 3 charging stations. The dots are sized by the number of chargers at that location. Since our computer gets slow showing all the points, we are plotting just the locations in CT. 
+
+## Plotting stations over census data
+
+```{r fig.height=7, fig.width=10}
+dc = readRDS('data/tracts.census.2019.CT.rds')
+dc = dc[dc$state=='CT' & dc$pop!=0,]
+
+
+## define a color palette
+pal1 = colorQuantile(palette = c(pubbackgray, 
+                                 pubblue), 
+                     domain=NULL,
+                     n=20);
+
+## Create a label
+dc@data$label = paste0('GEOID: ', 
+                      dc$GEOID, '<br/>', 
+                      dc$county, ', ',
+                      dc$state, '<br/>', 
+                      'Median Age: ', dc$house.value, '<br/>', 
+                      'Population: ', comma(d$pop))
+
+## leaflet
+l1 = leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addTiles() %>%
+  addPolygons(data = dc[dc$pop!=0,],
+              fillColor = ~pal1(pop.density),
+              label= ~label %>% lapply(HTML),
+              fillOpacity = 0.9,
+              color = 'black',
+              weight = 1) %>%
+  addCircleMarkers(data=dg[dg$lev2!=0,],
+                   lng = ~lon,       
+                   lat = ~lat,
+                   radius=~lev2, 
+                   color=pubdarkgray, 
+                   label=~label %>% lapply(HTML)) %>%
+  addCircleMarkers(data=dg[dg$lev3!=0,],
+                   lng = ~lon,      
+                   lat = ~lat,
+                   radius=~lev3, 
+                   color=pubred, 
+                   label=~label %>% lapply(HTML)) %>%
+  setView(lng=-72.79458, lat=41.51979, zoom=9) 
+  
+l1
+```
+
