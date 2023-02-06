@@ -1,0 +1,41 @@
+# Random
+
+This is a collection of random (in the non-statistical meaning of the word) stuff that I have to be useful over the years. 
+
+## Math symbols in plots
+
+This describes how to use mathematical expressions in plots. 
+
+```
+?plotmath
+```
+
+Examples are below. Some symbols may not appear correctly, but hopefully you'll get the idea. Note the use of `expression()` in the examples. For the symbols to appear, `expression()` must be used like this
+
+```{r}
+dg = mtcars %>% 
+  select(wt, mpg, cyl) %>%
+  mutate(Cylinders = as.factor(cyl)) %>%
+  rename(MPG = mpg)
+
+title = expression(Title~In~Upper~Lower~With~Symbols %=~% tilde(alpha))
+g = ggplot(dg, aes(x=wt, y=MPG, color=Cylinders))+
+  geom_point(aes(size=MPG))+
+  labs(title    = title,
+       subtitle = 'Optional Subtitle In Upper Lower',
+       caption  = "Optional caption giving more info, Twitter handle, or shameless promotion of pubtheme",
+       x = expression(x %+-% y),
+       y = 'Vertical Axis Label in Upper Lower')+
+  scale_x_continuous(limits=c(0, 6), breaks=c(0, 3, 6), oob=squish, labels=comma)+
+  scale_y_continuous(limits=c(0,40), breaks=c(0,20,40), oob=squish, labels=comma)+
+  coord_cartesian(clip='off', expand=FALSE)+
+  scale_size(range=c(2,6))+
+  theme_pub(type='scatter', base_size = 36/3) 
+print(g)
+```
+
+
+```{r fig.width=8}
+demo(plotmath)
+```
+
