@@ -153,7 +153,7 @@ g
 
 ## Travel matrix
 
-Number of times that teams travel from one city to another during the season. 
+Let's show the number of times that teams travel from one city to another during the season. 
 
 ```{r}
 dr = dg %>%
@@ -203,6 +203,7 @@ print(g)
 
 ```
 
-Note that this is not the same as the schedule matrix, which shows games played between each pair of teams. In
+Often an east coast team that goes on a road trip to the west coast will play several games against west coast teams. Specifically, they will play LAC and LAL in consecutive games. The same is true when teams travel to Florida and play consecutive games at MIA and ORL. 
 
+We emphasize that this is not the same as the schedule matrix, which shows games played between each pair of teams, regardless of the travel routes they took to get to the game. In the travel matrix above, when *any* of the 30 teams in the league travel between MIA and ORL, or ORL and MIA, it counts as a travel route between those two cities.
 
