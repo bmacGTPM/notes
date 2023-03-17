@@ -18,7 +18,8 @@ g
 ```{r fig.width=8, fig.height=3.5}
 dg = d %>% 
   pivot_longer(cols = c(lev2, lev3)) %>%
-  filter(value!=0)
+  filter(value!=0) %>%
+  mutate(name = ifelse(name=='lev2', 'Level 2', 'Level 3'))
 
 title = "Level 2 and Level 3 Charging Stations in US and Canada"
 g = ggplot(dg, aes(x=lon, y=lat, size=value))+
@@ -82,10 +83,117 @@ g = ggplot(dg, aes(x=lon, y=lat, color=network3, size=lev3))+
 g
 ```
 
+## Create a Month Year column
+```{r}
+dd = d %>% 
+    filter(!is.na(open.date), 
+         open.date>'2010-01-01', 
+         status=='avail') %>%
+  select(network2, network3, lat, lon, lev2, lev3, open.date) %>%
+  mutate(month = months(open.date, abbreviate=T),  ## could also use gsub or substr
+         month = factor(month, levels = month.abb), 
+         year  = substr(open.date, 1, 4), 
+         month.year = paste0(month, ' ', year)) %>%
+  arrange(year, month) %>%
+  mutate(month.year = factor(month.year, levels = unique(month.year)))
+head(dd)
+#dd$month.year %>% unique() %>% sort()
+```
 
-## Level 2 Charging Stations Animation (coming soon)
+## Level 2 Charging Stations Animation
 
-## Level 3 Charging Stations Animation (coming soon)
+
+```{r}
+dg = dd %>% filter(lev2>0)
+
+title = "Level 2 Charging Stations in US and Canada, {next_state}"
+g = ggplot(dg, aes(x=lon, y=lat, color=network2, size=lev2))+
+  borders('usa', colour=publightgray)+
+  geom_point(alpha=.2, show.legend = F)+
+  facet_wrap(~network2)+
+  labs(title    = title, 
+       caption  = 'As of Jan 15, 2023. Data: https://afdc.energy.gov/')+
+  lims(x=c(-130,-62), y=c(23, 51))+
+  coord_cartesian(expand=F)+
+  scale_color_manual(
+    values = c('orange', pubdarkgray, pubred,  ## let's use approximate
+               'forestgreen', pubblue, pubmediumgray))+     ## company colors
+  scale_size(range=c(.75,3))+
+  theme_pub(type='map', base_size = 36/3)
+  
+gg = g + 
+  theme_pub(type='map', base_size = 36) + 
+  scale_size(range=c(1.5, 6))+
+  transition_states(states = month.year, 
+                    transition_length = 0,
+                    state_length = 1, 
+                    wrap=F) + 
+  shadow_mark()
+
+# ## other animation settings
+# a1 = animate(gg,
+#         width = 1440,
+#         height= 1440*.7,
+#         fps = 12,
+#         nframes=length(unique(dg$month.year))*2 + 12*2, ## 2 per month
+#                                                         ## and a pause
+#         start_pause=0,
+#         end_pause=12)
+# a1
+# 
+# # ## save animation
+# anim_save(a1, filename = 'img/EV.stations.animation.lev2.gif')
+
+
+```
+![](img/EV.stations.animation.lev2.gif)
+
+## Level 3 Charging Stations Animation
+
+```{r}
+dg = dd %>% filter(lev3>0)
+title = "Level 3 Charging Stations in US and Canada, {next_state}"
+g = ggplot(dg, aes(x=lon, y=lat, color=network, size=lev3))+
+  borders('usa', colour=publightgray)+
+  geom_point(alpha=.2, show.legend = F)+
+  facet_wrap(~network)+
+  labs(title    = title, 
+       caption  = 'As of Jan 15, 2023. Data: https://afdc.energy.gov/')+
+  lims(x=c(-130,-62), y=c(23, 51))+
+  coord_cartesian(expand=F)+
+  scale_color_manual(
+    values = c(pubred, 'turquoise', 'orange', ## let's use approximate
+               'navy', 'black', 'gray'))+     ## company colors
+  scale_size(range=c(.75,3))+
+  theme_pub(type='map', base_size = 36/3)
+  
+gg = g + 
+  theme_pub(type='map', base_size = 36) + 
+  scale_size(range=c(1.5, 6))+
+  transition_states(states = month.year, 
+                    transition_length = 0,
+                    state_length = 1, 
+                    wrap=F) + 
+  shadow_mark()
+
+## other animation settings
+# a1 = animate(gg,
+#         width = 1440,
+#         height= 1440*.7,
+#         fps = 12,
+#         nframes=length(unique(dg$month.year))*2 + 12*2, ## 2 per month
+#                                                         ## and a pause
+#         start_pause=0,
+#         end_pause=12)
+# a1
+#  
+# # ## save animation
+# anim_save(a1, filename = 'img/EV.stations.animation.lev3.gif')
+
+```
+
+
+![](img/EV.stations.animation.lev3.gif)
 
 ## Interative map with Leaflet
 
