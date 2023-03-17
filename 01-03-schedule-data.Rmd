@@ -7,16 +7,30 @@ Let's investigate a few aspects of schedule data, like how often teams play each
 Let's visualize how often teams play each other in a season. 
 
 ```{r fig.width=6, fig.height=7}
+library(tidyverse)
+library(pubtheme)
+library(gganimate)
+
 d = readRDS('data/games.rds')
-dg = d %>% 
-  filter(lg=='nba', season %in% 2022, season.type=='reg') %>%
-  group_by(away, home) %>%
+dgm = d %>% 
+  filter(lg=='nba', season %in% 2005:2022, season.type=='reg') %>%
+  mutate(home = case_when(home=='NJN' ~ 'BKN', 
+                          home %in% c('NOH', 'NOK') ~ 'NOP', 
+                          home=='SEA' ~ 'OKC', 
+                          TRUE ~ home), 
+         away = case_when(away=='NJN' ~ 'BKN', 
+                          away %in% c('NOH', 'NOK') ~ 'NOP', 
+                          away=='SEA' ~ 'OKC', 
+                          TRUE ~ away)) %>%
+  group_by(away, home, season) %>%
   summarise(games = n()) %>%
   ungroup() %>%
-  complete(away, home, fill=list(games=0)) %>% ## new function! 
+  complete(away, home, season, fill=list(games=0)) %>% ## new function! 
   mutate(Games = as.character(games))
-head(dg)
+head(dgm)
 
+
+dg = dgm %>% filter(season==2022)
 title = "Number of Games Between Each Pair of Teams" 
 g = ggplot(dg, aes(x=home, y=away, fill=Games))+ 
   geom_tile(linewidth=0.4, show.legend = T, color=pubdarkgray) + ## used char above so leg is discrete
@@ -49,7 +63,7 @@ teams.order = tms %>%
   unlist()
 head(teams.order)
 
-dg = dg %>%
+dgm = dgm %>%
   
   ## add columns for the division of home and away team
   left_join(tms %>% select(team, div), 
@@ -70,6 +84,7 @@ head(sort(dg$away))
 ## Schedule matrix, ordered by division
 
 ```{r fig.width=6, fig.height=7}
+dg = dgm %>% filter(season==2022)
 title = "Number of Games Between Each Pair of Teams" 
 g = ggplot(dg, aes(x=home, y=away, fill=Games))+
   geom_tile(linewidth=0.4, show.legend = T, color=pubdarkgray) + ## used char above so leg is discrete
@@ -120,9 +135,166 @@ print(g)
 
 ```
 
-## Animated Schedule Matrix (coming soon)
+## Schedule matrix faceted by season
+Before creating the animation, let's look at the frames that will become the animation. 
 
-Let's animate this to show the schedule from 2005 to 2022. 
+```{r fig.height=6.5, fig.width=8}
+base_size=12
+px=1/72*base_size/36
+dg = dgm ## all seasons, not just 2022
+title = "Number of Games Between Each Pair of Teams, {next_state}"
+g = ggplot(dg, aes(x=home, y=away, fill=Games))+
+  geom_tile(linewidth=0.4, show.legend = T, color=pubdarkgray) + ## used char above so leg is discrete
+  scale_fill_manual(values=c(pubbackgray, publightred, pubred, 'red4')) +
+  labs(title    = title,
+       x = 'Home Team', 
+       y = 'Away Team')+  
+  geom_vline(xintercept=1:(length(unique(dg$home ))+1)-.5, color=pubdarkgray, linewidth=0.2)+ # vert  lines between each square
+  geom_hline(yintercept=1:(length(unique(dg$away))+1)-.5, color=pubdarkgray, linewidth=0.2)+ # horiz lines 
+  scale_x_discrete(expand = c(0, 0), position='top')+
+  scale_y_discrete(expand = c(0, 0)) +
+  theme_pub(type='grid', base_size=36/3)+
+  
+  ## we can adjust the panel spacing a little bit, if desired
+  ## and make the keys in the legend look more square
+  theme(axis.text.x.top = element_text(angle = 90, vjust = .5, hjust = 0),
+        panel.spacing     = unit(10*px, "in"), 
+        legend.key.width  = unit(36*px, "in"))
+
+## check that the frames look ok
+g + 
+  facet_wrap(~season, nrow=3) + 
+  theme(axis.text=element_blank(), 
+        axis.text.x.top = element_blank()) ## remove axis labels for this one
+```
+
+
+## Animated Schedule Matrix 
+```{r}
+## animation transitions
+gg = g +
+  transition_states(states = season, 
+                    transition_length = 0,
+                    state_length = 1, 
+                    wrap=F)
+
+# ## other animation settings
+# a1 = animate(gg,
+#         width = 1440/3,
+#         height=1440/3*1.1,
+#         fps = 1,
+#         nframes=18+2,
+#         start_pause=1,
+#         end_pause=1)
+# a1
+# 
+# # ## save the animation a1
+# anim_save(a1, filename = 'img/nba.schedule.matrix.gif')
+```
+
+![](img/nba.schedule.matrix.gif)
+
+## Animated schedule matrix, MLB edition
+
+```{r fig.height=7, fig.width=6}
+dgm = d %>% 
+  filter(lg=='mlb', season %in% 2005:2022, season.type=='reg') %>%
+  mutate(home = case_when(home=='CWS' ~ 'CHW',
+                          home=='WSH' ~ 'WAS',
+                          TRUE ~ home), 
+         away = case_when(away=='CWS' ~ 'CHW',
+                          away=='WSH' ~ 'WAS',
+                          TRUE ~ away)) %>%
+  group_by(away, home, season) %>%
+  summarise(games = n()) %>%
+  ungroup() %>%
+  complete(away, home, season, fill=list(games=0)) %>% ## new function! 
+  mutate(Games = (games))
+head(dgm)
+
+tms = read.csv('data/mlb.teams.csv')
+head(tms)
+tms = tms %>% 
+  arrange(conf, div) %>%
+  mutate(conf = paste0(toupper(substr(conf,1,1)), substr(conf, 2, nchar(conf))),
+         div  = paste0(toupper(substr(div ,1,1)), substr( div, 2, nchar( div))), 
+         div  = paste(conf, div),
+         div  = factor(div, levels=unique(div)))
+head(tms)
+
+teams.order = tms %>% 
+  arrange(desc(team)) %>%
+  select(team) %>% 
+  unlist()
+head(teams.order)
+
+dgm = dgm %>%
+  
+  ## add columns for the division of home and away team
+  left_join(tms %>% select(team, div), 
+            by = c('home'='team')) %>%
+  left_join(tms %>% select(team, div), 
+            by = c('away'='team'), suffix=c('.h', '.a')) %>%
+  
+  ## specify order we want the teams in. This has to be done
+  ## after the above code, because the above code turns
+  ## `away` and `home` into character vectors
+  mutate(away = factor(away, levels=rev(teams.order)), 
+         home = factor(home, levels=teams.order))
+
+dg = dgm #%>% filter(season==2022)
+title = "Number of Games Between Each Pair of Teams, {next_state}" 
+g = ggplot(dg, aes(x=home, y=away, fill=Games))+
+  geom_tile(linewidth=0.4, show.legend = T, color=pubdarkgray) + 
+  facet_grid(div.a ~ div.h, scales='free')+ ## now faceting by division
+  scale_fill_gradient(low = pubbackgray, 
+                      high = pubred, 
+                      na.value = 'white',
+                      oob = squish, 
+                      breaks = c(0,5,10), 
+                      guide = guide_colorbar(frame.colour = pubdarkgray)) +
+  labs(title    = title,
+       x = 'Home Team', 
+       y = 'Away Team')+  
+  scale_x_discrete(expand = c(0, 0), position='top')+
+  scale_y_discrete(expand = c(0, 0)) +
+  theme_pub(type='grid', base_size=36/4)+
+  theme(axis.text.x.top = element_text(angle = 90, vjust = .5, hjust = 0), 
+        
+        ## we can adjust the panel spacing a little bit, if desired
+        ## makes the legend look like squares instead of rectangles, if desired
+        ## px is defined above. It is the length of one pixel in inches
+        ## these are optional, wouldn't expect anyone to think of this
+        panel.spacing     = unit(1/72*10/4, "in"), 
+        legend.key.width  = unit(1/72*36/4, "in"),
+        
+        ## moves the title to the left a little bit, if desired
+        legend.title = element_text(size=36/4, vjust=0.5, 
+                                    margin = margin(0,  1/72*20/4,
+                                                    0, -1/72*30/4, 'in')))
+
+
+gg = g +
+  transition_states(states = season, 
+                    transition_length = 0,
+                    state_length = 1, 
+                    wrap=F)
+
+## other animation settings
+# a1 = animate(gg,
+#         width = 1440/3,
+#         height=1440/3*1.1,
+#         fps = 1,
+#         nframes=length(unique(dgm$season))+2,
+#         start_pause=1,
+#         end_pause=1)
+# a1
+# # 
+# # # ## save the animation a1
+# anim_save(a1, filename = 'img/mlb.schedule.matrix.gif')
+```
+
+![](img/mlb.schedule.matrix.gif)
 
 ## Days rest by team
 
@@ -133,6 +305,7 @@ dd = dd %>%
   mutate(days.rest = c(NA, diff(date))) 
 dd %>% filter(team=='PHI') %>% head()
 ```
+
 ```{r}
 dg = dd %>%
   filter(season==2022) %>%
