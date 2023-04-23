@@ -1,6 +1,191 @@
-# Random
+# (PART) Random {-}
 
 This is a collection of random (in the non-statistical meaning of the word) stuff that I have found to be useful over the years. 
+
+# Data acquistion
+
+## Scrape HTML pages
+
+```{r eval=F}
+d1 = readLines(con = 'https://finance.yahoo.com/u/yahoo-finance/watchlists/most-active-small-cap-stocks')
+
+## head(d1,2) ## huge mess of HTML code
+```
+
+Using `rvest` (https://rvest.tidyverse.org/):
+
+```{r}
+library(rvest)
+d2 = read_html('https://finance.yahoo.com/u/yahoo-finance/watchlists/most-active-small-cap-stocks')
+```
+
+## Parsing HTML tables
+
+`html_table` gives a list of data frames, one for every HTML table in the page.
+
+```{r}
+d2 %>% html_table()
+```
+
+The `readHTMLTable` function is similar.
+
+```{r}
+library(XML)
+d1 %>% readHTMLTable()
+```
+
+
+## Scraping pages that require log-in
+
+Here is an example of scraping CBS sports fantasy baseball stats. To use this you would have to create a CBS sports log-in, and possibly a fantasy baseball league. But you should be able to easily modify it for another page that you have a log-in for. The main steps are before the for loop: `userid`, `password`, `uastring`, `login.url`,  and then using `session`, `html_form`, `html_form_set`, `session_submit`.
+
+```{r eval=F}
+library(rvest)
+library(httr)
+library(tidyverse)
+
+## You will need to change the `userid` and `password` in line 22-23.  
+
+## I recommend creating a Custom Report on the CBS player stats page 
+## that has the same columns as those listed in lines 91-101 below. 
+## You'll have to do it four times, (batting, pitching, one for each league)
+## which is annoying, but worth it to scrape Salary and Contract.
+## Call the custom report ForSpreadsheet.
+
+## Otherwise, you'll have to change line 24 to report.name='standard'
+## and edit lines 91-101 to have the columns in the standard report. 
+
+## settings
+years = c(2013:2022, 'proj') ## past 10 seasons, and this season's projections
+leagues = c('al', 'nl')
+positions = c('h', 'p') 
+
+userid = 'myusername'
+password = 'mypassword'
+report.name='ForSpreadsheet'
+
+## log in to CBS sports
+uastring <- 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'
+login.url = 'https://www.cbssports.com/login'
+
+s<-session(login.url, user_agent(uastring))
+s
+
+f<-html_form(s)[[1]]
+f
+
+ff<-html_form_set(f, userid=userid, password=password)
+ff
+
+session_submit(s, form = ff, submit='_submit')
+
+
+## now that your logged in, loop over year, league, and batter/pitcher
+
+for(year in years){
+  cat(year, '')
+  
+  for(lg in leagues){
+    cat(lg, '')
+    
+    for(pos in positions){
+      cat(pos, '')
+      
+      if(lg   == 'al'  ){site.name = 'thegbsl'}
+      if(lg   == 'nl'  ){site.name = 'ohdean'}
+      if(pos  == 'h'   ){pos.url   = 'C:1B:2B:3B:SS:MI:CI:OF:DH'}
+      if(pos  == 'p'   ){pos.url   = 'P'}
+      if(year == 'proj'){year.url  = 'as-restofseason'}
+      if(year != 'proj'){year.url  = year}
+      
+      url = paste0('https://', 
+                   site.name, 
+                   '.baseball.cbssports.com/stats/stats-main/all:', 
+                   pos.url, 
+                   '/', 
+                   year.url, 
+                   ':p/', 
+                   report.name, 
+                   '?print_rows=9999')
+      url ## check
+
+      ## go to desired page
+      page = session_jump_to(s, url)
+      page
+      
+      ## extract the table
+      d = page %>% html_table(header = T)
+      dd=d[[2]] %>% ## the table we want is in the second item of the list
+        as.data.frame()
+      
+      ## the first row should be the column names, so
+      ## put the first row there,
+      ## and remove the first row
+      ## Also, remove the first column, which looks like garbage
+      colnames(dd) = dd[1,] 
+      head(dd)
+      
+      dd = dd[-1,] ## now remove 1st row
+      head(dd)
+      
+      ## remove last row
+      dd = dd[-nrow(dd), ]
+      
+      ## select columns and save
+      if(pos=='h'){
+        dd = dd %>%
+          select(Player, Avail, Eligible, Salary, Contract, 
+               G, AB, H, R, HR, RBI, SB, BB, TB, HP, Rank) 
+      }
+      
+      if(pos=='p'){
+        dd = dd %>%
+          select(Player, Avail, Eligible, Salary, Contract, 
+                 APP, W, S, H, HR, ER, BB, K, INN, Rank) 
+      }
+        
+      head(dd)
+      
+      filename = paste0('data/', lg, '-stats-', year, '-', pos, '.csv')
+      filename
+      
+      write.csv(dd, file=filename, row.names = F)
+      
+    }
+  }
+}
+```
+
+## Scraping data that appears in javascript tables (coming soon!)
+
+## Scrape PDFs
+
+You can scrape text from PDFs like this.
+
+```{r}
+library(pdftools)
+d <- pdf_data("https://www.omegatiming.com/File/0001170100020304FFFFFFFFFFFFFF02.pdf")
+is(d)
+length(d)
+head(d[[1]])
+```
+
+It gives a list of data frames, one data frame for each page, that contains each word on the page and its  (x,y) location. 
+
+# Data cleaning
+
+## RecordLinkage
+
+When joining data sets, you ideally have a unique id, or key, to join on. Sometimes that key does not exist, and you have to join on names or other information. 
+
+
+
+Give hockey example that I gave to 425
+
+## Data imputation
+
+Hmisc
+
 
 ## Minimal reproducible examples
 
@@ -165,8 +350,6 @@ Ways to improve accessibility of documents.
 - See https://bookdown.org/yihui/rmarkdown-cookbook/html-accessibility.html. That page also has a link to here  https://r-resources.massey.ac.nz/rmarkdown/.
 
 
-
-
 ## Math symbols in plots
 
 This describes how to use mathematical expressions in plots. 
@@ -204,3 +387,57 @@ print(g)
 demo(plotmath)
 ```
 
+## R packages
+
+It is not too difficult to create an R package
+
+https://support.posit.co/hc/en-us/articles/200486488-Developing-Packages-with-the-RStudio-IDE
+
+## Esquisse
+
+With esquisse you play around with `ggplot` visualizations using a GUI similar to Tableau and other visualization software packages. If you like a plot you can copy the code (lower right), paste it into a R script or Rmd file and edit it further.  
+
+```{r}
+library(esquisse)
+esquisser(mtcars)
+```
+
+## Blogdown
+The `blogdown` packages helps you create a website with a collection of R Markdown files. 
+
+https://bookdown.org/yihui/blogdown/
+
+Hugo Themes: https://themes.gohugo.io/
+
+
+## Bookdown
+
+The `bookdown` package helps you create a book (like these notes, and like our course book) using a collection of R Markdown files. 
+
+https://bookdown.org/
+
+## Quarto
+
+The new iteration of R Markdown: https://quarto.org/
+
+Quarto for R Markdown users: https://quarto.org/docs/faq/rmarkdown.html
+
+Quarto equivalent of R Markdown stuff: https://quarto.org/docs/faq/rmarkdown.html#i-use-x-bookdown-blogdown-etc..-what-is-the-quarto-equivalent
+
+## Data imputation
+
+## RecordLinkage
+
+
+## Other types of regression
+
+- **Multinomial regression.** Like logistic regression, but for categorical outcomes with 2 or more categories. See ROS, 15.5. R package: `polr`
+- **Zero-inflated Poisson or Negative Binomial regression.** Can be useful for count outcomes where there are  more zeros than predicted by a (standard) Poisson or negative binomial regression model. This could potentially be used for the EV charging station data (we removed all census tracts with zero charging stations). See ROS 15.8 and BMLR 4.10. R Package: `zeroinfl`. 
+- **Harmonic regression.** Fit the best sine/cosine curve to data. https://rdrr.io/cran/HarmonicRegression/man/harmonic.regression.html
+- **Beta regression.** When outcome has values in the open interval (0,1) (not just 0 and 1, the *open interval* (0,1) and can be assumed to be y ~ Beta(\alpha, \beta). Like when the outcome is a proportion. Generalizable to an interval (a,b) using transformations. https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf. 
+- **Dirichlet regression.** Kind of like multinomial logit regression is a generalization of logistic regression, this is a generalization of Beta regression. Model the proportions of two or more outcomes, proportions sum to 1. Package: https://cran.r-project.org/web/packages/DirichletReg/DirichletReg.pdf
+
+
+## Ridge, Lasso, and Bayes 
+
+https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
