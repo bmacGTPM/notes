@@ -1,0 +1,9 @@
+# (PART) Team ratings and game predictions using linear regression {-}
+
+# Introduction
+
+
+Eventually 
+
+- `broom` package with `tidy`, `glance`, `augment`
+- include s.e. for prediction intervals using $s_y$ and $s$
