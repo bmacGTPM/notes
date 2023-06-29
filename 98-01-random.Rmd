@@ -418,7 +418,8 @@ g %>% pub(xlim=c(0,1))
 
 ## Other types of regression
 
-- **Multinomial regression.** Like logistic regression, but for categorical outcomes with 2 or more categories. See ROS, 15.5. R package: `polr`
+- **Multinomial regression.** Like logistic regression, but for categorical outcomes with 2 or more categories. See ROS, 15.5. R package: `polr`. For multi-class log loss you can use the 
+`MultiLogLoss` from the `MLmetrics` package. See [here](https://rdrr.io/cran/MLmetrics/man/MultiLogLoss.html)
 - **Zero-inflated Poisson or Negative Binomial regression.** Can be useful for count outcomes where there are  more zeros than predicted by a (standard) Poisson or negative binomial regression model. This could potentially be used for the EV charging station data (we removed all census tracts with zero charging stations). See ROS 15.8 and BMLR 4.10. R Package: `zeroinfl`. 
 - **Harmonic regression.** Fit the best sine/cosine curve to data. https://rdrr.io/cran/HarmonicRegression/man/harmonic.regression.html
 - **Beta regression.** When outcome has values in the open interval (0,1) (not just 0 and 1, the *open interval* (0,1) and can be assumed to be y ~ Beta(\alpha, \beta). Like when the outcome is a proportion. Generalizable to an interval (a,b) using transformations. https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf. 
@@ -428,6 +429,113 @@ g %>% pub(xlim=c(0,1))
 Ridge, Lasso, and Bayes 
 
 https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
+
+
+# Understanding how functions work
+
+## Help 
+We can get help on a function by typing `?sd` in the console or clicking the Help tab in the lower right of RStudio. 
+
+## Code
+We can actually see the contents of a function by typing `sd` (with no `?` and no parentheses). Sometimes we will see the function explicitly written out. Here is the code for `sd`.
+
+```{r}
+sd
+```
+The code for `sd` finds the square root of the variance of `x`. 
+
+### Generic functions
+
+If we try to look at the code for `print`, we'll see this.
+
+```{r}
+print
+```
+All we see here is `UseMethod("print")` because `print` is a generic function that will use different code depending on whether we give it a `data.frame`, `list` or some other object.  For example, if we give `print` a `list`, it will show each object in the list, each labeled with `$nameoftheobject` and separated by a blank line.
+
+```{r}
+mylist = list(x1 = 1:10, 
+              x2 = 11:20, 
+              x3 = 21:30, 
+              x4 = 31:40, 
+              x5 = 41:50, 
+              x6 = 51:60, 
+              x7 = 61:70)
+is(mylist)
+print(mylist)
+```
+
+If this `list` were a `data.frame` object, it would show a table of data. 
+
+```{r}
+my.df = as.data.frame(mylist)
+is(my.df)
+print(my.df)
+```
+
+If we have an `lm` object that is the result of fitting a linear regression to data using the function `lm`, `print` shows some basic information about the model. 
+
+```{r}
+lm1 = lm(mpg ~ wt, data=mtcars)
+is(lm1)
+print(lm1)
+```
+If we have a `summary.lm` object, `print` will give an output with coefficients, standard errors, *t*-statistics, *p*-values, the significance stars, R^2, Adjusted R^2, and so on
+
+```{r}
+lm1.summary = summary(lm1)
+is(lm1.summary)
+print(lm1.summary)
+```
+
+### `methods`
+
+We can use `methods` to see what objects the function `print` has methods for. 
+
+```{r}
+methods('print') %>% head(20)
+```
+We are using `head` (also generic!) to only show the first 20 methods. There are actually several hundred!
+
+```{r}
+length(methods('print'))
+```
+Here are the methods that contain the character string `lm` as part of the name. 
+
+```{r}
+grep('lm', methods('print'), value=TRUE)
+```
+### `getAnywhere`
+If we want to see the code for one of these methods, we can use `getAnywhere`. Let's see the code for `print.lm` and `print.summary.lm`. Since the output of `print(summary.lm)` above is much more detailed than `print(lm1)`, it is not surprising that the code for `print.summary.lm` is much more involved than the code for `print.lm`. 
+
+```{r}
+getAnywhere('print.lm')
+```
+
+```{r}
+getAnywhere('print.summary.lm')
+```
+
+
+### Other resources
+
+- This Stack Overflow answer is pretty useful and has more details. 
+https://stackoverflow.com/questions/19226816/how-can-i-view-the-source-code-for-a-function
+
+- More in *R for Data science*: https://r4ds.had.co.nz/vectors.html?q=methods#attributes
+
+- More in *Advanced R*: http://adv-r.had.co.nz/OO-essentials.html#s3
+
+# Debugging
+
+## `browser()`
+
+Inserting `browser` in our code somewhere will make `R` pause and allow us to explore the environment at that point.
+
+## `debug`, `debugonce`
+
+Running `debugonce('fun')` will send us into debug mode next time we use the function `fun`. 
+
 
 
 # Other
