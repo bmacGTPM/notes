@@ -3,48 +3,99 @@
 We'd like to explore the relationship between travel distance and game outcomes. First we need the distance between every pair of cities. Instead of the distance matrix format, we'll want one row per pair of cities, with columns location, previous locations, and miles between them. 
 
 ```{r}
+library(tidyverse)
+library(pubtheme)
+d = readRDS('data/games.rds')
+d = d %>% 
+  filter(lg == 'nba', 
+         season %in% 2021:2022, 
+         season.type=='reg') %>%
+  select(date, 
+         away, home, 
+         ascore, hscore, 
+         season, gid)
+head(d)
+
 dm = read.csv('data/distance.matrix.nba.csv')
 colnames(dm)[1] = 'prev.loc'
 head(dm)
 
 dm = dm %>% 
-  pivot_longer(cols = - prev.loc, 
-               names_to = 'loc', 
+  pivot_longer(cols      = -prev.loc, 
+               names_to  = 'loc', 
                values_to = 'miles')
 head(dm)
 
-dg = dm %>% 
-  left_join(tms %>% select(team, div), 
-            by = c('prev.loc'='team')) %>%
-  left_join(tms %>% select(team, div), 
-            by = c('loc'='team'), suffix=c('.1', '.2')) %>%
-  mutate(prev.loc = factor(prev.loc, levels=rev(teams.order)), 
-         loc      = factor(loc     , levels=teams.order))
-head(dg)
+tms = read.csv('data/nba.teams.csv')
+tms = tms %>% 
+  arrange(conf, div) %>%
+  mutate(conf = paste0(toupper(substr(conf, 1, 1)), 
+                               substr(conf, 2, nchar(conf))),
+         div  = paste0(toupper(substr(div , 1, 1)), 
+                               substr(div , 2, nchar( div))), 
+         div  = factor(div, levels = unique(div)))
+head(tms)
+
+
+teams.order = tms %>% 
+  select(team) %>% 
+  unlist()
+head(teams.order)
+
+da = d %>% select(date, away, ascore, home, hscore, season, gid) %>% mutate(ha = 'away')
+dh = d %>% select(date, home, hscore, away, ascore, season, gid) %>% mutate(ha = 'home')
+colnames(da) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
+colnames(dh) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
+dd = bind_rows(da, dh) %>% 
+  arrange(date, gid)
+head(dd)
+
+
 ```
+
 ## Distance matrix grid plot
 
-```{r fig.width=6, fig.height=7}
-title = "Miles Between Each Pair of Teams" 
-g = ggplot(dg, aes(x=loc, y=prev.loc, fill=miles))+
-  geom_tile(linewidth=0.4, show.legend = F) +
-  facet_grid(div.1 ~ div.2, drop = T, scales='free')+
-  scale_fill_gradient(low = pubbackgray,
-                      high = pubred,
-                      na.value = 'white',
-                      oob=squish) +
-  labs(title    = title,
-       x = 'Home Team', 
-       y = 'Away Team')+  ## Optional. 
-  geom_vline(xintercept=1:(length(unique(dg$loc ))+1)-.5, color=pubdarkgray, linewidth=0.2)+ # vert  lines between each square
-  geom_hline(yintercept=1:(length(unique(dg$prev.loc))+1)-.5, color=pubdarkgray, linewidth=0.2)+ # horiz lines 
-  scale_x_discrete(expand = c(0, 0), position='top')+
-  scale_y_discrete(expand = c(0, 0)) +
-  theme_pub(type='grid', base_size=36/4)+
-  theme(axis.text.x.top = element_text(angle = 90, vjust = .5, hjust = 0), 
-        panel.spacing = unit(10 * 1/1440 * 20 * 9/36, "in"))
+```{r fig.width = 6, fig.height = 7}
 
-print(g)
+dg = dm %>% 
+  left_join(tms %>% select(team, div), 
+            by = c('prev.loc' = 'team')) %>%
+  left_join(tms %>% select(team, div), 
+            by = c('loc' = 'team'), 
+            suffix = c('.1', '.2')) %>%
+  mutate(prev.loc = factor(prev.loc, levels = rev(teams.order)), 
+              loc = factor(     loc, levels =     teams.order))
+head(dg)
+
+
+title = "Miles Between Each Pair of Teams" 
+g = ggplot(dg, 
+           aes(x    = loc, 
+               y    = prev.loc, 
+               fill = miles))+
+  geom_tile(linewidth   = 0.4, 
+            show.legend = F, 
+            color = pubdarkgray) +
+  facet_grid(div.1 ~ div.2, 
+             drop   = T, 
+             scales = 'free') +
+  scale_fill_gradient(low      = pubbackgray,
+                      high     = pubred,
+                      na.value = 'white',
+                      oob      = squish) +
+  labs(title = title,
+       x = 'Home Team', 
+       y = 'Away Team')
+  
+g %>% 
+  pub(type = 'grid', 
+      base_size = 36/4) + 
+  theme(axis.text.x.top = element_text(angle = 90, 
+                                       vjust = .5, 
+                                       hjust = 0), 
+        panel.spacing   = unit(10 * 1/1440 * 20 * 9/36, "in"))
+
+
 ```
 
 ## Total distance traveled by team
@@ -52,11 +103,17 @@ print(g)
 ```{r}
 dd = dd %>% 
   group_by(team) %>%
-  mutate(loc = ifelse(ha=='home', team, opp), 
+  mutate(loc = ifelse(ha == 'home', 
+                      team, 
+                      opp), 
          prev.loc = lag(loc), 
-         prev.loc = ifelse(is.na(prev.loc), team, prev.loc)) %>%
-  left_join(dm, by=c('loc', 'prev.loc'))
-dd %>% filter(team=='PHI')
+         prev.loc = ifelse(is.na(prev.loc), 
+                           team, 
+                           prev.loc)) %>%
+  left_join(dm, by = c('loc', 'prev.loc'))
+
+dd %>% 
+  filter(team == 'PHI')
 ```
 
 ```{r}
@@ -64,25 +121,40 @@ dg = dd %>%
   group_by(team) %>%
   summarise(miles = sum(miles)) %>%
   arrange(miles) %>%
-  left_join(tms, by='team') %>%
-  mutate(team = factor(team, levels=team))
+  left_join(tms, by = 'team') %>%
+  mutate(team = factor(team, levels = team))
 head(dg)
 ```
 
 ```{r}
-max.x =  max(dg$miles)+50000
+max.x =  max(dg$miles) + 50000
+
 title = "Distance travel by each team" 
-g = ggplot(dg, aes(x=miles, y=team))+
-  geom_bar(stat='identity', aes(x=max.x), color=NA, fill=publightgray, width=0.8)+ ## optional background bars. 
-  geom_bar(stat='identity', fill=pubred, color=NA, width=0.8)+ 
-  geom_text(aes(label=round(miles,2)), hjust=-0.1)+ ## optional numbers with reasonable number of digits
-  facet_wrap(~div, scales='free', ncol=3)+
-  labs(title    = title,
+
+g = ggplot(dg, 
+           aes(x = miles, 
+               y = team))+
+  geom_bar(stat  = 'identity', 
+           aes(x = max.x), 
+           color = NA, 
+           fill  = publightgray, 
+           width = 0.8)+ ## optional background bars. 
+  geom_bar(stat  = 'identity', 
+           fill  = pubred, 
+           color = NA, 
+           width = 0.8)+ 
+  geom_text(aes(label = round(miles,2)), 
+            hjust = -0.1)+ ## optional numbers with reasonable number of digits
+  facet_wrap(~div, 
+             scales = 'free', 
+             ncol = 3)+
+  labs(title = title,
        x = 'Miles Traveled', ## Optional. 
-       y = NULL)+  ## Optional. Upper Lower.
-  scale_x_continuous(limits=c(0,max.x))+ 
-  theme_pub(type='bar', base_size=36/3) 
-print(g)
+       y = NULL)
+
+g %>% 
+  pub(type = 'bar', 
+      xlim = c(0, max.x))
 ```
 
 
@@ -92,17 +164,21 @@ Now let's see if there is any relationship between points scored and miles.
 
 ```{r}
 title = "Points Scored vs Miles" 
-g = ggplot(dd, aes(x=miles, y=score))+
-  geom_jitter(height=0, width=50, alpha=0.5)+
-  geom_smooth(method='lm', color=pubred)+
-  labs(title    = title,
+g = ggplot(dd, 
+           aes(x = miles, 
+               y = score))+
+  geom_jitter(height = 0, 
+              width  = 50, 
+              alpha  = 0.5)+
+  geom_smooth(method = 'lm', 
+              color  = pubred)+
+  labs(title = title,
        x = 'Miles Traveled From Previous Game',
-       y = 'Points Scored')+
-  scale_x_continuous(limits=c(0, 3000), breaks=c(0, 1500, 3000), oob=squish, labels=comma)+
-  scale_y_continuous(limits=c(70, 160), breaks=c(70, 115,  160), oob=squish, labels=comma)+
-  coord_cartesian(clip='off', expand=FALSE)+
-  theme_pub(type='scatter', base_size = 36/3) 
-print(g)
+       y = 'Points Scored')
+
+g %>% 
+  pub(xlim = c(0, 3000), 
+      ylim = c(70, 160))
 ```
 
 This relationship looks slightly decreasing but isn't that strong. 
@@ -111,44 +187,75 @@ This relationship looks slightly decreasing but isn't that strong.
 
 ```{r}
 ll = read.csv('data/nba.venue.lat.long.csv')
+
 ll = ll %>%
   select(team, lat, long) %>%
   filter(!team %in% c('SEA', 'LV'))
 head(ll)
+
 dd = dd %>% 
-  left_join(ll, by=c('prev.loc' = 'team')) %>%
-  left_join(ll, by=c('loc' = 'team'), suffix = c('.prev', ''))
+  left_join(ll, by = c('prev.loc' = 'team')) %>%
+  left_join(ll, by = c('loc'      = 'team'), 
+            suffix = c('.prev', ''))
+
 title = "NBA Travel Routes"
-g = ggplot(dd, aes(x=long, y=lat))+
-  borders('state', colour=publightgray)+
-  geom_segment(aes(xend=long.prev, yend=lat.prev), alpha=0.03)+
-  geom_point(data=ll, color=pubred)+
-  geom_text(data=ll, aes(label=team), hjust=rep(c(-0.1, 1.1), 15))+
-  labs(title    = title)+
-  coord_cartesian(expand=F, clip='off')+
-  theme_pub(type='map', base_size = 36/3)
-g
+
+g = ggplot(dd, 
+           aes(x = long, 
+               y = lat)) +
+  borders('state', 
+          colour = publightgray) +
+  geom_segment(aes(xend = long.prev, 
+                   yend = lat.prev), 
+               alpha = 0.03)+
+  geom_point(data  = ll, 
+             color = pubred)+
+  geom_text(data = ll, 
+            aes(label = team), 
+            hjust = rep(c(-0.1, 1.1), 15))+
+  labs(title = title)
+
+g %>% 
+  pub(type = 'map')
 ```
 
 ## Travel paths weighted by trips
-```{r fig.width=7, fig.height=5}
+
+```{r fig.width = 7, fig.height = 5}
 dg = dd %>%
-  group_by(prev.loc, loc, lat, long, lat.prev, long.prev) %>%
+  group_by(prev.loc, loc, 
+           lat     , long, 
+           lat.prev, long.prev) %>%
   summarise(Trips = n())
+
 title = "NBA Travel Routes Weighted By Number of Trips"
-g = ggplot(dg, aes(x=long, y=lat))+
-  borders('state', colour=publightgray)+
-  geom_segment(aes(xend=long.prev, yend=lat.prev, size=Trips), alpha=0.3)+
-  geom_point(data=ll, color=pubred)+
-  geom_text(data=ll, aes(label=team), hjust=rep(c(-0.1, 1.1), 15))+
+
+g = ggplot(dg, 
+           aes(x = long, 
+               y = lat))+
+  borders('state', 
+          colour = publightgray)+
+  geom_segment(aes(xend = long.prev, 
+                   yend = lat.prev, 
+                   size = Trips), 
+               alpha = 0.3)+
+  geom_point(data  = ll, 
+             color = pubred)+
+  geom_text(data   = ll, 
+            aes(label = team), 
+            hjust  = rep(c(-0.1, 1.1), 15))+
   labs(title = title, 
-       size  = 'Trips')+
-  coord_cartesian(expand=F, clip='off')+
-  scale_size(range=c(.5,3))+
-  theme_pub(type='map', base_size = 36/3)+
-  theme(legend.title = element_text(size=36/3, vjust=0.5,
-                                    margin = margin(0, 0, 0, 150/72/3, 'in')) )
-g
+       size  = 'Trips')
+
+  
+g %>% 
+  pub(type = 'map') + 
+  scale_size(range = c(.5,3)) +
+  theme(legend.title = element_text(size = 36/3, 
+                                    vjust = 0.5,
+                                    margin = margin(0, 0, 0, 
+                                                    150/72/3, 
+                                                    'in')))
 ```
 
 ## Travel matrix
@@ -159,47 +266,54 @@ Let's show the number of times that teams travel from one city to another during
 dr = dg %>%
   ungroup() %>%
   filter(prev.loc != loc) %>%
-  complete(prev.loc, loc, fill=list(Trips=0)) %>%
-  left_join(tms, by=c('prev.loc' = 'team')) %>%
-  left_join(tms, by=c('loc'      = 'team'), suffix = c('.prev', '')) %>%
+  complete(prev.loc, 
+           loc, 
+           fill = list(Trips = 0)) %>%
+  left_join(tms, by = c('prev.loc' = 'team')) %>%
+  left_join(tms, by = c('loc'      = 'team'), 
+            suffix = c('.prev', '')) %>%
   mutate(loc      = factor(loc     , levels =     teams.order), 
          prev.loc = factor(prev.loc, levels = rev(teams.order)))
 head(dr,2)
 ```
 
-```{r fig.height=7, fig.width=6}
+```{r fig.height = 7, fig.width = 6}
 title = "Number of Trips Between Each Pair of Cities" 
 
-g = ggplot(dr, aes(x=loc, y=prev.loc, fill=Trips))+
-  geom_tile(linewidth=0.4, show.legend = T, color=pubdarkgray) + 
-  facet_grid(div.prev ~ div, scales='free')+ ## now faceting by division
-  scale_fill_gradient(low = pubbackgray,
-                      high = pubred,
+g = ggplot(dr, 
+           aes(x = loc, 
+               y = prev.loc, 
+               fill = Trips))+
+  geom_tile(linewidth = 0.4, 
+            show.legend = T, 
+            color = pubdarkgray) + 
+  facet_grid(div.prev ~ div, 
+             scales = 'free')+ ## now faceting by division
+  scale_fill_gradient(low    = pubbackgray,
+                      high   = pubred,
                       na.value = 'white',
-                      oob=squish, 
-                      breaks=c(0,25), 
-                      guide=guide_colorbar(frame.colour = pubdarkgray))+
-  labs(title    = title,
-       x = 'Destination', 
-       y = 'Origin', 
-       fill = 'Number of Trips')+  
-  scale_x_discrete(expand = c(0, 0), position='top')+
-  scale_y_discrete(expand = c(0, 0)) +
-  theme_pub(type='grid', base_size=36/4)+
-  theme(axis.text.x.top = element_text(angle = 90, vjust = .5, hjust = 0), 
-        
-        ## we can adjust the panel spacing a little bit, if desired
-        ## makes the legend look like squares instead of rectangles, if desired
-        ## px is defined above. It is the length of one pixel in inches
-        ## these are optional, wouldn't expect anyone to think of this
+                      oob    = squish, 
+                      breaks = c(0,25), 
+                      guide  = guide_colorbar(frame.colour = pubdarkgray))+
+  labs(title = title,
+       x     = 'Destination', 
+       y     = 'Origin', 
+       fill  = 'Number of Trips')
+
+g %>% 
+  pub(type = 'grid', 
+      base_size = 36/4) +
+  theme(axis.text.x.top = element_text(angle = 90, 
+                                       vjust = .5, 
+                                       hjust = 0), 
         panel.spacing     = unit(1/72*10/4, "in"), 
         legend.key.width  = unit(1/72*36/4, "in"),
-        
-        ## moves the title to the left a little bit, if desired
-        legend.title = element_text(size=36/4, vjust=0.5, 
+        legend.title = element_text(size   = 36/4, 
+                                    vjust  = 0.5, 
                                     margin = margin(0,  1/72*20/4,
-                                                    0, -1/72*30/4, 'in')))
-print(g)
+                                                    0, -1/72*30/4, 
+                                                    'in')))
+
 
 ```
 
