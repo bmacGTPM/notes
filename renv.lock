@@ -582,7 +582,7 @@
     },
     "evd": {
       "Package": "evd",
-      "Version": "2.3-3",
+      "Version": "2.3-6.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -590,7 +590,7 @@
         "graphics",
         "stats"
       ],
-      "Hash": "10240cccda42c650992804d7d1195846"
+      "Hash": "14872523c118b47b6f4faae02dc23c02"
     },
     "fansi": {
       "Package": "fansi",
