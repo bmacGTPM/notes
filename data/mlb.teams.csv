@@ -1,0 +1,31 @@
+team,arena,lat,long,div,conf,retro.short
+ARI,Chase Field,33.4463,-112.06883,west,NL,ARI
+ATL,Turner Field,33.73508,-84.39018,east,NL,ATL
+BAL,Camden Yards,39.28381,-76.6217,east,AL,BAL
+BOS,Fenway Park,42.34663,-71.09713,east,AL,BOS
+CHC,Wrigley Field,41.94808,-87.65555,central,NL,CHN
+CHW,US Cellular Field,41.83123,-87.63186,central,AL,CHA
+CIN,The Great American Ballpark,39.09784,-84.50794,central,NL,CIN
+CLE,Progressive Field,41.49621,-81.68517,central,AL,CLE
+COL,Coors Field,39.75542,-104.99383,west,NL,COL
+DET,Comerica Park,42.33817,-83.05163,central,AL,DET
+HOU,Minute Maid Park,29.75711,-95.3554,west,AL,HOU
+KC,Kauffman Stadium,39.051389,-94.480556,central,AL,KCA
+LAA,Angel Stadium,33.80012,-117.88306,west,AL,ANA
+LAD,Dodger Stadium,34.07327,-118.23969,west,NL,LAN
+MIA,Marlins Park,25.778056,-80.219722,east,NL,MIA
+MIL,Miller Park,43.02798,-87.97115,central,NL,MIL
+MIN,Target Field,44.98221,-93.27733,central,AL,MIN
+NYM,Citi Field,40.75699,-73.84574,east,NL,NYN
+NYY,Yankee Stadium,40.82955,-73.92625,east,AL,NYA
+OAK,The Oakland Coliseum,37.75162,-122.20064,west,AL,OAK
+PHI,Citizens Bank Park,39.90574,-75.1665,east,NL,PHI
+PIT,PNC Park,40.446944,-80.005833,central,NL,PIT
+SD,Petco Park,32.70719,-117.15487,west,NL,SDN
+SEA,Safeco Field,47.59232,-122.33413,west,AL,SEA
+SF,AT&T Park,37.778333,-122.389444,west,NL,SFN
+STL,Busch Stadium,38.62234,-90.19311,central,NL,SLN
+TB,Tropicana Field,27.76851,-82.65152,east,AL,TBA
+TEX,Rangers Ballpark,32.75132,-97.0826,west,AL,TEX
+TOR,Rogers Centre,43.641389,-79.389167,east,AL,TOR
+WAS,Nationals Park,38.87278,-77.00682,east,NL,WAS
