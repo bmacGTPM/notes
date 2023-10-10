@@ -18,7 +18,94 @@ knitr::opts_chunk$set(
 
 ```
 
+# Introduction
+
 This is a collection of random (in the non-statistical meaning of the word) stuff that I have found to be useful over the years. 
+
+This is constantly under construction and may not have complete explanations of the code, results, and purpose of each section. 
+
+
+# Project Development and planning
+
+## Brainstorming, determining the end deliverables
+
+Before starting to code, we want to think about the big picture goals of the project and a plan to achieve those goals. Once we have the end goal in mind, we can work backwards from that. 
+
+Here's a nice clip of Steve Jobs from 1997 talking about how Apple wants to start with what the end deliverable is going to be to the customer, and how it will benefit the customer. A couple of quotes:
+
+- "You've gotta start with the customer experience and work backwards to the technology. You can't start with the technology and figure out where you are going to try to sell it." 
+- "As we have tried to come up with a strategy and a vision for Apple, it started with 'what incredible benefits can we give the customer, where can we take the customer', not starting with 'let's sit down with the engineers and what awesome technology we have, and how we are going to market that.'" 
+
+(The clip is also a nice example of how to respond to criticism.)
+
+We can start by asking ourselves these questions
+
+- What would be the most useful deliverable for the end user? What is *their* end goal, and how can we help them? What is their background, and what skills, experience and understanding do they have?
+- What important factors should be included in our analysis? What will the end user want to be included in any analysis? What will they ask about? What data do we have, and what information in the data do we want to be used? 
+- How will the results of the analysis be delivered? How would we want to use the results if we were in the end users shoes? How could the results be used in meetings, in informal one-on-one conversations, by individuals in their own time, or in other situations?
+
+Those are just some examples of questions to consider. We can think about anything else that We think could be important for a specific project. 
+
+We are not necessarily bound to any of these goals or end deliverables, and they may need to be modified as we start working and realize what we can and can not do. But it is important to start with the end, and always keep the end on top of mind throughout the development process. 
+
+## Create a basic framework
+
+1. **Main steps.** Think about the 3-5 (or more) main steps that need to be done (for example data cleaning, modeling, etc., or something more specific to this project) and the details of what needs to be done in each of those steps.  
+2. **Sub steps.** For each of those main steps, think about how to break the work into a few parts. If you are working in a group, do this so that the steps can be worked on in parallel by the members of your group. 
+3. **Main script.** Create a `main.r` script that looks like this that will serve as a sort of outline for all of your scripts or functions
+
+```
+## main.r
+## This script runs all code related to gymnastics case study. 
+## It reads data and generates all outputs. 
+
+source('R/get.data.r')
+source('R/prep.data.r')
+source('R/fit.model.r')
+## etc
+
+```
+
+If you use functions instead of scripts, it might look like this
+
+```
+## main.r
+## This script runs all code related to gymnastics case study. 
+## It reads data and generates all outputs. 
+
+## Load functions here
+source('R/myfunctions.r')
+
+
+## Get and prep data, fit models, etc
+df = get.data()
+dc = prep.data(df)
+m  = fit.model(dc)
+## etc
+
+```
+
+
+
+4. **Outline.** For each of your main steps from #1, create a new file containing either functions or scripts and write an outline in that file.  For example, a script `prep.data.r` might look like this
+
+```
+## prep.data.r
+## This script prepares the data from the csv files for modeling
+
+## First, deduplicate names, clean dates, etc
+
+## Then, create some predictors
+
+## etc (add more subheadings for other main tasks)
+
+```
+
+Think about the inputs, outputs, and how the data will need to be structured at each stage, and write notes to yourself in these files about that.  Note that you are creating `.R` files, not `.Rmd` files
+
+Once again we are not bound to exactly the structure that we create in this part. This main file can be modified as we modify different steps of the project, or modify the end goal. But we can at least establish a structure that is easily modifiable  
+
+5. **Visualize the pipeline (Optional)** If you write functions, you can try using the package `vizdataflow` https://github.com/bmacGTPM/vizdataflow to visualize your workflow. This is a package I started developing and it's only like Version 0.1 alpha, but you still might find it useful. This is purely optional. If you do use it, I'd be interested in your feedback. What do you wish the packages could do?
 
 # Data acquistion
 
@@ -198,11 +285,21 @@ head(d[[1]])
 
 It gives a list of data frames, one data frame for each page, that contains each word on the page and its  (x,y) location. 
 
+## RSelenium, Docker
+
+I don't have much to write up yet, but here are some links taken from the RSelenlium CRAN page https://cran.r-project.org/web/packages/RSelenium/:
+
+- Basics. https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html
+- Docker. https://cran.r-project.org/web/packages/RSelenium/vignettes/docker.html
+
+This from Stack Overflow might be useful, but it is a few years old so it might no longer be applicable.
+https://stackoverflow.com/questions/43580133/how-to-use-rselenium-to-login-to-a-website-on-windows-machine
+
 # Data cleaning
 
 ## RecordLinkage
 
-When joining data sets, you ideally have a unique id, or key, to join on. Sometimes that key does not exist, and you have to join on names or other information. Unfortunately, names are often spelled differently in the different data sets. `recordLinkage` can help you identify near matches and deduplicate names.
+When joining data sets, you ideally have a unique id, or key, to join on. Sometimes that key does not exist, and you have to join on names or other information. Unfortunately, names are often spelled differently in the different data sets. Fortunately, `recordLinkage` can help you identify near matches and deduplicate names.
 
 ### Example data
 ```{r}
@@ -305,7 +402,7 @@ Sometimes when animating a normal PDF the curve can appear to bounce up and down
 
 Note that the points have fixed $x$ coordinates, and the $y$ coordinates change in each frame of the animation. The vertical lines show the paths of those points. The normal curve connecting the points appears to bounce up and down because of where the points are located while transitioning from frame to frame.  
 
-```{r}
+```{r fig.height = 4, fig.width = 8}
 library(tidyverse)
 library(gganimate)
 library(pubtheme)
@@ -343,27 +440,36 @@ g = ggplot(df,
   scale_color_manual(values = rep(cb.pal, 
                                   length.out = length(x)))
   
+g = g %>% 
+  pub(xlim = c(-5, 5), 
+      ylim = c(0, .5))
 
 ## check by plotting frames in different windows
 g + 
   facet_wrap(~frame)
+```
 
+```{r}
 ## animate
-gg = g + 
-  transition_states(frame, 
-                    transition_length = 1, 
-                    state_length      = 0, 
-                    wrap = F) + 
-  ease_aes('linear')
-
+# gg = g +
+#   transition_states(frame,
+#                     transition_length = 1,
+#                     state_length      = 0,
+#                     wrap = F) +
+#   ease_aes('linear')
+# 
 # a = animate(gg, 
-#             fps = 10, 
-#             duration = 4, 
+#             height = 1440/3*3/4, 
+#             width  = 1440/3,
+#             fps = 10,
+#             duration = 4,
 #             end_pause = 10)
 # a
-# anim_save(a1, filename = 'img/normal-dist.gif')
+# anim_save(a, filename = 'img/normal-dist.gif')
 ```
-![](img/normal-dist.gif) 
+
+![](img/normal-dist.gif)     
+
 
 ## Simulating data
 
@@ -397,7 +503,7 @@ dg$y = 0 + 2*x1 + rnorm(n, 0, .1)
 
 g = ggplot(dg, 
            aes(x1, y))+
-  geom_point()
+  geom_point(alpha = 0.1)
 
 g %>% 
   pub(xlim = c(0,1))
@@ -458,17 +564,17 @@ g = ggplot(dg,
               alpha  = 0.1, 
               width  = 0, 
               height = 0.3) +
-  geom_smooth(show.legend = F, 
-              linewidth   = 3)
+  geom_smooth(linewidth   = 3)
 
 g %>% 
-  pub(xlim = c(0,1))
+  pub(xlim = c(0, 1 ), 
+      ylim = c(0, 14))
 
 ```
 
 ### Linear regression with interaction
 
-Simulate $y$ data for a linear regression with one continuous predictor $x_1$ and one a binary predicor $x_2$, and an interaction term. This is linear regression with varying intercept and varying slope. 
+Simulate $y$ data for a linear regression with one continuous predictor $x_1$ and one a binary predictor $x_2$, and an interaction term. This is linear regression with varying intercept and varying slope. 
 
 ```{r fig.width = 5, fig.height = 5}
 dg$y = 0 + 2*x1 + 3*x2 + 2*x1*x2 + rnorm(n, 0, .1)
@@ -477,7 +583,7 @@ g = ggplot(dg,
            aes(x1, 
                y, 
                group = x2))+
-  geom_point()
+  geom_point(alpha = 0.1)
 
 g %>% 
   pub(xlim = c(0,1))
@@ -506,6 +612,64 @@ g %>%
 
 ```
 
+# Shiny
+
+## Getting started
+
+- Check out [this](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html)  You can follow the Getting Started steps to start.  If they show simple examples of apps, make sure you run them on your machine. 
+- There is a simple app at data/Week3Day2app.zip in the GitHub repo. Check that out and play around with it. You'll have to unzip that and make sure the data is in the same folder as the app.  (Note that all files referenced by an app must be contained in the same folder, or in a subfolder of that folder. It is like RMD files in that way.) Then open app.R in RStudio and click "Run App" in the upper right of the window (where it says "Source" when you have a .R file or "Run" when you have an .Rmd file, but with an app.R file it should say Run App). That should open the app and you can play around with it. You can see what code makes different pieces of the app.  
+- Familiarize yourself with the [cheatsheet](https://shiny.posit.co/r/articles/start/cheatsheet/). (you can skip the "reactive" section for now)
+- Take a look at the [Gallery](https://shiny.posit.co/r/gallery/) You don't have to know how to do everything there, but you can familiarize yourself with what is possible.
+- Take a look at the [Articles](https://shiny.posit.co/r/articles/) page. Same as above: you don't have to read all of them, but familiarize yourself with what is there.
+
+
+## Dynamic UI
+
+- Options for creating UIs that depend on other UIs, using `conditionalPanel` and `renderUI` https://shiny.posit.co/r/articles/build/dynamic-ui/. 
+    - Another resource: https://mastering-shiny.org/action-dynamic.html
+
+
+Here is an example that makes a second UI appear if certain selections are made in the first UI. This is also app.R on GitHub.
+
+```{r}
+ui <- fluidPage(
+  selectInput("dataset", "Dataset", c("diamonds", "rock", "pressure", "cars")),
+  conditionalPanel( condition = "output.nrows",
+                    checkboxInput("headonly", "Only use first 1000 rows"))
+)
+server <- function(input, output, session) {
+  datasetInput <- reactive({
+    switch(input$dataset,
+           "rock" = rock,
+           "pressure" = pressure,
+           "cars" = cars)
+  })
+  
+  output$nrows <- reactive({
+    nrow(datasetInput())
+  })
+  
+  outputOptions(output, "nrows", suspendWhenHidden = FALSE)  
+}
+
+shinyApp(ui, server)
+```
+
+## Example App: CLT
+
+See CLTapp.r on GitHub for an example app where UI labels change based on the selection in another dropdown. 
+
+
+
+
+# Bayesian statistics
+
+## Normal
+
+
+## Beta binomial
+
+
 
 # Regression models
 
@@ -518,9 +682,7 @@ g %>%
 - **Beta regression.** When outcome has values in the open interval (0,1) (not just 0 and 1, the *open interval* (0,1) and can be assumed to be y ~ Beta(\alpha, \beta). Like when the outcome is a proportion. Generalizable to an interval (a,b) using transformations. https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf. 
 - **Dirichlet regression.** Kind of like multinomial logit regression is a generalization of logistic regression, this is a generalization of Beta regression. Model the proportions of two or more outcomes, proportions sum to 1. Package: https://cran.r-project.org/web/packages/DirichletReg/DirichletReg.pdf
 - **Spline regression.** Piecewise polynomial
-
-Ridge, Lasso, and Bayes 
-
+- **Discussion of Ridge, Lasso, and Bayes. **
 https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
 
 
@@ -574,7 +736,7 @@ lm1 = lm(mpg  ~ wt,
 is(lm1)
 print(lm1)
 ```
-If we have a `summary.lm` object, `print` will give an output with coefficients, standard errors, *t*-statistics, *p*-values, the significance stars, R^2, Adjusted R^2, and so on
+If we have a `summary.lm` object, `print` will give an output with coefficients, standard errors, *t*-statistics, *p*-values, the significance stars, $R^2$, Adjusted $R^2$, and so on
 
 ```{r}
 lm1.summary = summary(lm1)
@@ -612,7 +774,6 @@ getAnywhere('print.lm')
 getAnywhere('print.summary.lm')
 ```
 
-
 ### Other resources
 
 - This Stack Overflow answer is pretty useful and has more details. 
@@ -621,6 +782,8 @@ https://stackoverflow.com/questions/19226816/how-can-i-view-the-source-code-for-
 - More in *R for Data science*: https://r4ds.had.co.nz/vectors.html?q=methods#attributes
 
 - More in *Advanced R*: http://adv-r.had.co.nz/OO-essentials.html#s3
+
+
 
 # Debugging
 
@@ -632,7 +795,311 @@ Inserting `browser` in our code somewhere will make `R` pause and allow us to ex
 
 Running `debugonce('fun')` will send us into debug mode next time we use the function `fun`. 
 
+# Testing
 
+See `testthat` package. That's all I got for now!
+
+
+# Estimating distribution parameters
+
+## Beta-binomial
+
+Prior
+
+- $p \sim Beta(\alpha, \beta)$
+- $E[p] = \frac{\alpha}{\alpha + \beta}$
+- $Var[p] = \frac{\alpha\beta}{(\alpha+\beta)^2 (\alpha + \beta + 1)}$
+
+Data: y, n
+
+Posterior
+- $E[p|y]   = \frac{\alpha + y}{\alpha + \beta + n}$
+- $Var[p|y] = \frac{(\alpha+y)(\beta+n-y}{(\alpha+\beta+n)^2 (\alpha + \beta + n + 1)}$
+
+Posterior alpha and beta for plotting the posterior distribution
+from https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance
+
+- $\nu = \frac{\mu(1-\mu)}{\sigma^2} - 1$
+- $\alpha = \mu\nu = \mu\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)$
+- $\beta = (1-\mu)\nu = (1-\mu)\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)$
+
+Example code
+
+```{r}
+alpha = 2   
+beta  = 2   
+
+mu = alpha*beta
+sigma2 = alpha*beta/((alpha+beta)^2*(alpha + beta + 1))
+
+## suppose y successes in n trials games
+y = 10
+n = 10
+
+## Posterior mean and variance
+post.mu = 
+  (alpha + y)/
+  (alpha + beta + n)
+
+post.sigma2 = 
+  (alpha + y)*(beta + n - y)/
+  ((alpha + beta + n)^2*(alpha + beta + n + 1))
+
+## Determine new alpha and beta based on new mu and sigma for plotting.
+post.alpha =  alpha + y  
+post.beta  = beta + n - y 
+
+## Plot posterior first b/c of the y limits
+x = seq(0, 1, by=0.01)
+df = data.frame(x = x, 
+                y1 = dbeta(x = x,
+                           shape1 = alpha, 
+                           shape2 = beta),
+                y2 = dbeta(x = seq(0, 1, by=0.01), 
+                          shape1 = post.alpha, 
+                          shape2 = post.beta))
+
+ggplot(df, aes(x = x)) + 
+  geom_line(aes(y = y1)) +                        ## prior
+  geom_line(aes(y = y2), color = 'blue') +        ## posterior
+  geom_vline(xintercept = post.mu, color = 'red') ## posterior mean
+
+post.mu
+
+```
+
+You can choose alpha and beta using the mean and variance of your data (https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance). 
+
+```{r}
+## Compute mean and variance from data 
+mu = .5
+sigma2 = 0.05
+
+## Find the alpha and beta for the corresponding Beta distribution
+nu    = mu*(1-mu)/sigma2 - 1
+alpha =    mu * nu
+beta  = (1-mu)* nu
+alpha
+beta
+```
+
+# For loops
+
+## Showing progress
+
+You can add some code to a for loop that prints `j`, the iterator in a for loop. 
+
+```{r}
+for (j in 1:100){
+  cat(j, '')
+  Sys.sleep(1/100)
+}
+```
+
+If you don't want to show every new `j`, you can add an if statement like this that prints every 10 `j`s for example. 
+
+
+```{r}
+for (j in 1:100){
+  if(j %% 10 == 0){cat(j, '')}
+  Sys.sleep(1/100)
+}
+```
+
+Another option is to use the package `progress` to add a progress bar. 
+
+```{r}
+library(progress)
+pb <- progress_bar$new(total = 100, )
+for (j in 1:100){
+  pb$tick()
+  Sys.sleep(1/100)
+}
+```
+```{r eval = F}
+
+cli::cli_progress_bar('Title', 
+                      total = 100, 
+                      clear = FALSE, )
+for (j in 1:100){
+  cli::cli_progress_update()
+  Sys.sleep(1/100)
+}
+cli::cli_progress_done()
+```
+
+## Parallel processing with `foreach`
+
+If you have a for loop that is embarrassingly parallel, where each iteration is completely independent of the others, you can potentially use foreach to run mutiple iterations simultaneously on multiple cores on your computer. Here is an embarrassingly simple example.
+
+This takes about 100 seconds.
+
+```{r eval = F}
+print(Sys.time())
+for (j in 1:100){
+  cat(j, '')
+  Sys.sleep(1)
+}
+print(Sys.time())
+```
+
+This takes 19 seconds with 6 cores (plus some time spent on the initial setup). Note the `j =` instead  of `j in`. 
+
+```{r eval = F}
+library(doSNOW)
+library(foreach)
+library(parallel)
+
+
+## Setup
+n.cores = detectCores()-2 ## leave 2 cores unused so I can keep using computer
+
+print(Sys.time())
+cl = makeCluster(n.cores)
+registerDoSNOW(cl)
+print(Sys.time())
+foreach(j = 1:100, .verbose=F) %dopar% {
+  library(dplyr) ## you might need to load libraries that you use in the loop
+  cat(j,'')
+  Sys.sleep(1)
+}
+stopCluster(cl)
+print(Sys.time())
+```
+
+Depending where are using `foreach`, you may want to save `.rds` files each run through the loop, or you may want to combine the result of each iteration of the loop  at the end.  This link shows the argument `.combine` can be used to do the latter. https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html
+
+Here is an example of using `rbind` to combine data frames from each iteration: https://stackoverflow.com/questions/14815810/append-rows-to-dataframe-using-foreach-package. Here is the minimal reproducible example from that page.
+
+```{r eval = F}
+resultdf = foreach(i = 1:10, .combine = rbind) %dopar% { 
+  data.frame(x = runif(4), 
+             i = i)
+  }
+```
+
+The final objects from each `foreach` iteration get `rbind`ed together. In this case, the final object in each iteration is a `data.frame` with 4 rows and 2 columns. 
+
+If you have a process that takes a long time, you'll definitely want to save your results somewhere, even if you are using this `rbind` functionality. If, for example, you are using `foreach` inside another `for` loop, then you can save the result of `foreach` like this.
+
+```{r eval = F}
+
+## Non-parallel for loop
+for (j in 1:10){
+  
+  ## Parallel for loop
+  resultdf = foreach(i = 1:10, .combine = rbind) %dopar% { 
+    
+    ## Do some stuff that creates a data frame 
+    data.frame(x = runif(4), 
+               i = i)
+  }
+  
+  ## create file name for this iteration, and save
+  myfilename = paste('filename', j, '.rds') 
+  saveRDS(df, file=myfilename)      
+}
+```
+
+Or, if the `foreach` iteration takes a long time, you can save the result instead each iteration. 
+
+```{r eval = F}
+
+## Non-parallel for loop
+for (j in 1:10){
+  
+  ## Parallel for loop
+  foreach(i = 1:10, .combine = rbind) %dopar% { 
+    
+    ## Do some stuff that creates a data frame or another object
+    df = data.frame(x = runif(4), 
+                    i = i)
+    
+    ## create file name for this iteration, and save
+    myfilename = paste('filename-', j, '-', i, '.rds') 
+    saveRDS(df, file=myfilename)      
+  }
+
+}
+```
+
+Your approach will depend on how long each iteration takes to run, how big the file sizes are etc.  However you choose to do it, you will have a collection of `.rds` files that can be read back into R and joined using `rbind` or some other method. 
+
+# Efficient Programming
+
+## Efficient R Programming online book
+
+Here is a great resource https://csgillespie.github.io/efficientR/
+
+## Alternatives to `rbind` for big data frames
+
+When working with very large data frames, and iteratively adding rows using `rbind`, say, within a for loop, to grow the data frame, the process starts out fast but tends to become slow. This is because `rbind` creates a new data frame each time it is used, and as the data frame gets bigger and bigger, it becomes more difficult to find contiguous blocks of memory to store the data frame. Here is an example that starts out taking 1-2 second per iteration at `j=1` but ends up taking 3-4 seconds at `j=10`. If you have memory issues running this example, make `N` or `J` smaller (but not too small because you won't notice it slow down).
+
+```{r eval = F}
+start.time1 = Sys.time()
+set.seed(1)
+N = 100000000
+J = 3
+df1 = NULL
+
+for(j in 1:J){
+  
+  cat(j, '')
+  print(Sys.time())
+  
+  temp = data.frame(x = rnorm(N), 
+                    j = j)
+  df1 = rbind(df1, temp)
+  
+}
+
+final.time1 = Sys.time()
+print(final.time1)
+```
+
+In cases like these, it is faster to initialize the large data frame up front and insert rows into that data frame like this. 
+
+```{r eval = F}
+start.time2 = Sys.time()
+set.seed(1)
+N = 100000000
+J = 3
+df2 = data.frame(x = rep(NA, N*J), ## Initialize large data frame
+                 j = rep(NA, N*J))
+
+for(j in 1:J){
+  
+  cat(j, '')
+  print(Sys.time())
+  
+  temp = data.frame(x = rnorm(N), 
+                    j = j)
+  
+  ## Instead of rbind-ing, insert this data frame into the large data frame
+  # when J=1, start.row = 1, when J=2, start.row = N+1
+  start.row = 1 + N*(j-1) 
+  end.row = N*j
+  df2[start.row:end.row,] = temp
+  
+}
+
+final.time2 = Sys.time()
+print(final.time2)
+```
+
+This one takes 1-2 seconds each loop from `j = 1` to `j = 10` and does not appear to slow down for higher `j`.  Here are the total times for each `for` loop. 
+
+```{r eval = F}
+print(final.time1 - start.time1)
+print(final.time2 - start.time2)
+```
+
+- `for` loop #1, with `rbind`, took 21 seconds
+- `for` loop #2, without `rbind`, took 19 seconds
+
+
+The difference isn't huge in this case, but it can be very big 
+This doesn't mean you should never use `rbind` in a `for` loop. With smaller data, you won't notice the difference, and it is easier to code up. 
 
 # Other
 
@@ -877,7 +1344,9 @@ This describes how to use mathematical expressions in plots.
 ?plotmath
 ```
 
-Examples are below. Not all of these work for me. Not sure why. But hopefully you'll get the idea. Note the use of `expression()` in the examples. For the symbols to appear, `expression()` must be used like this
+Examples are below. Not all of these display properly here. Not sure why. But hopefully you'll get the idea. 
+
+Note the use of `expression()` in the examples. For the symbols to appear, `expression()` must be used like this
 
 ```{r}
 dg = mtcars %>% 
@@ -907,21 +1376,20 @@ g %>%
 ```
 
 
-
 ```{r fig.width = 8}
 demo(plotmath)
 ```
 
 ## Writing R packages
 
-It is not too difficult to create an R package
+It is not too difficult to create your own R package. See, for example, here: 
 
 https://support.posit.co/hc/en-us/articles/200486488-Developing-Packages-with-the-RStudio-IDE
 
 
 
 ## Blogdown
-The `blogdown` packages helps you create a website with a collection of R Markdown files. 
+The `blogdown` package helps you create a website with a collection of R Markdown files. 
 
 https://bookdown.org/yihui/blogdown/
 
@@ -942,72 +1410,11 @@ Quarto for R Markdown users: https://quarto.org/docs/faq/rmarkdown.html
 
 Quarto equivalent of R Markdown stuff: https://quarto.org/docs/faq/rmarkdown.html#i-use-x-bookdown-blogdown-etc..-what-is-the-quarto-equivalent
 
-## gganimate Troubleshooting
 
-Code that shows why a transitioning bell-shaped curve may look like it is bobbing up and down, but 
-
-```{r}
-library(tidyverse)
-library(gganimate)
-library(pubtheme)
-
-x = rep(seq(-5, 5, by = .5))
-
-df = data.frame(frame = rep(1:3, 
-                            each = length(x)), 
-                x = c(x,x,x), 
-                y = c(dnorm(x, 0, 1), 
-                      dnorm(x, 1, 1), 
-                      dnorm(x, 2, 1)) %>% round(3), 
-                id = x)
-head(df)
-tail(df)
-
-df.prior = df %>% 
-  filter(frame == 1) %>% 
-  select(-frame)
-
-g = ggplot(df, aes(x = x, y = y))+
-  geom_point(data = df.prior, 
-             color = 'gray')+
-  geom_line (data = df.prior, 
-             color = 'gray')+
-  geom_point(aes(color = as.factor(x)), 
-             show.legend = F, 
-             size = 4)+ 
-  geom_line(show.legend = F)+
-  geom_line(data = df %>% select(-frame), 
-            aes(color = as.factor(x)), 
-            show.legend = F)+
-  scale_color_manual(values = rep(cb.pal, 
-                                  length.out = length(x)))
-  
-g = g %>% 
-  pub(xlim = c(-5, 5), 
-      ylim = c(0, .5)) 
-
-## check by plotting frames in different windows
-g + facet_wrap(~frame)
-
-## animate
-gg = g + 
-  transition_states(frame, 
-                    transition_length = 1, 
-                    state_length      = 0, 
-                    wrap = F) + 
-  ease_aes('linear')
-
-a = animate(gg, 
-            fps       = 10, 
-            duration  = 4, 
-            end_pause = 10)
-a
-
-```
 
 ## Multiple authors in R Markdown
 
-From 
+From https://community.rstudio.com/t/rmarkdown-cant-keep-authors-in-separate-lines/65183:
 
 ```
 ---
@@ -1031,9 +1438,13 @@ library(magick)
 
 image = image_read("https://www.r-project.org/logo/Rlogo.png")
 is(image)
+print(image)
+plot(image)
 ```
-```{r}
+
+```{r fig.height=6, fig.width=6}
 library(reshape2)
+
 df = image[[1]] %>% 
   as.integer() %>% 
   melt()
@@ -1050,16 +1461,74 @@ df = df %>%
                                         'green', 
                                         'blue', 
                                         'alpha')))
-head(df)
 
-ggplot(df,
+
+```
+
+```{r fig.height = 5, fig.width = 6}
+## Take a random sample so it plots faster
+dg = df[sample(1:nrow(df), 100000),]
+
+g = ggplot(dg,
        aes(x = value, 
            fill = rgba))+
-  geom_histogram() + 
+  geom_histogram(color = pubbackgray, 
+                 binwidth = 16) + 
   facet_wrap(~rgba) + 
   scale_fill_manual(values = c('red', 
                                'green', 
                                'blue' , 
-                               'gray'))
+                               'gray')) + 
+  labs(title = 'Distribution of Red, Green, Blue, and Transparency') +
+  guides(fill = guide_legend(nrow = 2)) 
+
+
+
+g %>%
+  pub(type  = 'hist', 
+      xlim  = c(0, 255),
+      #ylim  = c(0, 15000),
+      facet = T)
 
 ```
+## Cloud 
+
+Desktop apps for Dropbox, Google Drive, OneDrive, etc., allow you browse the files in your account in e.g. File Explorer on Windows (or equivalent on Mac) as if they are in a folder on your computer. You can also load files into R. For example, Google Drive by default maps to G: drive, so you can read a file from your Google Drive like this
+
+```
+read.csv('G:/my/full/path/myfilename.csv')
+```
+
+# Not data science
+
+## Dollar cost averaging example
+
+```{r}
+## Fake price data for a stock
+x = 1:52
+df = data.frame(week = x, 
+                price = 10 + x/100 - x %% 2/50, 
+                shares = NA)
+plot(df$week, 
+     df$price, 
+     type='l')
+```
+
+
+Suppose you have $5,200 to invest.  If the S&P500 goes up more often than it goes down in a year, then should you buy up front at the start of the year, or dollar cost average?
+
+```{r}
+n = 5200
+
+## Buy all up front
+shares = n/df$price[1]
+final.value = shares*df$price[52]
+final.value
+
+## DCF, $100 per week
+df$shares = 100/df$price
+sum(df$shares)*df$price[52]
+
+```
+
+The linear with oscillation increase is too simple.  Should use actual stock prices. 
