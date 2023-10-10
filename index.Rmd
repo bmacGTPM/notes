@@ -60,6 +60,7 @@ library(pubtheme)
 # library(RecordLinkage)
 # library(rsconnect)
 # library(grid)
+# library(foreign)
 
 
 ```
@@ -106,6 +107,7 @@ install.packages("splines")
 install.packages("RecordLinkage")
 install.packages("rsconnect")
 install.packages('grid')
+install.packages('foreign')
 
 ## Install packages from my GitHub
 devtools::install_github("bmacGTPM/pubtheme")
