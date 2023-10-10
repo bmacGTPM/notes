@@ -42,8 +42,11 @@ vignettes/*.pdf
 _book
 _bookdown_files
 rsconnect
+libs/
 
 ## Other data types
 *.docx
-
 book-output/
+
+# ignore all html files except:
+!**/mathjax_header.html
