@@ -13,6 +13,8 @@ Functions from `dplyr`
 - `facet_wrap`, `facet_grid`
 
 
+**Note to self**: see 425-625/notes/Reshaping and aggregating data for base R equivalents and comparisons.
+
 # Data exploration with `dplyr`
 
 
