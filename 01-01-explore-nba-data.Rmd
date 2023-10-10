@@ -20,7 +20,7 @@ Packages and functions:
 - `pubtheme`, a package that contains a `ggplot` theme `theme_pub` and a `plotly` layout called `layoutpub` for creating data journalism-style data visualizations with color palettes and formatting similar to those used by media organizations like BBC, NY Times, and ESPN.
 - `DT`
 
-We will assume basic familiarity with `dplyr` and `ggplot2` functions. See Appendix A for a refresher or an introduction. 
+We will assume basic familiarity with `dplyr` and `ggplot2` functions. See Appendix for a refresher or an introduction. 
 
 ## What questions can we ask?
 

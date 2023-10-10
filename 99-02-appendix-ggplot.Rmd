@@ -1,19 +1,40 @@
 # Data visualization with `ggplot`
 
 First let's prep our data set using our code from the last section. 
+
 ```{r}
-restore.ggplot.defaults()
+knitr::opts_chunk$set(class.source = "fold-show")
+
 library(tidyverse)
+library(pubtheme)
+restore.ggplot.defaults()
+
 d = readRDS('data/games.rds')
 d = d %>% 
-  filter(lg=='nba', 
+  filter(lg == 'nba', 
          season %in% 2022) %>%
-  select(date, away, home, ascore, hscore, season, season.type, gid) %>%
-  mutate(season.type = factor(season.type, levels=c('reg', 'post')))
+  select(date, gid, 
+         away, home, 
+         ascore, hscore, 
+         season, season.type) %>%
+  mutate(season.type = factor(season.type, 
+                              levels = c('reg', 'post')))
 
-da = d %>% select(date, away, ascore, home, hscore, season, season.type, gid) %>% mutate(ha = 'away')
-dh = d %>% select(date, home, hscore, away, ascore, season, season.type, gid) %>% mutate(ha = 'home')
-cols = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'season.type', 'gid', 'ha')
+da = d %>% select(date, gid, 
+                  away, ascore, 
+                  home, hscore, 
+                  season, season.type) %>% 
+  mutate(ha = 'away')
+dh = d %>% select(date, gid, 
+                  home, hscore, 
+                  away, ascore, 
+                  season, season.type) %>% 
+  mutate(ha = 'home')
+
+cols = c('date', 'gid',
+         'team', 'score',  
+         'opp', 'opp.score', 
+         'season', 'season.type',  'ha')
 colnames(da) = cols
 colnames(dh) = cols
 
@@ -25,31 +46,37 @@ head(dd,2)
 
 ## Scatter plot with `geom_point`
 
-```{r fig.width=5, fig.height=5}
-ggplot(d, aes(x=ascore, y=hscore))+
+```{r fig.width = 5, fig.height = 5}
+ggplot(d, aes(x = ascore, y = hscore))+
   geom_point()
 ```
 
 ## Color, size, shape
 
-We can color by any variable in the data set by putting `color=variable` inside `aes()`. In this case, we’ll choose the categorical variable `season.type`.
+We can color by any variable in the data set by putting `color = variable` inside `aes()`. In this case, we’ll choose the categorical variable `season.type`.
+
 ```{r}
-ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+ggplot(d, aes(x = ascore, 
+              y = hscore, 
+              color = season.type))+
   geom_point()
 ```
+
 If we want to change the color of all points to the same color, we can specify that color inside `geom_point()` instead.
 
 ```{r}
-ggplot(d, aes(x=ascore, y=hscore))+
-  geom_point(color='gray')
+ggplot(d, aes(x = ascore, 
+              y = hscore))+
+  geom_point(color = 'gray')
 ```
 
 Likewise, we can size each point, or change the shape of each point, based on column in the data. 
 
 ```{r}
-ggplot(d, aes(x=ascore, y=hscore, 
+ggplot(d, aes(x = ascore, 
+              y = hscore, 
               color = season.type, 
-              size = season.type, 
+              size  = season.type, 
               shape = season.type))+
   geom_point()
 ```
@@ -60,75 +87,129 @@ ggplot(d, aes(x=ascore, y=hscore,
 ## Formatting with the `pubtheme` package
 
 We can use the `pubtheme` package to change the default formatting of our figures. We can copy and paste templates here https://github.com/bmacGTPM/pubtheme and modify them for our data. Here we copy and paste the scatter plot template and change `x` to `ascore`, `y` to `hscore`, and edit the axis `limits` and the `breaks`, which say where the grid line should be. Don't worry to much about understand all of these options right now, we'll discuss those in the main text. 
-```{r fig.height=7, fig.width=6}
+
+```{r fig.height = 7, fig.width = 6}
 library(pubtheme)
+
 title = "Home Team Points vs Away Team Points" 
-g = ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore, 
+                  color = season.type))+
   geom_point()+
-  labs(title    = title,
+  labs(title = title,
        x = 'Away Team Points',
        y = 'Home Team Points')+
-  scale_x_continuous(limits=c(65, 165), breaks=c(65,110,165), oob=squish, labels=comma)+
-  scale_y_continuous(limits=c(65, 165), breaks=c(65,110,165), oob=squish, labels=comma)+
-  coord_cartesian(clip='off', expand=FALSE)+
-  scale_size(range=c(2,6))+
-  theme_pub(type='scatter', base_size = 36/3) 
+  scale_x_continuous(limits = c(65, 165), breaks = c(65,115,165), oob = squish, labels = comma)+
+  scale_y_continuous(limits = c(65, 165), breaks = c(65,115,165), oob = squish, labels = comma)+
+  coord_cartesian(clip = 'off', expand = FALSE)+
+  scale_size(range = c(2,6))+
+  theme_pub() 
 print(g)
 
-## go back to using ggplot defaults for now
+## We can go back to using ggplot defaults using this function
 restore.ggplot.defaults() 
+```
+
+We explicitly specified the `scale`s and `coord_cartesian` above. If you are comfortable accepting the `pubtheme` default settings, you can save a lot of typing by using the function `pub`, which applies `theme_pub` and also automatically adds `scale`s and `coord` similar to above. 
+
+If you are comfortable accepting the `pubtheme` default settings, the `pub` function can eliminate the need to use the lines with `scale_x_continuous`, `scale_y_continuous`, `coord_cartesian`, `scale_size`, `theme_pub`, resulting in much more succinct code. 
+
+```{r fig.height = 7, fig.width = 6}
+title = "Home Team Points vs Away Team Points" 
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore, 
+                  color = season.type))+
+  geom_point()+
+  labs(title = title,
+       x = 'Away Team Points',
+       y = 'Home Team Points')
+g %>% 
+  pub(xlim = c(65, 165), 
+      ylim = c(65, 165))
 ```
 
 ## `ggsave`
 
 Use `ggsave` instead of clicking Export, Save As in R Studio. When using `pubtheme` choose 
-`base_size=36` and `width=20`, as is done in the template. The `height=20` option can be changed if you need to change the dimension of the plot. 
+`base_size = 36` and `width = 20`, as is done in the template. The `height = 20` option can be changed if you need to change the dimension of the plot. 
 
-```{r eval=F}
+```{r eval = F}
 ## Save to a file
-gg = g + theme_pub(type='scatter', base_size=36)
+gg = g %>%
+  pub(xlim = c(65, 165), 
+      ylim = c(65, 165), 
+      base_size = 36)
   
-ggsave(filename=paste0("img/", gsub("%", " Perc", title), ".jpg"), 
-       plot=gg,
-       width=20,   ## don't change
-       height=20,  ## ok to change 
-       units='in', ## don't change
-       dpi=72)     ## don't change
+ggsave(filename = paste0("img/", gsub("%", " Perc", title), ".jpg"), 
+       plot = gg,
+       width  = 20,   ## don't change
+       height = 20,   ## ok to change 
+       units  = 'in', ## don't change
+       dpi = 72)      ## don't change
 ```
 
+If using `theme_pub`, you can use `theme_pub(base_size = 36)`
 
 ## Trend line with `geom_smooth`
 
 We can add a trendline to our scatter plot using `geom_smooth` after `geom_point`. 
-```{r}
-ggplot(d, aes(x=ascore, y=hscore))+
+
+```{r fig.width = 5, fig.height = 5}
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore))+
   geom_point()+
-  geom_smooth()
+  geom_smooth(color = pubdarkgray)
+
+g %>% 
+  pub(xlim = c(65, 165), 
+      ylim = c(65, 165))
 ```
 
-By default it will be a smooth curve as opposed to a line. For a line, use `method='lm'` (`lm` is the function used for linear regression).
+By default it will be a smooth curve as opposed to a line. For a line, use `method = 'lm'` (`lm` is the function used for linear regression).
 
 ```{r}
-ggplot(d, aes(x=ascore, y=hscore))+
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore))+
   geom_point()+
-  geom_smooth(method='lm')
+  geom_smooth(method = 'lm', 
+              color  = pubdarkgray)
+
+g %>% 
+  pub(xlim = c(65, 165), 
+      ylim = c(65, 165))
 ```
 
 
 ## Grouping observations with `group`
 
 If you use color, then you get separate trendlines for each group.
+
 ```{r}
-ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore, 
+                  color = season.type))+
   geom_point()+
-  geom_smooth(method='lm')
+  geom_smooth(method = 'lm')
+
+g %>% 
+  pub(xlim = c(65, 165), 
+      ylim = c(65, 165))
 ```
+
 If group isn’t specified, ggplot assumes it should group by color. If we want to group by something other than what we are coloring by, we can specify it. Or we can say NA to say don’t group and get a single line.
 
 ```{r}
-ggplot(d, aes(x=ascore, y=hscore, color=season.type, group=NA))+
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore, 
+                  color = season.type, 
+                  group = NA))+
   geom_point()+
-  geom_smooth(method='lm')
+  geom_smooth(method = 'lm')
+
+g %>% 
+  pub(xlim = c(65, 165), 
+      ylim = c(65, 165))
 ```
 
 ## Faceting with `facet_wrap`
@@ -136,201 +217,332 @@ ggplot(d, aes(x=ascore, y=hscore, color=season.type, group=NA))+
 For categorical variables, we can create a separate window for each value of that variable. Here we make separate scatter plots for each season.type, `reg` and `post`. Note that if we use `geom_smooth`, there’s a line for each window and color.
 
 ```{r}
-ggplot(d, aes(x=ascore, y=hscore, color=season.type))+
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore, 
+                  color = season.type))+
   geom_point()+
-  geom_smooth(method='lm')+
+  geom_smooth(method = 'lm')+
   facet_wrap(~season.type)
+g %>% 
+  pub(xlim = c(65, 165), 
+      ylim = c(65, 165))
 ```
 
 ## Transparency using `alpha`
+
 If there are lots of overlapping points, and we can adjust the transparency using `alpha`.
 
 First here is a plot using `geom_point` that has a lot of points plotted on top of one another.
 
-```{r fig.height=6, fig.width=6}
-ggplot(d, aes(x=hscore, y=home))+
+```{r fig.height = 7, fig.width = 6}
+g = ggplot(d, aes(x = hscore, 
+                  y = home))+
   geom_point()
+
+g %>% 
+  pub(xlim = c(75, 155))
 ```
 
-Now we add `alpha=0.5`, which means we want points to be halfway between transparent and opaque (1=opaque, 0=transparent).
+Now we add `alpha = 0.5`, which means we want points to be halfway between transparent and opaque (1 = opaque, 0 = transparent).
 
-```{r fig.height=6, fig.width=6}
-ggplot(d, aes(x=hscore, y=home))+
-  geom_point(alpha=0.5)
+```{r fig.height = 7, fig.width = 6}
+g = ggplot(d, aes(x = hscore, 
+                  y = home))+
+  geom_point(alpha = 0.5)
+
+g %>% 
+  pub(xlim = c(75, 155))
 ```
 
 ## Scatter plot with `geom_jitter`
 
 When there are a lot of overlapping points in a plot, it can also help to use `geom_jitter` in place of `geom_point`. 
 
-We use `geom_jitter` to add randomness to the points so that don't overlap as much. Here we add a little randomness in the vertical direction, and none on the horizontal direction. This is often useful when plotting discrete variables. We include `alpha=0.5` and `size=1` as well, which make the points transparent and smaller. 
+We use `geom_jitter` to add randomness to the points so that don't overlap as much. Here we add a little randomness in the vertical direction, and none on the horizontal direction. This is often useful when plotting discrete variables. We include `alpha = 0.5` and `size = 1` as well, which make the points transparent and smaller. 
 
-```{r fig.height=6, fig.width=6}
-ggplot(d, aes(x=hscore, y=home))+
-  geom_jitter(alpha=0.5, size=1, height=0.2, width=0.4)
+```{r fig.height = 7, fig.width = 6}
+g = ggplot(d, aes(x = hscore, 
+                  y = home))+
+  geom_jitter(alpha  = 0.5, 
+              size   = 1,  
+              height = 0.2, 
+              width  = 0.4)
+
+g %>% 
+  pub(xlim = c(75, 155))
 ```
 
-## Bar plot `geom_bar`
+## Hex bins `geom_hex`
 
-We can make bar plots using `geom_bar` like this. 
+You might prefer to plot a heat map instead, using hexagonal bins. This partitions the plane into hexagons, counts the number of points in each hexagon, and colors the hexagons by the number of points. Note that `color` controls the color of the border of the hexagons, while `fill` controls the color of the interior.
 
-```{r}
-ggplot(dd, aes(x=score, y=team))+
-  geom_col()
-  #geom_bar(stat='identity')
+```{r fig.width = 5, fig.height = 5}
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore))+
+  geom_point(alpha = 0.3)
+
+g %>% pub()
 ```
-That counts the number of point score by each team. Note that we put `stat='identity'` inside `geom_bar()`. 
+
+```{r fig.height = 6, fig.width = 6}
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore))+
+  geom_hex(binwidth = c(3,3), 
+           color = 'black')
+
+g %>% 
+  pub(xlim = c(70, 160), 
+      ylim = c(70, 160))
+```
+
+## Bar plot `geom_col`
+
+We can make bar plots using `geom_col` like this. 
+
+```{r fig.width = 5, fig.height = 7}
+g = ggplot(dd, aes(x = score, 
+                   y = team))+
+  geom_col(color = NA, 
+           width = 0.8)
+g
+
+g %>% 
+  pub(type = 'bar')
+```
+
 
 ## Color bars using `fill`
+
 We can also use color our bars using the `fill` aesthetic. 
 
-```{r}
-ggplot(dd, aes(x=score, y=team, fill=season.type))+
-  geom_bar(stat='identity')
+```{r fig.width = 5, fig.height = 7}
+g = ggplot(dd, aes(x = score, 
+                   y = team, 
+                   fill = season.type))+
+  geom_col(color = NA)
+
+g %>% 
+  pub(type = 'bar')
 ```
 
 Typically you use `fill`. Note that `color` affects only the border.
 
-```{r}
-ggplot(dd, aes(x=score, y=team, color=season.type))+
+```{r fig.width = 5, fig.height = 7}
+g = ggplot(dd, aes(x = score, 
+                   y = team, 
+                   color = season.type))+
   geom_col()
-  #geom_bar(stat='identity')
+
+g %>% 
+  pub(type = 'bar')
 ```
 
-That's not ideal. We didn't notice before, but it is drawing a little bar for each individual game and then stacking them together. You may want to aggregate the data first like this:
+That's not ideal. It is drawing a little bar for each individual game and then stacking them together. In most cases we probably want to aggregate the data first like this:
 
-```{r}
+```{r fig.width = 5, fig.height = 8}
 dg = dd %>%
   group_by(team, season.type) %>%
-  summarise(score = sum(score))
+  summarise(score = sum(score), 
+            .groups = 'keep')
 
-ggplot(dg, aes(x=score, y=team, color=season.type))+
-  geom_bar(stat='identity')
+g = ggplot(dg, aes(x = score, 
+                   y = team, 
+                   fill = season.type))+
+  geom_col(color = NA)
+
+g %>% 
+  pub(type = 'bar')
 ```
 
 You may often use `fill` and not notice this issue, but it is something to be aware of. 
 
 Even with our first bar plot it would be better to aggregate first for reasons we'll see when we try to use `geom_text` below. This plot looks the same, but there is one bar per team instead of one bar per game:
-```{r}
+
+```{r fig.width = 6, fig.height = 8}
 dg = dd %>% 
   group_by(team) %>%
-  summarise(score=sum(score)) 
-ggplot(dg, aes(x=score, y=team))+
-  geom_bar(stat='identity')
+  summarise(score = sum(score)) 
+
+g = ggplot(dg, aes(x = score, 
+                   y = team))+
+  geom_col(color = NA)
+
+g %>% 
+  pub(type = 'bar')
 ```
 
 ## Side-by-side bar charts with `position_dodge`
-Stacked bar are often not desired, so you can 
-```{r}
+
+Stacked bar are often not desired, so you can use `position_dodge` to make the bars side-by-side.
+
+```{r fig.width = 6, fig.height = 8}
 ## remove teams with no `post` data.
 dg = dd %>%
   group_by(team, season.type) %>%
   summarise(score = sum(score))
-post.teams = unique(dg$team[dg$season.type=='post'])
+
+post.teams = unique(dg$team[dg$season.type == 'post'])
 dg = dg %>% filter(team %in% post.teams)
 
 ## plot
-ggplot(dg, aes(x=score, y=team, fill=season.type))+
-  geom_bar(stat='identity', position=position_dodge(), color='black')
+g = ggplot(dg, aes(x = score, 
+                   y = team, 
+                   fill = season.type))+
+  geom_col(position = position_dodge(), 
+           color = NA)
+
+g %>% 
+  pub(type = 'bar')
 ```
 
 ## Text with `geom_text`
+
 We can add text to a plot using `label` aesthetic and `geom_text`. Let's add text to the bar plot we made after aggregating the data.  
 
-```{r}
+```{r fig.width = 6, fig.height = 8}
 dg = dd %>% 
   group_by(team) %>%
-  summarise(score=sum(score)) 
-ggplot(dg, aes(x=score, y=team, label=score))+
-  geom_bar(stat='identity')+
-  geom_text(hjust=-0.1)
+  summarise(score = round(mean(score),1)) 
+
+g = ggplot(dg, aes(x = score, 
+                   y = team, 
+                   label = score))+
+  geom_col(color = NA)+
+  geom_text(hjust = -0.1, 
+            vjust =  0.4)
+
+g %>% 
+  pub(type = 'bar')
 ```
 
-Note that without aggregating the bar plot looks the same, but it will plot separate text for each row in the data. 
+Note that without aggregating the bar plot looks the same, but it will plot separate text for each row in the data, and all the text will be overlapping along the left. 
 
-```{r}
-ggplot(dd, aes(x=score, y=team, label=score))+
-  geom_bar(stat='identity')+
-  geom_text(hjust=0)
+```{r fig.width = 6, fig.height = 8}
+g = ggplot(dd, aes(x = score, 
+                   y = team, 
+                   label = score))+
+  geom_col(color = NA, 
+           fill  = pubmediumgray)+
+  geom_text(hjust = 0)
+
+g %>% 
+  pub(type = 'bar')
 ```
+
 To use `geom_text` with `position_dodge`, add `label` like before, but also add `group`. 
-```{r fig.height=6}
+
+```{r fig.width = 6, fig.height = 8}
 dg = dd %>%
   group_by(team, season.type) %>%
-  summarise(score = sum(score), .groups='keep')
-post.teams = unique(dg$team[dg$season.type=='post'])
+  summarise(score = sum(score), 
+            .groups = 'keep')
+
+post.teams = unique(dg$team[dg$season.type == 'post'])
 dg = dg %>% filter(team %in% post.teams)
-ggplot(dg, aes(x=score, y=team, fill=season.type, label=score, group=season.type))+
-  geom_bar(stat='identity', position=position_dodge(width=.9), color='black')+
-  geom_text(hjust=-.1, position=position_dodge(width=.9))
+
+g = ggplot(dg, aes(x = score, 
+                   y = team, 
+                   fill  = season.type, 
+                   label = score, 
+                   group = season.type))+
+  geom_col(position = position_dodge(width = .9), 
+           color = NA)+
+  geom_text(hjust = -.1, 
+            vjust = 0.3, 
+            position = position_dodge(width = .9))
+
+g %>% 
+  pub(type = 'bar')
 ```
 
 You can use `geom_text` with `geom_point`, `geom_line`, etc as well. 
 
 ## Histogram with `geom_histogram`
+
 Histogram of points scored
+
 ```{r}
-ggplot(dd, aes(x=score))+
-  geom_histogram(color='black', binwidth = 5)
+ggplot(dd, aes(x = score))+
+  geom_histogram(color = 'black', 
+                 binwidth = 5)
 ```
 
 We can use the `fill` aesthetic here too. 
+
 ```{r}
-ggplot(dd, aes(x=score, fill=season.type))+
-  geom_histogram(color='black', binwidth = 5)
+ggplot(dd, aes(x = score, 
+               fill = season.type))+
+  geom_histogram(color = 'black', 
+                 binwidth = 5)
 ```
 
 ## Line plot with `geom_line`
+
 ```{r}
-dg = dd %>% filter(team=='PHI')
-ggplot(dg, aes(x=date, y=score))+
+dg = dd %>% 
+  filter(team == 'PHI')
+
+ggplot(dg, aes(x = date, 
+               y = score))+
   geom_line()
 ```
 
 For multiple line plots, you can `color` by a column. 
 
 ```{r}
-dg = dd %>% filter(team %in% c('PHI', 'GSW'))
-ggplot(dg, aes(x=date, y=score, color=team))+
+dg = dd %>% 
+  filter(team %in% c('PHI', 'GSW'))
+
+ggplot(dg, aes(x = date, 
+               y = score, 
+               color = team))+
   geom_line()
 ```
 
 That automatically `group`s by the `color` variable. You can also supply just `group` and get two lines with the same color. 
 
 ```{r}
-dg = dd %>% filter(team %in% c('PHI', 'GSW'))
-ggplot(dg, aes(x=date, y=score, group=team))+
+dg = dd %>% 
+  filter(team %in% c('PHI', 'GSW'))
+
+ggplot(dg, aes(x = date, 
+               y = score, 
+               group = team))+
   geom_line()
 ```
 
 ## Grid plot with `geom_tile`
 
 Let's show how often teams play against one another. 
+
 ```{r}
 dg = d %>%
-  filter(season.type=='reg') %>%
+  filter(season.type == 'reg') %>%
   group_by(home, away) %>%
   summarise(games = n())
+
 head(dg)
 ```
 
-```{r fig.width=6, fig.width=7}
-ggplot(dg, aes(x=home, 
-               y=away, 
-               fill=as.character(games))) + 
-  geom_tile(color='black')
+```{r fig.width = 6, fig.width = 7}
+ggplot(dg, aes(x = home, 
+               y = away, 
+               fill = as.character(games))) + 
+  geom_tile(color = 'black')
 ```
 
 ## Customizing with `theme`
 
-The labels on the x-axis are tough to see in the previous plot. Let's rotate them by 90 degrees (`angle=90`), right justify (`hjust=1`) and center them around the tick mark (`vjust=0.3` looks better than `vjust=0.5`) using `theme`.
+The labels on the x-axis are tough to see in the previous plot. Let's rotate them by 90 degrees (`angle = 90`), right justify (`hjust = 1`) and center them around the tick mark (`vjust = 0.3` looks better than `vjust = 0.5`) using `theme`.
 
-```{r fig.width=6, fig.width=7}
-ggplot(dg, aes(x=home, 
-               y=away, 
-               fill=as.character(games))) + 
-  geom_tile(color='black')+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.3, hjust=1))
+```{r fig.width = 6, fig.width = 7}
+ggplot(dg, aes(x = home, 
+               y = away, 
+               fill = as.character(games))) + 
+  geom_tile(color = 'black')+
+  theme(axis.text.x = element_text(angle = 90, 
+                                   vjust = 0.3, 
+                                   hjust = 1))
 ```
 
 We'll discuss `theme` more in the main text. You can see all the `theme` options here https://ggplot2.tidyverse.org/reference/theme.html. 
@@ -344,17 +556,25 @@ Other ways to modify ggplots are listed in the function reference https://ggplot
 ll = read.csv('data/nba.venue.lat.long.csv')
 head(ll)
 ```
+
+
 ```{r}
-dg = ll %>% select(team, lat, long)
+dg = ll %>% 
+  select(team, lat, long)
 
 title = "Location of NBA Teams"
-g = ggplot(dg, aes(x=long, y=lat, label=team))+
-  borders('state', colour=publightgray)+
-  geom_point(color=pubred)+
-  geom_text(hjust=rep(c(-0.1, 1.1), 16))+
-  labs(title    = title)+
-  coord_cartesian(expand=F, clip='off')+
-  theme_pub(type='map', base_size = 36/3)
+g = ggplot(dg, aes(x = long, 
+                   y = lat, 
+                   label = team))+
+  borders('state', 
+          colour = publightgray)+
+  geom_point(color = pubred)+
+  geom_text(hjust  = rep(c(-0.1, 1.1), 16))+
+  labs(title = title)+
+  coord_cartesian(expand = F, 
+                  clip   = 'off')+
+  theme_pub(type = 'map')
+
 g
 ```
 
@@ -362,10 +582,13 @@ g
 ## Quick interactive plots with `ggplotly`
 
 We can make any of these plots interactive using `ggplotly`. By default, a tooltip is created that shows whatever aesthetics are used inside `aes()`. 
+
 ```{r}
 library(plotly)
-g = ggplot(d, aes(x=ascore, y=hscore))+
+g = ggplot(d, aes(x = ascore, 
+                  y = hscore))+
   geom_point()
+
 ggplotly(g)
 ```
 
@@ -374,7 +597,6 @@ We'll discuss this, and `plot_ly` function more in the main text.
 ## For more information
 
 The `ggplot` function reference is here https://ggplot2.tidyverse.org/reference/
-
 
 You can see all the `theme` options here https://ggplot2.tidyverse.org/reference/theme.html. 
 

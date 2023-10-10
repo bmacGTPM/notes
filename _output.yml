@@ -8,7 +8,7 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
       collapse: section
-    edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
+    edit: https://github.com/bmacgtpm/book/edit/main/%s
     download: ["pdf", "epub"]
-  code_folding: hide
+  code_folding: show
   table_css: FALSE
