@@ -1,4 +1,4 @@
-# Exploring and summarizing game level data
+# Game level data
 
 For now, we'll focus on the NBA data from the 2021-22 season. We work with regular season games only, and remove any columns we won't use in the near term. 
 
@@ -61,6 +61,10 @@ More examples and options can be found here https://rstudio.github.io/DT or here
 >
 > ```options(DT.options = list(pageLength = 5, language = list(search = 'Filter:')))```
 
+## Previous season scoring averages
+
+
+
 ## Home advantage
 
 Let's see if we can detect any sort of home advantage. It will be more appropriate to do this in the context of regression later but for now the easiest way to do this is to find the average margin of victory by the home team. 
@@ -82,15 +86,19 @@ dh = d %>%
   mutate(diff = hscore - ascore) %>%
   group_by(home) %>%
   summarise(diff = mean(diff))
+
 da = d %>%
   mutate(diff = ascore - hscore) %>%
   group_by(away) %>%
   summarise(diff = mean(diff))
+
 head(dh)
+
 dha = dh %>% 
   left_join(da, by=c('home'='away'), suffix=c('.h', '.a')) %>%
   mutate(diff = diff.h - diff.a) %>% 
   arrange(desc(diff))
+
 head(dha)
 ```
 There is some evidences of variation in home advantage among teams. We'll do more testing of this later.
@@ -102,10 +110,13 @@ Let's see if a team's average points scored from the previous season is related 
 ```{r}
 da = d %>% select(date, away, ascore, home, hscore, season, gid) %>% mutate(ha = 'away')
 dh = d %>% select(date, home, hscore, away, ascore, season, gid) %>% mutate(ha = 'home')
+
 colnames(da) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
 colnames(dh) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
+
 dd = bind_rows(da, dh) %>% 
   arrange(date, gid)
+
 head(dd)
 ```
 
@@ -117,17 +128,19 @@ Now we can compute average points scored by team for each season.
 ds = dd %>%
   group_by(team, season) %>%
   summarise(score = mean(score))
+
 head(ds)
 ```
 We now have two rows per team, one for each season. If we want a scatter plot, we'll `pivot_wider` to have a column for each season. We don't want column names that start with a number (we would have to use the tick marks ``` `2022` ``` all the time), so we'll rename those too.
 
 ```{r}
 ds = ds %>%
-  pivot_wider(id_cols = team, 
-              names_from = season, 
+  pivot_wider(id_cols     = team, 
+              names_from  = season, 
               values_from = score) %>%
   rename(s2021 = `2021`, 
          s2022 = `2022`)
+
 head(ds)
 ```
 Now we can make a scatter plot. 
@@ -214,15 +227,21 @@ tms = read.csv('data/nba.teams.csv')
 
 tms = tms %>% 
   arrange(conf, div) %>%
-  mutate(conf = paste0(toupper(substr(conf,1,1)), substr(conf, 2, nchar(conf))),
-         div  = paste0(toupper(substr(div ,1,1)), substr( div, 2, nchar( div))), 
-         div  = factor(div, levels=unique(div)))
+  mutate(conf = paste0(toupper(substr(conf, 1, 1)), substr(conf, 2, nchar(conf))),
+         div  = paste0(toupper(substr(div , 1, 1)), substr( div, 2, nchar( div))), 
+         div  = factor(div, levels = unique(div)))
 head(tms)
 
 dg = dd %>%
-  left_join(tms %>% select(-conf), by='team') %>%
+  left_join(tms %>% select(-conf), 
+            by = 'team') %>%
   group_by(div) %>%
-  mutate(group = as.character(as.numeric(as.factor(team))))
+  mutate(group = 
+           team %>% 
+           as.factor() %>% 
+           as.numeric() %>% 
+           as.character())
+
 head(dg)
 ```
 
@@ -230,8 +249,8 @@ head(dg)
 
 title = "Points Scored vs Average Opp Points Allowed" 
 
-g = ggplot(dg, aes(x = avg.pts.allowed, 
-                   y = score, 
+g = ggplot(dg, aes(x     = avg.pts.allowed, 
+                   y     = score, 
                    group = group, 
                    color = group))+
   geom_jitter(width  = 0.1, 
@@ -253,8 +272,8 @@ g = ggplot(dg, aes(x = avg.pts.allowed,
        y     = 'Points Scored in the Game')
 
 g %>% 
-  pub(xlim = c(105, 119), 
-      ylim = c(80 , 150), 
+  pub(xlim  = c(105, 119), 
+      ylim  = c(80 , 150), 
       facet = T)
 ```
 
