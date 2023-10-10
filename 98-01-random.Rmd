@@ -783,6 +783,27 @@ https://stackoverflow.com/questions/19226816/how-can-i-view-the-source-code-for-
 
 - More in *Advanced R*: http://adv-r.had.co.nz/OO-essentials.html#s3
 
+## Functions with unquoted arguments
+
+```{r}
+library(tidyverse)
+df <- tibble(
+  a = sample(5), 
+  b = sample(5)
+)
+
+lag1_mutate <- function(dt, varname, time) { 
+  varname_t0 <- paste0(substitute(varname)); 
+  varname_t1 <- paste0(substitute(varname), time); 
+  dplyr::mutate(dt, !!varname_t1 := lag(!!rlang::sym(varname_t0))) 
+}
+
+lag1_mutate(df, a, 2) 
+lag1_mutate(df, b, 3)
+```
+
+
+Adapted from here: https://stackoverflow.com/questions/46131829/unquote-the-variable-name-on-the-right-side-of-mutate-function-in-dplyr
 
 
 # Debugging
