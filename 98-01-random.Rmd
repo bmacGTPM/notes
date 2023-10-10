@@ -20,6 +20,8 @@ knitr::opts_chunk$set(
 
 # Introduction
 
+This is a test 3:11
+
 This is a collection of random (in the non-statistical meaning of the word) stuff that I have found to be useful over the years. 
 
 This is constantly under construction and may not have complete explanations of the code, results, and purpose of each section. 
