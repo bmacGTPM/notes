@@ -2,7 +2,6 @@
 
 # Introduction
 
-
 Eventually 
 
 - `broom` package with `tidy`, `glance`, `augment`

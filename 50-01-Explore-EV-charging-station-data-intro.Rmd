@@ -17,27 +17,33 @@ There are a lot of columns, and a lot of weird names, so let's clean things up a
 library(leaflet)
 library(htmltools)
 library(tidyverse)
+library(pubtheme)
+
 d = readRDS('data/EVstations.rds')
 colnames(d) = tolower(colnames(d))
 
 d = d %>%
   select(-matches('cng|lng|lpg|hydrogen|e85|bd[.]blends|french|^ng[.]|plus4|level1')) %>%
-  filter(fuel.type.code=='ELEC') %>%
-  rename(lev2=ev.level2.evse.num, 
-         lev3=ev.dc.fast.count, 
+  filter(fuel.type.code == 'ELEC') %>%
+  rename(lev2    = ev.level2.evse.num, 
+         lev3    = ev.dc.fast.count, 
          network = ev.network, 
-         lat = latitude, 
-         lon = longitude) %>%
-  filter(lat > 20, lon < -60,
-         lat < 55, lon >-130) %>%
-  mutate(status = case_when(status.code=='E' ~ 'avail', 
-                            status.code=='P' ~ 'planned', 
-                            status.code=='T' ~ 'temp.unavail', 
+         lat     = latitude, 
+         lon     = longitude) %>%
+  filter(lat > 20, 
+         lon < -60,
+         lat < 55, 
+         lon >-130) %>%
+  mutate(status = case_when(status.code == 'E' ~ 'avail', 
+                            status.code == 'P' ~ 'planned', 
+                            status.code == 'T' ~ 'temp.unavail', 
                             TRUE ~ ''), 
-         lev2 = ifelse(is.na(lev2), 0, lev2), 
-         lev3 = ifelse(is.na(lev3), 0, lev3), 
-         lev23 = lev2+lev3) %>%
-  mutate(network = ifelse(network=='Tesla Destination', 'Tesla', network), 
+         lev2  = ifelse(is.na(lev2), 0, lev2), 
+         lev3  = ifelse(is.na(lev3), 0, lev3), 
+         lev23 = lev2 + lev3) %>%
+  mutate(network = ifelse(network == 'Tesla Destination', 
+                          'Tesla', 
+                          network), 
          network = gsub('Ã©', 'E', network), 
          network = gsub('Ã‰', 'E', network), 
          network = gsub('SemaCharge', 'Blink', network), ## https://www.semaconnect.com/
@@ -47,17 +53,20 @@ head(d,2)
 ```
 
 Which are the biggest networks?
+
 ```{r}
 dn = d %>% 
-  filter(status=='avail') %>%
+  filter(status == 'avail') %>%
   group_by(network) %>% 
-  summarise(lev2=sum(lev2), 
-            lev3=sum(lev3)) %>%
+  summarise(lev2 = sum(lev2), 
+            lev3 = sum(lev3)) %>%
   mutate(tot = lev2 + lev3)
+
 dn %>% arrange(desc(lev2))
 dn %>% arrange(desc(lev3))
-dn %>% arrange(desc(tot))
+dn %>% arrange(desc(tot ))
 ```
+
 Let's create a new network column where all networks other than the top 5 networks with Level 2 charging stations a grouped together as an "Other" category. Likewise with Level 3 charging stations. 
 
 ```{r}
@@ -94,7 +103,6 @@ Some key columns in the data include
 ## Discussion
 
 - What questions about EV charging stations are you interested in answering? 
-- Introduce the data
 - How can you answer those with this data? Can some of them not be answered? Possibly update your list of questions. 
-- Live coding. We’ll start answering those questions in class. 
+
 

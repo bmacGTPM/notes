@@ -65,6 +65,7 @@ g %>%
 
 ```
 
+
 ## Order character vectors using `factor`
 
 By default, R organizes the teams alphabetically. Instead of seeing teams alphabetically, we'll want to see them organized by division. So we'll use `factor` and specify the `levels` to be the order we want for both teams and divisions
@@ -163,7 +164,6 @@ g %>%
         
         ## we can adjust the panel spacing a little bit, if desired
         ## makes the legend look like squares instead of rectangles, if desired
-        ## px is defined above. It is the length of one pixel in inches
         panel.spacing     = unit(1/72*10/4, "in"), 
         legend.key.width  = unit(1/72*36/4, "in"),
         
@@ -179,7 +179,7 @@ g %>%
 
 ## Schedule matrix faceted by season
 
-Before creating the animation, let's look at the frames that will become the animation. 
+Before creating the animation, let's look at the frames that will become the animation. We are going to put `{next_state}` in the title, which will look weird now but we'll want that for the animation. 
 
 ```{r fig.height = 6.5, fig.width = 8}
 base_size = 12
@@ -195,7 +195,7 @@ g = ggplot(dg, aes(x = home,
   geom_tile(linewidth = 0.4, 
             show.legend = T, 
             color = pubdarkgray) +
-  facet_grid(div.a ~ div.h, 
+  facet_grid(div.a  ~ div.h, 
              scales = 'free')+ ## now faceting by division
   scale_fill_manual(values = c(pubbackgray, 
                                publightred, 
