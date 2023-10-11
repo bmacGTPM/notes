@@ -1458,62 +1458,62 @@ Hello world.
 
 The outputs are suppressed using `eval = F` because of issues with ImageMagick and GitHub Actions.
 
-```{r eval=F}
-library(magick)
-
-image = image_read("https://www.r-project.org/logo/Rlogo.png")
-is(image)
-print(image)
-plot(image)
+```{r}
+# library(magick)
+# 
+# image = image_read("https://www.r-project.org/logo/Rlogo.png")
+# is(image)
+# print(image)
+# plot(image)
 ```
 
-```{r eval = F, fig.height=6, fig.width=6}
-library(reshape2)
-
-df = image[[1]] %>% 
-  as.integer() %>% 
-  melt()
-
-colnames(df) = c('x', 'y', 'rgba', 'value')
-
-df = df %>%
-  mutate(rgba = case_when(rgba == 1 ~ 'red', 
-                          rgba == 2 ~ 'green', 
-                          rgba == 3 ~ 'blue', 
-                          rgba == 4 ~ 'alpha', 
-                          TRUE ~ ''), 
-         rgba = factor(rgba, levels = c('red', 
-                                        'green', 
-                                        'blue', 
-                                        'alpha')))
-
+```{r fig.height=6, fig.width=6}
+# library(reshape2)
+# 
+# df = image[[1]] %>% 
+#   as.integer() %>% 
+#   melt()
+# 
+# colnames(df) = c('x', 'y', 'rgba', 'value')
+# 
+# df = df %>%
+#   mutate(rgba = case_when(rgba == 1 ~ 'red', 
+#                           rgba == 2 ~ 'green', 
+#                           rgba == 3 ~ 'blue', 
+#                           rgba == 4 ~ 'alpha', 
+#                           TRUE ~ ''), 
+#          rgba = factor(rgba, levels = c('red', 
+#                                         'green', 
+#                                         'blue', 
+#                                         'alpha')))
+# 
 
 ```
 
-```{r eval = F, fig.height = 5, fig.width = 6}
-## Take a random sample so it plots faster
-dg = df[sample(1:nrow(df), 100000),]
-
-g = ggplot(dg,
-       aes(x = value, 
-           fill = rgba))+
-  geom_histogram(color = pubbackgray, 
-                 binwidth = 16) + 
-  facet_wrap(~rgba) + 
-  scale_fill_manual(values = c('red', 
-                               'green', 
-                               'blue' , 
-                               'gray')) + 
-  labs(title = 'Distribution of Red, Green, Blue, and Transparency') +
-  guides(fill = guide_legend(nrow = 2)) 
-
-
-
-g %>%
-  pub(type  = 'hist', 
-      xlim  = c(0, 255),
-      #ylim  = c(0, 15000),
-      facet = T)
+```{r fig.height = 5, fig.width = 6}
+# ## Take a random sample so it plots faster
+# dg = df[sample(1:nrow(df), 100000),]
+# 
+# g = ggplot(dg,
+#        aes(x = value, 
+#            fill = rgba))+
+#   geom_histogram(color = pubbackgray, 
+#                  binwidth = 16) + 
+#   facet_wrap(~rgba) + 
+#   scale_fill_manual(values = c('red', 
+#                                'green', 
+#                                'blue' , 
+#                                'gray')) + 
+#   labs(title = 'Distribution of Red, Green, Blue, and Transparency') +
+#   guides(fill = guide_legend(nrow = 2)) 
+# 
+# 
+# 
+# g %>%
+#   pub(type  = 'hist', 
+#       xlim  = c(0, 255),
+#       #ylim  = c(0, 15000),
+#       facet = T)
 
 ```
 
