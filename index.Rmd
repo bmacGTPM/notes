@@ -61,7 +61,7 @@ library(pubtheme)
 # library(rsconnect)
 # library(grid)
 # library(foreign)
-
+library(maps)
 
 ```
 
@@ -108,6 +108,7 @@ install.packages("RecordLinkage")
 install.packages("rsconnect")
 install.packages('grid')
 install.packages('foreign')
+install.packages('maps')
 
 ## Install packages from my GitHub
 devtools::install_github("bmacGTPM/pubtheme")

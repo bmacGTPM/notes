@@ -275,7 +275,7 @@ for(year in years){
 
 ## Scrape PDFs
 
-You can scrape text from PDFs like this.
+You can scrape text from PDFs like this. Note that I added `eval = F` because of issues with GitHub Actions. 
 
 ```{r, eval = F}
 library(pdftools)
@@ -1456,7 +1456,7 @@ Hello world.
 
 ## Read pixel values of images
 
-The outputs are suppressed using `eval = F` because of issues with ImageMagick and GitHub Actions. The code is also missing a line that loads the `magick` library. 
+The outputs are suppressed using `eval = F` because of issues with ImageMagick and GitHub Actions.  
 
 ```{r eval = F}
 library(magick)
