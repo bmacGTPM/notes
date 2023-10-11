@@ -1456,7 +1456,9 @@ Hello world.
 
 ## Read pixel values of images
 
-```{r}
+The outputs are suppressed using `eval = F` because of issues with ImageMagick and GitHub Actions.
+
+```{r eval=F}
 library(magick)
 
 image = image_read("https://www.r-project.org/logo/Rlogo.png")
@@ -1465,7 +1467,7 @@ print(image)
 plot(image)
 ```
 
-```{r fig.height=6, fig.width=6}
+```{r eval = F, fig.height=6, fig.width=6}
 library(reshape2)
 
 df = image[[1]] %>% 
@@ -1488,7 +1490,7 @@ df = df %>%
 
 ```
 
-```{r fig.height = 5, fig.width = 6}
+```{r eval = F, fig.height = 5, fig.width = 6}
 ## Take a random sample so it plots faster
 dg = df[sample(1:nrow(df), 100000),]
 
@@ -1514,6 +1516,8 @@ g %>%
       facet = T)
 
 ```
+
+
 ## Cloud 
 
 Desktop apps for Dropbox, Google Drive, OneDrive, etc., allow you browse the files in your account in e.g. File Explorer on Windows (or equivalent on Mac) as if they are in a folder on your computer. You can also load files into R. For example, Google Drive by default maps to G: drive, so you can read a file from your Google Drive like this
