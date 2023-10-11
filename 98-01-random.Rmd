@@ -277,7 +277,7 @@ for(year in years){
 
 You can scrape text from PDFs like this.
 
-```{r}
+```{r, eval = F}
 library(pdftools)
 d <- pdf_data("https://www.omegatiming.com/File/0001170100020304FFFFFFFFFFFFFF02.pdf")
 is(d)
