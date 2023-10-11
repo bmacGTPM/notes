@@ -1,0 +1,55 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+part{
+  color: black
+}
+
+/* overwrite some settings from _book\libs\gitbook-2.6.7\css\style.css */ 
+/* list-style:outside is supposed to make the second line align with first line, but it's not working. 
+I think it's because the number is actually part of the text, not the list. 
+Note that there are in `ul`, aka unordered lists. 
+The numbers are bolded and part of the text in the list item. 
+Would need to calculate how wide the numbers 1.1, 1.2, etc are, and 
+add padding based on a formula. 
+*/
+.book .book-summary ul.summary li span{
+  cursor:not-allowed;
+  opacity:1;
+  white-space:normal;
+} 
+
+/* When to webpage like file:///C:/Users/bmacN/OneDrive/notes/_book/index.html, right click Inspect, find the heading. For the Part headings, they are 
+.book .book-summary ul.summary li span
+The chapter headings are 
+.book .book-summary ul.summary li.chapter a i 
+(check the strip under the code that summarizes the hierarchy)
+Can see what gitbook is automatically doing by checking 
+\_book\libs\gitbook-2.6.7\css\style.css
+Those defaults will have to be overridden. 
+The most specific one takes precedence. 
+Under that it shows where it is getting the .css code. 
+The file, and line number
+*/
+
+.book .book-summary ul.summary li.chapter a{
+  white-space:normal;
+  list-style-position: outside;
+} 
+
+
+.book .book-summary ol {
+  list-style-position: outside;
+} 

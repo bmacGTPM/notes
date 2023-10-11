@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9.2 Level 2 and Level 3 stations | Data Analysis</title>
+  <meta name="description" content="Course notes for Data Analysis." />
+  <meta name="generator" content="bookdown 0.30.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9.2 Level 2 and Level 3 stations | Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Course notes for Data Analysis." />
+  <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9.2 Level 2 and Level 3 stations | Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for Data Analysis." />
+  
+
+<meta name="author" content="Brian Macdonald" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="charging-stations-in-us-and-canada.html"/>
+<link rel="next" href="level-2-charging-stations-by-network.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.26/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/dt-ext-colreorder-1.12.1/css/colReorder.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-colreorder-1.12.1/js/dataTables.colReorder.min.js"></script>
+<link href="libs/dt-ext-fixedheader-1.12.1/css/fixedHeader.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedheader-1.12.1/js/dataTables.fixedHeader.min.js"></script>
+<link href="libs/dt-ext-keytable-1.12.1/css/keyTable.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-keytable-1.12.1/js/dataTables.keyTable.min.js"></script>
+<script src="libs/jszip-1.12.1/jszip.min.js"></script>
+<link href="libs/dt-ext-buttons-1.12.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.12.1/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.12.1/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.12.1/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.12.1/js/buttons.print.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.13.0/leaflet-providers_1.13.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">S&DS 361 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="preparation.html"><a href="preparation.html"><i class="fa fa-check"></i><b>1.1</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="preparation.html"><a href="preparation.html#packages"><i class="fa fa-check"></i><b>1.1.1</b> Packages</a></li>
+<li class="chapter" data-level="1.1.2" data-path="preparation.html"><a href="preparation.html#bookmarks"><i class="fa fa-check"></i><b>1.1.2</b> Bookmarks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="1.3" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.3</b> Coding conventions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="coding-conventions.html"><a href="coding-conventions.html#assignment-with---vs"><i class="fa fa-check"></i><b>1.3.1</b> Assignment with <code>&lt;-</code> vs <code>=</code></a></li>
+<li class="chapter" data-level="1.3.2" data-path="coding-conventions.html"><a href="coding-conventions.html#underscore-_-vs-."><i class="fa fa-check"></i><b>1.3.2</b> Underscore <code>_</code> vs <code>.</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="formatting-plots-with-pubtheme.html"><a href="formatting-plots-with-pubtheme.html"><i class="fa fa-check"></i><b>2</b> Formatting plots with <code>pubtheme</code></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="simple-example.html"><a href="simple-example.html"><i class="fa fa-check"></i><b>2.1</b> Simple Example</a></li>
+<li class="chapter" data-level="2.2" data-path="gallery.html"><a href="gallery.html"><i class="fa fa-check"></i><b>2.2</b> Gallery</a></li>
+</ul></li>
+<li class="part"><span><b>I Explore NBA data with <code>tidyverse</code></b></span></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="what-questions-can-we-ask.html"><a href="what-questions-can-we-ask.html"><i class="fa fa-check"></i><b>3.1</b> What questions can we ask?</a></li>
+<li class="chapter" data-level="3.2" data-path="intro-to-nba-games-data.html"><a href="intro-to-nba-games-data.html"><i class="fa fa-check"></i><b>3.2</b> Intro to NBA games data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="game-level-data.html"><a href="game-level-data.html"><i class="fa fa-check"></i><b>4</b> Game level data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="interactive-tables-with-dt.html"><a href="interactive-tables-with-dt.html"><i class="fa fa-check"></i><b>4.1</b> Interactive tables with <code>DT</code></a></li>
+<li class="chapter" data-level="4.2" data-path="recommended-options-with-dt.html"><a href="recommended-options-with-dt.html"><i class="fa fa-check"></i><b>4.2</b> Recommended options with <code>DT</code></a></li>
+<li class="chapter" data-level="4.3" data-path="previous-season-scoring-averages.html"><a href="previous-season-scoring-averages.html"><i class="fa fa-check"></i><b>4.3</b> Previous season scoring averages</a></li>
+<li class="chapter" data-level="4.4" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage</a></li>
+<li class="chapter" data-level="4.5" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.5</b> Home advantage by team</a></li>
+<li class="chapter" data-level="4.6" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.6</b> Points previous vs current season</a></li>
+<li class="chapter" data-level="4.7" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.7</b> Formatting with <code>pubtheme</code></a></li>
+<li class="chapter" data-level="4.8" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.8</b> Scoring vs stronger/weaker opponents</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="schedule-data.html"><a href="schedule-data.html"><i class="fa fa-check"></i><b>5</b> Schedule data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="schedule-matrix-grid-plot.html"><a href="schedule-matrix-grid-plot.html"><i class="fa fa-check"></i><b>5.1</b> Schedule matrix grid plot</a></li>
+<li class="chapter" data-level="5.2" data-path="order-character-vectors-using-factor.html"><a href="order-character-vectors-using-factor.html"><i class="fa fa-check"></i><b>5.2</b> Order character vectors using <code>factor</code></a></li>
+<li class="chapter" data-level="5.3" data-path="schedule-matrix-ordered-by-division.html"><a href="schedule-matrix-ordered-by-division.html"><i class="fa fa-check"></i><b>5.3</b> Schedule matrix, ordered by division</a></li>
+<li class="chapter" data-level="5.4" data-path="schedule-matrix-faceted-by-division.html"><a href="schedule-matrix-faceted-by-division.html"><i class="fa fa-check"></i><b>5.4</b> Schedule matrix, faceted by division</a></li>
+<li class="chapter" data-level="5.5" data-path="schedule-matrix-faceted-by-season.html"><a href="schedule-matrix-faceted-by-season.html"><i class="fa fa-check"></i><b>5.5</b> Schedule matrix faceted by season</a></li>
+<li class="chapter" data-level="5.6" data-path="animated-schedule-matrix.html"><a href="animated-schedule-matrix.html"><i class="fa fa-check"></i><b>5.6</b> Animated Schedule Matrix</a></li>
+<li class="chapter" data-level="5.7" data-path="animated-schedule-matrix-mlb-edition.html"><a href="animated-schedule-matrix-mlb-edition.html"><i class="fa fa-check"></i><b>5.7</b> Animated schedule matrix, MLB edition</a></li>
+<li class="chapter" data-level="5.8" data-path="days-rest-by-team.html"><a href="days-rest-by-team.html"><i class="fa fa-check"></i><b>5.8</b> Days rest by team</a></li>
+<li class="chapter" data-level="5.9" data-path="days-rest-and-game-outcomes.html"><a href="days-rest-and-game-outcomes.html"><i class="fa fa-check"></i><b>5.9</b> Days rest and game outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="travel-data.html"><a href="travel-data.html"><i class="fa fa-check"></i><b>6</b> Travel data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="distance-matrix-grid-plot.html"><a href="distance-matrix-grid-plot.html"><i class="fa fa-check"></i><b>6.1</b> Distance matrix grid plot</a></li>
+<li class="chapter" data-level="6.2" data-path="total-distance-traveled-by-team.html"><a href="total-distance-traveled-by-team.html"><i class="fa fa-check"></i><b>6.2</b> Total distance traveled by team</a></li>
+<li class="chapter" data-level="6.3" data-path="travel-distance-and-game-outcomes.html"><a href="travel-distance-and-game-outcomes.html"><i class="fa fa-check"></i><b>6.3</b> Travel distance and game outcomes</a></li>
+<li class="chapter" data-level="6.4" data-path="travel-paths.html"><a href="travel-paths.html"><i class="fa fa-check"></i><b>6.4</b> Travel paths</a></li>
+<li class="chapter" data-level="6.5" data-path="travel-paths-weighted-by-trips.html"><a href="travel-paths-weighted-by-trips.html"><i class="fa fa-check"></i><b>6.5</b> Travel paths weighted by trips</a></li>
+<li class="chapter" data-level="6.6" data-path="travel-matrix.html"><a href="travel-matrix.html"><i class="fa fa-check"></i><b>6.6</b> Travel matrix</a></li>
+</ul></li>
+<li class="part"><span><b>II Team ratings and game predictions using linear regression</b></span></li>
+<li class="chapter" data-level="7" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="part"><span><b>III EV charging stations</b></span></li>
+<li class="chapter" data-level="8" data-path="explore-ev-charging-station-data.html"><a href="explore-ev-charging-station-data.html"><i class="fa fa-check"></i><b>8</b> Explore EV Charging Station data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="data-prepration.html"><a href="data-prepration.html"><i class="fa fa-check"></i><b>8.2</b> Data prepration</a></li>
+<li class="chapter" data-level="8.3" data-path="column-descriptions.html"><a href="column-descriptions.html"><i class="fa fa-check"></i><b>8.3</b> Column descriptions</a></li>
+<li class="chapter" data-level="8.4" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>8.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>9</b> Maps</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="charging-stations-in-us-and-canada.html"><a href="charging-stations-in-us-and-canada.html"><i class="fa fa-check"></i><b>9.1</b> Charging Stations in US and Canada</a></li>
+<li class="chapter" data-level="9.2" data-path="level-2-and-level-3-stations.html"><a href="level-2-and-level-3-stations.html"><i class="fa fa-check"></i><b>9.2</b> Level 2 and Level 3 stations</a></li>
+<li class="chapter" data-level="9.3" data-path="level-2-charging-stations-by-network.html"><a href="level-2-charging-stations-by-network.html"><i class="fa fa-check"></i><b>9.3</b> Level 2 Charging Stations by Network</a></li>
+<li class="chapter" data-level="9.4" data-path="level-3-charging-stations-by-network.html"><a href="level-3-charging-stations-by-network.html"><i class="fa fa-check"></i><b>9.4</b> Level 3 Charging Stations by Network</a></li>
+<li class="chapter" data-level="9.5" data-path="create-a-month-year-column.html"><a href="create-a-month-year-column.html"><i class="fa fa-check"></i><b>9.5</b> Create a Month Year column</a></li>
+<li class="chapter" data-level="9.6" data-path="level-2-charging-stations-animation.html"><a href="level-2-charging-stations-animation.html"><i class="fa fa-check"></i><b>9.6</b> Level 2 Charging Stations Animation</a></li>
+<li class="chapter" data-level="9.7" data-path="level-3-charging-stations-animation.html"><a href="level-3-charging-stations-animation.html"><i class="fa fa-check"></i><b>9.7</b> Level 3 Charging Stations Animation</a></li>
+<li class="chapter" data-level="9.8" data-path="interative-map-with-leaflet.html"><a href="interative-map-with-leaflet.html"><i class="fa fa-check"></i><b>9.8</b> Interative map with Leaflet</a></li>
+<li class="chapter" data-level="9.9" data-path="plotting-stations-over-census-data.html"><a href="plotting-stations-over-census-data.html"><i class="fa fa-check"></i><b>9.9</b> Plotting stations over census data</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="growth-over-time.html"><a href="growth-over-time.html"><i class="fa fa-check"></i><b>10</b> Growth over time</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="level-2-cumulative-charging-stations-over-time.html"><a href="level-2-cumulative-charging-stations-over-time.html"><i class="fa fa-check"></i><b>10.1</b> Level 2 Cumulative Charging Stations Over Time</a></li>
+<li class="chapter" data-level="10.2" data-path="level-3-cumulative-charging-stations-over-time.html"><a href="level-3-cumulative-charging-stations-over-time.html"><i class="fa fa-check"></i><b>10.2</b> Level 3 Cumulative Charging Stations Over Time</a></li>
+<li class="chapter" data-level="10.3" data-path="level-3-cumulative-stations-line-animation.html"><a href="level-3-cumulative-stations-line-animation.html"><i class="fa fa-check"></i><b>10.3</b> Level 3 Cumulative Stations Line Animation</a></li>
+</ul></li>
+<li class="part"><span><b>IV Random</b></span></li>
+<li class="chapter" data-level="11" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>11</b> Introduction</a></li>
+<li class="chapter" data-level="12" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>12</b> Project Development and planning</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>12.1</b> Brainstorming, determining the end deliverables</a></li>
+<li class="chapter" data-level="12.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>12.2</b> Create a basic framework</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="data-acquistion.html"><a href="data-acquistion.html"><i class="fa fa-check"></i><b>13</b> Data acquistion</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="scrape-html-pages.html"><a href="scrape-html-pages.html"><i class="fa fa-check"></i><b>13.1</b> Scrape HTML pages</a></li>
+<li class="chapter" data-level="13.2" data-path="parsing-html-tables.html"><a href="parsing-html-tables.html"><i class="fa fa-check"></i><b>13.2</b> Parsing HTML tables</a></li>
+<li class="chapter" data-level="13.3" data-path="scraping-pages-that-require-log-in.html"><a href="scraping-pages-that-require-log-in.html"><i class="fa fa-check"></i><b>13.3</b> Scraping pages that require log-in</a></li>
+<li class="chapter" data-level="13.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>13.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
+<li class="chapter" data-level="13.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>13.5</b> Scrape PDFs</a></li>
+<li class="chapter" data-level="13.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>13.6</b> RSelenium, Docker</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>14</b> Data cleaning</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="recordlinkage.html"><a href="recordlinkage.html"><i class="fa fa-check"></i><b>14.1</b> RecordLinkage</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="recordlinkage.html"><a href="recordlinkage.html#example-data"><i class="fa fa-check"></i><b>14.1.1</b> Example data</a></li>
+<li class="chapter" data-level="14.1.2" data-path="recordlinkage.html"><a href="recordlinkage.html#comparededup"><i class="fa fa-check"></i><b>14.1.2</b> Compare/Dedup</a></li>
+<li class="chapter" data-level="14.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>14.1.3</b> Attach names to IDs</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>14.2</b> Data imputation</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>15</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
+<li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>15.3</b> Simulating data</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="simulating-data.html"><a href="simulating-data.html#continuous-and-binary-predictors"><i class="fa fa-check"></i><b>15.3.1</b> Continuous and binary predictors</a></li>
+<li class="chapter" data-level="15.3.2" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.2</b> Linear regression with a continuous predictor</a></li>
+<li class="chapter" data-level="15.3.3" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.3</b> Poisson regression with a continuous predictor</a></li>
+<li class="chapter" data-level="15.3.4" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.4</b> Linear regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="15.3.5" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.5</b> Poisson regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="15.3.6" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.6</b> Linear regression with interaction</a></li>
+<li class="chapter" data-level="15.3.7" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.7</b> Poisson regression with interaction</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>16</b> Shiny</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>16.1</b> Getting started</a></li>
+<li class="chapter" data-level="16.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>16.2</b> Dynamic UI</a></li>
+<li class="chapter" data-level="16.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>16.3</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>17</b> Bayesian statistics</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>17.1</b> Normal</a></li>
+<li class="chapter" data-level="17.2" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>17.2</b> Beta binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>18</b> Regression models</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="other-types-of-regression.html"><a href="other-types-of-regression.html"><i class="fa fa-check"></i><b>18.1</b> Other types of regression</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>19</b> Understanding how functions work</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>19.1</b> Help</a></li>
+<li class="chapter" data-level="19.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>19.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>19.2.1</b> Generic functions</a></li>
+<li class="chapter" data-level="19.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>19.2.2</b> <code>methods</code></a></li>
+<li class="chapter" data-level="19.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>19.2.3</b> <code>getAnywhere</code></a></li>
+<li class="chapter" data-level="19.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>19.2.4</b> Other resources</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>19.3</b> Functions with unquoted arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>20</b> Debugging</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>20.1</b> <code>browser()</code></a></li>
+<li class="chapter" data-level="20.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>20.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>21</b> Testing</a></li>
+<li class="chapter" data-level="22" data-path="estimating-distribution-parameters.html"><a href="estimating-distribution-parameters.html"><i class="fa fa-check"></i><b>22</b> Estimating distribution parameters</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="beta-binomial-1.html"><a href="beta-binomial-1.html"><i class="fa fa-check"></i><b>22.1</b> Beta-binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>23</b> For loops</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>23.1</b> Showing progress</a></li>
+<li class="chapter" data-level="23.2" data-path="parallel-processing-with-foreach.html"><a href="parallel-processing-with-foreach.html"><i class="fa fa-check"></i><b>23.2</b> Parallel processing with <code>foreach</code></a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="efficient-programming.html"><a href="efficient-programming.html"><i class="fa fa-check"></i><b>24</b> Efficient Programming</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>24.1</b> Efficient R Programming online book</a></li>
+<li class="chapter" data-level="24.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>24.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>25</b> Other</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="minimal-reproducible-examples.html"><a href="minimal-reproducible-examples.html"><i class="fa fa-check"></i><b>25.1</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="25.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>25.2</b> Accessible Documents</a></li>
+<li class="chapter" data-level="25.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>25.3</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="25.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>25.4</b> Writing R packages</a></li>
+<li class="chapter" data-level="25.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>25.5</b> Blogdown</a></li>
+<li class="chapter" data-level="25.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>25.6</b> Bookdown</a></li>
+<li class="chapter" data-level="25.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>25.7</b> Quarto</a></li>
+<li class="chapter" data-level="25.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>25.8</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="25.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>25.9</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="25.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>25.10</b> Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>26</b> Not data science</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>26.1</b> Dollar cost averaging example</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="intro-to-nba-games-data-1.html"><a href="intro-to-nba-games-data-1.html"><i class="fa fa-check"></i><b>A.1</b> Intro to NBA games data</a></li>
+<li class="chapter" data-level="A.2" data-path="choosing-rows-with-filter.html"><a href="choosing-rows-with-filter.html"><i class="fa fa-check"></i><b>A.2</b> Choosing rows with <code>filter</code></a></li>
+<li class="chapter" data-level="A.3" data-path="pipe-operator.html"><a href="pipe-operator.html"><i class="fa fa-check"></i><b>A.3</b> Pipe Operator</a></li>
+<li class="chapter" data-level="A.4" data-path="choosing-columns-with-select.html"><a href="choosing-columns-with-select.html"><i class="fa fa-check"></i><b>A.4</b> Choosing columns with <code>select</code></a></li>
+<li class="chapter" data-level="A.5" data-path="checking-data-types-with-str.html"><a href="checking-data-types-with-str.html"><i class="fa fa-check"></i><b>A.5</b> Checking data types with <code>str</code></a></li>
+<li class="chapter" data-level="A.6" data-path="addedit-columns-with-mutate.html"><a href="addedit-columns-with-mutate.html"><i class="fa fa-check"></i><b>A.6</b> Add/Edit columns with <code>mutate</code></a></li>
+<li class="chapter" data-level="A.7" data-path="ordering-rows-with-arrange.html"><a href="ordering-rows-with-arrange.html"><i class="fa fa-check"></i><b>A.7</b> Ordering rows with <code>arrange</code></a></li>
+<li class="chapter" data-level="A.8" data-path="summaries-using-summarise.html"><a href="summaries-using-summarise.html"><i class="fa fa-check"></i><b>A.8</b> Summaries using <code>summarise</code></a></li>
+<li class="chapter" data-level="A.9" data-path="gluing-data.frames-using-bind_rows.html"><a href="gluing-data.frames-using-bind_rows.html"><i class="fa fa-check"></i><b>A.9</b> Gluing data.frames using <code>bind_rows</code></a></li>
+<li class="chapter" data-level="A.10" data-path="summaries-by-team-using-group_by.html"><a href="summaries-by-team-using-group_by.html"><i class="fa fa-check"></i><b>A.10</b> Summaries by team using <code>group_by</code></a></li>
+<li class="chapter" data-level="A.11" data-path="using-mutate-and-group_by.html"><a href="using-mutate-and-group_by.html"><i class="fa fa-check"></i><b>A.11</b> Using <code>mutate</code> and <code>group_by</code></a></li>
+<li class="chapter" data-level="A.12" data-path="using-mutate-and-ifelse.html"><a href="using-mutate-and-ifelse.html"><i class="fa fa-check"></i><b>A.12</b> Using <code>mutate</code> and <code>ifelse</code></a></li>
+<li class="chapter" data-level="A.13" data-path="rearranging-data-with-pivot_wider-and-pivot_longer.html"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html"><i class="fa fa-check"></i><b>A.13</b> Rearranging data with <code>pivot_wider</code> and <code>pivot_longer</code></a></li>
+<li class="chapter" data-level="A.14" data-path="joining-two-data-frames-with-left_join.html"><a href="joining-two-data-frames-with-left_join.html"><i class="fa fa-check"></i><b>A.14</b> Joining two data frames with <code>left_join</code></a></li>
+<li class="chapter" data-level="A.15" data-path="for-more-information.html"><a href="for-more-information.html"><i class="fa fa-check"></i><b>A.15</b> For more information</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="data-visualization-with-ggplot.html"><a href="data-visualization-with-ggplot.html"><i class="fa fa-check"></i><b>B</b> Data visualization with <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="scatter-plot-with-geom_point.html"><a href="scatter-plot-with-geom_point.html"><i class="fa fa-check"></i><b>B.1</b> Scatter plot with <code>geom_point</code></a></li>
+<li class="chapter" data-level="B.2" data-path="color-size-shape.html"><a href="color-size-shape.html"><i class="fa fa-check"></i><b>B.2</b> Color, size, shape</a></li>
+<li class="chapter" data-level="B.3" data-path="formatting-with-the-pubtheme-package.html"><a href="formatting-with-the-pubtheme-package.html"><i class="fa fa-check"></i><b>B.3</b> Formatting with the <code>pubtheme</code> package</a></li>
+<li class="chapter" data-level="B.4" data-path="ggsave.html"><a href="ggsave.html"><i class="fa fa-check"></i><b>B.4</b> <code>ggsave</code></a></li>
+<li class="chapter" data-level="B.5" data-path="trend-line-with-geom_smooth.html"><a href="trend-line-with-geom_smooth.html"><i class="fa fa-check"></i><b>B.5</b> Trend line with <code>geom_smooth</code></a></li>
+<li class="chapter" data-level="B.6" data-path="grouping-observations-with-group.html"><a href="grouping-observations-with-group.html"><i class="fa fa-check"></i><b>B.6</b> Grouping observations with <code>group</code></a></li>
+<li class="chapter" data-level="B.7" data-path="faceting-with-facet_wrap.html"><a href="faceting-with-facet_wrap.html"><i class="fa fa-check"></i><b>B.7</b> Faceting with <code>facet_wrap</code></a></li>
+<li class="chapter" data-level="B.8" data-path="transparency-using-alpha.html"><a href="transparency-using-alpha.html"><i class="fa fa-check"></i><b>B.8</b> Transparency using <code>alpha</code></a></li>
+<li class="chapter" data-level="B.9" data-path="scatter-plot-with-geom_jitter.html"><a href="scatter-plot-with-geom_jitter.html"><i class="fa fa-check"></i><b>B.9</b> Scatter plot with <code>geom_jitter</code></a></li>
+<li class="chapter" data-level="B.10" data-path="hex-bins-geom_hex.html"><a href="hex-bins-geom_hex.html"><i class="fa fa-check"></i><b>B.10</b> Hex bins <code>geom_hex</code></a></li>
+<li class="chapter" data-level="B.11" data-path="bar-plot-geom_col.html"><a href="bar-plot-geom_col.html"><i class="fa fa-check"></i><b>B.11</b> Bar plot <code>geom_col</code></a></li>
+<li class="chapter" data-level="B.12" data-path="color-bars-using-fill.html"><a href="color-bars-using-fill.html"><i class="fa fa-check"></i><b>B.12</b> Color bars using <code>fill</code></a></li>
+<li class="chapter" data-level="B.13" data-path="side-by-side-bar-charts-with-position_dodge.html"><a href="side-by-side-bar-charts-with-position_dodge.html"><i class="fa fa-check"></i><b>B.13</b> Side-by-side bar charts with <code>position_dodge</code></a></li>
+<li class="chapter" data-level="B.14" data-path="text-with-geom_text.html"><a href="text-with-geom_text.html"><i class="fa fa-check"></i><b>B.14</b> Text with <code>geom_text</code></a></li>
+<li class="chapter" data-level="B.15" data-path="histogram-with-geom_histogram.html"><a href="histogram-with-geom_histogram.html"><i class="fa fa-check"></i><b>B.15</b> Histogram with <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="B.16" data-path="line-plot-with-geom_line.html"><a href="line-plot-with-geom_line.html"><i class="fa fa-check"></i><b>B.16</b> Line plot with <code>geom_line</code></a></li>
+<li class="chapter" data-level="B.17" data-path="grid-plot-with-geom_tile.html"><a href="grid-plot-with-geom_tile.html"><i class="fa fa-check"></i><b>B.17</b> Grid plot with <code>geom_tile</code></a></li>
+<li class="chapter" data-level="B.18" data-path="customizing-with-theme.html"><a href="customizing-with-theme.html"><i class="fa fa-check"></i><b>B.18</b> Customizing with <code>theme</code></a></li>
+<li class="chapter" data-level="B.19" data-path="maps-1.html"><a href="maps-1.html"><i class="fa fa-check"></i><b>B.19</b> Maps</a></li>
+<li class="chapter" data-level="B.20" data-path="quick-interactive-plots-with-ggplotly.html"><a href="quick-interactive-plots-with-ggplotly.html"><i class="fa fa-check"></i><b>B.20</b> Quick interactive plots with <code>ggplotly</code></a></li>
+<li class="chapter" data-level="B.21" data-path="for-more-information-1.html"><a href="for-more-information-1.html"><i class="fa fa-check"></i><b>B.21</b> For more information</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="level-2-and-level-3-stations" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Level 2 and Level 3 stations<a href="level-2-and-level-3-stations.html#level-2-and-level-3-stations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb117-1"><a href="level-2-and-level-3-stations.html#cb117-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb117-2"><a href="level-2-and-level-3-stations.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(lev2, lev3)) <span class="sc">%&gt;%</span></span>
+<span id="cb117-3"><a href="level-2-and-level-3-stations.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(value <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb117-4"><a href="level-2-and-level-3-stations.html#cb117-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">ifelse</span>(name <span class="sc">==</span> <span class="st">&#39;lev2&#39;</span>, </span>
+<span id="cb117-5"><a href="level-2-and-level-3-stations.html#cb117-5" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&#39;Level 2&#39;</span>, </span>
+<span id="cb117-6"><a href="level-2-and-level-3-stations.html#cb117-6" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&#39;Level 3&#39;</span>))</span>
+<span id="cb117-7"><a href="level-2-and-level-3-stations.html#cb117-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-8"><a href="level-2-and-level-3-stations.html#cb117-8" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Level 2 and Level 3 Charging Stations in US and Canada&quot;</span></span>
+<span id="cb117-9"><a href="level-2-and-level-3-stations.html#cb117-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-10"><a href="level-2-and-level-3-stations.html#cb117-10" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb117-11"><a href="level-2-and-level-3-stations.html#cb117-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x     =</span> lon, </span>
+<span id="cb117-12"><a href="level-2-and-level-3-stations.html#cb117-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">y     =</span> lat, </span>
+<span id="cb117-13"><a href="level-2-and-level-3-stations.html#cb117-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">size  =</span> value, </span>
+<span id="cb117-14"><a href="level-2-and-level-3-stations.html#cb117-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb117-15"><a href="level-2-and-level-3-stations.html#cb117-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">borders</span>(<span class="st">&#39;state&#39;</span>, </span>
+<span id="cb117-16"><a href="level-2-and-level-3-stations.html#cb117-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> publightgray)<span class="sc">+</span></span>
+<span id="cb117-17"><a href="level-2-and-level-3-stations.html#cb117-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">1</span>, </span>
+<span id="cb117-18"><a href="level-2-and-level-3-stations.html#cb117-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> F)<span class="sc">+</span></span>
+<span id="cb117-19"><a href="level-2-and-level-3-stations.html#cb117-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)<span class="sc">+</span></span>
+<span id="cb117-20"><a href="level-2-and-level-3-stations.html#cb117-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title)</span>
+<span id="cb117-21"><a href="level-2-and-level-3-stations.html#cb117-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb117-22"><a href="level-2-and-level-3-stations.html#cb117-22" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb117-23"><a href="level-2-and-level-3-stations.html#cb117-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="st">&#39;map&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb117-24"><a href="level-2-and-level-3-stations.html#cb117-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="dv">3</span>))</span></code></pre></div>
+</details>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="768" /></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="charging-stations-in-us-and-canada.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="level-2-charging-stations-by-network.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bmacgtpm/notes/edit/main/50-02-EV-station-maps.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

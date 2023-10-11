@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>B.20 Quick interactive plots with ggplotly | Data Analysis</title>
+  <meta name="description" content="Course notes for Data Analysis." />
+  <meta name="generator" content="bookdown 0.30.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="B.20 Quick interactive plots with ggplotly | Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Course notes for Data Analysis." />
+  <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="B.20 Quick interactive plots with ggplotly | Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for Data Analysis." />
+  
+
+<meta name="author" content="Brian Macdonald" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="maps-1.html"/>
+<link rel="next" href="for-more-information-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.26/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/dt-ext-colreorder-1.12.1/css/colReorder.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-colreorder-1.12.1/js/dataTables.colReorder.min.js"></script>
+<link href="libs/dt-ext-fixedheader-1.12.1/css/fixedHeader.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedheader-1.12.1/js/dataTables.fixedHeader.min.js"></script>
+<link href="libs/dt-ext-keytable-1.12.1/css/keyTable.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-keytable-1.12.1/js/dataTables.keyTable.min.js"></script>
+<script src="libs/jszip-1.12.1/jszip.min.js"></script>
+<link href="libs/dt-ext-buttons-1.12.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.12.1/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.12.1/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.12.1/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.12.1/js/buttons.print.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.13.0/leaflet-providers_1.13.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">S&DS 361 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="preparation.html"><a href="preparation.html"><i class="fa fa-check"></i><b>1.1</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="preparation.html"><a href="preparation.html#packages"><i class="fa fa-check"></i><b>1.1.1</b> Packages</a></li>
+<li class="chapter" data-level="1.1.2" data-path="preparation.html"><a href="preparation.html#bookmarks"><i class="fa fa-check"></i><b>1.1.2</b> Bookmarks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="1.3" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.3</b> Coding conventions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="coding-conventions.html"><a href="coding-conventions.html#assignment-with---vs"><i class="fa fa-check"></i><b>1.3.1</b> Assignment with <code>&lt;-</code> vs <code>=</code></a></li>
+<li class="chapter" data-level="1.3.2" data-path="coding-conventions.html"><a href="coding-conventions.html#underscore-_-vs-."><i class="fa fa-check"></i><b>1.3.2</b> Underscore <code>_</code> vs <code>.</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="formatting-plots-with-pubtheme.html"><a href="formatting-plots-with-pubtheme.html"><i class="fa fa-check"></i><b>2</b> Formatting plots with <code>pubtheme</code></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="simple-example.html"><a href="simple-example.html"><i class="fa fa-check"></i><b>2.1</b> Simple Example</a></li>
+<li class="chapter" data-level="2.2" data-path="gallery.html"><a href="gallery.html"><i class="fa fa-check"></i><b>2.2</b> Gallery</a></li>
+</ul></li>
+<li class="part"><span><b>I Explore NBA data with <code>tidyverse</code></b></span></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="what-questions-can-we-ask.html"><a href="what-questions-can-we-ask.html"><i class="fa fa-check"></i><b>3.1</b> What questions can we ask?</a></li>
+<li class="chapter" data-level="3.2" data-path="intro-to-nba-games-data.html"><a href="intro-to-nba-games-data.html"><i class="fa fa-check"></i><b>3.2</b> Intro to NBA games data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="game-level-data.html"><a href="game-level-data.html"><i class="fa fa-check"></i><b>4</b> Game level data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="interactive-tables-with-dt.html"><a href="interactive-tables-with-dt.html"><i class="fa fa-check"></i><b>4.1</b> Interactive tables with <code>DT</code></a></li>
+<li class="chapter" data-level="4.2" data-path="recommended-options-with-dt.html"><a href="recommended-options-with-dt.html"><i class="fa fa-check"></i><b>4.2</b> Recommended options with <code>DT</code></a></li>
+<li class="chapter" data-level="4.3" data-path="previous-season-scoring-averages.html"><a href="previous-season-scoring-averages.html"><i class="fa fa-check"></i><b>4.3</b> Previous season scoring averages</a></li>
+<li class="chapter" data-level="4.4" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage</a></li>
+<li class="chapter" data-level="4.5" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.5</b> Home advantage by team</a></li>
+<li class="chapter" data-level="4.6" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.6</b> Points previous vs current season</a></li>
+<li class="chapter" data-level="4.7" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.7</b> Formatting with <code>pubtheme</code></a></li>
+<li class="chapter" data-level="4.8" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.8</b> Scoring vs stronger/weaker opponents</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="schedule-data.html"><a href="schedule-data.html"><i class="fa fa-check"></i><b>5</b> Schedule data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="schedule-matrix-grid-plot.html"><a href="schedule-matrix-grid-plot.html"><i class="fa fa-check"></i><b>5.1</b> Schedule matrix grid plot</a></li>
+<li class="chapter" data-level="5.2" data-path="order-character-vectors-using-factor.html"><a href="order-character-vectors-using-factor.html"><i class="fa fa-check"></i><b>5.2</b> Order character vectors using <code>factor</code></a></li>
+<li class="chapter" data-level="5.3" data-path="schedule-matrix-ordered-by-division.html"><a href="schedule-matrix-ordered-by-division.html"><i class="fa fa-check"></i><b>5.3</b> Schedule matrix, ordered by division</a></li>
+<li class="chapter" data-level="5.4" data-path="schedule-matrix-faceted-by-division.html"><a href="schedule-matrix-faceted-by-division.html"><i class="fa fa-check"></i><b>5.4</b> Schedule matrix, faceted by division</a></li>
+<li class="chapter" data-level="5.5" data-path="schedule-matrix-faceted-by-season.html"><a href="schedule-matrix-faceted-by-season.html"><i class="fa fa-check"></i><b>5.5</b> Schedule matrix faceted by season</a></li>
+<li class="chapter" data-level="5.6" data-path="animated-schedule-matrix.html"><a href="animated-schedule-matrix.html"><i class="fa fa-check"></i><b>5.6</b> Animated Schedule Matrix</a></li>
+<li class="chapter" data-level="5.7" data-path="animated-schedule-matrix-mlb-edition.html"><a href="animated-schedule-matrix-mlb-edition.html"><i class="fa fa-check"></i><b>5.7</b> Animated schedule matrix, MLB edition</a></li>
+<li class="chapter" data-level="5.8" data-path="days-rest-by-team.html"><a href="days-rest-by-team.html"><i class="fa fa-check"></i><b>5.8</b> Days rest by team</a></li>
+<li class="chapter" data-level="5.9" data-path="days-rest-and-game-outcomes.html"><a href="days-rest-and-game-outcomes.html"><i class="fa fa-check"></i><b>5.9</b> Days rest and game outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="travel-data.html"><a href="travel-data.html"><i class="fa fa-check"></i><b>6</b> Travel data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="distance-matrix-grid-plot.html"><a href="distance-matrix-grid-plot.html"><i class="fa fa-check"></i><b>6.1</b> Distance matrix grid plot</a></li>
+<li class="chapter" data-level="6.2" data-path="total-distance-traveled-by-team.html"><a href="total-distance-traveled-by-team.html"><i class="fa fa-check"></i><b>6.2</b> Total distance traveled by team</a></li>
+<li class="chapter" data-level="6.3" data-path="travel-distance-and-game-outcomes.html"><a href="travel-distance-and-game-outcomes.html"><i class="fa fa-check"></i><b>6.3</b> Travel distance and game outcomes</a></li>
+<li class="chapter" data-level="6.4" data-path="travel-paths.html"><a href="travel-paths.html"><i class="fa fa-check"></i><b>6.4</b> Travel paths</a></li>
+<li class="chapter" data-level="6.5" data-path="travel-paths-weighted-by-trips.html"><a href="travel-paths-weighted-by-trips.html"><i class="fa fa-check"></i><b>6.5</b> Travel paths weighted by trips</a></li>
+<li class="chapter" data-level="6.6" data-path="travel-matrix.html"><a href="travel-matrix.html"><i class="fa fa-check"></i><b>6.6</b> Travel matrix</a></li>
+</ul></li>
+<li class="part"><span><b>II Team ratings and game predictions using linear regression</b></span></li>
+<li class="chapter" data-level="7" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="part"><span><b>III EV charging stations</b></span></li>
+<li class="chapter" data-level="8" data-path="explore-ev-charging-station-data.html"><a href="explore-ev-charging-station-data.html"><i class="fa fa-check"></i><b>8</b> Explore EV Charging Station data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="data-prepration.html"><a href="data-prepration.html"><i class="fa fa-check"></i><b>8.2</b> Data prepration</a></li>
+<li class="chapter" data-level="8.3" data-path="column-descriptions.html"><a href="column-descriptions.html"><i class="fa fa-check"></i><b>8.3</b> Column descriptions</a></li>
+<li class="chapter" data-level="8.4" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>8.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>9</b> Maps</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="charging-stations-in-us-and-canada.html"><a href="charging-stations-in-us-and-canada.html"><i class="fa fa-check"></i><b>9.1</b> Charging Stations in US and Canada</a></li>
+<li class="chapter" data-level="9.2" data-path="level-2-and-level-3-stations.html"><a href="level-2-and-level-3-stations.html"><i class="fa fa-check"></i><b>9.2</b> Level 2 and Level 3 stations</a></li>
+<li class="chapter" data-level="9.3" data-path="level-2-charging-stations-by-network.html"><a href="level-2-charging-stations-by-network.html"><i class="fa fa-check"></i><b>9.3</b> Level 2 Charging Stations by Network</a></li>
+<li class="chapter" data-level="9.4" data-path="level-3-charging-stations-by-network.html"><a href="level-3-charging-stations-by-network.html"><i class="fa fa-check"></i><b>9.4</b> Level 3 Charging Stations by Network</a></li>
+<li class="chapter" data-level="9.5" data-path="create-a-month-year-column.html"><a href="create-a-month-year-column.html"><i class="fa fa-check"></i><b>9.5</b> Create a Month Year column</a></li>
+<li class="chapter" data-level="9.6" data-path="level-2-charging-stations-animation.html"><a href="level-2-charging-stations-animation.html"><i class="fa fa-check"></i><b>9.6</b> Level 2 Charging Stations Animation</a></li>
+<li class="chapter" data-level="9.7" data-path="level-3-charging-stations-animation.html"><a href="level-3-charging-stations-animation.html"><i class="fa fa-check"></i><b>9.7</b> Level 3 Charging Stations Animation</a></li>
+<li class="chapter" data-level="9.8" data-path="interative-map-with-leaflet.html"><a href="interative-map-with-leaflet.html"><i class="fa fa-check"></i><b>9.8</b> Interative map with Leaflet</a></li>
+<li class="chapter" data-level="9.9" data-path="plotting-stations-over-census-data.html"><a href="plotting-stations-over-census-data.html"><i class="fa fa-check"></i><b>9.9</b> Plotting stations over census data</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="growth-over-time.html"><a href="growth-over-time.html"><i class="fa fa-check"></i><b>10</b> Growth over time</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="level-2-cumulative-charging-stations-over-time.html"><a href="level-2-cumulative-charging-stations-over-time.html"><i class="fa fa-check"></i><b>10.1</b> Level 2 Cumulative Charging Stations Over Time</a></li>
+<li class="chapter" data-level="10.2" data-path="level-3-cumulative-charging-stations-over-time.html"><a href="level-3-cumulative-charging-stations-over-time.html"><i class="fa fa-check"></i><b>10.2</b> Level 3 Cumulative Charging Stations Over Time</a></li>
+<li class="chapter" data-level="10.3" data-path="level-3-cumulative-stations-line-animation.html"><a href="level-3-cumulative-stations-line-animation.html"><i class="fa fa-check"></i><b>10.3</b> Level 3 Cumulative Stations Line Animation</a></li>
+</ul></li>
+<li class="part"><span><b>IV Random</b></span></li>
+<li class="chapter" data-level="11" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>11</b> Introduction</a></li>
+<li class="chapter" data-level="12" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>12</b> Project Development and planning</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>12.1</b> Brainstorming, determining the end deliverables</a></li>
+<li class="chapter" data-level="12.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>12.2</b> Create a basic framework</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="data-acquistion.html"><a href="data-acquistion.html"><i class="fa fa-check"></i><b>13</b> Data acquistion</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="scrape-html-pages.html"><a href="scrape-html-pages.html"><i class="fa fa-check"></i><b>13.1</b> Scrape HTML pages</a></li>
+<li class="chapter" data-level="13.2" data-path="parsing-html-tables.html"><a href="parsing-html-tables.html"><i class="fa fa-check"></i><b>13.2</b> Parsing HTML tables</a></li>
+<li class="chapter" data-level="13.3" data-path="scraping-pages-that-require-log-in.html"><a href="scraping-pages-that-require-log-in.html"><i class="fa fa-check"></i><b>13.3</b> Scraping pages that require log-in</a></li>
+<li class="chapter" data-level="13.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>13.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
+<li class="chapter" data-level="13.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>13.5</b> Scrape PDFs</a></li>
+<li class="chapter" data-level="13.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>13.6</b> RSelenium, Docker</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>14</b> Data cleaning</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="recordlinkage.html"><a href="recordlinkage.html"><i class="fa fa-check"></i><b>14.1</b> RecordLinkage</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="recordlinkage.html"><a href="recordlinkage.html#example-data"><i class="fa fa-check"></i><b>14.1.1</b> Example data</a></li>
+<li class="chapter" data-level="14.1.2" data-path="recordlinkage.html"><a href="recordlinkage.html#comparededup"><i class="fa fa-check"></i><b>14.1.2</b> Compare/Dedup</a></li>
+<li class="chapter" data-level="14.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>14.1.3</b> Attach names to IDs</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>14.2</b> Data imputation</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>15</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
+<li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>15.3</b> Simulating data</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="simulating-data.html"><a href="simulating-data.html#continuous-and-binary-predictors"><i class="fa fa-check"></i><b>15.3.1</b> Continuous and binary predictors</a></li>
+<li class="chapter" data-level="15.3.2" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.2</b> Linear regression with a continuous predictor</a></li>
+<li class="chapter" data-level="15.3.3" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.3</b> Poisson regression with a continuous predictor</a></li>
+<li class="chapter" data-level="15.3.4" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.4</b> Linear regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="15.3.5" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.5</b> Poisson regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="15.3.6" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.6</b> Linear regression with interaction</a></li>
+<li class="chapter" data-level="15.3.7" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.7</b> Poisson regression with interaction</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>16</b> Shiny</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>16.1</b> Getting started</a></li>
+<li class="chapter" data-level="16.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>16.2</b> Dynamic UI</a></li>
+<li class="chapter" data-level="16.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>16.3</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>17</b> Bayesian statistics</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>17.1</b> Normal</a></li>
+<li class="chapter" data-level="17.2" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>17.2</b> Beta binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>18</b> Regression models</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="other-types-of-regression.html"><a href="other-types-of-regression.html"><i class="fa fa-check"></i><b>18.1</b> Other types of regression</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>19</b> Understanding how functions work</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>19.1</b> Help</a></li>
+<li class="chapter" data-level="19.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>19.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>19.2.1</b> Generic functions</a></li>
+<li class="chapter" data-level="19.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>19.2.2</b> <code>methods</code></a></li>
+<li class="chapter" data-level="19.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>19.2.3</b> <code>getAnywhere</code></a></li>
+<li class="chapter" data-level="19.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>19.2.4</b> Other resources</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>19.3</b> Functions with unquoted arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>20</b> Debugging</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>20.1</b> <code>browser()</code></a></li>
+<li class="chapter" data-level="20.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>20.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>21</b> Testing</a></li>
+<li class="chapter" data-level="22" data-path="estimating-distribution-parameters.html"><a href="estimating-distribution-parameters.html"><i class="fa fa-check"></i><b>22</b> Estimating distribution parameters</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="beta-binomial-1.html"><a href="beta-binomial-1.html"><i class="fa fa-check"></i><b>22.1</b> Beta-binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>23</b> For loops</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>23.1</b> Showing progress</a></li>
+<li class="chapter" data-level="23.2" data-path="parallel-processing-with-foreach.html"><a href="parallel-processing-with-foreach.html"><i class="fa fa-check"></i><b>23.2</b> Parallel processing with <code>foreach</code></a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="efficient-programming.html"><a href="efficient-programming.html"><i class="fa fa-check"></i><b>24</b> Efficient Programming</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>24.1</b> Efficient R Programming online book</a></li>
+<li class="chapter" data-level="24.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>24.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>25</b> Other</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="minimal-reproducible-examples.html"><a href="minimal-reproducible-examples.html"><i class="fa fa-check"></i><b>25.1</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="25.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>25.2</b> Accessible Documents</a></li>
+<li class="chapter" data-level="25.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>25.3</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="25.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>25.4</b> Writing R packages</a></li>
+<li class="chapter" data-level="25.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>25.5</b> Blogdown</a></li>
+<li class="chapter" data-level="25.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>25.6</b> Bookdown</a></li>
+<li class="chapter" data-level="25.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>25.7</b> Quarto</a></li>
+<li class="chapter" data-level="25.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>25.8</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="25.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>25.9</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="25.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>25.10</b> Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>26</b> Not data science</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>26.1</b> Dollar cost averaging example</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="intro-to-nba-games-data-1.html"><a href="intro-to-nba-games-data-1.html"><i class="fa fa-check"></i><b>A.1</b> Intro to NBA games data</a></li>
+<li class="chapter" data-level="A.2" data-path="choosing-rows-with-filter.html"><a href="choosing-rows-with-filter.html"><i class="fa fa-check"></i><b>A.2</b> Choosing rows with <code>filter</code></a></li>
+<li class="chapter" data-level="A.3" data-path="pipe-operator.html"><a href="pipe-operator.html"><i class="fa fa-check"></i><b>A.3</b> Pipe Operator</a></li>
+<li class="chapter" data-level="A.4" data-path="choosing-columns-with-select.html"><a href="choosing-columns-with-select.html"><i class="fa fa-check"></i><b>A.4</b> Choosing columns with <code>select</code></a></li>
+<li class="chapter" data-level="A.5" data-path="checking-data-types-with-str.html"><a href="checking-data-types-with-str.html"><i class="fa fa-check"></i><b>A.5</b> Checking data types with <code>str</code></a></li>
+<li class="chapter" data-level="A.6" data-path="addedit-columns-with-mutate.html"><a href="addedit-columns-with-mutate.html"><i class="fa fa-check"></i><b>A.6</b> Add/Edit columns with <code>mutate</code></a></li>
+<li class="chapter" data-level="A.7" data-path="ordering-rows-with-arrange.html"><a href="ordering-rows-with-arrange.html"><i class="fa fa-check"></i><b>A.7</b> Ordering rows with <code>arrange</code></a></li>
+<li class="chapter" data-level="A.8" data-path="summaries-using-summarise.html"><a href="summaries-using-summarise.html"><i class="fa fa-check"></i><b>A.8</b> Summaries using <code>summarise</code></a></li>
+<li class="chapter" data-level="A.9" data-path="gluing-data.frames-using-bind_rows.html"><a href="gluing-data.frames-using-bind_rows.html"><i class="fa fa-check"></i><b>A.9</b> Gluing data.frames using <code>bind_rows</code></a></li>
+<li class="chapter" data-level="A.10" data-path="summaries-by-team-using-group_by.html"><a href="summaries-by-team-using-group_by.html"><i class="fa fa-check"></i><b>A.10</b> Summaries by team using <code>group_by</code></a></li>
+<li class="chapter" data-level="A.11" data-path="using-mutate-and-group_by.html"><a href="using-mutate-and-group_by.html"><i class="fa fa-check"></i><b>A.11</b> Using <code>mutate</code> and <code>group_by</code></a></li>
+<li class="chapter" data-level="A.12" data-path="using-mutate-and-ifelse.html"><a href="using-mutate-and-ifelse.html"><i class="fa fa-check"></i><b>A.12</b> Using <code>mutate</code> and <code>ifelse</code></a></li>
+<li class="chapter" data-level="A.13" data-path="rearranging-data-with-pivot_wider-and-pivot_longer.html"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html"><i class="fa fa-check"></i><b>A.13</b> Rearranging data with <code>pivot_wider</code> and <code>pivot_longer</code></a></li>
+<li class="chapter" data-level="A.14" data-path="joining-two-data-frames-with-left_join.html"><a href="joining-two-data-frames-with-left_join.html"><i class="fa fa-check"></i><b>A.14</b> Joining two data frames with <code>left_join</code></a></li>
+<li class="chapter" data-level="A.15" data-path="for-more-information.html"><a href="for-more-information.html"><i class="fa fa-check"></i><b>A.15</b> For more information</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="data-visualization-with-ggplot.html"><a href="data-visualization-with-ggplot.html"><i class="fa fa-check"></i><b>B</b> Data visualization with <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="scatter-plot-with-geom_point.html"><a href="scatter-plot-with-geom_point.html"><i class="fa fa-check"></i><b>B.1</b> Scatter plot with <code>geom_point</code></a></li>
+<li class="chapter" data-level="B.2" data-path="color-size-shape.html"><a href="color-size-shape.html"><i class="fa fa-check"></i><b>B.2</b> Color, size, shape</a></li>
+<li class="chapter" data-level="B.3" data-path="formatting-with-the-pubtheme-package.html"><a href="formatting-with-the-pubtheme-package.html"><i class="fa fa-check"></i><b>B.3</b> Formatting with the <code>pubtheme</code> package</a></li>
+<li class="chapter" data-level="B.4" data-path="ggsave.html"><a href="ggsave.html"><i class="fa fa-check"></i><b>B.4</b> <code>ggsave</code></a></li>
+<li class="chapter" data-level="B.5" data-path="trend-line-with-geom_smooth.html"><a href="trend-line-with-geom_smooth.html"><i class="fa fa-check"></i><b>B.5</b> Trend line with <code>geom_smooth</code></a></li>
+<li class="chapter" data-level="B.6" data-path="grouping-observations-with-group.html"><a href="grouping-observations-with-group.html"><i class="fa fa-check"></i><b>B.6</b> Grouping observations with <code>group</code></a></li>
+<li class="chapter" data-level="B.7" data-path="faceting-with-facet_wrap.html"><a href="faceting-with-facet_wrap.html"><i class="fa fa-check"></i><b>B.7</b> Faceting with <code>facet_wrap</code></a></li>
+<li class="chapter" data-level="B.8" data-path="transparency-using-alpha.html"><a href="transparency-using-alpha.html"><i class="fa fa-check"></i><b>B.8</b> Transparency using <code>alpha</code></a></li>
+<li class="chapter" data-level="B.9" data-path="scatter-plot-with-geom_jitter.html"><a href="scatter-plot-with-geom_jitter.html"><i class="fa fa-check"></i><b>B.9</b> Scatter plot with <code>geom_jitter</code></a></li>
+<li class="chapter" data-level="B.10" data-path="hex-bins-geom_hex.html"><a href="hex-bins-geom_hex.html"><i class="fa fa-check"></i><b>B.10</b> Hex bins <code>geom_hex</code></a></li>
+<li class="chapter" data-level="B.11" data-path="bar-plot-geom_col.html"><a href="bar-plot-geom_col.html"><i class="fa fa-check"></i><b>B.11</b> Bar plot <code>geom_col</code></a></li>
+<li class="chapter" data-level="B.12" data-path="color-bars-using-fill.html"><a href="color-bars-using-fill.html"><i class="fa fa-check"></i><b>B.12</b> Color bars using <code>fill</code></a></li>
+<li class="chapter" data-level="B.13" data-path="side-by-side-bar-charts-with-position_dodge.html"><a href="side-by-side-bar-charts-with-position_dodge.html"><i class="fa fa-check"></i><b>B.13</b> Side-by-side bar charts with <code>position_dodge</code></a></li>
+<li class="chapter" data-level="B.14" data-path="text-with-geom_text.html"><a href="text-with-geom_text.html"><i class="fa fa-check"></i><b>B.14</b> Text with <code>geom_text</code></a></li>
+<li class="chapter" data-level="B.15" data-path="histogram-with-geom_histogram.html"><a href="histogram-with-geom_histogram.html"><i class="fa fa-check"></i><b>B.15</b> Histogram with <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="B.16" data-path="line-plot-with-geom_line.html"><a href="line-plot-with-geom_line.html"><i class="fa fa-check"></i><b>B.16</b> Line plot with <code>geom_line</code></a></li>
+<li class="chapter" data-level="B.17" data-path="grid-plot-with-geom_tile.html"><a href="grid-plot-with-geom_tile.html"><i class="fa fa-check"></i><b>B.17</b> Grid plot with <code>geom_tile</code></a></li>
+<li class="chapter" data-level="B.18" data-path="customizing-with-theme.html"><a href="customizing-with-theme.html"><i class="fa fa-check"></i><b>B.18</b> Customizing with <code>theme</code></a></li>
+<li class="chapter" data-level="B.19" data-path="maps-1.html"><a href="maps-1.html"><i class="fa fa-check"></i><b>B.19</b> Maps</a></li>
+<li class="chapter" data-level="B.20" data-path="quick-interactive-plots-with-ggplotly.html"><a href="quick-interactive-plots-with-ggplotly.html"><i class="fa fa-check"></i><b>B.20</b> Quick interactive plots with <code>ggplotly</code></a></li>
+<li class="chapter" data-level="B.21" data-path="for-more-information-1.html"><a href="for-more-information-1.html"><i class="fa fa-check"></i><b>B.21</b> For more information</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="quick-interactive-plots-with-ggplotly" class="section level2 hasAnchor" number="28.20">
+<h2><span class="header-section-number">B.20</span> Quick interactive plots with <code>ggplotly</code><a href="quick-interactive-plots-with-ggplotly.html#quick-interactive-plots-with-ggplotly" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can make any of these plots interactive using <code>ggplotly</code>. By default, a tooltip is created that shows whatever aesthetics are used inside <code>aes()</code>.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb374-1"><a href="quick-interactive-plots-with-ggplotly.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb374-2"><a href="quick-interactive-plots-with-ggplotly.html#cb374-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> ascore, </span>
+<span id="cb374-3"><a href="quick-interactive-plots-with-ggplotly.html#cb374-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> hscore))<span class="sc">+</span></span>
+<span id="cb374-4"><a href="quick-interactive-plots-with-ggplotly.html#cb374-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb374-5"><a href="quick-interactive-plots-with-ggplotly.html#cb374-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-6"><a href="quick-interactive-plots-with-ggplotly.html#cb374-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(g)</span></code></pre></div>
+</details>
+<div id="htmlwidget-4be43ea793a2436fb67f" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4be43ea793a2436fb67f">{"x":{"data":[{"x":[104,121,86,124,110,97,134,106,121,117,98,94,122,113,95,87,110,115,96,91,112,114,115,134,121,123,120,105,121,89,82,103,91,95,118,119,110,107,115,111,104,99,107,86,119,90,111,90,140,106,110,125,106,99,92,96,116,110,115,113,100,102,106,120,104,99,104,122,102,111,101,75,92,113,98,99,109,92,93,82,102,94,99,97,103,123,112,129,113,107,99,85,91,113,94,115,97,111,128,113,103,118,125,117,117,100,113,98,92,109,126,106,108,98,104,92,109,99,107,111,116,95,109,96,110,106,104,85,102,87,102,113,94,90,117,104,114,115,94,94,116,94,106,107,100,126,123,113,109,96,118,92,95,103,109,98,118,117,110,98,118,117,109,108,107,112,112,88,97,123,111,115,109,107,93,96,123,104,103,119,113,78,96,120,89,127,113,101,104,111,102,95,102,115,120,100,106,100,101,121,113,99,103,102,84,100,129,111,98,92,85,117,107,98,97,89,102,98,99,99,89,87,104,90,108,97,104,103,103,104,114,113,108,81,105,118,108,89,123,111,95,108,105,100,105,94,99,91,121,97,104,103,109,102,90,119,110,115,92,109,101,117,112,100,100,100,96,121,124,102,101,113,126,110,93,123,106,124,120,141,103,98,120,88,101,97,132,123,115,96,118,92,113,99,121,105,120,143,107,105,106,101,109,118,123,107,119,99,114,120,98,89,96,117,92,96,110,98,124,125,114,139,87,111,107,103,114,114,103,79,93,119,130,116,105,96,113,116,119,107,98,99,97,112,102,111,145,113,108,130,90,109,97,121,105,127,114,110,95,102,104,104,102,121,102,111,130,120,104,104,136,104,110,119,110,92,102,94,111,95,118,93,93,90,123,123,116,113,87,123,93,127,104,106,103,92,123,94,116,97,103,116,112,132,91,103,102,94,101,95,107,96,111,129,105,113,103,105,124,131,113,107,99,101,111,89,98,116,105,113,92,112,111,124,116,128,133,115,116,100,109,119,103,100,107,105,110,106,90,105,114,98,102,116,102,118,108,108,102,97,91,96,105,106,94,101,104,138,104,115,116,101,102,112,124,98,110,106,116,113,87,116,122,127,83,99,103,105,109,112,117,130,99,110,124,132,114,103,114,89,111,96,132,104,112,127,94,120,97,99,117,91,116,94,136,110,93,112,106,108,108,108,105,80,108,121,120,123,120,124,116,120,113,133,105,111,103,95,104,113,122,108,131,89,115,98,115,118,121,113,114,123,94,110,104,115,108,115,117,90,82,99,114,116,111,129,89,88,105,96,114,118,100,111,130,135,122,121,108,123,75,106,92,113,123,102,101,93,127,88,82,119,99,141,99,108,109,111,98,96,99,116,85,125,87,108,99,118,138,116,111,128,115,109,119,106,85,130,108,89,99,108,114,112,114,118,138,116,87,99,112,92,96,112,94,109,107,117,105,115,103,118,99,125,135,102,121,99,98,114,97,92,106,133,95,107,98,86,112,111,128,133,116,98,96,104,122,111,92,119,110,114,121,109,102,101,122,117,116,102,98,103,90,109,109,108,103,87,127,92,111,125,91,113,115,107,95,114,116,102,93,113,109,111,109,134,106,116,75,113,110,107,92,111,118,105,124,96,104,158,99,105,132,87,115,108,124,122,113,114,109,125,116,114,92,103,124,95,101,105,107,106,115,136,116,121,110,106,108,105,122,81,96,106,92,119,90,116,111,124,115,115,106,98,111,120,107,119,106,94,104,101,120,104,110,114,120,115,128,112,98,113,102,106,114,122,102,102,96,137,103,95,104,135,115,105,104,137,120,116,85,94,119,104,127,110,116,121,115,86,97,109,112,126,114,131,134,113,92,85,119,105,117,121,132,112,116,107,105,139,112,99,122,136,102,120,141,87,99,115,105,101,111,110,93,125,123,124,103,129,95,104,111,101,109,90,122,127,85,94,119,121,107,116,135,96,120,117,121,118,103,114,111,108,112,130,101,123,123,125,111,117,111,103,132,128,108,114,124,129,129,105,117,109,133,115,157,111,93,110,126,116,129,86,100,113,107,118,125,123,124,99,107,127,106,105,131,99,133,127,103,109,114,113,98,108,113,122,119,132,90,119,119,95,108,115,111,113,108,113,107,124,114,101,90,118,103,117,106,119,138,121,82,96,117,113,116,120,116,130,96,112,116,123,122,131,124,110,103,81,106,110,106,127,132,97,142,111,102,109,106,85,107,119,130,108,102,115,111,115,114,129,113,114,106,109,117,102,142,105,113,103,110,118,125,127,109,91,113,119,128,105,116,95,111,125,106,107,134,114,117,112,103,149,113,114,111,135,150,131,98,129,113,98,127,118,106,103,110,135,110,120,104,134,102,126,92,124,121,108,128,116,123,97,105,101,119,109,108,119,85,122,98,110,93,124,108,127,117,108,132,97,99,119,106,106,131,103,115,98,117,90,126,133,91,102,118,120,125,110,97,101,121,140,109,102,103,104,122,125,111,95,110,100,101,115,98,107,102,91,114,110,107,119,100,108,104,112,104,115,134,95,123,104,100,113,132,101,112,115,123,110,118,107,107,117,112,121,106,136,125,125,110,102,120,130,120,107,94,109,114,136,111,114,122,153,102,110,123,103,107,127,115,119,114,118,100,109,121,114,139,129,118,102,92,96,112,131,127,94,132,115,105,108,110,115,123,115,116,109,101,117,103,110,131,121,112,109,121,94,114,101,101,111,78,109,133,107,115,131,114,98,100,114,120,124,106,139,146,111,94,126,130,108,115,116,111,128,120,88,130,107,99,111,91,114,86,99,104,97,106,96,125,105,107,104,114,126,118,104,114,110,111,118,102,109,99,119,110,103,121,77,116,103,109,97,94,100,98,115,132,98,114,117,101,92,114,101,86,103,109,94,79,112,101,108,101,98,116,85,80,95,110,99,86,108,96,81,123,107,87,127,117,109,109,82,109,93,110,111,100,120,88,100,107,94,103],"y":[127,114,107,121,98,123,138,124,132,97,83,88,123,115,137,113,101,105,102,124,128,109,83,135,96,112,114,134,111,96,97,95,102,101,121,107,104,97,103,95,122,87,98,116,109,107,108,104,129,98,122,121,116,112,79,116,107,107,123,108,118,99,93,111,101,104,103,91,110,122,113,106,111,109,105,114,110,101,91,103,93,122,107,94,110,117,115,103,125,95,105,95,117,104,99,97,106,118,114,110,113,131,110,89,119,112,119,111,114,108,115,108,117,103,107,79,100,112,104,123,98,78,98,90,140,110,84,126,101,115,89,98,95,105,121,107,105,118,99,91,103,101,120,120,107,109,126,127,104,113,125,108,118,96,117,110,109,120,123,101,108,136,119,100,117,104,100,104,94,90,100,109,112,83,119,105,109,92,105,94,122,98,104,112,91,121,118,112,92,105,129,124,106,89,96,120,114,90,111,103,118,96,90,136,92,105,107,129,92,106,120,99,112,105,107,101,109,113,109,110,97,97,98,115,120,112,89,119,89,112,108,115,130,94,102,121,89,96,105,118,138,117,115,103,111,111,106,97,116,126,119,109,103,94,108,118,96,111,123,77,113,112,104,119,106,92,116,125,106,127,113,118,113,104,114,104,99,116,115,137,118,97,109,96,99,114,100,88,133,107,97,105,107,90,120,127,114,146,104,90,110,128,97,100,104,129,133,116,96,111,100,102,101,92,110,104,112,91,115,127,110,107,88,85,115,108,111,83,114,152,97,115,137,118,110,118,104,101,115,91,96,104,90,107,124,107,117,99,118,127,102,108,109,110,90,124,103,116,126,90,108,112,117,109,99,114,142,114,96,114,104,113,109,116,106,115,122,104,123,108,96,106,109,111,114,106,95,105,90,124,102,112,106,113,117,118,98,106,111,112,84,104,97,126,126,117,100,105,124,111,113,120,107,131,96,103,124,119,107,115,110,104,114,96,99,124,118,103,114,122,110,116,107,105,125,126,115,105,107,93,103,90,104,119,114,111,115,137,100,100,121,113,112,92,99,133,103,90,114,111,105,125,89,126,108,111,98,110,113,107,128,113,95,115,117,96,104,118,107,117,101,120,115,102,93,144,100,113,144,117,96,118,123,104,108,117,113,108,109,86,117,88,123,108,119,110,95,105,115,104,131,82,108,85,118,102,110,96,139,106,120,123,118,95,116,118,110,116,116,111,117,119,136,99,120,116,108,86,108,115,104,115,136,103,104,102,106,104,124,133,122,110,104,106,129,109,102,109,111,98,99,97,111,106,140,121,106,118,108,101,101,134,119,121,106,105,130,109,122,100,99,114,97,125,108,100,105,106,119,103,96,121,113,123,95,114,108,91,101,111,103,126,87,128,133,116,95,122,112,125,91,124,91,98,100,112,108,109,116,113,118,140,126,85,109,124,96,109,103,111,94,108,133,114,101,98,102,108,120,110,96,112,119,102,108,104,107,104,88,121,87,104,119,139,101,114,117,102,110,104,130,131,111,102,118,117,134,102,104,118,123,126,117,101,91,111,118,102,105,101,121,105,94,105,105,110,113,94,133,94,117,136,104,91,109,113,114,105,87,110,95,117,115,110,107,104,96,115,128,125,105,117,130,102,110,111,118,110,121,126,115,97,112,105,124,123,134,131,110,121,119,110,105,117,108,119,120,115,103,132,97,110,90,100,130,129,115,126,110,115,108,98,116,100,122,122,93,122,121,120,126,130,110,112,101,108,113,118,103,99,108,112,114,115,111,126,127,124,117,95,107,105,125,131,125,115,101,93,93,108,113,80,86,115,122,118,124,113,107,83,98,103,108,113,124,98,101,100,132,116,110,135,133,91,109,116,114,95,105,111,132,107,98,109,107,97,114,131,112,120,113,114,134,121,108,113,119,100,97,117,132,106,115,109,103,118,110,114,112,120,105,119,121,135,120,120,107,123,109,103,128,109,99,124,87,103,126,116,124,125,91,106,106,113,111,109,106,119,120,118,107,103,142,106,95,110,112,119,104,106,125,102,102,114,102,100,153,119,125,115,123,110,133,92,127,104,128,114,109,95,92,98,101,126,130,118,110,112,97,122,119,104,129,100,107,109,116,114,98,127,120,107,120,125,123,112,132,122,106,107,120,130,115,116,124,112,97,114,111,125,101,135,99,124,123,114,124,126,93,138,104,123,103,133,132,115,131,117,111,124,123,113,121,124,121,112,115,132,99,115,100,123,77,104,139,102,132,124,90,101,108,100,102,118,112,122,112,104,120,117,100,114,118,127,134,115,122,101,104,108,131,130,114,92,140,118,102,110,116,103,111,126,112,139,122,110,120,102,108,115,105,112,111,128,109,114,116,100,88,126,125,122,124,120,129,97,121,91,118,120,123,119,128,100,120,111,127,113,129,138,90,98,129,108,88,104,93,124,112,110,123,115,113,115,114,113,120,106,127,126,111,94,121,96,110,118,104,132,116,109,125,122,106,130,126,114,133,117,97,106,103,116,121,97,107,98,94,113,127,131,110,95,103,110,114,116,114,134,102,123,131,123,120,109,123,109,123,107,115,121,130,128,116,94,103,107,111,118,98,118,114,118,127,125,112,135,119,131,102,122,111,130,130,122,117,119,89,101,128,135,111,109,122,101,144,88,119,90,117,109,132,118,112,144,113,117,108,122,106,98,114,144,118,118,121,120,109,121,97,113,137,94,118,98,113,127,128,122,127,127,119,128,120,105,128,113,117,118,117,101,92,117,94,141,133,120,118,110,141,125,105,134,114,124,133,109,80,107,130,138,117,123,93,131,115,115,93,110,110,112,126,124,114,115,114,101,110,118,113,95,111,111,81,119,110,103,100,95,86,118,126,102,112,88,111,112,97,116,102,109,97,96,106,116,89,106,121,106,109,119,129,103,99,142,103,116,111,101,108,120,110,134,107,90,113,95,110,109,90,118,112,102,126,103,100,102,119,80,120,103,96,108,107,116,97,104,90],"text":["ascore: 104<br />hscore: 127","ascore: 121<br />hscore: 114","ascore:  86<br />hscore: 107","ascore: 124<br />hscore: 121","ascore: 110<br />hscore:  98","ascore:  97<br />hscore: 123","ascore: 134<br />hscore: 138","ascore: 106<br />hscore: 124","ascore: 121<br />hscore: 132","ascore: 117<br />hscore:  97","ascore:  98<br />hscore:  83","ascore:  94<br />hscore:  88","ascore: 122<br />hscore: 123","ascore: 113<br />hscore: 115","ascore:  95<br />hscore: 137","ascore:  87<br />hscore: 113","ascore: 110<br />hscore: 101","ascore: 115<br />hscore: 105","ascore:  96<br />hscore: 102","ascore:  91<br />hscore: 124","ascore: 112<br />hscore: 128","ascore: 114<br />hscore: 109","ascore: 115<br />hscore:  83","ascore: 134<br />hscore: 135","ascore: 121<br />hscore:  96","ascore: 123<br />hscore: 112","ascore: 120<br />hscore: 114","ascore: 105<br />hscore: 134","ascore: 121<br />hscore: 111","ascore:  89<br />hscore:  96","ascore:  82<br />hscore:  97","ascore: 103<br />hscore:  95","ascore:  91<br />hscore: 102","ascore:  95<br />hscore: 101","ascore: 118<br />hscore: 121","ascore: 119<br />hscore: 107","ascore: 110<br />hscore: 104","ascore: 107<br />hscore:  97","ascore: 115<br />hscore: 103","ascore: 111<br />hscore:  95","ascore: 104<br />hscore: 122","ascore:  99<br />hscore:  87","ascore: 107<br />hscore:  98","ascore:  86<br />hscore: 116","ascore: 119<br />hscore: 109","ascore:  90<br />hscore: 107","ascore: 111<br />hscore: 108","ascore:  90<br />hscore: 104","ascore: 140<br />hscore: 129","ascore: 106<br />hscore:  98","ascore: 110<br />hscore: 122","ascore: 125<br />hscore: 121","ascore: 106<br />hscore: 116","ascore:  99<br />hscore: 112","ascore:  92<br />hscore:  79","ascore:  96<br />hscore: 116","ascore: 116<br />hscore: 107","ascore: 110<br />hscore: 107","ascore: 115<br />hscore: 123","ascore: 113<br />hscore: 108","ascore: 100<br />hscore: 118","ascore: 102<br />hscore:  99","ascore: 106<br />hscore:  93","ascore: 120<br />hscore: 111","ascore: 104<br />hscore: 101","ascore:  99<br />hscore: 104","ascore: 104<br />hscore: 103","ascore: 122<br />hscore:  91","ascore: 102<br />hscore: 110","ascore: 111<br />hscore: 122","ascore: 101<br />hscore: 113","ascore:  75<br />hscore: 106","ascore:  92<br />hscore: 111","ascore: 113<br />hscore: 109","ascore:  98<br />hscore: 105","ascore:  99<br />hscore: 114","ascore: 109<br />hscore: 110","ascore:  92<br />hscore: 101","ascore:  93<br />hscore:  91","ascore:  82<br />hscore: 103","ascore: 102<br />hscore:  93","ascore:  94<br />hscore: 122","ascore:  99<br />hscore: 107","ascore:  97<br />hscore:  94","ascore: 103<br />hscore: 110","ascore: 123<br />hscore: 117","ascore: 112<br />hscore: 115","ascore: 129<br />hscore: 103","ascore: 113<br />hscore: 125","ascore: 107<br />hscore:  95","ascore:  99<br />hscore: 105","ascore:  85<br />hscore:  95","ascore:  91<br />hscore: 117","ascore: 113<br />hscore: 104","ascore:  94<br />hscore:  99","ascore: 115<br />hscore:  97","ascore:  97<br />hscore: 106","ascore: 111<br />hscore: 118","ascore: 128<br />hscore: 114","ascore: 113<br />hscore: 110","ascore: 103<br />hscore: 113","ascore: 118<br />hscore: 131","ascore: 125<br />hscore: 110","ascore: 117<br />hscore:  89","ascore: 117<br />hscore: 119","ascore: 100<br />hscore: 112","ascore: 113<br />hscore: 119","ascore:  98<br />hscore: 111","ascore:  92<br />hscore: 114","ascore: 109<br />hscore: 108","ascore: 126<br />hscore: 115","ascore: 106<br />hscore: 108","ascore: 108<br />hscore: 117","ascore:  98<br />hscore: 103","ascore: 104<br />hscore: 107","ascore:  92<br />hscore:  79","ascore: 109<br />hscore: 100","ascore:  99<br />hscore: 112","ascore: 107<br />hscore: 104","ascore: 111<br />hscore: 123","ascore: 116<br />hscore:  98","ascore:  95<br />hscore:  78","ascore: 109<br />hscore:  98","ascore:  96<br />hscore:  90","ascore: 110<br />hscore: 140","ascore: 106<br />hscore: 110","ascore: 104<br />hscore:  84","ascore:  85<br />hscore: 126","ascore: 102<br />hscore: 101","ascore:  87<br />hscore: 115","ascore: 102<br />hscore:  89","ascore: 113<br />hscore:  98","ascore:  94<br />hscore:  95","ascore:  90<br />hscore: 105","ascore: 117<br />hscore: 121","ascore: 104<br />hscore: 107","ascore: 114<br />hscore: 105","ascore: 115<br />hscore: 118","ascore:  94<br />hscore:  99","ascore:  94<br />hscore:  91","ascore: 116<br />hscore: 103","ascore:  94<br />hscore: 101","ascore: 106<br />hscore: 120","ascore: 107<br />hscore: 120","ascore: 100<br />hscore: 107","ascore: 126<br />hscore: 109","ascore: 123<br />hscore: 126","ascore: 113<br />hscore: 127","ascore: 109<br />hscore: 104","ascore:  96<br />hscore: 113","ascore: 118<br />hscore: 125","ascore:  92<br />hscore: 108","ascore:  95<br />hscore: 118","ascore: 103<br />hscore:  96","ascore: 109<br />hscore: 117","ascore:  98<br />hscore: 110","ascore: 118<br />hscore: 109","ascore: 117<br />hscore: 120","ascore: 110<br />hscore: 123","ascore:  98<br />hscore: 101","ascore: 118<br />hscore: 108","ascore: 117<br />hscore: 136","ascore: 109<br />hscore: 119","ascore: 108<br />hscore: 100","ascore: 107<br />hscore: 117","ascore: 112<br />hscore: 104","ascore: 112<br />hscore: 100","ascore:  88<br />hscore: 104","ascore:  97<br />hscore:  94","ascore: 123<br />hscore:  90","ascore: 111<br />hscore: 100","ascore: 115<br />hscore: 109","ascore: 109<br />hscore: 112","ascore: 107<br />hscore:  83","ascore:  93<br />hscore: 119","ascore:  96<br />hscore: 105","ascore: 123<br />hscore: 109","ascore: 104<br />hscore:  92","ascore: 103<br />hscore: 105","ascore: 119<br />hscore:  94","ascore: 113<br />hscore: 122","ascore:  78<br />hscore:  98","ascore:  96<br />hscore: 104","ascore: 120<br />hscore: 112","ascore:  89<br />hscore:  91","ascore: 127<br />hscore: 121","ascore: 113<br />hscore: 118","ascore: 101<br />hscore: 112","ascore: 104<br />hscore:  92","ascore: 111<br />hscore: 105","ascore: 102<br />hscore: 129","ascore:  95<br />hscore: 124","ascore: 102<br />hscore: 106","ascore: 115<br />hscore:  89","ascore: 120<br />hscore:  96","ascore: 100<br />hscore: 120","ascore: 106<br />hscore: 114","ascore: 100<br />hscore:  90","ascore: 101<br />hscore: 111","ascore: 121<br />hscore: 103","ascore: 113<br />hscore: 118","ascore:  99<br />hscore:  96","ascore: 103<br />hscore:  90","ascore: 102<br />hscore: 136","ascore:  84<br />hscore:  92","ascore: 100<br />hscore: 105","ascore: 129<br />hscore: 107","ascore: 111<br />hscore: 129","ascore:  98<br />hscore:  92","ascore:  92<br />hscore: 106","ascore:  85<br />hscore: 120","ascore: 117<br />hscore:  99","ascore: 107<br />hscore: 112","ascore:  98<br />hscore: 105","ascore:  97<br />hscore: 107","ascore:  89<br />hscore: 101","ascore: 102<br />hscore: 109","ascore:  98<br />hscore: 113","ascore:  99<br />hscore: 109","ascore:  99<br />hscore: 110","ascore:  89<br />hscore:  97","ascore:  87<br />hscore:  97","ascore: 104<br />hscore:  98","ascore:  90<br />hscore: 115","ascore: 108<br />hscore: 120","ascore:  97<br />hscore: 112","ascore: 104<br />hscore:  89","ascore: 103<br />hscore: 119","ascore: 103<br />hscore:  89","ascore: 104<br />hscore: 112","ascore: 114<br />hscore: 108","ascore: 113<br />hscore: 115","ascore: 108<br />hscore: 130","ascore:  81<br />hscore:  94","ascore: 105<br />hscore: 102","ascore: 118<br />hscore: 121","ascore: 108<br />hscore:  89","ascore:  89<br />hscore:  96","ascore: 123<br />hscore: 105","ascore: 111<br />hscore: 118","ascore:  95<br />hscore: 138","ascore: 108<br />hscore: 117","ascore: 105<br />hscore: 115","ascore: 100<br />hscore: 103","ascore: 105<br />hscore: 111","ascore:  94<br />hscore: 111","ascore:  99<br />hscore: 106","ascore:  91<br />hscore:  97","ascore: 121<br />hscore: 116","ascore:  97<br />hscore: 126","ascore: 104<br />hscore: 119","ascore: 103<br />hscore: 109","ascore: 109<br />hscore: 103","ascore: 102<br />hscore:  94","ascore:  90<br />hscore: 108","ascore: 119<br />hscore: 118","ascore: 110<br />hscore:  96","ascore: 115<br />hscore: 111","ascore:  92<br />hscore: 123","ascore: 109<br />hscore:  77","ascore: 101<br />hscore: 113","ascore: 117<br />hscore: 112","ascore: 112<br />hscore: 104","ascore: 100<br />hscore: 119","ascore: 100<br />hscore: 106","ascore: 100<br />hscore:  92","ascore:  96<br />hscore: 116","ascore: 121<br />hscore: 125","ascore: 124<br />hscore: 106","ascore: 102<br />hscore: 127","ascore: 101<br />hscore: 113","ascore: 113<br />hscore: 118","ascore: 126<br />hscore: 113","ascore: 110<br />hscore: 104","ascore:  93<br />hscore: 114","ascore: 123<br />hscore: 104","ascore: 106<br />hscore:  99","ascore: 124<br />hscore: 116","ascore: 120<br />hscore: 115","ascore: 141<br />hscore: 137","ascore: 103<br />hscore: 118","ascore:  98<br />hscore:  97","ascore: 120<br />hscore: 109","ascore:  88<br />hscore:  96","ascore: 101<br />hscore:  99","ascore:  97<br />hscore: 114","ascore: 132<br />hscore: 100","ascore: 123<br />hscore:  88","ascore: 115<br />hscore: 133","ascore:  96<br />hscore: 107","ascore: 118<br />hscore:  97","ascore:  92<br />hscore: 105","ascore: 113<br />hscore: 107","ascore:  99<br />hscore:  90","ascore: 121<br />hscore: 120","ascore: 105<br />hscore: 127","ascore: 120<br />hscore: 114","ascore: 143<br />hscore: 146","ascore: 107<br />hscore: 104","ascore: 105<br />hscore:  90","ascore: 106<br />hscore: 110","ascore: 101<br />hscore: 128","ascore: 109<br />hscore:  97","ascore: 118<br />hscore: 100","ascore: 123<br />hscore: 104","ascore: 107<br />hscore: 129","ascore: 119<br />hscore: 133","ascore:  99<br />hscore: 116","ascore: 114<br />hscore:  96","ascore: 120<br />hscore: 111","ascore:  98<br />hscore: 100","ascore:  89<br />hscore: 102","ascore:  96<br />hscore: 101","ascore: 117<br />hscore:  92","ascore:  92<br />hscore: 110","ascore:  96<br />hscore: 104","ascore: 110<br />hscore: 112","ascore:  98<br />hscore:  91","ascore: 124<br />hscore: 115","ascore: 125<br />hscore: 127","ascore: 114<br />hscore: 110","ascore: 139<br />hscore: 107","ascore:  87<br />hscore:  88","ascore: 111<br />hscore:  85","ascore: 107<br />hscore: 115","ascore: 103<br />hscore: 108","ascore: 114<br />hscore: 111","ascore: 114<br />hscore:  83","ascore: 103<br />hscore: 114","ascore:  79<br />hscore: 152","ascore:  93<br />hscore:  97","ascore: 119<br />hscore: 115","ascore: 130<br />hscore: 137","ascore: 116<br />hscore: 118","ascore: 105<br />hscore: 110","ascore:  96<br />hscore: 118","ascore: 113<br />hscore: 104","ascore: 116<br />hscore: 101","ascore: 119<br />hscore: 115","ascore: 107<br />hscore:  91","ascore:  98<br />hscore:  96","ascore:  99<br />hscore: 104","ascore:  97<br />hscore:  90","ascore: 112<br />hscore: 107","ascore: 102<br />hscore: 124","ascore: 111<br />hscore: 107","ascore: 145<br />hscore: 117","ascore: 113<br />hscore:  99","ascore: 108<br />hscore: 118","ascore: 130<br />hscore: 127","ascore:  90<br />hscore: 102","ascore: 109<br />hscore: 108","ascore:  97<br />hscore: 109","ascore: 121<br />hscore: 110","ascore: 105<br />hscore:  90","ascore: 127<br />hscore: 124","ascore: 114<br />hscore: 103","ascore: 110<br />hscore: 116","ascore:  95<br />hscore: 126","ascore: 102<br />hscore:  90","ascore: 104<br />hscore: 108","ascore: 104<br />hscore: 112","ascore: 102<br />hscore: 117","ascore: 121<br />hscore: 109","ascore: 102<br />hscore:  99","ascore: 111<br />hscore: 114","ascore: 130<br />hscore: 142","ascore: 120<br />hscore: 114","ascore: 104<br />hscore:  96","ascore: 104<br />hscore: 114","ascore: 136<br />hscore: 104","ascore: 104<br />hscore: 113","ascore: 110<br />hscore: 109","ascore: 119<br />hscore: 116","ascore: 110<br />hscore: 106","ascore:  92<br />hscore: 115","ascore: 102<br />hscore: 122","ascore:  94<br />hscore: 104","ascore: 111<br />hscore: 123","ascore:  95<br />hscore: 108","ascore: 118<br />hscore:  96","ascore:  93<br />hscore: 106","ascore:  93<br />hscore: 109","ascore:  90<br />hscore: 111","ascore: 123<br />hscore: 114","ascore: 123<br />hscore: 106","ascore: 116<br />hscore:  95","ascore: 113<br />hscore: 105","ascore:  87<br />hscore:  90","ascore: 123<br />hscore: 124","ascore:  93<br />hscore: 102","ascore: 127<br />hscore: 112","ascore: 104<br />hscore: 106","ascore: 106<br />hscore: 113","ascore: 103<br />hscore: 117","ascore:  92<br />hscore: 118","ascore: 123<br />hscore:  98","ascore:  94<br />hscore: 106","ascore: 116<br />hscore: 111","ascore:  97<br />hscore: 112","ascore: 103<br />hscore:  84","ascore: 116<br />hscore: 104","ascore: 112<br />hscore:  97","ascore: 132<br />hscore: 126","ascore:  91<br />hscore: 126","ascore: 103<br />hscore: 117","ascore: 102<br />hscore: 100","ascore:  94<br />hscore: 105","ascore: 101<br />hscore: 124","ascore:  95<br />hscore: 111","ascore: 107<br />hscore: 113","ascore:  96<br />hscore: 120","ascore: 111<br />hscore: 107","ascore: 129<br />hscore: 131","ascore: 105<br />hscore:  96","ascore: 113<br />hscore: 103","ascore: 103<br />hscore: 124","ascore: 105<br />hscore: 119","ascore: 124<br />hscore: 107","ascore: 131<br />hscore: 115","ascore: 113<br />hscore: 110","ascore: 107<br />hscore: 104","ascore:  99<br />hscore: 114","ascore: 101<br />hscore:  96","ascore: 111<br />hscore:  99","ascore:  89<br />hscore: 124","ascore:  98<br />hscore: 118","ascore: 116<br />hscore: 103","ascore: 105<br />hscore: 114","ascore: 113<br />hscore: 122","ascore:  92<br />hscore: 110","ascore: 112<br />hscore: 116","ascore: 111<br />hscore: 107","ascore: 124<br />hscore: 105","ascore: 116<br />hscore: 125","ascore: 128<br />hscore: 126","ascore: 133<br />hscore: 115","ascore: 115<br />hscore: 105","ascore: 116<br />hscore: 107","ascore: 100<br />hscore:  93","ascore: 109<br />hscore: 103","ascore: 119<br />hscore:  90","ascore: 103<br />hscore: 104","ascore: 100<br />hscore: 119","ascore: 107<br />hscore: 114","ascore: 105<br />hscore: 111","ascore: 110<br />hscore: 115","ascore: 106<br />hscore: 137","ascore:  90<br />hscore: 100","ascore: 105<br />hscore: 100","ascore: 114<br />hscore: 121","ascore:  98<br />hscore: 113","ascore: 102<br />hscore: 112","ascore: 116<br />hscore:  92","ascore: 102<br />hscore:  99","ascore: 118<br />hscore: 133","ascore: 108<br />hscore: 103","ascore: 108<br />hscore:  90","ascore: 102<br />hscore: 114","ascore:  97<br />hscore: 111","ascore:  91<br />hscore: 105","ascore:  96<br />hscore: 125","ascore: 105<br />hscore:  89","ascore: 106<br />hscore: 126","ascore:  94<br />hscore: 108","ascore: 101<br />hscore: 111","ascore: 104<br />hscore:  98","ascore: 138<br />hscore: 110","ascore: 104<br />hscore: 113","ascore: 115<br />hscore: 107","ascore: 116<br />hscore: 128","ascore: 101<br />hscore: 113","ascore: 102<br />hscore:  95","ascore: 112<br />hscore: 115","ascore: 124<br />hscore: 117","ascore:  98<br />hscore:  96","ascore: 110<br />hscore: 104","ascore: 106<br />hscore: 118","ascore: 116<br />hscore: 107","ascore: 113<br />hscore: 117","ascore:  87<br />hscore: 101","ascore: 116<br />hscore: 120","ascore: 122<br />hscore: 115","ascore: 127<br />hscore: 102","ascore:  83<br />hscore:  93","ascore:  99<br />hscore: 144","ascore: 103<br />hscore: 100","ascore: 105<br />hscore: 113","ascore: 109<br />hscore: 144","ascore: 112<br />hscore: 117","ascore: 117<br />hscore:  96","ascore: 130<br />hscore: 118","ascore:  99<br />hscore: 123","ascore: 110<br />hscore: 104","ascore: 124<br />hscore: 108","ascore: 132<br />hscore: 117","ascore: 114<br />hscore: 113","ascore: 103<br />hscore: 108","ascore: 114<br />hscore: 109","ascore:  89<br />hscore:  86","ascore: 111<br />hscore: 117","ascore:  96<br />hscore:  88","ascore: 132<br />hscore: 123","ascore: 104<br />hscore: 108","ascore: 112<br />hscore: 119","ascore: 127<br />hscore: 110","ascore:  94<br />hscore:  95","ascore: 120<br />hscore: 105","ascore:  97<br />hscore: 115","ascore:  99<br />hscore: 104","ascore: 117<br />hscore: 131","ascore:  91<br />hscore:  82","ascore: 116<br />hscore: 108","ascore:  94<br />hscore:  85","ascore: 136<br />hscore: 118","ascore: 110<br />hscore: 102","ascore:  93<br />hscore: 110","ascore: 112<br />hscore:  96","ascore: 106<br />hscore: 139","ascore: 108<br />hscore: 106","ascore: 108<br />hscore: 120","ascore: 108<br />hscore: 123","ascore: 105<br />hscore: 118","ascore:  80<br />hscore:  95","ascore: 108<br />hscore: 116","ascore: 121<br />hscore: 118","ascore: 120<br />hscore: 110","ascore: 123<br />hscore: 116","ascore: 120<br />hscore: 116","ascore: 124<br />hscore: 111","ascore: 116<br />hscore: 117","ascore: 120<br />hscore: 119","ascore: 113<br />hscore: 136","ascore: 133<br />hscore:  99","ascore: 105<br />hscore: 120","ascore: 111<br />hscore: 116","ascore: 103<br />hscore: 108","ascore:  95<br />hscore:  86","ascore: 104<br />hscore: 108","ascore: 113<br />hscore: 115","ascore: 122<br />hscore: 104","ascore: 108<br />hscore: 115","ascore: 131<br />hscore: 136","ascore:  89<br />hscore: 103","ascore: 115<br />hscore: 104","ascore:  98<br />hscore: 102","ascore: 115<br />hscore: 106","ascore: 118<br />hscore: 104","ascore: 121<br />hscore: 124","ascore: 113<br />hscore: 133","ascore: 114<br />hscore: 122","ascore: 123<br />hscore: 110","ascore:  94<br />hscore: 104","ascore: 110<br />hscore: 106","ascore: 104<br />hscore: 129","ascore: 115<br />hscore: 109","ascore: 108<br />hscore: 102","ascore: 115<br />hscore: 109","ascore: 117<br />hscore: 111","ascore:  90<br />hscore:  98","ascore:  82<br />hscore:  99","ascore:  99<br />hscore:  97","ascore: 114<br />hscore: 111","ascore: 116<br />hscore: 106","ascore: 111<br />hscore: 140","ascore: 129<br />hscore: 121","ascore:  89<br />hscore: 106","ascore:  88<br />hscore: 118","ascore: 105<br />hscore: 108","ascore:  96<br />hscore: 101","ascore: 114<br />hscore: 101","ascore: 118<br />hscore: 134","ascore: 100<br />hscore: 119","ascore: 111<br />hscore: 121","ascore: 130<br />hscore: 106","ascore: 135<br />hscore: 105","ascore: 122<br />hscore: 130","ascore: 121<br />hscore: 109","ascore: 108<br />hscore: 122","ascore: 123<br />hscore: 100","ascore:  75<br />hscore:  99","ascore: 106<br />hscore: 114","ascore:  92<br />hscore:  97","ascore: 113<br />hscore: 125","ascore: 123<br />hscore: 108","ascore: 102<br />hscore: 100","ascore: 101<br />hscore: 105","ascore:  93<br />hscore: 106","ascore: 127<br />hscore: 119","ascore:  88<br />hscore: 103","ascore:  82<br />hscore:  96","ascore: 119<br />hscore: 121","ascore:  99<br />hscore: 113","ascore: 141<br />hscore: 123","ascore:  99<br />hscore:  95","ascore: 108<br />hscore: 114","ascore: 109<br />hscore: 108","ascore: 111<br />hscore:  91","ascore:  98<br />hscore: 101","ascore:  96<br />hscore: 111","ascore:  99<br />hscore: 103","ascore: 116<br />hscore: 126","ascore:  85<br />hscore:  87","ascore: 125<br />hscore: 128","ascore:  87<br />hscore: 133","ascore: 108<br />hscore: 116","ascore:  99<br />hscore:  95","ascore: 118<br />hscore: 122","ascore: 138<br />hscore: 112","ascore: 116<br />hscore: 125","ascore: 111<br />hscore:  91","ascore: 128<br />hscore: 124","ascore: 115<br />hscore:  91","ascore: 109<br />hscore:  98","ascore: 119<br />hscore: 100","ascore: 106<br />hscore: 112","ascore:  85<br />hscore: 108","ascore: 130<br />hscore: 109","ascore: 108<br />hscore: 116","ascore:  89<br />hscore: 113","ascore:  99<br />hscore: 118","ascore: 108<br />hscore: 140","ascore: 114<br />hscore: 126","ascore: 112<br />hscore:  85","ascore: 114<br />hscore: 109","ascore: 118<br />hscore: 124","ascore: 138<br />hscore:  96","ascore: 116<br />hscore: 109","ascore:  87<br />hscore: 103","ascore:  99<br />hscore: 111","ascore: 112<br />hscore:  94","ascore:  92<br />hscore: 108","ascore:  96<br />hscore: 133","ascore: 112<br />hscore: 114","ascore:  94<br />hscore: 101","ascore: 109<br />hscore:  98","ascore: 107<br />hscore: 102","ascore: 117<br />hscore: 108","ascore: 105<br />hscore: 120","ascore: 115<br />hscore: 110","ascore: 103<br />hscore:  96","ascore: 118<br />hscore: 112","ascore:  99<br />hscore: 119","ascore: 125<br />hscore: 102","ascore: 135<br />hscore: 108","ascore: 102<br />hscore: 104","ascore: 121<br />hscore: 107","ascore:  99<br />hscore: 104","ascore:  98<br />hscore:  88","ascore: 114<br />hscore: 121","ascore:  97<br />hscore:  87","ascore:  92<br />hscore: 104","ascore: 106<br />hscore: 119","ascore: 133<br />hscore: 139","ascore:  95<br />hscore: 101","ascore: 107<br />hscore: 114","ascore:  98<br />hscore: 117","ascore:  86<br />hscore: 102","ascore: 112<br />hscore: 110","ascore: 111<br />hscore: 104","ascore: 128<br />hscore: 130","ascore: 133<br />hscore: 131","ascore: 116<br />hscore: 111","ascore:  98<br />hscore: 102","ascore:  96<br />hscore: 118","ascore: 104<br />hscore: 117","ascore: 122<br />hscore: 134","ascore: 111<br />hscore: 102","ascore:  92<br />hscore: 104","ascore: 119<br />hscore: 118","ascore: 110<br />hscore: 123","ascore: 114<br />hscore: 126","ascore: 121<br />hscore: 117","ascore: 109<br />hscore: 101","ascore: 102<br />hscore:  91","ascore: 101<br />hscore: 111","ascore: 122<br />hscore: 118","ascore: 117<br />hscore: 102","ascore: 116<br />hscore: 105","ascore: 102<br />hscore: 101","ascore:  98<br />hscore: 121","ascore: 103<br />hscore: 105","ascore:  90<br />hscore:  94","ascore: 109<br />hscore: 105","ascore: 109<br />hscore: 105","ascore: 108<br />hscore: 110","ascore: 103<br />hscore: 113","ascore:  87<br />hscore:  94","ascore: 127<br />hscore: 133","ascore:  92<br />hscore:  94","ascore: 111<br />hscore: 117","ascore: 125<br />hscore: 136","ascore:  91<br />hscore: 104","ascore: 113<br />hscore:  91","ascore: 115<br />hscore: 109","ascore: 107<br />hscore: 113","ascore:  95<br />hscore: 114","ascore: 114<br />hscore: 105","ascore: 116<br />hscore:  87","ascore: 102<br />hscore: 110","ascore:  93<br />hscore:  95","ascore: 113<br />hscore: 117","ascore: 109<br />hscore: 115","ascore: 111<br />hscore: 110","ascore: 109<br />hscore: 107","ascore: 134<br />hscore: 104","ascore: 106<br />hscore:  96","ascore: 116<br />hscore: 115","ascore:  75<br />hscore: 128","ascore: 113<br />hscore: 125","ascore: 110<br />hscore: 105","ascore: 107<br />hscore: 117","ascore:  92<br />hscore: 130","ascore: 111<br />hscore: 102","ascore: 118<br />hscore: 110","ascore: 105<br />hscore: 111","ascore: 124<br />hscore: 118","ascore:  96<br />hscore: 110","ascore: 104<br />hscore: 121","ascore: 158<br />hscore: 126","ascore:  99<br />hscore: 115","ascore: 105<br />hscore:  97","ascore: 132<br />hscore: 112","ascore:  87<br />hscore: 105","ascore: 115<br />hscore: 124","ascore: 108<br />hscore: 123","ascore: 124<br />hscore: 134","ascore: 122<br />hscore: 131","ascore: 113<br />hscore: 110","ascore: 114<br />hscore: 121","ascore: 109<br />hscore: 119","ascore: 125<br />hscore: 110","ascore: 116<br />hscore: 105","ascore: 114<br />hscore: 117","ascore:  92<br />hscore: 108","ascore: 103<br />hscore: 119","ascore: 124<br />hscore: 120","ascore:  95<br />hscore: 115","ascore: 101<br />hscore: 103","ascore: 105<br />hscore: 132","ascore: 107<br />hscore:  97","ascore: 106<br />hscore: 110","ascore: 115<br />hscore:  90","ascore: 136<br />hscore: 100","ascore: 116<br />hscore: 130","ascore: 121<br />hscore: 129","ascore: 110<br />hscore: 115","ascore: 106<br />hscore: 126","ascore: 108<br />hscore: 110","ascore: 105<br />hscore: 115","ascore: 122<br />hscore: 108","ascore:  81<br />hscore:  98","ascore:  96<br />hscore: 116","ascore: 106<br />hscore: 100","ascore:  92<br />hscore: 122","ascore: 119<br />hscore: 122","ascore:  90<br />hscore:  93","ascore: 116<br />hscore: 122","ascore: 111<br />hscore: 121","ascore: 124<br />hscore: 120","ascore: 115<br />hscore: 126","ascore: 115<br />hscore: 130","ascore: 106<br />hscore: 110","ascore:  98<br />hscore: 112","ascore: 111<br />hscore: 101","ascore: 120<br />hscore: 108","ascore: 107<br />hscore: 113","ascore: 119<br />hscore: 118","ascore: 106<br />hscore: 103","ascore:  94<br />hscore:  99","ascore: 104<br />hscore: 108","ascore: 101<br />hscore: 112","ascore: 120<br />hscore: 114","ascore: 104<br />hscore: 115","ascore: 110<br />hscore: 111","ascore: 114<br />hscore: 126","ascore: 120<br />hscore: 127","ascore: 115<br />hscore: 124","ascore: 128<br />hscore: 117","ascore: 112<br />hscore:  95","ascore:  98<br />hscore: 107","ascore: 113<br />hscore: 105","ascore: 102<br />hscore: 125","ascore: 106<br />hscore: 131","ascore: 114<br />hscore: 125","ascore: 122<br />hscore: 115","ascore: 102<br />hscore: 101","ascore: 102<br />hscore:  93","ascore:  96<br />hscore:  93","ascore: 137<br />hscore: 108","ascore: 103<br />hscore: 113","ascore:  95<br />hscore:  80","ascore: 104<br />hscore:  86","ascore: 135<br />hscore: 115","ascore: 115<br />hscore: 122","ascore: 105<br />hscore: 118","ascore: 104<br />hscore: 124","ascore: 137<br />hscore: 113","ascore: 120<br />hscore: 107","ascore: 116<br />hscore:  83","ascore:  85<br />hscore:  98","ascore:  94<br />hscore: 103","ascore: 119<br />hscore: 108","ascore: 104<br />hscore: 113","ascore: 127<br />hscore: 124","ascore: 110<br />hscore:  98","ascore: 116<br />hscore: 101","ascore: 121<br />hscore: 100","ascore: 115<br />hscore: 132","ascore:  86<br />hscore: 116","ascore:  97<br />hscore: 110","ascore: 109<br />hscore: 135","ascore: 112<br />hscore: 133","ascore: 126<br />hscore:  91","ascore: 114<br />hscore: 109","ascore: 131<br />hscore: 116","ascore: 134<br />hscore: 114","ascore: 113<br />hscore:  95","ascore:  92<br />hscore: 105","ascore:  85<br />hscore: 111","ascore: 119<br />hscore: 132","ascore: 105<br />hscore: 107","ascore: 117<br />hscore:  98","ascore: 121<br />hscore: 109","ascore: 132<br />hscore: 107","ascore: 112<br />hscore:  97","ascore: 116<br />hscore: 114","ascore: 107<br />hscore: 131","ascore: 105<br />hscore: 112","ascore: 139<br />hscore: 120","ascore: 112<br />hscore: 113","ascore:  99<br />hscore: 114","ascore: 122<br />hscore: 134","ascore: 136<br />hscore: 121","ascore: 102<br />hscore: 108","ascore: 120<br />hscore: 113","ascore: 141<br />hscore: 119","ascore:  87<br />hscore: 100","ascore:  99<br />hscore:  97","ascore: 115<br />hscore: 117","ascore: 105<br />hscore: 132","ascore: 101<br />hscore: 106","ascore: 111<br />hscore: 115","ascore: 110<br />hscore: 109","ascore:  93<br />hscore: 103","ascore: 125<br />hscore: 118","ascore: 123<br />hscore: 110","ascore: 124<br />hscore: 114","ascore: 103<br />hscore: 112","ascore: 129<br />hscore: 120","ascore:  95<br />hscore: 105","ascore: 104<br />hscore: 119","ascore: 111<br />hscore: 121","ascore: 101<br />hscore: 135","ascore: 109<br />hscore: 120","ascore:  90<br />hscore: 120","ascore: 122<br />hscore: 107","ascore: 127<br />hscore: 123","ascore:  85<br />hscore: 109","ascore:  94<br />hscore: 103","ascore: 119<br />hscore: 128","ascore: 121<br />hscore: 109","ascore: 107<br />hscore:  99","ascore: 116<br />hscore: 124","ascore: 135<br />hscore:  87","ascore:  96<br />hscore: 103","ascore: 120<br />hscore: 126","ascore: 117<br />hscore: 116","ascore: 121<br />hscore: 124","ascore: 118<br />hscore: 125","ascore: 103<br />hscore:  91","ascore: 114<br />hscore: 106","ascore: 111<br />hscore: 106","ascore: 108<br />hscore: 113","ascore: 112<br />hscore: 111","ascore: 130<br />hscore: 109","ascore: 101<br />hscore: 106","ascore: 123<br />hscore: 119","ascore: 123<br />hscore: 120","ascore: 125<br />hscore: 118","ascore: 111<br />hscore: 107","ascore: 117<br />hscore: 103","ascore: 111<br />hscore: 142","ascore: 103<br />hscore: 106","ascore: 132<br />hscore:  95","ascore: 128<br />hscore: 110","ascore: 108<br />hscore: 112","ascore: 114<br />hscore: 119","ascore: 124<br />hscore: 104","ascore: 129<br />hscore: 106","ascore: 129<br />hscore: 125","ascore: 105<br />hscore: 102","ascore: 117<br />hscore: 102","ascore: 109<br />hscore: 114","ascore: 133<br />hscore: 102","ascore: 115<br />hscore: 100","ascore: 157<br />hscore: 153","ascore: 111<br />hscore: 119","ascore:  93<br />hscore: 125","ascore: 110<br />hscore: 115","ascore: 126<br />hscore: 123","ascore: 116<br />hscore: 110","ascore: 129<br />hscore: 133","ascore:  86<br />hscore:  92","ascore: 100<br />hscore: 127","ascore: 113<br />hscore: 104","ascore: 107<br />hscore: 128","ascore: 118<br />hscore: 114","ascore: 125<br />hscore: 109","ascore: 123<br />hscore:  95","ascore: 124<br />hscore:  92","ascore:  99<br />hscore:  98","ascore: 107<br />hscore: 101","ascore: 127<br />hscore: 126","ascore: 106<br />hscore: 130","ascore: 105<br />hscore: 118","ascore: 131<br />hscore: 110","ascore:  99<br />hscore: 112","ascore: 133<br />hscore:  97","ascore: 127<br />hscore: 122","ascore: 103<br />hscore: 119","ascore: 109<br />hscore: 104","ascore: 114<br />hscore: 129","ascore: 113<br />hscore: 100","ascore:  98<br />hscore: 107","ascore: 108<br />hscore: 109","ascore: 113<br />hscore: 116","ascore: 122<br />hscore: 114","ascore: 119<br />hscore:  98","ascore: 132<br />hscore: 127","ascore:  90<br />hscore: 120","ascore: 119<br />hscore: 107","ascore: 119<br />hscore: 120","ascore:  95<br />hscore: 125","ascore: 108<br />hscore: 123","ascore: 115<br />hscore: 112","ascore: 111<br />hscore: 132","ascore: 113<br />hscore: 122","ascore: 108<br />hscore: 106","ascore: 113<br />hscore: 107","ascore: 107<br />hscore: 120","ascore: 124<br />hscore: 130","ascore: 114<br />hscore: 115","ascore: 101<br />hscore: 116","ascore:  90<br />hscore: 124","ascore: 118<br />hscore: 112","ascore: 103<br />hscore:  97","ascore: 117<br />hscore: 114","ascore: 106<br />hscore: 111","ascore: 119<br />hscore: 125","ascore: 138<br />hscore: 101","ascore: 121<br />hscore: 135","ascore:  82<br />hscore:  99","ascore:  96<br />hscore: 124","ascore: 117<br />hscore: 123","ascore: 113<br />hscore: 114","ascore: 116<br />hscore: 124","ascore: 120<br />hscore: 126","ascore: 116<br />hscore:  93","ascore: 130<br />hscore: 138","ascore:  96<br />hscore: 104","ascore: 112<br />hscore: 123","ascore: 116<br />hscore: 103","ascore: 123<br />hscore: 133","ascore: 122<br />hscore: 132","ascore: 131<br />hscore: 115","ascore: 124<br />hscore: 131","ascore: 110<br />hscore: 117","ascore: 103<br />hscore: 111","ascore:  81<br />hscore: 124","ascore: 106<br />hscore: 123","ascore: 110<br />hscore: 113","ascore: 106<br />hscore: 121","ascore: 127<br />hscore: 124","ascore: 132<br />hscore: 121","ascore:  97<br />hscore: 112","ascore: 142<br />hscore: 115","ascore: 111<br />hscore: 132","ascore: 102<br />hscore:  99","ascore: 109<br />hscore: 115","ascore: 106<br />hscore: 100","ascore:  85<br />hscore: 123","ascore: 107<br />hscore:  77","ascore: 119<br />hscore: 104","ascore: 130<br />hscore: 139","ascore: 108<br />hscore: 102","ascore: 102<br />hscore: 132","ascore: 115<br />hscore: 124","ascore: 111<br />hscore:  90","ascore: 115<br />hscore: 101","ascore: 114<br />hscore: 108","ascore: 129<br />hscore: 100","ascore: 113<br />hscore: 102","ascore: 114<br />hscore: 118","ascore: 106<br />hscore: 112","ascore: 109<br />hscore: 122","ascore: 117<br />hscore: 112","ascore: 102<br />hscore: 104","ascore: 142<br />hscore: 120","ascore: 105<br />hscore: 117","ascore: 113<br />hscore: 100","ascore: 103<br />hscore: 114","ascore: 110<br />hscore: 118","ascore: 118<br />hscore: 127","ascore: 125<br />hscore: 134","ascore: 127<br />hscore: 115","ascore: 109<br />hscore: 122","ascore:  91<br />hscore: 101","ascore: 113<br />hscore: 104","ascore: 119<br />hscore: 108","ascore: 128<br />hscore: 131","ascore: 105<br />hscore: 130","ascore: 116<br />hscore: 114","ascore:  95<br />hscore:  92","ascore: 111<br />hscore: 140","ascore: 125<br />hscore: 118","ascore: 106<br />hscore: 102","ascore: 107<br />hscore: 110","ascore: 134<br />hscore: 116","ascore: 114<br />hscore: 103","ascore: 117<br />hscore: 111","ascore: 112<br />hscore: 126","ascore: 103<br />hscore: 112","ascore: 149<br />hscore: 139","ascore: 113<br />hscore: 122","ascore: 114<br />hscore: 110","ascore: 111<br />hscore: 120","ascore: 135<br />hscore: 102","ascore: 150<br />hscore: 108","ascore: 131<br />hscore: 115","ascore:  98<br />hscore: 105","ascore: 129<br />hscore: 112","ascore: 113<br />hscore: 111","ascore:  98<br />hscore: 128","ascore: 127<br />hscore: 109","ascore: 118<br />hscore: 114","ascore: 106<br />hscore: 116","ascore: 103<br />hscore: 100","ascore: 110<br />hscore:  88","ascore: 135<br />hscore: 126","ascore: 110<br />hscore: 125","ascore: 120<br />hscore: 122","ascore: 104<br />hscore: 124","ascore: 134<br />hscore: 120","ascore: 102<br />hscore: 129","ascore: 126<br />hscore:  97","ascore:  92<br />hscore: 121","ascore: 124<br />hscore:  91","ascore: 121<br />hscore: 118","ascore: 108<br />hscore: 120","ascore: 128<br />hscore: 123","ascore: 116<br />hscore: 119","ascore: 123<br />hscore: 128","ascore:  97<br />hscore: 100","ascore: 105<br />hscore: 120","ascore: 101<br />hscore: 111","ascore: 119<br />hscore: 127","ascore: 109<br />hscore: 113","ascore: 108<br />hscore: 129","ascore: 119<br />hscore: 138","ascore:  85<br />hscore:  90","ascore: 122<br />hscore:  98","ascore:  98<br />hscore: 129","ascore: 110<br />hscore: 108","ascore:  93<br />hscore:  88","ascore: 124<br />hscore: 104","ascore: 108<br />hscore:  93","ascore: 127<br />hscore: 124","ascore: 117<br />hscore: 112","ascore: 108<br />hscore: 110","ascore: 132<br />hscore: 123","ascore:  97<br />hscore: 115","ascore:  99<br />hscore: 113","ascore: 119<br />hscore: 115","ascore: 106<br />hscore: 114","ascore: 106<br />hscore: 113","ascore: 131<br />hscore: 120","ascore: 103<br />hscore: 106","ascore: 115<br />hscore: 127","ascore:  98<br />hscore: 126","ascore: 117<br />hscore: 111","ascore:  90<br />hscore:  94","ascore: 126<br />hscore: 121","ascore: 133<br />hscore:  96","ascore:  91<br />hscore: 110","ascore: 102<br />hscore: 118","ascore: 118<br />hscore: 104","ascore: 120<br />hscore: 132","ascore: 125<br />hscore: 116","ascore: 110<br />hscore: 109","ascore:  97<br />hscore: 125","ascore: 101<br />hscore: 122","ascore: 121<br />hscore: 106","ascore: 140<br />hscore: 130","ascore: 109<br />hscore: 126","ascore: 102<br />hscore: 114","ascore: 103<br />hscore: 133","ascore: 104<br />hscore: 117","ascore: 122<br />hscore:  97","ascore: 125<br />hscore: 106","ascore: 111<br />hscore: 103","ascore:  95<br />hscore: 116","ascore: 110<br />hscore: 121","ascore: 100<br />hscore:  97","ascore: 101<br />hscore: 107","ascore: 115<br />hscore:  98","ascore:  98<br />hscore:  94","ascore: 107<br />hscore: 113","ascore: 102<br />hscore: 127","ascore:  91<br />hscore: 131","ascore: 114<br />hscore: 110","ascore: 110<br />hscore:  95","ascore: 107<br />hscore: 103","ascore: 119<br />hscore: 110","ascore: 100<br />hscore: 114","ascore: 108<br />hscore: 116","ascore: 104<br />hscore: 114","ascore: 112<br />hscore: 134","ascore: 104<br />hscore: 102","ascore: 115<br />hscore: 123","ascore: 134<br />hscore: 131","ascore:  95<br />hscore: 123","ascore: 123<br />hscore: 120","ascore: 104<br />hscore: 109","ascore: 100<br />hscore: 123","ascore: 113<br />hscore: 109","ascore: 132<br />hscore: 123","ascore: 101<br />hscore: 107","ascore: 112<br />hscore: 115","ascore: 115<br />hscore: 121","ascore: 123<br />hscore: 130","ascore: 110<br />hscore: 128","ascore: 118<br />hscore: 116","ascore: 107<br />hscore:  94","ascore: 107<br />hscore: 103","ascore: 117<br />hscore: 107","ascore: 112<br />hscore: 111","ascore: 121<br />hscore: 118","ascore: 106<br />hscore:  98","ascore: 136<br />hscore: 118","ascore: 125<br />hscore: 114","ascore: 125<br />hscore: 118","ascore: 110<br />hscore: 127","ascore: 102<br />hscore: 125","ascore: 120<br />hscore: 112","ascore: 130<br />hscore: 135","ascore: 120<br />hscore: 119","ascore: 107<br />hscore: 131","ascore:  94<br />hscore: 102","ascore: 109<br />hscore: 122","ascore: 114<br />hscore: 111","ascore: 136<br />hscore: 130","ascore: 111<br />hscore: 130","ascore: 114<br />hscore: 122","ascore: 122<br />hscore: 117","ascore: 153<br />hscore: 119","ascore: 102<br />hscore:  89","ascore: 110<br />hscore: 101","ascore: 123<br />hscore: 128","ascore: 103<br />hscore: 135","ascore: 107<br />hscore: 111","ascore: 127<br />hscore: 109","ascore: 115<br />hscore: 122","ascore: 119<br />hscore: 101","ascore: 114<br />hscore: 144","ascore: 118<br />hscore:  88","ascore: 100<br />hscore: 119","ascore: 109<br />hscore:  90","ascore: 121<br />hscore: 117","ascore: 114<br />hscore: 109","ascore: 139<br />hscore: 132","ascore: 129<br />hscore: 118","ascore: 118<br />hscore: 112","ascore: 102<br />hscore: 144","ascore:  92<br />hscore: 113","ascore:  96<br />hscore: 117","ascore: 112<br />hscore: 108","ascore: 131<br />hscore: 122","ascore: 127<br />hscore: 106","ascore:  94<br />hscore:  98","ascore: 132<br />hscore: 114","ascore: 115<br />hscore: 144","ascore: 105<br />hscore: 118","ascore: 108<br />hscore: 118","ascore: 110<br />hscore: 121","ascore: 115<br />hscore: 120","ascore: 123<br />hscore: 109","ascore: 115<br />hscore: 121","ascore: 116<br />hscore:  97","ascore: 109<br />hscore: 113","ascore: 101<br />hscore: 137","ascore: 117<br />hscore:  94","ascore: 103<br />hscore: 118","ascore: 110<br />hscore:  98","ascore: 131<br />hscore: 113","ascore: 121<br />hscore: 127","ascore: 112<br />hscore: 128","ascore: 109<br />hscore: 122","ascore: 121<br />hscore: 127","ascore:  94<br />hscore: 127","ascore: 114<br />hscore: 119","ascore: 101<br />hscore: 128","ascore: 101<br />hscore: 120","ascore: 111<br />hscore: 105","ascore:  78<br />hscore: 128","ascore: 109<br />hscore: 113","ascore: 133<br />hscore: 117","ascore: 107<br />hscore: 118","ascore: 115<br />hscore: 117","ascore: 131<br />hscore: 101","ascore: 114<br />hscore:  92","ascore:  98<br />hscore: 117","ascore: 100<br />hscore:  94","ascore: 114<br />hscore: 141","ascore: 120<br />hscore: 133","ascore: 124<br />hscore: 120","ascore: 106<br />hscore: 118","ascore: 139<br />hscore: 110","ascore: 146<br />hscore: 141","ascore: 111<br />hscore: 125","ascore:  94<br />hscore: 105","ascore: 126<br />hscore: 134","ascore: 130<br />hscore: 114","ascore: 108<br />hscore: 124","ascore: 115<br />hscore: 133","ascore: 116<br />hscore: 109","ascore: 111<br />hscore:  80","ascore: 128<br />hscore: 107","ascore: 120<br />hscore: 130","ascore:  88<br />hscore: 138","ascore: 130<br />hscore: 117","ascore: 107<br />hscore: 123","ascore:  99<br />hscore:  93","ascore: 111<br />hscore: 131","ascore:  91<br />hscore: 115","ascore: 114<br />hscore: 115","ascore:  86<br />hscore:  93","ascore:  99<br />hscore: 110","ascore: 104<br />hscore: 110","ascore:  97<br />hscore: 112","ascore: 106<br />hscore: 126","ascore:  96<br />hscore: 124","ascore: 125<br />hscore: 114","ascore: 105<br />hscore: 115","ascore: 107<br />hscore: 114","ascore: 104<br />hscore: 101","ascore: 114<br />hscore: 110","ascore: 126<br />hscore: 118","ascore: 118<br />hscore: 113","ascore: 104<br />hscore:  95","ascore: 114<br />hscore: 111","ascore: 110<br />hscore: 111","ascore: 111<br />hscore:  81","ascore: 118<br />hscore: 119","ascore: 102<br />hscore: 110","ascore: 109<br />hscore: 103","ascore:  99<br />hscore: 100","ascore: 119<br />hscore:  95","ascore: 110<br />hscore:  86","ascore: 103<br />hscore: 118","ascore: 121<br />hscore: 126","ascore:  77<br />hscore: 102","ascore: 116<br />hscore: 112","ascore: 103<br />hscore:  88","ascore: 109<br />hscore: 111","ascore:  97<br />hscore: 112","ascore:  94<br />hscore:  97","ascore: 100<br />hscore: 116","ascore:  98<br />hscore: 102","ascore: 115<br />hscore: 109","ascore: 132<br />hscore:  97","ascore:  98<br />hscore:  96","ascore: 114<br />hscore: 106","ascore: 117<br />hscore: 116","ascore: 101<br />hscore:  89","ascore:  92<br />hscore: 106","ascore: 114<br />hscore: 121","ascore: 101<br />hscore: 106","ascore:  86<br />hscore: 109","ascore: 103<br />hscore: 119","ascore: 109<br />hscore: 129","ascore:  94<br />hscore: 103","ascore:  79<br />hscore:  99","ascore: 112<br />hscore: 142","ascore: 101<br />hscore: 103","ascore: 108<br />hscore: 116","ascore: 101<br />hscore: 111","ascore:  98<br />hscore: 101","ascore: 116<br />hscore: 108","ascore:  85<br />hscore: 120","ascore:  80<br />hscore: 110","ascore:  95<br />hscore: 134","ascore: 110<br />hscore: 107","ascore:  99<br />hscore:  90","ascore:  86<br />hscore: 113","ascore: 108<br />hscore:  95","ascore:  96<br />hscore: 110","ascore:  81<br />hscore: 109","ascore: 123<br />hscore:  90","ascore: 107<br />hscore: 118","ascore:  87<br />hscore: 112","ascore: 127<br />hscore: 102","ascore: 117<br />hscore: 126","ascore: 109<br />hscore: 103","ascore: 109<br />hscore: 100","ascore:  82<br />hscore: 102","ascore: 109<br />hscore: 119","ascore:  93<br />hscore:  80","ascore: 110<br />hscore: 120","ascore: 111<br />hscore: 103","ascore: 100<br />hscore:  96","ascore: 120<br />hscore: 108","ascore:  88<br />hscore: 107","ascore: 100<br />hscore: 116","ascore: 107<br />hscore:  97","ascore:  94<br />hscore: 104","ascore: 103<br />hscore:  90"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(100,100,100,1)","opacity":1,"size":8.81889763779528,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(100,100,100,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[70.85,162.15],"tickmode":"array","ticktext":["80","100","120","140","160"],"tickvals":[80,100,120,140,160],"categoryorder":"array","categoryarray":["80","100","120","140","160"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"ascore","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[73.2,156.8],"tickmode":"array","ticktext":["80","100","120","140"],"tickvals":[80,100,120,140],"categoryorder":"array","categoryarray":["80","100","120","140"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"hscore","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"3f395dde0fa6":{"x":{},"y":{},"type":"scatter"}},"cur_data":"3f395dde0fa6","visdat":{"3f395dde0fa6":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>We’ll discuss this, and <code>plot_ly</code> function more in the main text.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="maps-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="for-more-information-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bmacgtpm/notes/edit/main/99-02-appendix-ggplot.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
