@@ -195,16 +195,18 @@ gg = g %>%
 ## 2 frames/month, aka 6 months/sec, plus a 5 second pause
 ## use same number of frames as maps
 ## using dd here since dg doesn't have month.year
-nframes = length(levels(dd$month.year))*2 
-a3 = animate(gg,
-             width   = 1440,
-             height  = 1440,
-             fps     = 12,
-             nframes = nframes,
-             start_pause = 0,
-             end_pause   = 0)
-a3
+# nframes = length(levels(dd$month.year))*2 
+# a3 = animate(gg,
+#              width   = 1440,
+#              height  = 1440,
+#              fps     = 12,
+#              nframes = nframes,
+#              start_pause = 0,
+#              end_pause   = 0)
+# a3
 # 
 # # ## save animation
 # anim_save(a3, filename = 'img/cumulative.EV.stations.animation3.gif')
 ```
+
+![](img/cumulative.EV.stations.animation3.gif)

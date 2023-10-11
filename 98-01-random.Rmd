@@ -20,8 +20,6 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-This is a test 3:11
-
 This is a collection of random (in the non-statistical meaning of the word) stuff that I have found to be useful over the years. 
 
 This is constantly under construction and may not have complete explanations of the code, results, and purpose of each section. 
@@ -634,6 +632,7 @@ g %>%
 Here is an example that makes a second UI appear if certain selections are made in the first UI. This is also app.R on GitHub.
 
 ```{r}
+library(shiny)
 ui <- fluidPage(
   selectInput("dataset", "Dataset", c("diamonds", "rock", "pressure", "cars")),
   conditionalPanel( condition = "output.nrows",
