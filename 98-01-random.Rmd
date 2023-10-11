@@ -1456,10 +1456,9 @@ Hello world.
 
 ## Read pixel values of images
 
-The outputs are suppressed using `eval = F` because of issues with ImageMagick and GitHub Actions.
+The outputs are suppressed using `eval = F` because of issues with ImageMagick and GitHub Actions. The code is also missing a line that loads the `magick` library. 
 
 ```{r}
-# library(magick)
 # 
 # image = image_read("https://www.r-project.org/logo/Rlogo.png")
 # is(image)
