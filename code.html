@@ -433,7 +433,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-&lt;bytecode: 0x55c44321b1c0&gt;
+&lt;bytecode: 0x557319749a68&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <p>The code for <code>sd</code> finds the square root of the variance of <code>x</code>.</p>
 <div id="generic-functions" class="section level3 hasAnchor" number="19.2.1">
@@ -444,7 +444,7 @@ sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x),
 </details>
 <pre><code>function (x, ...) 
 UseMethod(&quot;print&quot;)
-&lt;bytecode: 0x55c4334b6410&gt;
+&lt;bytecode: 0x5572ff67d140&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>All we see here is <code>UseMethod("print")</code> because <code>print</code> is a generic function that will use different code depending on whether we give it a <code>data.frame</code>, <code>list</code> or some other object. For example, if we give <code>print</code> a <code>list</code>, it will show each object in the list, each labeled with <code>$nameoftheobject</code> and separated by a blank line.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
@@ -606,7 +606,7 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), ...)
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x55c43a174c38&gt;
+&lt;bytecode: 0x557329a46d00&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb210-1"><a href="code.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.summary.lm&#39;</span>)</span></code></pre></div>
@@ -697,7 +697,7 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), symbolic.cor 
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x55c44138f7f8&gt;
+&lt;bytecode: 0x557309206488&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 <div id="other-resources" class="section level3 hasAnchor" number="19.2.4">
