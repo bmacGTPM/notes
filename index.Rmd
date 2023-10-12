@@ -61,7 +61,7 @@ library(pubtheme)
 # library(rsconnect)
 # library(grid)
 # library(foreign)
-library(maps)
+library(maps) ## leave uncommented. For some reason GitHub Actions had a problem when this wasn't explicitly loaded.
 
 ```
 
