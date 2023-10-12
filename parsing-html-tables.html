@@ -434,23 +434,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 # A tibble: 2 × 5
   Watchlist       `Change Today` `1 Month Return` `1 Year Return` `Total Return`
   &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;         
-1 Most Active Sm… +91.75%        -                -               -             
-2 ^GSPC           +0.43%         -1.90%           +22.36%         +4606.40%     
+1 Most Active Sm… -29.66%        -                -               -             
+2 ^GSPC           -0.14%         -2.16%           +19.10%         +4599.76%     
 
 [[2]]
 # A tibble: 30 × 9
    Symbol `Company Name`     `Last Price` Change `% Change` `Market Time` Volume
    &lt;chr&gt;  &lt;chr&gt;                     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt; 
- 1 FL     Foot Locker, Inc.         21.0   -0.07 -0.33%     4:00 PM EDT   2.92M 
- 2 PTON   Peloton Interacti…         5.48   0.25 +4.78%     4:00 PM EDT   10.40M
- 3 PD     PagerDuty, Inc.           20.8   -0.66 -3.08%     4:00 PM EDT   11.86M
- 4 SPR    Spirit AeroSystem…        17.6   -0.06 -0.34%     4:00 PM EDT   2.83M 
- 5 HASI   Hannon Armstrong …        16.8   -0.17 -1.00%     4:00 PM EDT   2.86M 
- 6 CWK    Cushman &amp; Wakefie…         7.95   0.34 +4.47%     4:00 PM EDT   4.83M 
- 7 ENVX   Enovix Corporation        11.2    0.31 +2.85%     4:00 PM EDT   5.18M 
- 8 RIOT   Riot Platforms, I…         9.40  -0.76 -7.43%     4:00 PM EDT   16.44M
- 9 DHT    DHT Holdings, Inc.        10.1   -0.06 -0.59%     4:00 PM EDT   4.94M 
-10 LAC    Lithium Americas …         9.86  -0.84 -7.85%     4:00 PM EDT   4.83M 
+ 1 FL     Foot Locker, Inc.         20.8    0.22 +1.07%     9:50 AM EDT   291.0…
+ 2 PD     PagerDuty, Inc.           20.6   -0.18 -0.84%     9:50 AM EDT   142.9…
+ 3 PTON   Peloton Interacti…         5.16  -0.32 -5.75%     9:50 AM EDT   1.46M 
+ 4 SPR    Spirit AeroSystem…        17.5   -0.09 -0.51%     9:50 AM EDT   175.8…
+ 5 HASI   Hannon Armstrong …        16.4   -0.42 -2.50%     9:50 AM EDT   117.9…
+ 6 CWK    Cushman &amp; Wakefie…         7.82  -0.13 -1.64%     9:50 AM EDT   181.7…
+ 7 RIOT   Riot Platforms, I…         9.18  -0.23 -2.45%     9:50 AM EDT   1.31M 
+ 8 ENVX   Enovix Corporation        10.5   -0.66 -5.91%     9:50 AM EDT   542.4…
+ 9 DHT    DHT Holdings, Inc.        10.3    0.13 +1.26%     9:50 AM EDT   196.3…
+10 LAC    Lithium Americas …         9.51  -0.35 -3.56%     9:50 AM EDT   579.4…
 # ℹ 20 more rows
 # ℹ 2 more variables: `Avg Vol (3 month)` &lt;chr&gt;, `Market Cap` &lt;chr&gt;</code></pre>
 <p>The <code>readHTMLTable</code> function is similar.</p>
@@ -460,75 +460,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </details>
 <pre><code>$`NULL`
                      Watchlist Change Today 1 Month Return 1 Year Return
-1 Most Active Small-Cap Stocks      +91.75%              -             -
-2                        ^GSPC       +0.43%         -1.90%       +22.36%
+1 Most Active Small-Cap Stocks      -29.66%              -             -
+2                        ^GSPC       -0.14%         -2.16%       +19.10%
   Total Return
 1            -
-2    +4606.40%
+2    +4599.94%
 
 $`NULL`
    Symbol                                              Company Name Last Price
-1      FL                                         Foot Locker, Inc.      20.98
-2    PTON                                 Peloton Interactive, Inc.       5.48
-3      PD                                           PagerDuty, Inc.      20.79
-4     SPR                         Spirit AeroSystems Holdings, Inc.      17.55
-5    HASI Hannon Armstrong Sustainable Infrastructure Capital, Inc.      16.81
-6     CWK                                   Cushman &amp; Wakefield plc       7.95
-7    ENVX                                        Enovix Corporation      11.19
-8    RIOT                                      Riot Platforms, Inc.      9.405
-9     DHT                                        DHT Holdings, Inc.      10.13
-10    LAC                                    Lithium Americas Corp.       9.86
-11   ACHR                                      Archer Aviation Inc.       5.37
-12     AG                               First Majestic Silver Corp.       5.12
-13    OUT                                       OUTFRONT Media Inc.       8.81
-14   MARA                           Marathon Digital Holdings, Inc.        7.9
-15   NOVA                         Sunnova Energy International Inc.      10.59
-16   VSCO                                   Victoria&#39;s Secret &amp; Co.      14.93
-17   TGTX                                     TG Therapeutics, Inc.       7.29
-18   SPWR                                      SunPower Corporation       5.78
-19     WW                                    WW International, Inc.      12.56
-20   PACW                                           PacWest Bancorp       7.84
-21    AIV               Apartment Investment and Management Company       6.04
-22    HPP                           Hudson Pacific Properties, Inc.       6.15
-23   AKRO                                  Akero Therapeutics, Inc.      15.04
-24   NVAX                                             Novavax, Inc.       7.63
-25   RDFN                                        Redfin Corporation       6.45
-26   ETNB                                               89bio, Inc.        8.5
-27   APLD                               Applied Digital Corporation       5.26
-28     OM                                      Outset Medical, Inc.      7.635
-29   SILK                                    Silk Road Medical, Inc       7.13
-30   TPST                                Tempest Therapeutics, Inc.       7.15
-   Change  % Change Market Time  Volume Avg Vol (3 month) Market Cap
-1   -0.07    -0.33% 4:00 PM EDT   2.92M             5.00M      1.98B
-2   +0.25    +4.78% 4:00 PM EDT  10.40M            11.32M      1.96B
-3   -0.66    -3.08% 4:00 PM EDT  11.86M             1.32M      1.94B
-4   -0.06    -0.34% 4:00 PM EDT   2.83M             3.83M      1.85B
-5   -0.17    -1.00% 4:00 PM EDT   2.86M             2.24M      1.82B
-6   +0.34    +4.47% 4:00 PM EDT   4.83M             2.47M      1.81B
-7   +0.31    +2.85% 4:00 PM EDT   5.18M             5.82M      1.79B
-8   -0.76    -7.43% 4:00 PM EDT  16.44M            19.22M      1.74B
-9   -0.06    -0.59% 4:00 PM EDT   4.94M             2.47M      1.65B
-10  -0.84    -7.85% 4:00 PM EDT   4.83M             4.21M      1.58B
-11  -0.02    -0.37% 4:00 PM EDT   4.53M             9.44M      1.52B
-12  +0.03    +0.59% 4:00 PM EDT   6.27M             4.62M      1.47B
-13  -0.07    -0.79% 4:00 PM EDT   2.79M             3.25M      1.45B
-14  -0.56    -6.62% 4:00 PM EDT  28.39M            28.57M      1.38B
-15  +0.70    +7.08% 4:01 PM EDT   5.96M             4.88M      1.29B
-16  -1.42    -8.69% 4:00 PM EDT   3.37M             2.19M      1.26B
-17  -0.12    -1.62% 4:00 PM EDT   3.99M             5.08M      1.10B
-18  -0.03    -0.52% 4:00 PM EDT   4.99M             5.60M      1.01B
-19  -0.65    -4.92% 4:00 PM EDT   4.85M             4.55M    991.81M
-20  +0.10    +1.29% 4:00 PM EDT   4.07M             5.80M    940.89M
-21  -0.45    -6.93% 4:00 PM EDT   4.97M             1.07M    892.89M
-22  +0.19    +3.19% 4:00 PM EDT   3.63M             3.68M    882.25M
-23  -3.11   -17.13% 4:00 PM EDT  10.28M             1.39M    836.26M
-24  +0.25    +3.39% 4:00 PM EDT  10.20M             9.44M    769.90M
-25  +0.00    +0.08% 4:00 PM EDT   3.42M             3.45M    735.14M
-26  -1.27   -13.04% 4:00 PM EDT   6.90M             1.24M    641.59M
-27  -0.15    -2.86% 4:00 PM EDT   4.54M             4.51M    559.14M
-28  -2.05   -21.21% 4:00 PM EDT   3.63M           640.09k    380.15M
-29  -6.86   -49.04% 4:00 PM EDT  18.65M             1.04M    276.88M
-30  +6.91 +2879.17% 4:00 PM EDT 157.69M             3.24M     95.27M</code></pre>
+1      FL                                         Foot Locker, Inc.       20.8
+2      PD                                           PagerDuty, Inc.     20.615
+3    PTON                                 Peloton Interactive, Inc.      5.165
+4     SPR                         Spirit AeroSystems Holdings, Inc.      17.46
+5    HASI Hannon Armstrong Sustainable Infrastructure Capital, Inc.      16.39
+6     CWK                                   Cushman &amp; Wakefield plc       7.82
+7    RIOT                                      Riot Platforms, Inc.      9.175
+8    ENVX                                        Enovix Corporation      10.53
+9     DHT                                        DHT Holdings, Inc.     10.258
+10    LAC                                    Lithium Americas Corp.     9.5069
+11   ACHR                                      Archer Aviation Inc.       5.27
+12     AG                               First Majestic Silver Corp.      5.095
+13    OUT                                       OUTFRONT Media Inc.      8.545
+14   MARA                           Marathon Digital Holdings, Inc.       7.72
+15   VSCO                                   Victoria&#39;s Secret &amp; Co.     15.415
+16   NOVA                         Sunnova Energy International Inc.      10.19
+17   TGTX                                     TG Therapeutics, Inc.       7.02
+18   SPWR                                      SunPower Corporation      5.635
+19     WW                                    WW International, Inc.      12.24
+20   PACW                                           PacWest Bancorp      7.695
+21    AIV               Apartment Investment and Management Company      6.045
+22   AKRO                                  Akero Therapeutics, Inc.       15.5
+23    HPP                           Hudson Pacific Properties, Inc.       5.88
+24   NVAX                                             Novavax, Inc.     7.2997
+25   RDFN                                        Redfin Corporation       6.27
+26   ETNB                                               89bio, Inc.      8.285
+27   APLD                               Applied Digital Corporation     5.0399
+28     OM                                      Outset Medical, Inc.      7.305
+29   SILK                                    Silk Road Medical, Inc     7.1199
+30   TPST                                Tempest Therapeutics, Inc.     5.0699
+   Change % Change Market Time  Volume Avg Vol (3 month) Market Cap
+1   +0.22   +1.07% 9:50 AM EDT 291.06k             5.00M      1.97B
+2   -0.18   -0.84% 9:50 AM EDT 142.94k             1.32M      1.92B
+3   -0.32   -5.75% 9:50 AM EDT   1.46M            11.32M      1.84B
+4   -0.09   -0.51% 9:50 AM EDT 175.80k             3.83M      1.84B
+5   -0.42   -2.50% 9:50 AM EDT 117.92k             2.24M      1.78B
+6   -0.13   -1.64% 9:50 AM EDT 181.71k             2.47M      1.78B
+7   -0.23   -2.45% 9:50 AM EDT   1.31M            19.22M      1.70B
+8   -0.66   -5.90% 9:50 AM EDT 540.27k             5.82M      1.69B
+9   +0.13   +1.26% 9:50 AM EDT 196.37k             2.47M      1.67B
+10  -0.35   -3.58% 9:50 AM EDT 579.18k             4.58M      1.52B
+11  -0.10   -1.86% 9:50 AM EDT 467.00k             9.44M      1.50B
+12  -0.03   -0.49% 9:50 AM EDT 565.38k             4.62M      1.46B
+13  -0.27   -3.01% 9:50 AM EDT  66.15k             3.25M      1.41B
+14  -0.18   -2.28% 9:50 AM EDT   2.13M            28.57M      1.35B
+15  +0.48   +3.25% 9:50 AM EDT 411.77k             2.19M      1.30B
+16  -0.40   -3.78% 9:50 AM EDT 287.42k             4.88M      1.25B
+17  -0.27   -3.70% 9:50 AM EDT 473.18k             5.08M      1.06B
+18  -0.14   -2.51% 9:50 AM EDT 403.33k             5.60M    987.21M
+19  -0.32   -2.55% 9:50 AM EDT 311.32k             4.55M    966.55M
+20  -0.14   -1.85% 9:50 AM EDT 441.00k             5.80M    923.48M
+21  +0.01   +0.08% 9:49 AM EDT 296.76k             1.07M    893.63M
+22  +0.46   +3.06% 9:50 AM EDT 405.78k             1.39M    861.83M
+23  -0.27   -4.39% 9:50 AM EDT 308.73k             3.68M    843.52M
+24  -0.33   -4.33% 9:50 AM EDT   1.48M             9.44M    736.57M
+25  -0.18   -2.79% 9:50 AM EDT 338.62k             3.45M    714.62M
+26  -0.22   -2.53% 9:50 AM EDT 308.57k             1.24M    625.36M
+27  -0.22   -4.18% 9:50 AM EDT 403.94k             4.51M    535.74M
+28  -0.33   -4.32% 9:49 AM EDT 116.98k           640.09k    363.72M
+29  -0.01   -0.14% 9:50 AM EDT 677.89k             1.04M    276.49M
+30  -4.70  -48.11% 9:50 AM EDT  10.96M             3.24M     67.55M</code></pre>
 </div>
             </section>
 
