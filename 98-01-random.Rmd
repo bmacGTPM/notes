@@ -297,6 +297,14 @@ https://stackoverflow.com/questions/43580133/how-to-use-rselenium-to-login-to-a-
 
 ## Census data with `tidycensus`
 
+See [R/census](https://github.com/bmacGTPM/notes/tree/main/R/census)
+
+This is example code that can be used to pull data from the US census into R as a data frame
+
+At the top of `get.census.data.r`, there are URLs you can use to determine what variables you want to pull. For the census data used in these notes, I used the ACS link, and when I got to that page, I chose HTML format for 2019.
+
+If you keep the line `us <- unique(fips_codes$state)[1]` the same, it will only pull census info for the first state, Alabama.  It's quick and a good way to check and make sure your code is running properly. To do all states and DC, change [1] to [1:51]. There are some US territories in this data, so you likely want to stop at 51.
+
 ```{r}
 ## get.census.data.r
 ## Script retrieves, cleans and saves Census data to rds file 
@@ -347,7 +355,8 @@ vars <- c(# Total, Male, Female
                   "B19001_017",
                   
                   "B19013_001", # Median Household Income
-                  "B25077_001"  # Median Housing Value
+                  "B25077_001", # Median Housing Value
+                  'B05009_001'  # Children
                   ) 
 
 # fails with geometry = TRUE, so removing.  
@@ -407,24 +416,28 @@ dd <- d %>%
                     'i150to199'= 'B19001_016',
                    'i200ormore'= 'B19001_017',
                    'hh.income' = 'B19013_001',
-                 'house.value' = 'B25077_001'#,
-             # 'TotalChildren' = 'B05009_001' # doesn't exist for 2009
+                 'house.value' = 'B25077_001',
+               'TotalChildren' = 'B05009_001' # doesn't exist for 2009
          ) %>%
   as.data.frame()
 head(dd)
 
-## census
-filename = paste0('rawdata/census', year, '.rds')
-saveRDS(dd, file = filename)
+## save census data
+# filename = paste0('rawdata/census', year, '.rds')
+# saveRDS(dd, file = filename)
 
 ```
+
+## Connecting to SQL databases
+
+
 
 
 # Data cleaning
 
 ## RecordLinkage
 
-When joining data sets, you ideally have a unique id, or key, to join on. Sometimes that key does not exist, and you have to join on names or other information. Unfortunately, names are often spelled differently in the different data sets. Fortunately, `recordLinkage` can help you identify near matches and deduplicate names.
+When joining data sets, you ideally have a unique id, or key, to join on. Sometimes that key does not exist, and you have to join on names or other information. Unfortunately, names are often spelled differently in the different data sets. Fortunately, the package `RecordLinkage` can help you identify near matches and deduplicate names.
 
 ### Example data
 ```{r}
@@ -508,7 +521,8 @@ head(dd,20)
 If you have tons of missing data, you may find this useful.  
 https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing-missing-values/
 
-Scroll down to the `Hmisc` section.  The function `aregImpute` is good for multiple imputation. 
+Scroll down to the `Hmisc` section.  The function `aregImpute` can be used for multiple imputation. 
+
 
 ## Random useful functions
 
@@ -602,12 +616,118 @@ g +
 
 ![](img/normal-dist.gif)     
 
+# Analysis
 
-## Simulating data
+## Variable importance
+
+## Compariable observations
+
+## Other types of regression models
+
+- **Multinomial regression.** Like logistic regression, but for categorical outcomes with 2 or more categories. See ROS, 15.5. R package: `polr`. For multi-class log loss you can use the 
+`MultiLogLoss` from the `MLmetrics` package. See [here](https://rdrr.io/cran/MLmetrics/man/MultiLogLoss.html)
+- **Zero-inflated Poisson or Negative Binomial regression.** Can be useful for count outcomes where there are  more zeros than predicted by a (standard) Poisson or negative binomial regression model. This could potentially be used for the EV charging station data (we removed all census tracts with zero charging stations). See ROS 15.8 and BMLR 4.10. R Package: `zeroinfl`. 
+- **Harmonic regression.** Fit the best sine/cosine curve to data. https://rdrr.io/cran/HarmonicRegression/man/harmonic.regression.html
+- **Beta regression.** When outcome has values in the open interval (0,1) (not just 0 and 1, the *open interval* (0,1) and can be assumed to be y ~ Beta(\alpha, \beta). Like when the outcome is a proportion. Generalizable to an interval (a,b) using transformations. https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf. 
+- **Dirichlet regression.** Kind of like multinomial logit regression is a generalization of logistic regression, this is a generalization of Beta regression. Model the proportions of two or more outcomes, proportions sum to 1. Package: https://cran.r-project.org/web/packages/DirichletReg/DirichletReg.pdf
+- **Spline regression.** Piecewise polynomial
+- **Discussion of Ridge, Lasso, and Bayes. **
+https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
+- **Bayesian regression**. https://stat.columbia.edu/~gelman/book/
+
+# Bayesian estimates
+
+## Beta-binomial
+
+Prior
+
+- $p \sim Beta(\alpha, \beta)$
+- $E[p] = \frac{\alpha}{\alpha + \beta}$
+- $Var[p] = \frac{\alpha\beta}{(\alpha+\beta)^2 (\alpha + \beta + 1)}$
+
+Data: y, n
+
+Posterior
+- $E[p|y]   = \frac{\alpha + y}{\alpha + \beta + n}$
+- $Var[p|y] = \frac{(\alpha+y)(\beta+n-y}{(\alpha+\beta+n)^2 (\alpha + \beta + n + 1)}$
+
+Posterior alpha and beta for plotting the posterior distribution
+from https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance
+
+- $\nu = \frac{\mu(1-\mu)}{\sigma^2} - 1$
+- $\alpha = \mu\nu = \mu\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)$
+- $\beta = (1-\mu)\nu = (1-\mu)\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)$
+
+Example code
+
+```{r}
+alpha = 2   
+beta  = 2   
+
+mu = alpha*beta
+sigma2 = alpha*beta/((alpha+beta)^2*(alpha + beta + 1))
+
+## suppose y successes in n trials games
+y = 10
+n = 10
+
+## Posterior mean and variance
+post.mu = 
+  (alpha + y)/
+  (alpha + beta + n)
+
+post.sigma2 = 
+  (alpha + y)*(beta + n - y)/
+  ((alpha + beta + n)^2*(alpha + beta + n + 1))
+
+## Determine new alpha and beta based on new mu and sigma for plotting.
+post.alpha =  alpha + y  
+post.beta  = beta + n - y 
+
+## Plot posterior first b/c of the y limits
+x = seq(0, 1, by=0.01)
+df = data.frame(x = x, 
+                y1 = dbeta(x = x,
+                           shape1 = alpha, 
+                           shape2 = beta),
+                y2 = dbeta(x = seq(0, 1, by=0.01), 
+                          shape1 = post.alpha, 
+                          shape2 = post.beta))
+
+ggplot(df, aes(x = x)) + 
+  geom_line(aes(y = y1)) +                        ## prior
+  geom_line(aes(y = y2), color = 'blue') +        ## posterior
+  geom_vline(xintercept = post.mu, color = 'red') ## posterior mean
+
+post.mu
+
+```
+
+You can choose alpha and beta using the mean and variance of your data (https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance). 
+
+```{r}
+## Compute mean and variance from data 
+mu = .5
+sigma2 = 0.05
+
+## Find the alpha and beta for the corresponding Beta distribution
+nu    = mu*(1-mu)/sigma2 - 1
+alpha =    mu * nu
+beta  = (1-mu)* nu
+alpha
+beta
+```
+
+
+## Normal
+
+
+
+# Simulating data
 
 Simulated data using models with varying intercepts, varying intercepts and slopes, and neither. 
 
-### Continuous and binary predictors
+## Continuous and binary predictors
 
 First, create simulated continuous predictor $x_1$ and binary predictor $x_2$.
 
@@ -623,7 +743,7 @@ x2 = rdunif(n, b   = 0, a   = 1)
 dg = data.frame(x1, x2)
 ```
 
-### Linear regression with a continuous predictor
+## Linear regression with a continuous predictor
 
 Simulate $y$ data for the simple linear regression model with one continuous predict $x_1$,
 $$y \sim N(\mu, \sigma^2), \\ \quad \mu = \beta_0 + \beta_1x + \epsilon, \quad \epsilon \sim N(0, .1^2),$$
@@ -642,7 +762,7 @@ g %>%
 
 ```
 
-### Poisson regression with a continuous predictor
+## Poisson regression with a continuous predictor
 
 Simulate $y$ data for Poisson regression with one continuous predictor $x_1$, 
 $$y \sim Poisson(\lambda), \\ \lambda = e^{\beta_0 + \beta_1x},$$
@@ -662,7 +782,7 @@ g %>%
   pub(xlim = c(0,1))
 ```
 
-### Linear regression with an extra binary predictor
+## Linear regression with an extra binary predictor
 
 Simulate $y$ data for a linear regression model with one continuous predictor $x_1$ and one binary predicor $x_2$. This has a varying intercept. 
 
@@ -680,7 +800,7 @@ g %>%
 
 ```
 
-### Poisson regression with an extra binary predictor
+## Poisson regression with an extra binary predictor
 
 Simulate $y$ data for a Poisson regression with one continuous predictor $x_1$ and one a binary predicor $x_2$. This is Poisson regression with a varying intercept. 
 
@@ -704,7 +824,7 @@ g %>%
 
 ```
 
-### Linear regression with interaction
+## Linear regression with interaction
 
 Simulate $y$ data for a linear regression with one continuous predictor $x_1$ and one a binary predictor $x_2$, and an interaction term. This is linear regression with varying intercept and varying slope. 
 
@@ -721,7 +841,7 @@ g %>%
   pub(xlim = c(0,1))
 ```
 
-### Poisson regression with interaction
+## Poisson regression with interaction
 
 Simulate $y$ data for a Poisson regression with one continuous predictor $x_1$ and one a binary predicor $x_2$, and an interaction term. This is Poisson regression with varying intercept and varying slope. 
 ```{r fig.width = 5, fig.height = 5}
@@ -748,8 +868,8 @@ g %>%
 
 ## Getting started
 
-- Check out [this](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html)  You can follow the Getting Started steps to start.  If they show simple examples of apps, make sure you run them on your machine. 
-- There is a simple app at data/Week3Day2app.zip in the GitHub repo. Check that out and play around with it. You'll have to unzip that and make sure the data is in the same folder as the app.  (Note that all files referenced by an app must be contained in the same folder, or in a subfolder of that folder. It is like RMD files in that way.) Then open app.R in RStudio and click "Run App" in the upper right of the window (where it says "Source" when you have a .R file or "Run" when you have an .Rmd file, but with an app.R file it should say Run App). That should open the app and you can play around with it. You can see what code makes different pieces of the app.  
+- Check out [this](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html).  You can follow the Getting Started steps to start.  If they show simple examples of apps, make sure you run them on your machine. 
+- There is a simple app at `data/Week3Day2app.zip` in the GitHub repo. Check that out and play around with it. You'll have to unzip that and make sure the data is in the same folder as the app.  (Note that all files referenced by an app must be contained in the same folder, or in a subfolder of that folder. It is like RMD files in that way.) Then open `app.R` in RStudio and click "Run App" in the upper right of the window (where it says "Source" when you have a `.R` file or "Run" when you have an `.Rmd` file, but with an `app.R` file it should say Run App). That should open the app and you can play around with it. You can see what code makes different pieces of the app.  
 - Familiarize yourself with the [cheatsheet](https://shiny.posit.co/r/articles/start/cheatsheet/). (you can skip the "reactive" section for now)
 - Take a look at the [Gallery](https://shiny.posit.co/r/gallery/) You don't have to know how to do everything there, but you can familiarize yourself with what is possible.
 - Take a look at the [Articles](https://shiny.posit.co/r/articles/) page. Same as above: you don't have to read all of them, but familiarize yourself with what is there.
@@ -757,13 +877,14 @@ g %>%
 
 ## Dynamic UI
 
-- Options for creating UIs that depend on other UIs, using `conditionalPanel` and `renderUI` https://shiny.posit.co/r/articles/build/dynamic-ui/. 
-    - Another resource: https://mastering-shiny.org/action-dynamic.html
+Here are options for creating UIs that depend on other UIs, using `conditionalPanel` and `renderUI` https://shiny.posit.co/r/articles/build/dynamic-ui/. 
+
+Another resource: https://mastering-shiny.org/action-dynamic.html
 
 
 Here is an example that makes a second UI appear if certain selections are made in the first UI. This is also app.R on GitHub.
 
-```{r}
+```{r eval = F}
 library(shiny)
 ui <- fluidPage(
   selectInput("dataset", "Dataset", c("diamonds", "rock", "pressure", "cars")),
@@ -795,28 +916,7 @@ See CLTapp.r on GitHub for an example app where UI labels change based on the se
 
 
 
-# Bayesian statistics
 
-## Normal
-
-
-## Beta binomial
-
-
-
-# Regression models
-
-## Other types of regression
-
-- **Multinomial regression.** Like logistic regression, but for categorical outcomes with 2 or more categories. See ROS, 15.5. R package: `polr`. For multi-class log loss you can use the 
-`MultiLogLoss` from the `MLmetrics` package. See [here](https://rdrr.io/cran/MLmetrics/man/MultiLogLoss.html)
-- **Zero-inflated Poisson or Negative Binomial regression.** Can be useful for count outcomes where there are  more zeros than predicted by a (standard) Poisson or negative binomial regression model. This could potentially be used for the EV charging station data (we removed all census tracts with zero charging stations). See ROS 15.8 and BMLR 4.10. R Package: `zeroinfl`. 
-- **Harmonic regression.** Fit the best sine/cosine curve to data. https://rdrr.io/cran/HarmonicRegression/man/harmonic.regression.html
-- **Beta regression.** When outcome has values in the open interval (0,1) (not just 0 and 1, the *open interval* (0,1) and can be assumed to be y ~ Beta(\alpha, \beta). Like when the outcome is a proportion. Generalizable to an interval (a,b) using transformations. https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf. 
-- **Dirichlet regression.** Kind of like multinomial logit regression is a generalization of logistic regression, this is a generalization of Beta regression. Model the proportions of two or more outcomes, proportions sum to 1. Package: https://cran.r-project.org/web/packages/DirichletReg/DirichletReg.pdf
-- **Spline regression.** Piecewise polynomial
-- **Discussion of Ridge, Lasso, and Bayes. **
-https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
 
 
 # Understanding how functions work
@@ -954,88 +1054,6 @@ Running `debugonce('fun')` will send us into debug mode next time we use the fun
 See `testthat` package. That's all I got for now!
 
 
-# Estimating distribution parameters
-
-## Beta-binomial
-
-Prior
-
-- $p \sim Beta(\alpha, \beta)$
-- $E[p] = \frac{\alpha}{\alpha + \beta}$
-- $Var[p] = \frac{\alpha\beta}{(\alpha+\beta)^2 (\alpha + \beta + 1)}$
-
-Data: y, n
-
-Posterior
-- $E[p|y]   = \frac{\alpha + y}{\alpha + \beta + n}$
-- $Var[p|y] = \frac{(\alpha+y)(\beta+n-y}{(\alpha+\beta+n)^2 (\alpha + \beta + n + 1)}$
-
-Posterior alpha and beta for plotting the posterior distribution
-from https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance
-
-- $\nu = \frac{\mu(1-\mu)}{\sigma^2} - 1$
-- $\alpha = \mu\nu = \mu\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)$
-- $\beta = (1-\mu)\nu = (1-\mu)\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)$
-
-Example code
-
-```{r}
-alpha = 2   
-beta  = 2   
-
-mu = alpha*beta
-sigma2 = alpha*beta/((alpha+beta)^2*(alpha + beta + 1))
-
-## suppose y successes in n trials games
-y = 10
-n = 10
-
-## Posterior mean and variance
-post.mu = 
-  (alpha + y)/
-  (alpha + beta + n)
-
-post.sigma2 = 
-  (alpha + y)*(beta + n - y)/
-  ((alpha + beta + n)^2*(alpha + beta + n + 1))
-
-## Determine new alpha and beta based on new mu and sigma for plotting.
-post.alpha =  alpha + y  
-post.beta  = beta + n - y 
-
-## Plot posterior first b/c of the y limits
-x = seq(0, 1, by=0.01)
-df = data.frame(x = x, 
-                y1 = dbeta(x = x,
-                           shape1 = alpha, 
-                           shape2 = beta),
-                y2 = dbeta(x = seq(0, 1, by=0.01), 
-                          shape1 = post.alpha, 
-                          shape2 = post.beta))
-
-ggplot(df, aes(x = x)) + 
-  geom_line(aes(y = y1)) +                        ## prior
-  geom_line(aes(y = y2), color = 'blue') +        ## posterior
-  geom_vline(xintercept = post.mu, color = 'red') ## posterior mean
-
-post.mu
-
-```
-
-You can choose alpha and beta using the mean and variance of your data (https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance). 
-
-```{r}
-## Compute mean and variance from data 
-mu = .5
-sigma2 = 0.05
-
-## Find the alpha and beta for the corresponding Beta distribution
-nu    = mu*(1-mu)/sigma2 - 1
-alpha =    mu * nu
-beta  = (1-mu)* nu
-alpha
-beta
-```
 
 # For loops
 
