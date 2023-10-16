@@ -305,7 +305,7 @@ At the top of `get.census.data.r`, there are URLs you can use to determine what 
 
 If you keep the line `us <- unique(fips_codes$state)[1]` the same, it will only pull census info for the first state, Alabama.  It's quick and a good way to check and make sure your code is running properly. To do all states and DC, change [1] to [1:51]. There are some US territories in this data, so you likely want to stop at 51.
 
-```{r}
+```{r eval = F}
 ## get.census.data.r
 ## Script retrieves, cleans and saves Census data to rds file 
 ## (GEOID, Median Income, Total Population, Total Age, etc)
