@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>22.1 Beta-binomial | Data Analysis</title>
+  <title>13.7 Census data with tidycensus | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
   <meta name="generator" content="bookdown 0.30.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="22.1 Beta-binomial | Data Analysis" />
+  <meta property="og:title" content="13.7 Census data with tidycensus | Data Analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course notes for Data Analysis." />
   <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="22.1 Beta-binomial | Data Analysis" />
+  <meta name="twitter:title" content="13.7 Census data with tidycensus | Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for Data Analysis." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estimating-distribution-parameters.html"/>
-<link rel="next" href="for-loops.html"/>
+<link rel="prev" href="rselenium-docker.html"/>
+<link rel="next" href="connecting-to-sql-databases.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>IV Random</b></span></li>
 <li class="chapter" data-level="11" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>11</b> Introduction</a></li>
-<li class="chapter" data-level="12" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>12</b> Project Development and planning</a>
+<li class="chapter" data-level="12" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>12</b> Project development and planning</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>12.1</b> Brainstorming, determining the end deliverables</a></li>
 <li class="chapter" data-level="12.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>12.2</b> Create a basic framework</a></li>
@@ -271,6 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>13.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
 <li class="chapter" data-level="13.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>13.5</b> Scrape PDFs</a></li>
 <li class="chapter" data-level="13.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>13.6</b> RSelenium, Docker</a></li>
+<li class="chapter" data-level="13.7" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>13.7</b> Census data with <code>tidycensus</code></a></li>
+<li class="chapter" data-level="13.8" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>13.8</b> Connecting to SQL databases</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>14</b> Data cleaning</a>
 <ul>
@@ -281,59 +283,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>14.1.3</b> Attach names to IDs</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>14.2</b> Data imputation</a></li>
+<li class="chapter" data-level="14.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>14.3</b> Random useful functions</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>15</b> Data visualization</a>
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
-<li class="chapter" data-level="15.3" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>15.3</b> Simulating data</a>
+</ul></li>
+<li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="simulating-data.html"><a href="simulating-data.html#continuous-and-binary-predictors"><i class="fa fa-check"></i><b>15.3.1</b> Continuous and binary predictors</a></li>
-<li class="chapter" data-level="15.3.2" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.2</b> Linear regression with a continuous predictor</a></li>
-<li class="chapter" data-level="15.3.3" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.3</b> Poisson regression with a continuous predictor</a></li>
-<li class="chapter" data-level="15.3.4" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.4</b> Linear regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="15.3.5" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.5</b> Poisson regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="15.3.6" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.6</b> Linear regression with interaction</a></li>
-<li class="chapter" data-level="15.3.7" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.7</b> Poisson regression with interaction</a></li>
+<li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
+<li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
+<li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>16</b> Shiny</a>
+<li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>16.1</b> Getting started</a></li>
-<li class="chapter" data-level="16.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>16.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="16.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>16.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="17.1" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>17.1</b> Beta-binomial</a></li>
+<li class="chapter" data-level="17.2" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>17.2</b> Normal</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>17</b> Bayesian statistics</a>
+<li class="chapter" data-level="18" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>18</b> Simulating data</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>17.1</b> Normal</a></li>
-<li class="chapter" data-level="17.2" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>17.2</b> Beta binomial</a></li>
+<li class="chapter" data-level="18.1" data-path="continuous-and-binary-predictors.html"><a href="continuous-and-binary-predictors.html"><i class="fa fa-check"></i><b>18.1</b> Continuous and binary predictors</a></li>
+<li class="chapter" data-level="18.2" data-path="linear-regression-with-a-continuous-predictor.html"><a href="linear-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>18.2</b> Linear regression with a continuous predictor</a></li>
+<li class="chapter" data-level="18.3" data-path="poisson-regression-with-a-continuous-predictor.html"><a href="poisson-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>18.3</b> Poisson regression with a continuous predictor</a></li>
+<li class="chapter" data-level="18.4" data-path="linear-regression-with-an-extra-binary-predictor.html"><a href="linear-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>18.4</b> Linear regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="18.5" data-path="poisson-regression-with-an-extra-binary-predictor.html"><a href="poisson-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>18.5</b> Poisson regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="18.6" data-path="linear-regression-with-interaction.html"><a href="linear-regression-with-interaction.html"><i class="fa fa-check"></i><b>18.6</b> Linear regression with interaction</a></li>
+<li class="chapter" data-level="18.7" data-path="poisson-regression-with-interaction.html"><a href="poisson-regression-with-interaction.html"><i class="fa fa-check"></i><b>18.7</b> Poisson regression with interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>18</b> Regression models</a>
+<li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="other-types-of-regression.html"><a href="other-types-of-regression.html"><i class="fa fa-check"></i><b>18.1</b> Other types of regression</a></li>
+<li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
+<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>19</b> Understanding how functions work</a>
+<li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>19.1</b> Help</a></li>
-<li class="chapter" data-level="19.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>19.2</b> Code</a>
+<li class="chapter" data-level="20.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>20.1</b> Help</a></li>
+<li class="chapter" data-level="20.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>20.2</b> Code</a>
 <ul>
-<li class="chapter" data-level="19.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>19.2.1</b> Generic functions</a></li>
-<li class="chapter" data-level="19.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>19.2.2</b> <code>methods</code></a></li>
-<li class="chapter" data-level="19.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>19.2.3</b> <code>getAnywhere</code></a></li>
-<li class="chapter" data-level="19.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>19.2.4</b> Other resources</a></li>
+<li class="chapter" data-level="20.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>20.2.1</b> Generic functions</a></li>
+<li class="chapter" data-level="20.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>20.2.2</b> <code>methods</code></a></li>
+<li class="chapter" data-level="20.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>20.2.3</b> <code>getAnywhere</code></a></li>
+<li class="chapter" data-level="20.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>20.2.4</b> Other resources</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>19.3</b> Functions with unquoted arguments</a></li>
+<li class="chapter" data-level="20.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>20.3</b> Functions with unquoted arguments</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>20</b> Debugging</a>
+<li class="chapter" data-level="21" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>21</b> Debugging</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>20.1</b> <code>browser()</code></a></li>
-<li class="chapter" data-level="20.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>20.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+<li class="chapter" data-level="21.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>21.1</b> <code>browser()</code></a></li>
+<li class="chapter" data-level="21.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>21.2</b> <code>debug</code>, <code>debugonce</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>21</b> Testing</a></li>
-<li class="chapter" data-level="22" data-path="estimating-distribution-parameters.html"><a href="estimating-distribution-parameters.html"><i class="fa fa-check"></i><b>22</b> Estimating distribution parameters</a>
-<ul>
-<li class="chapter" data-level="22.1" data-path="beta-binomial-1.html"><a href="beta-binomial-1.html"><i class="fa fa-check"></i><b>22.1</b> Beta-binomial</a></li>
-</ul></li>
+<li class="chapter" data-level="22" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>22</b> Testing</a></li>
 <li class="chapter" data-level="23" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>23</b> For loops</a>
 <ul>
 <li class="chapter" data-level="23.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>23.1</b> Showing progress</a></li>
@@ -424,96 +425,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="beta-binomial-1" class="section level2 hasAnchor" number="22.1">
-<h2><span class="header-section-number">22.1</span> Beta-binomial<a href="beta-binomial-1.html#beta-binomial-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Prior</p>
-<ul>
-<li><span class="math inline">\(p \sim Beta(\alpha, \beta)\)</span></li>
-<li><span class="math inline">\(E[p] = \frac{\alpha}{\alpha + \beta}\)</span></li>
-<li><span class="math inline">\(Var[p] = \frac{\alpha\beta}{(\alpha+\beta)^2 (\alpha + \beta + 1)}\)</span></li>
-</ul>
-<p>Data: y, n</p>
-<p>Posterior
-- <span class="math inline">\(E[p|y] = \frac{\alpha + y}{\alpha + \beta + n}\)</span>
-- <span class="math inline">\(Var[p|y] = \frac{(\alpha+y)(\beta+n-y}{(\alpha+\beta+n)^2 (\alpha + \beta + n + 1)}\)</span></p>
-<p>Posterior alpha and beta for plotting the posterior distribution
-from <a href="https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance" class="uri">https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance</a></p>
-<ul>
-<li><span class="math inline">\(\nu = \frac{\mu(1-\mu)}{\sigma^2} - 1\)</span></li>
-<li><span class="math inline">\(\alpha = \mu\nu = \mu\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)\)</span></li>
-<li><span class="math inline">\(\beta = (1-\mu)\nu = (1-\mu)\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)\)</span></li>
-</ul>
-<p>Example code</p>
+<div id="census-data-with-tidycensus" class="section level2 hasAnchor" number="13.7">
+<h2><span class="header-section-number">13.7</span> Census data with <code>tidycensus</code><a href="census-data-with-tidycensus.html#census-data-with-tidycensus" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>See <a href="https://github.com/bmacGTPM/notes/tree/main/R/census">R/census</a></p>
+<p>This is example code that can be used to pull data from the US census into R as a data frame</p>
+<p>At the top of <code>get.census.data.r</code>, there are URLs you can use to determine what variables you want to pull. For the census data used in these notes, I used the ACS link, and when I got to that page, I chose HTML format for 2019.</p>
+<p>If you keep the line <code>us &lt;- unique(fips_codes$state)[1]</code> the same, it will only pull census info for the first state, Alabama. It’s quick and a good way to check and make sure your code is running properly. To do all states and DC, change [1] to [1:51]. There are some US territories in this data, so you likely want to stop at 51.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb216-1"><a href="beta-binomial-1.html#cb216-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">2</span>   </span>
-<span id="cb216-2"><a href="beta-binomial-1.html#cb216-2" aria-hidden="true" tabindex="-1"></a>beta  <span class="ot">=</span> <span class="dv">2</span>   </span>
-<span id="cb216-3"><a href="beta-binomial-1.html#cb216-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-4"><a href="beta-binomial-1.html#cb216-4" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> alpha<span class="sc">*</span>beta</span>
-<span id="cb216-5"><a href="beta-binomial-1.html#cb216-5" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">=</span> alpha<span class="sc">*</span>beta<span class="sc">/</span>((alpha<span class="sc">+</span>beta)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(alpha <span class="sc">+</span> beta <span class="sc">+</span> <span class="dv">1</span>))</span>
-<span id="cb216-6"><a href="beta-binomial-1.html#cb216-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-7"><a href="beta-binomial-1.html#cb216-7" aria-hidden="true" tabindex="-1"></a><span class="do">## suppose y successes in n trials games</span></span>
-<span id="cb216-8"><a href="beta-binomial-1.html#cb216-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb216-9"><a href="beta-binomial-1.html#cb216-9" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb216-10"><a href="beta-binomial-1.html#cb216-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-11"><a href="beta-binomial-1.html#cb216-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Posterior mean and variance</span></span>
-<span id="cb216-12"><a href="beta-binomial-1.html#cb216-12" aria-hidden="true" tabindex="-1"></a>post.mu <span class="ot">=</span> </span>
-<span id="cb216-13"><a href="beta-binomial-1.html#cb216-13" aria-hidden="true" tabindex="-1"></a>  (alpha <span class="sc">+</span> y)<span class="sc">/</span></span>
-<span id="cb216-14"><a href="beta-binomial-1.html#cb216-14" aria-hidden="true" tabindex="-1"></a>  (alpha <span class="sc">+</span> beta <span class="sc">+</span> n)</span>
-<span id="cb216-15"><a href="beta-binomial-1.html#cb216-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-16"><a href="beta-binomial-1.html#cb216-16" aria-hidden="true" tabindex="-1"></a>post.sigma2 <span class="ot">=</span> </span>
-<span id="cb216-17"><a href="beta-binomial-1.html#cb216-17" aria-hidden="true" tabindex="-1"></a>  (alpha <span class="sc">+</span> y)<span class="sc">*</span>(beta <span class="sc">+</span> n <span class="sc">-</span> y)<span class="sc">/</span></span>
-<span id="cb216-18"><a href="beta-binomial-1.html#cb216-18" aria-hidden="true" tabindex="-1"></a>  ((alpha <span class="sc">+</span> beta <span class="sc">+</span> n)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(alpha <span class="sc">+</span> beta <span class="sc">+</span> n <span class="sc">+</span> <span class="dv">1</span>))</span>
-<span id="cb216-19"><a href="beta-binomial-1.html#cb216-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-20"><a href="beta-binomial-1.html#cb216-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Determine new alpha and beta based on new mu and sigma for plotting.</span></span>
-<span id="cb216-21"><a href="beta-binomial-1.html#cb216-21" aria-hidden="true" tabindex="-1"></a>post.alpha <span class="ot">=</span>  alpha <span class="sc">+</span> y  </span>
-<span id="cb216-22"><a href="beta-binomial-1.html#cb216-22" aria-hidden="true" tabindex="-1"></a>post.beta  <span class="ot">=</span> beta <span class="sc">+</span> n <span class="sc">-</span> y </span>
-<span id="cb216-23"><a href="beta-binomial-1.html#cb216-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-24"><a href="beta-binomial-1.html#cb216-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot posterior first b/c of the y limits</span></span>
-<span id="cb216-25"><a href="beta-binomial-1.html#cb216-25" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
-<span id="cb216-26"><a href="beta-binomial-1.html#cb216-26" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, </span>
-<span id="cb216-27"><a href="beta-binomial-1.html#cb216-27" aria-hidden="true" tabindex="-1"></a>                <span class="at">y1 =</span> <span class="fu">dbeta</span>(<span class="at">x =</span> x,</span>
-<span id="cb216-28"><a href="beta-binomial-1.html#cb216-28" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape1 =</span> alpha, </span>
-<span id="cb216-29"><a href="beta-binomial-1.html#cb216-29" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape2 =</span> beta),</span>
-<span id="cb216-30"><a href="beta-binomial-1.html#cb216-30" aria-hidden="true" tabindex="-1"></a>                <span class="at">y2 =</span> <span class="fu">dbeta</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.01</span>), </span>
-<span id="cb216-31"><a href="beta-binomial-1.html#cb216-31" aria-hidden="true" tabindex="-1"></a>                          <span class="at">shape1 =</span> post.alpha, </span>
-<span id="cb216-32"><a href="beta-binomial-1.html#cb216-32" aria-hidden="true" tabindex="-1"></a>                          <span class="at">shape2 =</span> post.beta))</span>
-<span id="cb216-33"><a href="beta-binomial-1.html#cb216-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-34"><a href="beta-binomial-1.html#cb216-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> </span>
-<span id="cb216-35"><a href="beta-binomial-1.html#cb216-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> y1)) <span class="sc">+</span>                        <span class="do">## prior</span></span>
-<span id="cb216-36"><a href="beta-binomial-1.html#cb216-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> y2), <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>) <span class="sc">+</span>        <span class="do">## posterior</span></span>
-<span id="cb216-37"><a href="beta-binomial-1.html#cb216-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> post.mu, <span class="at">color =</span> <span class="st">&#39;red&#39;</span>) <span class="do">## posterior mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb157-1"><a href="census-data-with-tidycensus.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="do">## get.census.data.r</span></span>
+<span id="cb157-2"><a href="census-data-with-tidycensus.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Script retrieves, cleans and saves Census data to rds file </span></span>
+<span id="cb157-3"><a href="census-data-with-tidycensus.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="do">## (GEOID, Median Income, Total Population, Total Age, etc)</span></span>
+<span id="cb157-4"><a href="census-data-with-tidycensus.html#cb157-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-5"><a href="census-data-with-tidycensus.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="do">## See these for the variable codes:</span></span>
+<span id="cb157-6"><a href="census-data-with-tidycensus.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Census API: https://www.census.gov/data/developers/data-sets.html</span></span>
+<span id="cb157-7"><a href="census-data-with-tidycensus.html#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ACS:        https://www.census.gov/data/developers/data-sets/acs-1year.html</span></span>
+<span id="cb157-8"><a href="census-data-with-tidycensus.html#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Decennial:  https://www.census.gov/data/developers/data-sets/decennial-census.html</span></span>
+<span id="cb157-9"><a href="census-data-with-tidycensus.html#cb157-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-10"><a href="census-data-with-tidycensus.html#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb157-11"><a href="census-data-with-tidycensus.html#cb157-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb157-12"><a href="census-data-with-tidycensus.html#cb157-12" aria-hidden="true" tabindex="-1"></a>year<span class="ot">=</span><span class="dv">2019</span></span>
+<span id="cb157-13"><a href="census-data-with-tidycensus.html#cb157-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-14"><a href="census-data-with-tidycensus.html#cb157-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-15"><a href="census-data-with-tidycensus.html#cb157-15" aria-hidden="true" tabindex="-1"></a><span class="do">## You need a census API key. </span></span>
+<span id="cb157-16"><a href="census-data-with-tidycensus.html#cb157-16" aria-hidden="true" tabindex="-1"></a><span class="do">## See https://api.census.gov/data/key_signup.html</span></span>
+<span id="cb157-17"><a href="census-data-with-tidycensus.html#cb157-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Once you get it, you can store it using </span></span>
+<span id="cb157-18"><a href="census-data-with-tidycensus.html#cb157-18" aria-hidden="true" tabindex="-1"></a><span class="do">## census_api_key(&#39;yourAPIkeyHere&#39;, install=TRUE)</span></span>
+<span id="cb157-19"><a href="census-data-with-tidycensus.html#cb157-19" aria-hidden="true" tabindex="-1"></a><span class="do">## That only needs to be done once (hopefully) </span></span>
+<span id="cb157-20"><a href="census-data-with-tidycensus.html#cb157-20" aria-hidden="true" tabindex="-1"></a><span class="do">## and it will be stored in your .Renviron file. </span></span>
+<span id="cb157-21"><a href="census-data-with-tidycensus.html#cb157-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Then you can use this  </span></span>
+<span id="cb157-22"><a href="census-data-with-tidycensus.html#cb157-22" aria-hidden="true" tabindex="-1"></a><span class="fu">readRenviron</span>(<span class="st">&quot;~/.Renviron&quot;</span>) </span>
+<span id="cb157-23"><a href="census-data-with-tidycensus.html#cb157-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-24"><a href="census-data-with-tidycensus.html#cb157-24" aria-hidden="true" tabindex="-1"></a><span class="do">## all</span></span>
+<span id="cb157-25"><a href="census-data-with-tidycensus.html#cb157-25" aria-hidden="true" tabindex="-1"></a>us <span class="ot">&lt;-</span> <span class="fu">unique</span>(fips_codes<span class="sc">$</span>state)[<span class="dv">1</span>] <span class="do">## change to 1:51 for all states and DC</span></span>
+<span id="cb157-26"><a href="census-data-with-tidycensus.html#cb157-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-27"><a href="census-data-with-tidycensus.html#cb157-27" aria-hidden="true" tabindex="-1"></a><span class="do">## for ACS</span></span>
+<span id="cb157-28"><a href="census-data-with-tidycensus.html#cb157-28" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="co"># Total, Male, Female</span></span>
+<span id="cb157-29"><a href="census-data-with-tidycensus.html#cb157-29" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B01001_001&quot;</span>, <span class="st">&quot;B01001_002&quot;</span>, <span class="st">&quot;B01001_026&quot;</span>, </span>
+<span id="cb157-30"><a href="census-data-with-tidycensus.html#cb157-30" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb157-31"><a href="census-data-with-tidycensus.html#cb157-31" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Median age, Male age, Female age</span></span>
+<span id="cb157-32"><a href="census-data-with-tidycensus.html#cb157-32" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B01002_001&quot;</span>, <span class="st">&quot;B01002_002&quot;</span>, <span class="st">&quot;B01002_003&quot;</span>, </span>
+<span id="cb157-33"><a href="census-data-with-tidycensus.html#cb157-33" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb157-34"><a href="census-data-with-tidycensus.html#cb157-34" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Race: White, Black, Native, Asian, Pacific, Other, 2+</span></span>
+<span id="cb157-35"><a href="census-data-with-tidycensus.html#cb157-35" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B02001_002&quot;</span>, <span class="st">&quot;B02001_003&quot;</span>, <span class="st">&quot;B02001_004&quot;</span>, </span>
+<span id="cb157-36"><a href="census-data-with-tidycensus.html#cb157-36" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B02001_005&quot;</span>, <span class="st">&quot;B02001_006&quot;</span>, <span class="st">&quot;B02001_007&quot;</span>, <span class="st">&quot;B02001_008&quot;</span>, </span>
+<span id="cb157-37"><a href="census-data-with-tidycensus.html#cb157-37" aria-hidden="true" tabindex="-1"></a>              </span>
+<span id="cb157-38"><a href="census-data-with-tidycensus.html#cb157-38" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># white non-hispanic, hispanic, white hisp, black hisp</span></span>
+<span id="cb157-39"><a href="census-data-with-tidycensus.html#cb157-39" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B03002_003&quot;</span>, <span class="st">&quot;B03002_012&quot;</span>, <span class="st">&quot;B03002_013&quot;</span>, <span class="st">&#39;B03002_014&#39;</span>,</span>
+<span id="cb157-40"><a href="census-data-with-tidycensus.html#cb157-40" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb157-41"><a href="census-data-with-tidycensus.html#cb157-41" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Household income ranges: </span></span>
+<span id="cb157-42"><a href="census-data-with-tidycensus.html#cb157-42" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># &lt;10k, 10000-14999, ... , 150000-199999, &gt;200k </span></span>
+<span id="cb157-43"><a href="census-data-with-tidycensus.html#cb157-43" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B19001_001&quot;</span>, <span class="st">&quot;B19001_002&quot;</span>, <span class="st">&quot;B19001_003&quot;</span>, <span class="st">&quot;B19001_004&quot;</span>,</span>
+<span id="cb157-44"><a href="census-data-with-tidycensus.html#cb157-44" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B19001_005&quot;</span>, <span class="st">&quot;B19001_006&quot;</span>, <span class="st">&quot;B19001_007&quot;</span>, <span class="st">&quot;B19001_008&quot;</span>,</span>
+<span id="cb157-45"><a href="census-data-with-tidycensus.html#cb157-45" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B19001_009&quot;</span>, <span class="st">&quot;B19001_010&quot;</span>, <span class="st">&quot;B19001_011&quot;</span>, <span class="st">&quot;B19001_012&quot;</span>,</span>
+<span id="cb157-46"><a href="census-data-with-tidycensus.html#cb157-46" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B19001_013&quot;</span>, <span class="st">&quot;B19001_014&quot;</span>, <span class="st">&quot;B19001_015&quot;</span>, <span class="st">&quot;B19001_016&quot;</span>,</span>
+<span id="cb157-47"><a href="census-data-with-tidycensus.html#cb157-47" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B19001_017&quot;</span>,</span>
+<span id="cb157-48"><a href="census-data-with-tidycensus.html#cb157-48" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb157-49"><a href="census-data-with-tidycensus.html#cb157-49" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B19013_001&quot;</span>, <span class="co"># Median Household Income</span></span>
+<span id="cb157-50"><a href="census-data-with-tidycensus.html#cb157-50" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;B25077_001&quot;</span>, <span class="co"># Median Housing Value</span></span>
+<span id="cb157-51"><a href="census-data-with-tidycensus.html#cb157-51" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;B05009_001&#39;</span>  <span class="co"># Children</span></span>
+<span id="cb157-52"><a href="census-data-with-tidycensus.html#cb157-52" aria-hidden="true" tabindex="-1"></a>                  ) </span>
+<span id="cb157-53"><a href="census-data-with-tidycensus.html#cb157-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-54"><a href="census-data-with-tidycensus.html#cb157-54" aria-hidden="true" tabindex="-1"></a><span class="co"># fails with geometry = TRUE, so removing.  </span></span>
+<span id="cb157-55"><a href="census-data-with-tidycensus.html#cb157-55" aria-hidden="true" tabindex="-1"></a><span class="co"># We get tract info from elsewhere anyway.</span></span>
+<span id="cb157-56"><a href="census-data-with-tidycensus.html#cb157-56" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb157-57"><a href="census-data-with-tidycensus.html#cb157-57" aria-hidden="true" tabindex="-1"></a>            <span class="at">variables =</span> vars, </span>
+<span id="cb157-58"><a href="census-data-with-tidycensus.html#cb157-58" aria-hidden="true" tabindex="-1"></a>            <span class="at">state =</span> us, </span>
+<span id="cb157-59"><a href="census-data-with-tidycensus.html#cb157-59" aria-hidden="true" tabindex="-1"></a>            <span class="at">year =</span> year) </span>
+<span id="cb157-60"><a href="census-data-with-tidycensus.html#cb157-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-61"><a href="census-data-with-tidycensus.html#cb157-61" aria-hidden="true" tabindex="-1"></a><span class="co"># census_data &lt;- get_decennial(geography = &quot;tract&quot;, </span></span>
+<span id="cb157-62"><a href="census-data-with-tidycensus.html#cb157-62" aria-hidden="true" tabindex="-1"></a><span class="co">#                              variables = vars, </span></span>
+<span id="cb157-63"><a href="census-data-with-tidycensus.html#cb157-63" aria-hidden="true" tabindex="-1"></a><span class="co">#                              state = &#39;CT&#39;, </span></span>
+<span id="cb157-64"><a href="census-data-with-tidycensus.html#cb157-64" aria-hidden="true" tabindex="-1"></a><span class="co">#                              year=2020) </span></span>
+<span id="cb157-65"><a href="census-data-with-tidycensus.html#cb157-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-66"><a href="census-data-with-tidycensus.html#cb157-66" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb157-67"><a href="census-data-with-tidycensus.html#cb157-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tract      =</span> <span class="fu">gsub</span>(<span class="st">&#39;,.+|Census Tract &#39;</span>, <span class="st">&#39;&#39;</span>, NAME),</span>
+<span id="cb157-68"><a href="census-data-with-tidycensus.html#cb157-68" aria-hidden="true" tabindex="-1"></a>         <span class="at">county     =</span> <span class="fu">gsub</span>(<span class="st">&#39;, [A-z]+$|&#39;</span>       , <span class="st">&#39;&#39;</span>, NAME), </span>
+<span id="cb157-69"><a href="census-data-with-tidycensus.html#cb157-69" aria-hidden="true" tabindex="-1"></a>         <span class="at">county     =</span> <span class="fu">gsub</span>(<span class="st">&#39;^.+, &#39;</span>            , <span class="st">&#39;&#39;</span>, county),</span>
+<span id="cb157-70"><a href="census-data-with-tidycensus.html#cb157-70" aria-hidden="true" tabindex="-1"></a>         <span class="at">state.full =</span> <span class="fu">gsub</span>(<span class="st">&#39;.+, &#39;</span>             , <span class="st">&#39;&#39;</span>, NAME)) <span class="sc">%&gt;%</span></span>
+<span id="cb157-71"><a href="census-data-with-tidycensus.html#cb157-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEOID, tract, county, state.full, variable, estimate) <span class="sc">%&gt;%</span></span>
+<span id="cb157-72"><a href="census-data-with-tidycensus.html#cb157-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> variable, </span>
+<span id="cb157-73"><a href="census-data-with-tidycensus.html#cb157-73" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> estimate) <span class="sc">%&gt;%</span></span>
+<span id="cb157-74"><a href="census-data-with-tidycensus.html#cb157-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(                <span class="st">&#39;pop&#39;</span> <span class="ot">=</span> <span class="st">&#39;B01001_001&#39;</span>, <span class="do">## total population</span></span>
+<span id="cb157-75"><a href="census-data-with-tidycensus.html#cb157-75" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&#39;male&#39;</span> <span class="ot">=</span> <span class="st">&#39;B01001_002&#39;</span>, <span class="do">## sex</span></span>
+<span id="cb157-76"><a href="census-data-with-tidycensus.html#cb157-76" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&#39;female&#39;</span> <span class="ot">=</span> <span class="st">&#39;B01001_026&#39;</span>,</span>
+<span id="cb157-77"><a href="census-data-with-tidycensus.html#cb157-77" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&#39;age&#39;</span> <span class="ot">=</span> <span class="st">&#39;B01002_001&#39;</span>, <span class="do">## age</span></span>
+<span id="cb157-78"><a href="census-data-with-tidycensus.html#cb157-78" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;male.age&#39;</span> <span class="ot">=</span> <span class="st">&#39;B01002_002&#39;</span>,</span>
+<span id="cb157-79"><a href="census-data-with-tidycensus.html#cb157-79" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;female.age&#39;</span> <span class="ot">=</span> <span class="st">&#39;B01002_003&#39;</span>,</span>
+<span id="cb157-80"><a href="census-data-with-tidycensus.html#cb157-80" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb157-81"><a href="census-data-with-tidycensus.html#cb157-81" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&#39;white&#39;</span> <span class="ot">=</span> <span class="st">&#39;B02001_002&#39;</span>, <span class="do">## race</span></span>
+<span id="cb157-82"><a href="census-data-with-tidycensus.html#cb157-82" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&#39;black&#39;</span> <span class="ot">=</span> <span class="st">&#39;B02001_003&#39;</span>,</span>
+<span id="cb157-83"><a href="census-data-with-tidycensus.html#cb157-83" aria-hidden="true" tabindex="-1"></a>              <span class="st">&#39;indian.alaskan&#39;</span> <span class="ot">=</span> <span class="st">&#39;B02001_004&#39;</span>,</span>
+<span id="cb157-84"><a href="census-data-with-tidycensus.html#cb157-84" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&#39;asian&#39;</span> <span class="ot">=</span> <span class="st">&#39;B02001_005&#39;</span>,</span>
+<span id="cb157-85"><a href="census-data-with-tidycensus.html#cb157-85" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;pacific&#39;</span> <span class="ot">=</span> <span class="st">&#39;B02001_006&#39;</span>,</span>
+<span id="cb157-86"><a href="census-data-with-tidycensus.html#cb157-86" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&#39;other&#39;</span> <span class="ot">=</span> <span class="st">&#39;B02001_007&#39;</span>,</span>
+<span id="cb157-87"><a href="census-data-with-tidycensus.html#cb157-87" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&#39;two.or.more&#39;</span> <span class="ot">=</span> <span class="st">&#39;B02001_008&#39;</span>,</span>
+<span id="cb157-88"><a href="census-data-with-tidycensus.html#cb157-88" aria-hidden="true" tabindex="-1"></a>              <span class="st">&#39;white.not.hisp&#39;</span> <span class="ot">=</span> <span class="st">&#39;B03002_003&#39;</span>,</span>
+<span id="cb157-89"><a href="census-data-with-tidycensus.html#cb157-89" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&#39;hisp&#39;</span> <span class="ot">=</span> <span class="st">&#39;B03002_012&#39;</span>,</span>
+<span id="cb157-90"><a href="census-data-with-tidycensus.html#cb157-90" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;white.hisp&#39;</span> <span class="ot">=</span> <span class="st">&#39;B03002_013&#39;</span>,</span>
+<span id="cb157-91"><a href="census-data-with-tidycensus.html#cb157-91" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;black.hisp&#39;</span> <span class="ot">=</span> <span class="st">&#39;B03002_014&#39;</span>,</span>
+<span id="cb157-92"><a href="census-data-with-tidycensus.html#cb157-92" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;households&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_001&#39;</span>,</span>
+<span id="cb157-93"><a href="census-data-with-tidycensus.html#cb157-93" aria-hidden="true" tabindex="-1"></a>         </span>
+<span id="cb157-94"><a href="census-data-with-tidycensus.html#cb157-94" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&#39;i10orless&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_002&#39;</span>, <span class="do">## income</span></span>
+<span id="cb157-95"><a href="census-data-with-tidycensus.html#cb157-95" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i10to14&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_003&#39;</span>,</span>
+<span id="cb157-96"><a href="census-data-with-tidycensus.html#cb157-96" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i15to19&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_004&#39;</span>,</span>
+<span id="cb157-97"><a href="census-data-with-tidycensus.html#cb157-97" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i20to24&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_005&#39;</span>,</span>
+<span id="cb157-98"><a href="census-data-with-tidycensus.html#cb157-98" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i25to29&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_006&#39;</span>,</span>
+<span id="cb157-99"><a href="census-data-with-tidycensus.html#cb157-99" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i30to34&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_007&#39;</span>,</span>
+<span id="cb157-100"><a href="census-data-with-tidycensus.html#cb157-100" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i35to39&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_008&#39;</span>,</span>
+<span id="cb157-101"><a href="census-data-with-tidycensus.html#cb157-101" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i40to44&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_009&#39;</span>,</span>
+<span id="cb157-102"><a href="census-data-with-tidycensus.html#cb157-102" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i45to49&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_010&#39;</span>,</span>
+<span id="cb157-103"><a href="census-data-with-tidycensus.html#cb157-103" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i50to59&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_011&#39;</span>,</span>
+<span id="cb157-104"><a href="census-data-with-tidycensus.html#cb157-104" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i60to74&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_012&#39;</span>,</span>
+<span id="cb157-105"><a href="census-data-with-tidycensus.html#cb157-105" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;i75to99&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19001_013&#39;</span>,</span>
+<span id="cb157-106"><a href="census-data-with-tidycensus.html#cb157-106" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;i100to124&#39;</span><span class="ot">=</span> <span class="st">&#39;B19001_014&#39;</span>,</span>
+<span id="cb157-107"><a href="census-data-with-tidycensus.html#cb157-107" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;i125to149&#39;</span><span class="ot">=</span> <span class="st">&#39;B19001_015&#39;</span>,</span>
+<span id="cb157-108"><a href="census-data-with-tidycensus.html#cb157-108" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;i150to199&#39;</span><span class="ot">=</span> <span class="st">&#39;B19001_016&#39;</span>,</span>
+<span id="cb157-109"><a href="census-data-with-tidycensus.html#cb157-109" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&#39;i200ormore&#39;</span><span class="ot">=</span> <span class="st">&#39;B19001_017&#39;</span>,</span>
+<span id="cb157-110"><a href="census-data-with-tidycensus.html#cb157-110" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&#39;hh.income&#39;</span> <span class="ot">=</span> <span class="st">&#39;B19013_001&#39;</span>,</span>
+<span id="cb157-111"><a href="census-data-with-tidycensus.html#cb157-111" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&#39;house.value&#39;</span> <span class="ot">=</span> <span class="st">&#39;B25077_001&#39;</span>,</span>
+<span id="cb157-112"><a href="census-data-with-tidycensus.html#cb157-112" aria-hidden="true" tabindex="-1"></a>               <span class="st">&#39;TotalChildren&#39;</span> <span class="ot">=</span> <span class="st">&#39;B05009_001&#39;</span> <span class="co"># doesn&#39;t exist for 2009</span></span>
+<span id="cb157-113"><a href="census-data-with-tidycensus.html#cb157-113" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span></span>
+<span id="cb157-114"><a href="census-data-with-tidycensus.html#cb157-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb157-115"><a href="census-data-with-tidycensus.html#cb157-115" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dd)</span>
+<span id="cb157-116"><a href="census-data-with-tidycensus.html#cb157-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-117"><a href="census-data-with-tidycensus.html#cb157-117" aria-hidden="true" tabindex="-1"></a><span class="do">## save census data</span></span>
+<span id="cb157-118"><a href="census-data-with-tidycensus.html#cb157-118" aria-hidden="true" tabindex="-1"></a><span class="co"># filename = paste0(&#39;rawdata/census&#39;, year, &#39;.rds&#39;)</span></span>
+<span id="cb157-119"><a href="census-data-with-tidycensus.html#cb157-119" aria-hidden="true" tabindex="-1"></a><span class="co"># saveRDS(dd, file = filename)</span></span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="672" style="display: block; margin: auto;" /></p>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb217-1"><a href="beta-binomial-1.html#cb217-1" aria-hidden="true" tabindex="-1"></a>post.mu</span></code></pre></div>
-</details>
-<pre><code>[1] 0.8571429</code></pre>
-<p>You can choose alpha and beta using the mean and variance of your data (<a href="https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance" class="uri">https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance</a>).</p>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb219-1"><a href="beta-binomial-1.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute mean and variance from data </span></span>
-<span id="cb219-2"><a href="beta-binomial-1.html#cb219-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> .<span class="dv">5</span></span>
-<span id="cb219-3"><a href="beta-binomial-1.html#cb219-3" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb219-4"><a href="beta-binomial-1.html#cb219-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-5"><a href="beta-binomial-1.html#cb219-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Find the alpha and beta for the corresponding Beta distribution</span></span>
-<span id="cb219-6"><a href="beta-binomial-1.html#cb219-6" aria-hidden="true" tabindex="-1"></a>nu    <span class="ot">=</span> mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">/</span>sigma2 <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb219-7"><a href="beta-binomial-1.html#cb219-7" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span>    mu <span class="sc">*</span> nu</span>
-<span id="cb219-8"><a href="beta-binomial-1.html#cb219-8" aria-hidden="true" tabindex="-1"></a>beta  <span class="ot">=</span> (<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span> nu</span>
-<span id="cb219-9"><a href="beta-binomial-1.html#cb219-9" aria-hidden="true" tabindex="-1"></a>alpha</span></code></pre></div>
-</details>
-<pre><code>[1] 2</code></pre>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb221-1"><a href="beta-binomial-1.html#cb221-1" aria-hidden="true" tabindex="-1"></a>beta</span></code></pre></div>
-</details>
-<pre><code>[1] 2</code></pre>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="estimating-distribution-parameters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="for-loops.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rselenium-docker.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="connecting-to-sql-databases.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>17.2 Beta binomial | Data Analysis</title>
+  <title>17.1 Beta-binomial | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
   <meta name="generator" content="bookdown 0.30.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="17.2 Beta binomial | Data Analysis" />
+  <meta property="og:title" content="17.1 Beta-binomial | Data Analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course notes for Data Analysis." />
   <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="17.2 Beta binomial | Data Analysis" />
+  <meta name="twitter:title" content="17.1 Beta-binomial | Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for Data Analysis." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="normal.html"/>
-<link rel="next" href="regression-models.html"/>
+<link rel="prev" href="bayesian-estimates.html"/>
+<link rel="next" href="normal.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>IV Random</b></span></li>
 <li class="chapter" data-level="11" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>11</b> Introduction</a></li>
-<li class="chapter" data-level="12" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>12</b> Project Development and planning</a>
+<li class="chapter" data-level="12" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>12</b> Project development and planning</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>12.1</b> Brainstorming, determining the end deliverables</a></li>
 <li class="chapter" data-level="12.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>12.2</b> Create a basic framework</a></li>
@@ -271,6 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>13.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
 <li class="chapter" data-level="13.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>13.5</b> Scrape PDFs</a></li>
 <li class="chapter" data-level="13.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>13.6</b> RSelenium, Docker</a></li>
+<li class="chapter" data-level="13.7" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>13.7</b> Census data with <code>tidycensus</code></a></li>
+<li class="chapter" data-level="13.8" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>13.8</b> Connecting to SQL databases</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>14</b> Data cleaning</a>
 <ul>
@@ -281,59 +283,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>14.1.3</b> Attach names to IDs</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>14.2</b> Data imputation</a></li>
+<li class="chapter" data-level="14.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>14.3</b> Random useful functions</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>15</b> Data visualization</a>
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
-<li class="chapter" data-level="15.3" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>15.3</b> Simulating data</a>
+</ul></li>
+<li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="simulating-data.html"><a href="simulating-data.html#continuous-and-binary-predictors"><i class="fa fa-check"></i><b>15.3.1</b> Continuous and binary predictors</a></li>
-<li class="chapter" data-level="15.3.2" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.2</b> Linear regression with a continuous predictor</a></li>
-<li class="chapter" data-level="15.3.3" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-a-continuous-predictor"><i class="fa fa-check"></i><b>15.3.3</b> Poisson regression with a continuous predictor</a></li>
-<li class="chapter" data-level="15.3.4" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.4</b> Linear regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="15.3.5" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-an-extra-binary-predictor"><i class="fa fa-check"></i><b>15.3.5</b> Poisson regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="15.3.6" data-path="simulating-data.html"><a href="simulating-data.html#linear-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.6</b> Linear regression with interaction</a></li>
-<li class="chapter" data-level="15.3.7" data-path="simulating-data.html"><a href="simulating-data.html#poisson-regression-with-interaction"><i class="fa fa-check"></i><b>15.3.7</b> Poisson regression with interaction</a></li>
+<li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
+<li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
+<li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>16</b> Shiny</a>
+<li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>16.1</b> Getting started</a></li>
-<li class="chapter" data-level="16.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>16.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="16.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>16.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="17.1" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>17.1</b> Beta-binomial</a></li>
+<li class="chapter" data-level="17.2" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>17.2</b> Normal</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>17</b> Bayesian statistics</a>
+<li class="chapter" data-level="18" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>18</b> Simulating data</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>17.1</b> Normal</a></li>
-<li class="chapter" data-level="17.2" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>17.2</b> Beta binomial</a></li>
+<li class="chapter" data-level="18.1" data-path="continuous-and-binary-predictors.html"><a href="continuous-and-binary-predictors.html"><i class="fa fa-check"></i><b>18.1</b> Continuous and binary predictors</a></li>
+<li class="chapter" data-level="18.2" data-path="linear-regression-with-a-continuous-predictor.html"><a href="linear-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>18.2</b> Linear regression with a continuous predictor</a></li>
+<li class="chapter" data-level="18.3" data-path="poisson-regression-with-a-continuous-predictor.html"><a href="poisson-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>18.3</b> Poisson regression with a continuous predictor</a></li>
+<li class="chapter" data-level="18.4" data-path="linear-regression-with-an-extra-binary-predictor.html"><a href="linear-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>18.4</b> Linear regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="18.5" data-path="poisson-regression-with-an-extra-binary-predictor.html"><a href="poisson-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>18.5</b> Poisson regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="18.6" data-path="linear-regression-with-interaction.html"><a href="linear-regression-with-interaction.html"><i class="fa fa-check"></i><b>18.6</b> Linear regression with interaction</a></li>
+<li class="chapter" data-level="18.7" data-path="poisson-regression-with-interaction.html"><a href="poisson-regression-with-interaction.html"><i class="fa fa-check"></i><b>18.7</b> Poisson regression with interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>18</b> Regression models</a>
+<li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="other-types-of-regression.html"><a href="other-types-of-regression.html"><i class="fa fa-check"></i><b>18.1</b> Other types of regression</a></li>
+<li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
+<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>19</b> Understanding how functions work</a>
+<li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>19.1</b> Help</a></li>
-<li class="chapter" data-level="19.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>19.2</b> Code</a>
+<li class="chapter" data-level="20.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>20.1</b> Help</a></li>
+<li class="chapter" data-level="20.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>20.2</b> Code</a>
 <ul>
-<li class="chapter" data-level="19.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>19.2.1</b> Generic functions</a></li>
-<li class="chapter" data-level="19.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>19.2.2</b> <code>methods</code></a></li>
-<li class="chapter" data-level="19.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>19.2.3</b> <code>getAnywhere</code></a></li>
-<li class="chapter" data-level="19.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>19.2.4</b> Other resources</a></li>
+<li class="chapter" data-level="20.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>20.2.1</b> Generic functions</a></li>
+<li class="chapter" data-level="20.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>20.2.2</b> <code>methods</code></a></li>
+<li class="chapter" data-level="20.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>20.2.3</b> <code>getAnywhere</code></a></li>
+<li class="chapter" data-level="20.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>20.2.4</b> Other resources</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>19.3</b> Functions with unquoted arguments</a></li>
+<li class="chapter" data-level="20.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>20.3</b> Functions with unquoted arguments</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>20</b> Debugging</a>
+<li class="chapter" data-level="21" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>21</b> Debugging</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>20.1</b> <code>browser()</code></a></li>
-<li class="chapter" data-level="20.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>20.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+<li class="chapter" data-level="21.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>21.1</b> <code>browser()</code></a></li>
+<li class="chapter" data-level="21.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>21.2</b> <code>debug</code>, <code>debugonce</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>21</b> Testing</a></li>
-<li class="chapter" data-level="22" data-path="estimating-distribution-parameters.html"><a href="estimating-distribution-parameters.html"><i class="fa fa-check"></i><b>22</b> Estimating distribution parameters</a>
-<ul>
-<li class="chapter" data-level="22.1" data-path="beta-binomial-1.html"><a href="beta-binomial-1.html"><i class="fa fa-check"></i><b>22.1</b> Beta-binomial</a></li>
-</ul></li>
+<li class="chapter" data-level="22" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>22</b> Testing</a></li>
 <li class="chapter" data-level="23" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>23</b> For loops</a>
 <ul>
 <li class="chapter" data-level="23.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>23.1</b> Showing progress</a></li>
@@ -424,17 +425,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="beta-binomial" class="section level2 hasAnchor" number="17.2">
-<h2><span class="header-section-number">17.2</span> Beta binomial<a href="beta-binomial.html#beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="beta-binomial" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> Beta-binomial<a href="beta-binomial.html#beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Prior</p>
+<ul>
+<li><span class="math inline">\(p \sim Beta(\alpha, \beta)\)</span></li>
+<li><span class="math inline">\(E[p] = \frac{\alpha}{\alpha + \beta}\)</span></li>
+<li><span class="math inline">\(Var[p] = \frac{\alpha\beta}{(\alpha+\beta)^2 (\alpha + \beta + 1)}\)</span></li>
+</ul>
+<p>Data: y, n</p>
+<p>Posterior
+- <span class="math inline">\(E[p|y] = \frac{\alpha + y}{\alpha + \beta + n}\)</span>
+- <span class="math inline">\(Var[p|y] = \frac{(\alpha+y)(\beta+n-y}{(\alpha+\beta+n)^2 (\alpha + \beta + n + 1)}\)</span></p>
+<p>Posterior alpha and beta for plotting the posterior distribution
+from <a href="https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance" class="uri">https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance</a></p>
+<ul>
+<li><span class="math inline">\(\nu = \frac{\mu(1-\mu)}{\sigma^2} - 1\)</span></li>
+<li><span class="math inline">\(\alpha = \mu\nu = \mu\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)\)</span></li>
+<li><span class="math inline">\(\beta = (1-\mu)\nu = (1-\mu)\Big(\frac{\mu(1-\mu)}{\sigma^2} - 1\Big)\)</span></li>
+</ul>
+<p>Example code</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb177-1"><a href="beta-binomial.html#cb177-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">2</span>   </span>
+<span id="cb177-2"><a href="beta-binomial.html#cb177-2" aria-hidden="true" tabindex="-1"></a>beta  <span class="ot">=</span> <span class="dv">2</span>   </span>
+<span id="cb177-3"><a href="beta-binomial.html#cb177-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-4"><a href="beta-binomial.html#cb177-4" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> alpha<span class="sc">*</span>beta</span>
+<span id="cb177-5"><a href="beta-binomial.html#cb177-5" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">=</span> alpha<span class="sc">*</span>beta<span class="sc">/</span>((alpha<span class="sc">+</span>beta)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(alpha <span class="sc">+</span> beta <span class="sc">+</span> <span class="dv">1</span>))</span>
+<span id="cb177-6"><a href="beta-binomial.html#cb177-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-7"><a href="beta-binomial.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="do">## suppose y successes in n trials games</span></span>
+<span id="cb177-8"><a href="beta-binomial.html#cb177-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb177-9"><a href="beta-binomial.html#cb177-9" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb177-10"><a href="beta-binomial.html#cb177-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-11"><a href="beta-binomial.html#cb177-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Posterior mean and variance</span></span>
+<span id="cb177-12"><a href="beta-binomial.html#cb177-12" aria-hidden="true" tabindex="-1"></a>post.mu <span class="ot">=</span> </span>
+<span id="cb177-13"><a href="beta-binomial.html#cb177-13" aria-hidden="true" tabindex="-1"></a>  (alpha <span class="sc">+</span> y)<span class="sc">/</span></span>
+<span id="cb177-14"><a href="beta-binomial.html#cb177-14" aria-hidden="true" tabindex="-1"></a>  (alpha <span class="sc">+</span> beta <span class="sc">+</span> n)</span>
+<span id="cb177-15"><a href="beta-binomial.html#cb177-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-16"><a href="beta-binomial.html#cb177-16" aria-hidden="true" tabindex="-1"></a>post.sigma2 <span class="ot">=</span> </span>
+<span id="cb177-17"><a href="beta-binomial.html#cb177-17" aria-hidden="true" tabindex="-1"></a>  (alpha <span class="sc">+</span> y)<span class="sc">*</span>(beta <span class="sc">+</span> n <span class="sc">-</span> y)<span class="sc">/</span></span>
+<span id="cb177-18"><a href="beta-binomial.html#cb177-18" aria-hidden="true" tabindex="-1"></a>  ((alpha <span class="sc">+</span> beta <span class="sc">+</span> n)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(alpha <span class="sc">+</span> beta <span class="sc">+</span> n <span class="sc">+</span> <span class="dv">1</span>))</span>
+<span id="cb177-19"><a href="beta-binomial.html#cb177-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-20"><a href="beta-binomial.html#cb177-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Determine new alpha and beta based on new mu and sigma for plotting.</span></span>
+<span id="cb177-21"><a href="beta-binomial.html#cb177-21" aria-hidden="true" tabindex="-1"></a>post.alpha <span class="ot">=</span>  alpha <span class="sc">+</span> y  </span>
+<span id="cb177-22"><a href="beta-binomial.html#cb177-22" aria-hidden="true" tabindex="-1"></a>post.beta  <span class="ot">=</span> beta <span class="sc">+</span> n <span class="sc">-</span> y </span>
+<span id="cb177-23"><a href="beta-binomial.html#cb177-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-24"><a href="beta-binomial.html#cb177-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot posterior first b/c of the y limits</span></span>
+<span id="cb177-25"><a href="beta-binomial.html#cb177-25" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb177-26"><a href="beta-binomial.html#cb177-26" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, </span>
+<span id="cb177-27"><a href="beta-binomial.html#cb177-27" aria-hidden="true" tabindex="-1"></a>                <span class="at">y1 =</span> <span class="fu">dbeta</span>(<span class="at">x =</span> x,</span>
+<span id="cb177-28"><a href="beta-binomial.html#cb177-28" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape1 =</span> alpha, </span>
+<span id="cb177-29"><a href="beta-binomial.html#cb177-29" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape2 =</span> beta),</span>
+<span id="cb177-30"><a href="beta-binomial.html#cb177-30" aria-hidden="true" tabindex="-1"></a>                <span class="at">y2 =</span> <span class="fu">dbeta</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.01</span>), </span>
+<span id="cb177-31"><a href="beta-binomial.html#cb177-31" aria-hidden="true" tabindex="-1"></a>                          <span class="at">shape1 =</span> post.alpha, </span>
+<span id="cb177-32"><a href="beta-binomial.html#cb177-32" aria-hidden="true" tabindex="-1"></a>                          <span class="at">shape2 =</span> post.beta))</span>
+<span id="cb177-33"><a href="beta-binomial.html#cb177-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-34"><a href="beta-binomial.html#cb177-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> </span>
+<span id="cb177-35"><a href="beta-binomial.html#cb177-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> y1)) <span class="sc">+</span>                        <span class="do">## prior</span></span>
+<span id="cb177-36"><a href="beta-binomial.html#cb177-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> y2), <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>) <span class="sc">+</span>        <span class="do">## posterior</span></span>
+<span id="cb177-37"><a href="beta-binomial.html#cb177-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> post.mu, <span class="at">color =</span> <span class="st">&#39;red&#39;</span>) <span class="do">## posterior mean</span></span></code></pre></div>
+</details>
+<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb178-1"><a href="beta-binomial.html#cb178-1" aria-hidden="true" tabindex="-1"></a>post.mu</span></code></pre></div>
+</details>
+<pre><code>[1] 0.8571429</code></pre>
+<p>You can choose alpha and beta using the mean and variance of your data (<a href="https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance" class="uri">https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_variance</a>).</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb180-1"><a href="beta-binomial.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute mean and variance from data </span></span>
+<span id="cb180-2"><a href="beta-binomial.html#cb180-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> .<span class="dv">5</span></span>
+<span id="cb180-3"><a href="beta-binomial.html#cb180-3" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb180-4"><a href="beta-binomial.html#cb180-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-5"><a href="beta-binomial.html#cb180-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Find the alpha and beta for the corresponding Beta distribution</span></span>
+<span id="cb180-6"><a href="beta-binomial.html#cb180-6" aria-hidden="true" tabindex="-1"></a>nu    <span class="ot">=</span> mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">/</span>sigma2 <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb180-7"><a href="beta-binomial.html#cb180-7" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span>    mu <span class="sc">*</span> nu</span>
+<span id="cb180-8"><a href="beta-binomial.html#cb180-8" aria-hidden="true" tabindex="-1"></a>beta  <span class="ot">=</span> (<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span> nu</span>
+<span id="cb180-9"><a href="beta-binomial.html#cb180-9" aria-hidden="true" tabindex="-1"></a>alpha</span></code></pre></div>
+</details>
+<pre><code>[1] 2</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb182-1"><a href="beta-binomial.html#cb182-1" aria-hidden="true" tabindex="-1"></a>beta</span></code></pre></div>
+</details>
+<pre><code>[1] 2</code></pre>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="normal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regression-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bayesian-estimates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="normal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
