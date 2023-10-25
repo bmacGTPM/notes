@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 This is a collection of random (in the non-statistical meaning of the word) stuff that I have found to be useful over the years. 
 
-This is constantly under construction and may not have complete explanations of the code, results, and purpose of each section. 
+This is constantly under construction and may not (if by "may not" I mean "definitely does not") have complete explanations of the code, results, and purpose of each section. 
 
 
 # Project development and planning
@@ -125,6 +125,8 @@ d2 = read_html(
   'https://finance.yahoo.com/u/yahoo-finance/watchlists/most-active-small-cap-stocks'
   )
 ```
+
+See https://rvest.tidyverse.org/articles/rvest.html for an intro to `rvest`. 
 
 ## Parsing HTML tables
 
@@ -616,6 +618,11 @@ g +
 
 ![](img/normal-dist.gif)     
 
+## Leaflet
+
+- Provider tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
+
+
 # Analysis
 
 ## Variable importance
@@ -634,6 +641,12 @@ g +
 - **Discussion of Ridge, Lasso, and Bayes. **
 https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
 - **Bayesian regression**. https://stat.columbia.edu/~gelman/book/
+
+
+## Calibration
+
+- Logistic regression is well-calibrated: https://stats.stackexchange.com/questions/208867/why-does-logistic-regression-produce-well-calibrated-models
+
 
 # Bayesian estimates
 
@@ -909,13 +922,168 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
-## Example App: CLT
+### Example App: CLT
 
 See CLTapp.r on GitHub for an example app where UI labels change based on the selection in another dropdown. 
 
+## Click leaflet map
+
+Some info about using leaflet with shiny. https://rstudio.github.io/leaflet/shiny.html
+
+Example of clicking on a leaflet map and getting coordinates
+
+```{r eval = F}
+library(shiny)
+library(leaflet)
+library(tidyverse)
+
+# Define UI
+ui <- fluidPage(
+  titlePanel("Example"),
+  mainPanel(leafletOutput("map"))
+)
+
+# Define server logic, and account for User interaction
+server <- function(input, output, session) {
+  output$map <- renderLeaflet({ 
+    mymap <- leaflet() %>% 
+      addTiles() %>% 
+      setView(lng = -73.95, 
+              lat = 40.73, 
+              zoom = 12)
+    mymap
+  })
+  
+  # when map is clicked, get the coordinates and show marker on the map 
+  observeEvent(input$map_click, {
+    click <- input$map_click
+    
+    ## print coords to the console
+    print(click)
+    
+    ## display the click on the map
+    proxy <- leafletProxy("map")
+    proxy %>% 
+      clearGroup("new_point") %>% ## remove the previous point
+      addCircles(click$lng, 
+                 click$lat,
+                 radius = 100, 
+                 color  = "red", 
+                 group  = "new_point")
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+## Draw a shape on a leaflet map
+
+Copied from the answer here: https://stackoverflow.com/questions/48858581/get-coordinates-from-a-drawing-object-from-an-r-leaflet-map
+
+```{r eval = F}
+library(leaflet.extras)
+
+# Define UI 
+ui <- fluidPage(
+  leafletOutput("mymap",height=800)
+)
+
+# Define server logic 
+server <- function(input, output) {
+  
+  output$mymap <- renderLeaflet(
+    leaflet() %>%
+      addProviderTiles("Esri.OceanBasemap",group = "Ocean Basemap") %>%
+      setView(lng = -166, lat = 58.0, zoom = 5) %>%
+      addDrawToolbar(
+        targetGroup='draw',
+        editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))  %>%
+      addLayersControl(overlayGroups = c('draw'), options =
+                         layersControlOptions(collapsed=FALSE))
+  )
+  
+  observeEvent(input$mymap_draw_new_feature,{
+    feature <- input$mymap_draw_new_feature
+    
+    print(feature)
+    
+  })
+  
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+
+```
 
 
+## Save data generated from user inputs
 
+Modified from here https://stackoverflow.com/questions/63329561/r-shiny-load-data-in-to-form-fields-from-previously-persistent-stored-data. See also the links given in the answer to that question. There is a New button, which resets the user inputs. There is a Delete button, which I thought was supposed to delete entries but it doesn't seem to work. 
+
+```{r eval = F}
+library(shiny)
+
+# Define the fields we want to save from the form
+fields <- c("name", "used_shiny", "r_num_years")
+
+outputDir <- "responses"
+
+saveData <- function(data) {
+
+  # Create a unique file name
+  fileName <- sprintf("%s_%s.csv", as.integer(Sys.time()), digest::digest(data))
+  
+  # Write the file to the local system
+  write.csv(
+      x = data,
+      file = file.path(outputDir, fileName), 
+      row.names = FALSE, quote = TRUE
+  )
+}
+
+loadData <- function() {
+    
+    # Read all the files into a list
+    files <- list.files(outputDir, full.names = TRUE)
+    data <- lapply(files, read.csv, stringsAsFactors = FALSE) 
+    
+    # Concatenate all data together into one data.frame
+    data <- do.call(rbind, data)
+    data
+}
+
+# Shiny app with 3 fields that the user can submit data for
+shinyApp(
+    ui = fluidPage(
+        DT::dataTableOutput("responses", width = 300), tags$hr(),
+        textInput("name", "Name", ""),
+        checkboxInput("used_shiny", "I've built a Shiny app in R before", FALSE),
+        sliderInput("r_num_years", "Number of years using R",
+                    0, 25, 2, ticks = FALSE),
+        actionButton("submit", "Submit")
+    ),
+    
+    server = function(input, output, session) {
+
+        # When the Submit button is clicked, save the form data
+        observeEvent(input$submit, {
+            df = data.frame(name=input$name, 
+                            used_shiny = input$used_shiny, 
+                            r_num_years = input$r_num_years)
+            df
+            saveData(df)
+        })
+        
+        # Show the previous responses
+        # (update with current response when Submit is clicked)
+        output$responses <- DT::renderDataTable({
+            input$submit
+            loadData()
+        })     
+    }
+)
+```
 
 
 
@@ -1088,6 +1256,7 @@ for (j in 1:100){
   Sys.sleep(1/100)
 }
 ```
+
 ```{r eval = F}
 
 cli::cli_progress_bar('Title', 
