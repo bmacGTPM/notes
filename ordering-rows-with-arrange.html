@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,7 +436,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">A.7</span> Ordering rows with <code>arrange</code><a href="ordering-rows-with-arrange.html#ordering-rows-with-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If we want to find the game with the smallest <code>diff</code> (the most negative <code>diff</code>), we could order the rows by <code>diff</code>, using <code>order</code> in base R.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb309-1"><a href="ordering-rows-with-arrange.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d[<span class="fu">order</span>(d<span class="sc">$</span>diff),])</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb312-1"><a href="ordering-rows-with-arrange.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d[<span class="fu">order</span>(d<span class="sc">$</span>diff),])</span></code></pre></div>
 </details>
 <pre><code>           date      gid away home ascore hscore diff
 865  2022-02-15 22100869  BOS  PHI    135     87  -48
@@ -440,9 +447,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1084 2022-03-23 22101094  SAS  POR    133     96  -37</code></pre>
 <p>Instead we could use <code>arrange</code> from <code>dplyr</code> like this:</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb311-1"><a href="ordering-rows-with-arrange.html#cb311-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb311-2"><a href="ordering-rows-with-arrange.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(diff) <span class="sc">%&gt;%</span></span>
-<span id="cb311-3"><a href="ordering-rows-with-arrange.html#cb311-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb314-1"><a href="ordering-rows-with-arrange.html#cb314-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb314-2"><a href="ordering-rows-with-arrange.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(diff) <span class="sc">%&gt;%</span></span>
+<span id="cb314-3"><a href="ordering-rows-with-arrange.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 </details>
 <pre><code>        date      gid away home ascore hscore diff
 1 2022-02-15 22100869  BOS  PHI    135     87  -48
@@ -453,9 +460,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 2022-03-23 22101094  SAS  POR    133     96  -37</code></pre>
 <p>To order for largest to smallest, use <code>desc()</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb313-1"><a href="ordering-rows-with-arrange.html#cb313-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb313-2"><a href="ordering-rows-with-arrange.html#cb313-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(diff)) <span class="sc">%&gt;%</span></span>
-<span id="cb313-3"><a href="ordering-rows-with-arrange.html#cb313-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb316-1"><a href="ordering-rows-with-arrange.html#cb316-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb316-2"><a href="ordering-rows-with-arrange.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(diff)) <span class="sc">%&gt;%</span></span>
+<span id="cb316-3"><a href="ordering-rows-with-arrange.html#cb316-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 </details>
 <pre><code>        date      gid away home ascore hscore diff
 1 2021-12-02 22100330  OKC  MEM     79    152   73
@@ -466,10 +473,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 2021-12-26 22100494  TOR  CLE     99    144   45</code></pre>
 <p>To break ties, we could include another column in arrange. Let’s break ties by using <code>hscore</code>, so that if <code>diff</code> is the same, the row with the higher <code>hscore</code> comes first.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb315-1"><a href="ordering-rows-with-arrange.html#cb315-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb315-2"><a href="ordering-rows-with-arrange.html#cb315-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(diff), </span>
-<span id="cb315-3"><a href="ordering-rows-with-arrange.html#cb315-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">desc</span>(hscore)) <span class="sc">%&gt;%</span></span>
-<span id="cb315-4"><a href="ordering-rows-with-arrange.html#cb315-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb318-1"><a href="ordering-rows-with-arrange.html#cb318-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb318-2"><a href="ordering-rows-with-arrange.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(diff), </span>
+<span id="cb318-3"><a href="ordering-rows-with-arrange.html#cb318-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">desc</span>(hscore)) <span class="sc">%&gt;%</span></span>
+<span id="cb318-4"><a href="ordering-rows-with-arrange.html#cb318-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 </details>
 <pre><code>        date      gid away home ascore hscore diff
 1 2021-12-02 22100330  OKC  MEM     79    152   73

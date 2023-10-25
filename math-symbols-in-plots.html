@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -432,32 +439,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Examples are below. Not all of these display properly here. Not sure why. But hopefully you’ll get the idea.</p>
 <p>Note the use of <code>expression()</code> in the examples. For the symbols to appear, <code>expression()</code> must be used like this</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb255-1"><a href="math-symbols-in-plots.html#cb255-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb255-2"><a href="math-symbols-in-plots.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wt, mpg, cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb255-3"><a href="math-symbols-in-plots.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Cylinders =</span> <span class="fu">as.factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
-<span id="cb255-4"><a href="math-symbols-in-plots.html#cb255-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">MPG =</span> mpg)</span>
-<span id="cb255-5"><a href="math-symbols-in-plots.html#cb255-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-6"><a href="math-symbols-in-plots.html#cb255-6" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="fu">expression</span>(Title<span class="sc">~</span>In<span class="sc">~</span>Upper<span class="sc">~</span>Lower<span class="sc">~</span>With<span class="sc">~</span>Symbols <span class="sc">%=~%</span> <span class="fu">tilde</span>(alpha))</span>
-<span id="cb255-7"><a href="math-symbols-in-plots.html#cb255-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-8"><a href="math-symbols-in-plots.html#cb255-8" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb255-9"><a href="math-symbols-in-plots.html#cb255-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> wt, </span>
-<span id="cb255-10"><a href="math-symbols-in-plots.html#cb255-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> MPG, </span>
-<span id="cb255-11"><a href="math-symbols-in-plots.html#cb255-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> Cylinders))<span class="sc">+</span></span>
-<span id="cb255-12"><a href="math-symbols-in-plots.html#cb255-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> MPG))<span class="sc">+</span></span>
-<span id="cb255-13"><a href="math-symbols-in-plots.html#cb255-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
-<span id="cb255-14"><a href="math-symbols-in-plots.html#cb255-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&#39;Optional Subtitle In Upper Lower&#39;</span>,</span>
-<span id="cb255-15"><a href="math-symbols-in-plots.html#cb255-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption  =</span> <span class="st">&quot;Optional caption giving more info, Twitter handle, or shameless promotion of pubtheme&quot;</span>,</span>
-<span id="cb255-16"><a href="math-symbols-in-plots.html#cb255-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(x <span class="sc">%+-%</span> y),</span>
-<span id="cb255-17"><a href="math-symbols-in-plots.html#cb255-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Vertical Axis Label in Upper Lower&#39;</span>)</span>
-<span id="cb255-18"><a href="math-symbols-in-plots.html#cb255-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-19"><a href="math-symbols-in-plots.html#cb255-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-20"><a href="math-symbols-in-plots.html#cb255-20" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb255-21"><a href="math-symbols-in-plots.html#cb255-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6</span>), </span>
-<span id="cb255-22"><a href="math-symbols-in-plots.html#cb255-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">40</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb258-1"><a href="math-symbols-in-plots.html#cb258-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb258-2"><a href="math-symbols-in-plots.html#cb258-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wt, mpg, cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb258-3"><a href="math-symbols-in-plots.html#cb258-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Cylinders =</span> <span class="fu">as.factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
+<span id="cb258-4"><a href="math-symbols-in-plots.html#cb258-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">MPG =</span> mpg)</span>
+<span id="cb258-5"><a href="math-symbols-in-plots.html#cb258-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-6"><a href="math-symbols-in-plots.html#cb258-6" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="fu">expression</span>(Title<span class="sc">~</span>In<span class="sc">~</span>Upper<span class="sc">~</span>Lower<span class="sc">~</span>With<span class="sc">~</span>Symbols <span class="sc">%=~%</span> <span class="fu">tilde</span>(alpha))</span>
+<span id="cb258-7"><a href="math-symbols-in-plots.html#cb258-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-8"><a href="math-symbols-in-plots.html#cb258-8" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb258-9"><a href="math-symbols-in-plots.html#cb258-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> wt, </span>
+<span id="cb258-10"><a href="math-symbols-in-plots.html#cb258-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> MPG, </span>
+<span id="cb258-11"><a href="math-symbols-in-plots.html#cb258-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> Cylinders))<span class="sc">+</span></span>
+<span id="cb258-12"><a href="math-symbols-in-plots.html#cb258-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> MPG))<span class="sc">+</span></span>
+<span id="cb258-13"><a href="math-symbols-in-plots.html#cb258-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
+<span id="cb258-14"><a href="math-symbols-in-plots.html#cb258-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&#39;Optional Subtitle In Upper Lower&#39;</span>,</span>
+<span id="cb258-15"><a href="math-symbols-in-plots.html#cb258-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption  =</span> <span class="st">&quot;Optional caption giving more info, Twitter handle, or shameless promotion of pubtheme&quot;</span>,</span>
+<span id="cb258-16"><a href="math-symbols-in-plots.html#cb258-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(x <span class="sc">%+-%</span> y),</span>
+<span id="cb258-17"><a href="math-symbols-in-plots.html#cb258-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Vertical Axis Label in Upper Lower&#39;</span>)</span>
+<span id="cb258-18"><a href="math-symbols-in-plots.html#cb258-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-19"><a href="math-symbols-in-plots.html#cb258-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-20"><a href="math-symbols-in-plots.html#cb258-20" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb258-21"><a href="math-symbols-in-plots.html#cb258-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6</span>), </span>
+<span id="cb258-22"><a href="math-symbols-in-plots.html#cb258-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">40</span>))</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-127-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-130-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb256-1"><a href="math-symbols-in-plots.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(plotmath)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb259-1"><a href="math-symbols-in-plots.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">demo</span>(plotmath)</span></code></pre></div>
 </details>
 <pre><code>
 
@@ -514,7 +521,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 &gt; nc &lt;- 2
 
 &gt; oldpar &lt;- make.table(nr, nc)</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-128-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="768" style="display: block; margin: auto;" /></p>
 <pre><code>
 &gt; i &lt;- 0
 
@@ -604,7 +611,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 &gt; nc &lt;- 2
 
 &gt; make.table(nr, nc)</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-128-2.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-131-2.png" width="768" style="display: block; margin: auto;" /></p>
 <pre><code>$mar
 [1] 0 0 0 0
 
@@ -732,7 +739,7 @@ $pty
 &gt; nc &lt;- 1
 
 &gt; make.table(nr, nc)</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-128-3.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-131-3.png" width="768" style="display: block; margin: auto;" /></p>
 <pre><code>$mar
 [1] 0 0 0 0
 
@@ -760,7 +767,7 @@ $pty
 &gt; nc &lt;- 1
 
 &gt; make.table(nr, nc)</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-128-4.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-131-4.png" width="768" style="display: block; margin: auto;" /></p>
 <pre><code>$mar
 [1] 0 0 0 0
 
@@ -795,7 +802,7 @@ $pty
 &gt; nc &lt;- 1
 
 &gt; make.table(nr, nc)</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-128-5.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-131-5.png" width="768" style="display: block; margin: auto;" /></p>
 <pre><code>$mar
 [1] 0 0 0 0
 

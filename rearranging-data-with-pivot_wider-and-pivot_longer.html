@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,9 +436,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">A.13</span> Rearranging data with <code>pivot_wider</code> and <code>pivot_longer</code><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#rearranging-data-with-pivot_wider-and-pivot_longer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We would like to distance traveled from the previous game to our data frame. To do this we can use this distance matrix.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb327-1"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb327-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/distance.matrix.nba.csv&#39;</span>)</span>
-<span id="cb327-2"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dm)[<span class="dv">1</span>] <span class="ot">=</span> <span class="st">&#39;loc&#39;</span></span>
-<span id="cb327-3"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb327-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dm)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb330-1"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb330-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/distance.matrix.nba.csv&#39;</span>)</span>
+<span id="cb330-2"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dm)[<span class="dv">1</span>] <span class="ot">=</span> <span class="st">&#39;loc&#39;</span></span>
+<span id="cb330-3"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb330-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dm)</span></code></pre></div>
 </details>
 <pre><code>  loc ATL BKN BOS CHA CHI CLE  DAL  DEN DET  GSW  HOU IND  LAC  LAL  MEM  MIA
 1 ATL   0 746 936 227 589 555  720 1210 621 2123  701 426 1933 1933  336  606
@@ -449,11 +456,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 336  630  919 404  950  895 359 1746 2049 1254 2096 189 1565 305</code></pre>
 <p>This will be easier to join with our other data frame if we rearrange this so that it has two columns, <code>team1</code> and <code>team2</code>. We can use <code>pivot_longer</code> to do this.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb329-1"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb329-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">=</span> dm <span class="sc">%&gt;%</span> </span>
-<span id="cb329-2"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb329-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> <span class="sc">-</span> loc, </span>
-<span id="cb329-3"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb329-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">&#39;prev.loc&#39;</span>, </span>
-<span id="cb329-4"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb329-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&#39;miles&#39;</span>)</span>
-<span id="cb329-5"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb329-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dm)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb332-1"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb332-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">=</span> dm <span class="sc">%&gt;%</span> </span>
+<span id="cb332-2"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb332-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> <span class="sc">-</span> loc, </span>
+<span id="cb332-3"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb332-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">&#39;prev.loc&#39;</span>, </span>
+<span id="cb332-4"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb332-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&#39;miles&#39;</span>)</span>
+<span id="cb332-5"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb332-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dm)</span></code></pre></div>
 </details>
 <pre><code># A tibble: 6 × 3
   loc   prev.loc miles
@@ -466,11 +473,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 ATL   CLE        555</code></pre>
 <p>The inverse operation is <code>pivot_wider</code>. This gets us back where we started</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb331-1"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb331-1" aria-hidden="true" tabindex="-1"></a>dm <span class="sc">%&gt;%</span></span>
-<span id="cb331-2"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb331-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols     =</span> <span class="st">&#39;loc&#39;</span>, </span>
-<span id="cb331-3"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb331-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from  =</span> <span class="st">&#39;prev.loc&#39;</span>, </span>
-<span id="cb331-4"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb331-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">&#39;miles&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb331-5"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb331-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb334-1"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb334-1" aria-hidden="true" tabindex="-1"></a>dm <span class="sc">%&gt;%</span></span>
+<span id="cb334-2"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb334-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols     =</span> <span class="st">&#39;loc&#39;</span>, </span>
+<span id="cb334-3"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb334-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from  =</span> <span class="st">&#39;prev.loc&#39;</span>, </span>
+<span id="cb334-4"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb334-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">&#39;miles&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb334-5"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html#cb334-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 </details>
 <pre><code># A tibble: 6 × 31
   loc     ATL   BKN   BOS   CHA   CHI   CLE   DAL   DEN   DET   GSW   HOU   IND

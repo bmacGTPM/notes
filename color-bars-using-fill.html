@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,57 +436,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">B.12</span> Color bars using <code>fill</code><a href="color-bars-using-fill.html#color-bars-using-fill" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also use color our bars using the <code>fill</code> aesthetic.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb357-1"><a href="color-bars-using-fill.html#cb357-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
-<span id="cb357-2"><a href="color-bars-using-fill.html#cb357-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
-<span id="cb357-3"><a href="color-bars-using-fill.html#cb357-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> season.type))<span class="sc">+</span></span>
-<span id="cb357-4"><a href="color-bars-using-fill.html#cb357-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)</span>
-<span id="cb357-5"><a href="color-bars-using-fill.html#cb357-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-6"><a href="color-bars-using-fill.html#cb357-6" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb357-7"><a href="color-bars-using-fill.html#cb357-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb360-1"><a href="color-bars-using-fill.html#cb360-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
+<span id="cb360-2"><a href="color-bars-using-fill.html#cb360-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
+<span id="cb360-3"><a href="color-bars-using-fill.html#cb360-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> season.type))<span class="sc">+</span></span>
+<span id="cb360-4"><a href="color-bars-using-fill.html#cb360-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)</span>
+<span id="cb360-5"><a href="color-bars-using-fill.html#cb360-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-6"><a href="color-bars-using-fill.html#cb360-6" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb360-7"><a href="color-bars-using-fill.html#cb360-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-183-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-186-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Typically you use <code>fill</code>. Note that <code>color</code> affects only the border.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb358-1"><a href="color-bars-using-fill.html#cb358-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
-<span id="cb358-2"><a href="color-bars-using-fill.html#cb358-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
-<span id="cb358-3"><a href="color-bars-using-fill.html#cb358-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> season.type))<span class="sc">+</span></span>
-<span id="cb358-4"><a href="color-bars-using-fill.html#cb358-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
-<span id="cb358-5"><a href="color-bars-using-fill.html#cb358-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-6"><a href="color-bars-using-fill.html#cb358-6" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb358-7"><a href="color-bars-using-fill.html#cb358-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb361-1"><a href="color-bars-using-fill.html#cb361-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
+<span id="cb361-2"><a href="color-bars-using-fill.html#cb361-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
+<span id="cb361-3"><a href="color-bars-using-fill.html#cb361-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> season.type))<span class="sc">+</span></span>
+<span id="cb361-4"><a href="color-bars-using-fill.html#cb361-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb361-5"><a href="color-bars-using-fill.html#cb361-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-6"><a href="color-bars-using-fill.html#cb361-6" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb361-7"><a href="color-bars-using-fill.html#cb361-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-184-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-187-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>That’s not ideal. It is drawing a little bar for each individual game and then stacking them together. In most cases we probably want to aggregate the data first like this:</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb359-1"><a href="color-bars-using-fill.html#cb359-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
-<span id="cb359-2"><a href="color-bars-using-fill.html#cb359-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(team, season.type) <span class="sc">%&gt;%</span></span>
-<span id="cb359-3"><a href="color-bars-using-fill.html#cb359-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">sum</span>(score), </span>
-<span id="cb359-4"><a href="color-bars-using-fill.html#cb359-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
-<span id="cb359-5"><a href="color-bars-using-fill.html#cb359-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb359-6"><a href="color-bars-using-fill.html#cb359-6" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
-<span id="cb359-7"><a href="color-bars-using-fill.html#cb359-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
-<span id="cb359-8"><a href="color-bars-using-fill.html#cb359-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> season.type))<span class="sc">+</span></span>
-<span id="cb359-9"><a href="color-bars-using-fill.html#cb359-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)</span>
-<span id="cb359-10"><a href="color-bars-using-fill.html#cb359-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb359-11"><a href="color-bars-using-fill.html#cb359-11" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb359-12"><a href="color-bars-using-fill.html#cb359-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb362-1"><a href="color-bars-using-fill.html#cb362-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
+<span id="cb362-2"><a href="color-bars-using-fill.html#cb362-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(team, season.type) <span class="sc">%&gt;%</span></span>
+<span id="cb362-3"><a href="color-bars-using-fill.html#cb362-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">sum</span>(score), </span>
+<span id="cb362-4"><a href="color-bars-using-fill.html#cb362-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
+<span id="cb362-5"><a href="color-bars-using-fill.html#cb362-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-6"><a href="color-bars-using-fill.html#cb362-6" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
+<span id="cb362-7"><a href="color-bars-using-fill.html#cb362-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
+<span id="cb362-8"><a href="color-bars-using-fill.html#cb362-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> season.type))<span class="sc">+</span></span>
+<span id="cb362-9"><a href="color-bars-using-fill.html#cb362-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)</span>
+<span id="cb362-10"><a href="color-bars-using-fill.html#cb362-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-11"><a href="color-bars-using-fill.html#cb362-11" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb362-12"><a href="color-bars-using-fill.html#cb362-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-185-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-188-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>You may often use <code>fill</code> and not notice this issue, but it is something to be aware of.</p>
 <p>Even with our first bar plot it would be better to aggregate first for reasons we’ll see when we try to use <code>geom_text</code> below. This plot looks the same, but there is one bar per team instead of one bar per game:</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb360-1"><a href="color-bars-using-fill.html#cb360-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span> </span>
-<span id="cb360-2"><a href="color-bars-using-fill.html#cb360-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(team) <span class="sc">%&gt;%</span></span>
-<span id="cb360-3"><a href="color-bars-using-fill.html#cb360-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">sum</span>(score)) </span>
-<span id="cb360-4"><a href="color-bars-using-fill.html#cb360-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-5"><a href="color-bars-using-fill.html#cb360-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
-<span id="cb360-6"><a href="color-bars-using-fill.html#cb360-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team))<span class="sc">+</span></span>
-<span id="cb360-7"><a href="color-bars-using-fill.html#cb360-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)</span>
-<span id="cb360-8"><a href="color-bars-using-fill.html#cb360-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-9"><a href="color-bars-using-fill.html#cb360-9" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb360-10"><a href="color-bars-using-fill.html#cb360-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb363-1"><a href="color-bars-using-fill.html#cb363-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span> </span>
+<span id="cb363-2"><a href="color-bars-using-fill.html#cb363-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(team) <span class="sc">%&gt;%</span></span>
+<span id="cb363-3"><a href="color-bars-using-fill.html#cb363-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">sum</span>(score)) </span>
+<span id="cb363-4"><a href="color-bars-using-fill.html#cb363-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb363-5"><a href="color-bars-using-fill.html#cb363-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
+<span id="cb363-6"><a href="color-bars-using-fill.html#cb363-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> team))<span class="sc">+</span></span>
+<span id="cb363-7"><a href="color-bars-using-fill.html#cb363-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)</span>
+<span id="cb363-8"><a href="color-bars-using-fill.html#cb363-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb363-9"><a href="color-bars-using-fill.html#cb363-9" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb363-10"><a href="color-bars-using-fill.html#cb363-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-186-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-189-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

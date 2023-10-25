@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -428,19 +435,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="functions-with-unquoted-arguments" class="section level2 hasAnchor" number="20.3">
 <h2><span class="header-section-number">20.3</span> Functions with unquoted arguments<a href="functions-with-unquoted-arguments.html#functions-with-unquoted-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb222-1"><a href="functions-with-unquoted-arguments.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb222-2"><a href="functions-with-unquoted-arguments.html#cb222-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb222-3"><a href="functions-with-unquoted-arguments.html#cb222-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">sample</span>(<span class="dv">5</span>), </span>
-<span id="cb222-4"><a href="functions-with-unquoted-arguments.html#cb222-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">sample</span>(<span class="dv">5</span>)</span>
-<span id="cb222-5"><a href="functions-with-unquoted-arguments.html#cb222-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb222-6"><a href="functions-with-unquoted-arguments.html#cb222-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-7"><a href="functions-with-unquoted-arguments.html#cb222-7" aria-hidden="true" tabindex="-1"></a>lag1_mutate <span class="ot">&lt;-</span> <span class="cf">function</span>(dt, varname, time) { </span>
-<span id="cb222-8"><a href="functions-with-unquoted-arguments.html#cb222-8" aria-hidden="true" tabindex="-1"></a>  varname_t0 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substitute</span>(varname)); </span>
-<span id="cb222-9"><a href="functions-with-unquoted-arguments.html#cb222-9" aria-hidden="true" tabindex="-1"></a>  varname_t1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substitute</span>(varname), time); </span>
-<span id="cb222-10"><a href="functions-with-unquoted-arguments.html#cb222-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(dt, <span class="sc">!!</span><span class="at">varname_t1 :=</span> <span class="fu">lag</span>(<span class="sc">!!</span>rlang<span class="sc">::</span><span class="fu">sym</span>(varname_t0))) </span>
-<span id="cb222-11"><a href="functions-with-unquoted-arguments.html#cb222-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb222-12"><a href="functions-with-unquoted-arguments.html#cb222-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-13"><a href="functions-with-unquoted-arguments.html#cb222-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lag1_mutate</span>(df, a, <span class="dv">2</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb225-1"><a href="functions-with-unquoted-arguments.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb225-2"><a href="functions-with-unquoted-arguments.html#cb225-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb225-3"><a href="functions-with-unquoted-arguments.html#cb225-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">sample</span>(<span class="dv">5</span>), </span>
+<span id="cb225-4"><a href="functions-with-unquoted-arguments.html#cb225-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">sample</span>(<span class="dv">5</span>)</span>
+<span id="cb225-5"><a href="functions-with-unquoted-arguments.html#cb225-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb225-6"><a href="functions-with-unquoted-arguments.html#cb225-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-7"><a href="functions-with-unquoted-arguments.html#cb225-7" aria-hidden="true" tabindex="-1"></a>lag1_mutate <span class="ot">&lt;-</span> <span class="cf">function</span>(dt, varname, time) { </span>
+<span id="cb225-8"><a href="functions-with-unquoted-arguments.html#cb225-8" aria-hidden="true" tabindex="-1"></a>  varname_t0 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substitute</span>(varname)); </span>
+<span id="cb225-9"><a href="functions-with-unquoted-arguments.html#cb225-9" aria-hidden="true" tabindex="-1"></a>  varname_t1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substitute</span>(varname), time); </span>
+<span id="cb225-10"><a href="functions-with-unquoted-arguments.html#cb225-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(dt, <span class="sc">!!</span><span class="at">varname_t1 :=</span> <span class="fu">lag</span>(<span class="sc">!!</span>rlang<span class="sc">::</span><span class="fu">sym</span>(varname_t0))) </span>
+<span id="cb225-11"><a href="functions-with-unquoted-arguments.html#cb225-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb225-12"><a href="functions-with-unquoted-arguments.html#cb225-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-13"><a href="functions-with-unquoted-arguments.html#cb225-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lag1_mutate</span>(df, a, <span class="dv">2</span>) </span></code></pre></div>
 </details>
 <pre><code># A tibble: 5 × 3
       a     b    a2
@@ -451,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 4     3     1     5
 5     2     2     3</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb224-1"><a href="functions-with-unquoted-arguments.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lag1_mutate</span>(df, b, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb227-1"><a href="functions-with-unquoted-arguments.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lag1_mutate</span>(df, b, <span class="dv">3</span>)</span></code></pre></div>
 </details>
 <pre><code># A tibble: 5 × 3
       a     b    b3

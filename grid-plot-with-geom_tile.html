@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,12 +436,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">B.17</span> Grid plot with <code>geom_tile</code><a href="grid-plot-with-geom_tile.html#grid-plot-with-geom_tile" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s show how often teams play against one another.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb370-1"><a href="grid-plot-with-geom_tile.html#cb370-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb370-2"><a href="grid-plot-with-geom_tile.html#cb370-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb370-3"><a href="grid-plot-with-geom_tile.html#cb370-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(home, away) <span class="sc">%&gt;%</span></span>
-<span id="cb370-4"><a href="grid-plot-with-geom_tile.html#cb370-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">games =</span> <span class="fu">n</span>())</span>
-<span id="cb370-5"><a href="grid-plot-with-geom_tile.html#cb370-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-6"><a href="grid-plot-with-geom_tile.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb373-1"><a href="grid-plot-with-geom_tile.html#cb373-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb373-2"><a href="grid-plot-with-geom_tile.html#cb373-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb373-3"><a href="grid-plot-with-geom_tile.html#cb373-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(home, away) <span class="sc">%&gt;%</span></span>
+<span id="cb373-4"><a href="grid-plot-with-geom_tile.html#cb373-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">games =</span> <span class="fu">n</span>())</span>
+<span id="cb373-5"><a href="grid-plot-with-geom_tile.html#cb373-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-6"><a href="grid-plot-with-geom_tile.html#cb373-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span></code></pre></div>
 </details>
 <pre><code># A tibble: 6 × 3
 # Groups:   home [1]
@@ -447,12 +454,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5 ATL   CLE       2
 6 ATL   DAL       1</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb372-1"><a href="grid-plot-with-geom_tile.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
-<span id="cb372-2"><a href="grid-plot-with-geom_tile.html#cb372-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
-<span id="cb372-3"><a href="grid-plot-with-geom_tile.html#cb372-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> <span class="fu">as.character</span>(games))) <span class="sc">+</span> </span>
-<span id="cb372-4"><a href="grid-plot-with-geom_tile.html#cb372-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&#39;black&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb375-1"><a href="grid-plot-with-geom_tile.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
+<span id="cb375-2"><a href="grid-plot-with-geom_tile.html#cb375-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
+<span id="cb375-3"><a href="grid-plot-with-geom_tile.html#cb375-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> <span class="fu">as.character</span>(games))) <span class="sc">+</span> </span>
+<span id="cb375-4"><a href="grid-plot-with-geom_tile.html#cb375-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&#39;black&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

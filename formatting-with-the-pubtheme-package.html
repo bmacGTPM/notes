@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,45 +436,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">B.3</span> Formatting with the <code>pubtheme</code> package<a href="formatting-with-the-pubtheme-package.html#formatting-with-the-pubtheme-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use the <code>pubtheme</code> package to change the default formatting of our figures. We can copy and paste templates here <a href="https://github.com/bmacGTPM/pubtheme" class="uri">https://github.com/bmacGTPM/pubtheme</a> and modify them for our data. Here we copy and paste the scatter plot template and change <code>x</code> to <code>ascore</code>, <code>y</code> to <code>hscore</code>, and edit the axis <code>limits</code> and the <code>breaks</code>, which say where the grid line should be. Don’t worry to much about understand all of these options right now, we’ll discuss those in the main text.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb341-1"><a href="formatting-with-the-pubtheme-package.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pubtheme)</span>
-<span id="cb341-2"><a href="formatting-with-the-pubtheme-package.html#cb341-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb341-3"><a href="formatting-with-the-pubtheme-package.html#cb341-3" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Home Team Points vs Away Team Points&quot;</span> </span>
-<span id="cb341-4"><a href="formatting-with-the-pubtheme-package.html#cb341-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb341-5"><a href="formatting-with-the-pubtheme-package.html#cb341-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> ascore, </span>
-<span id="cb341-6"><a href="formatting-with-the-pubtheme-package.html#cb341-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> hscore, </span>
-<span id="cb341-7"><a href="formatting-with-the-pubtheme-package.html#cb341-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> season.type))<span class="sc">+</span></span>
-<span id="cb341-8"><a href="formatting-with-the-pubtheme-package.html#cb341-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb341-9"><a href="formatting-with-the-pubtheme-package.html#cb341-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title,</span>
-<span id="cb341-10"><a href="formatting-with-the-pubtheme-package.html#cb341-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Away Team Points&#39;</span>,</span>
-<span id="cb341-11"><a href="formatting-with-the-pubtheme-package.html#cb341-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Home Team Points&#39;</span>)<span class="sc">+</span></span>
-<span id="cb341-12"><a href="formatting-with-the-pubtheme-package.html#cb341-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">65</span>,<span class="dv">115</span>,<span class="dv">165</span>), <span class="at">oob =</span> squish, <span class="at">labels =</span> comma)<span class="sc">+</span></span>
-<span id="cb341-13"><a href="formatting-with-the-pubtheme-package.html#cb341-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">65</span>,<span class="dv">115</span>,<span class="dv">165</span>), <span class="at">oob =</span> squish, <span class="at">labels =</span> comma)<span class="sc">+</span></span>
-<span id="cb341-14"><a href="formatting-with-the-pubtheme-package.html#cb341-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">&#39;off&#39;</span>, <span class="at">expand =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb341-15"><a href="formatting-with-the-pubtheme-package.html#cb341-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>))<span class="sc">+</span></span>
-<span id="cb341-16"><a href="formatting-with-the-pubtheme-package.html#cb341-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pub</span>() </span>
-<span id="cb341-17"><a href="formatting-with-the-pubtheme-package.html#cb341-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb344-1"><a href="formatting-with-the-pubtheme-package.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pubtheme)</span>
+<span id="cb344-2"><a href="formatting-with-the-pubtheme-package.html#cb344-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-3"><a href="formatting-with-the-pubtheme-package.html#cb344-3" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Home Team Points vs Away Team Points&quot;</span> </span>
+<span id="cb344-4"><a href="formatting-with-the-pubtheme-package.html#cb344-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-5"><a href="formatting-with-the-pubtheme-package.html#cb344-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> ascore, </span>
+<span id="cb344-6"><a href="formatting-with-the-pubtheme-package.html#cb344-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> hscore, </span>
+<span id="cb344-7"><a href="formatting-with-the-pubtheme-package.html#cb344-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> season.type))<span class="sc">+</span></span>
+<span id="cb344-8"><a href="formatting-with-the-pubtheme-package.html#cb344-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb344-9"><a href="formatting-with-the-pubtheme-package.html#cb344-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title,</span>
+<span id="cb344-10"><a href="formatting-with-the-pubtheme-package.html#cb344-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Away Team Points&#39;</span>,</span>
+<span id="cb344-11"><a href="formatting-with-the-pubtheme-package.html#cb344-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Home Team Points&#39;</span>)<span class="sc">+</span></span>
+<span id="cb344-12"><a href="formatting-with-the-pubtheme-package.html#cb344-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">65</span>,<span class="dv">115</span>,<span class="dv">165</span>), <span class="at">oob =</span> squish, <span class="at">labels =</span> comma)<span class="sc">+</span></span>
+<span id="cb344-13"><a href="formatting-with-the-pubtheme-package.html#cb344-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">65</span>,<span class="dv">115</span>,<span class="dv">165</span>), <span class="at">oob =</span> squish, <span class="at">labels =</span> comma)<span class="sc">+</span></span>
+<span id="cb344-14"><a href="formatting-with-the-pubtheme-package.html#cb344-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">&#39;off&#39;</span>, <span class="at">expand =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb344-15"><a href="formatting-with-the-pubtheme-package.html#cb344-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>))<span class="sc">+</span></span>
+<span id="cb344-16"><a href="formatting-with-the-pubtheme-package.html#cb344-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pub</span>() </span>
+<span id="cb344-17"><a href="formatting-with-the-pubtheme-package.html#cb344-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(g)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-169-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-172-1.png" width="576" style="display: block; margin: auto;" /></p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb342-1"><a href="formatting-with-the-pubtheme-package.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="do">## We can go back to using ggplot defaults using this function</span></span>
-<span id="cb342-2"><a href="formatting-with-the-pubtheme-package.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">restore.ggplot.defaults</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb345-1"><a href="formatting-with-the-pubtheme-package.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="do">## We can go back to using ggplot defaults using this function</span></span>
+<span id="cb345-2"><a href="formatting-with-the-pubtheme-package.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">restore.ggplot.defaults</span>() </span></code></pre></div>
 </details>
 <p>We explicitly specified the <code>scale</code>s and <code>coord_cartesian</code> above. If you are comfortable accepting the <code>pubtheme</code> default settings, you can save a lot of typing by using the function <code>pub</code>, which applies <code>theme_pub</code> and also automatically adds <code>scale</code>s and <code>coord</code> similar to above.</p>
 <p>If you are comfortable accepting the <code>pubtheme</code> default settings, the <code>pub</code> function can eliminate the need to use the lines with <code>scale_x_continuous</code>, <code>scale_y_continuous</code>, <code>coord_cartesian</code>, <code>scale_size</code>, <code>theme_pub</code>, resulting in much more succinct code.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb343-1"><a href="formatting-with-the-pubtheme-package.html#cb343-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Home Team Points vs Away Team Points&quot;</span> </span>
-<span id="cb343-2"><a href="formatting-with-the-pubtheme-package.html#cb343-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> ascore, </span>
-<span id="cb343-3"><a href="formatting-with-the-pubtheme-package.html#cb343-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> hscore, </span>
-<span id="cb343-4"><a href="formatting-with-the-pubtheme-package.html#cb343-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> season.type))<span class="sc">+</span></span>
-<span id="cb343-5"><a href="formatting-with-the-pubtheme-package.html#cb343-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb343-6"><a href="formatting-with-the-pubtheme-package.html#cb343-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title,</span>
-<span id="cb343-7"><a href="formatting-with-the-pubtheme-package.html#cb343-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Away Team Points&#39;</span>,</span>
-<span id="cb343-8"><a href="formatting-with-the-pubtheme-package.html#cb343-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Home Team Points&#39;</span>)</span>
-<span id="cb343-9"><a href="formatting-with-the-pubtheme-package.html#cb343-9" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb343-10"><a href="formatting-with-the-pubtheme-package.html#cb343-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), </span>
-<span id="cb343-11"><a href="formatting-with-the-pubtheme-package.html#cb343-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb346-1"><a href="formatting-with-the-pubtheme-package.html#cb346-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Home Team Points vs Away Team Points&quot;</span> </span>
+<span id="cb346-2"><a href="formatting-with-the-pubtheme-package.html#cb346-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> ascore, </span>
+<span id="cb346-3"><a href="formatting-with-the-pubtheme-package.html#cb346-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> hscore, </span>
+<span id="cb346-4"><a href="formatting-with-the-pubtheme-package.html#cb346-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> season.type))<span class="sc">+</span></span>
+<span id="cb346-5"><a href="formatting-with-the-pubtheme-package.html#cb346-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb346-6"><a href="formatting-with-the-pubtheme-package.html#cb346-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title,</span>
+<span id="cb346-7"><a href="formatting-with-the-pubtheme-package.html#cb346-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Away Team Points&#39;</span>,</span>
+<span id="cb346-8"><a href="formatting-with-the-pubtheme-package.html#cb346-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Home Team Points&#39;</span>)</span>
+<span id="cb346-9"><a href="formatting-with-the-pubtheme-package.html#cb346-9" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb346-10"><a href="formatting-with-the-pubtheme-package.html#cb346-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), </span>
+<span id="cb346-11"><a href="formatting-with-the-pubtheme-package.html#cb346-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>))</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-170-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-173-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

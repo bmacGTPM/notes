@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -428,9 +435,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="maps-1" class="section level2 hasAnchor" number="28.19">
 <h2><span class="header-section-number">B.19</span> Maps<a href="maps-1.html#maps-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb374-1"><a href="maps-1.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load lat/lon data</span></span>
-<span id="cb374-2"><a href="maps-1.html#cb374-2" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/nba.venue.lat.long.csv&#39;</span>)</span>
-<span id="cb374-3"><a href="maps-1.html#cb374-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ll)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb377-1"><a href="maps-1.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load lat/lon data</span></span>
+<span id="cb377-2"><a href="maps-1.html#cb377-2" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/nba.venue.lat.long.csv&#39;</span>)</span>
+<span id="cb377-3"><a href="maps-1.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ll)</span></code></pre></div>
 </details>
 <pre><code>  team                   arena      lat      long
 1  ATL           Philips Arena 33.75710 -84.39717
@@ -440,25 +447,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5  CHI           United Center 41.88062 -87.67463
 6  CLE     Quicken Loans Arena 41.49694 -81.68929</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb376-1"><a href="maps-1.html#cb376-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> ll <span class="sc">%&gt;%</span> </span>
-<span id="cb376-2"><a href="maps-1.html#cb376-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(team, lat, long)</span>
-<span id="cb376-3"><a href="maps-1.html#cb376-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-4"><a href="maps-1.html#cb376-4" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Location of NBA Teams&quot;</span></span>
-<span id="cb376-5"><a href="maps-1.html#cb376-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> long, </span>
-<span id="cb376-6"><a href="maps-1.html#cb376-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> lat, </span>
-<span id="cb376-7"><a href="maps-1.html#cb376-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">label =</span> team))<span class="sc">+</span></span>
-<span id="cb376-8"><a href="maps-1.html#cb376-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">borders</span>(<span class="st">&#39;state&#39;</span>, </span>
-<span id="cb376-9"><a href="maps-1.html#cb376-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> publightgray)<span class="sc">+</span></span>
-<span id="cb376-10"><a href="maps-1.html#cb376-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> pubred)<span class="sc">+</span></span>
-<span id="cb376-11"><a href="maps-1.html#cb376-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust  =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>), <span class="dv">16</span>))<span class="sc">+</span></span>
-<span id="cb376-12"><a href="maps-1.html#cb376-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title)<span class="sc">+</span></span>
-<span id="cb376-13"><a href="maps-1.html#cb376-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">expand =</span> F, </span>
-<span id="cb376-14"><a href="maps-1.html#cb376-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">clip   =</span> <span class="st">&#39;off&#39;</span>)<span class="sc">+</span></span>
-<span id="cb376-15"><a href="maps-1.html#cb376-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pub</span>(<span class="at">type =</span> <span class="st">&#39;map&#39;</span>)</span>
-<span id="cb376-16"><a href="maps-1.html#cb376-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-17"><a href="maps-1.html#cb376-17" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb379-1"><a href="maps-1.html#cb379-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> ll <span class="sc">%&gt;%</span> </span>
+<span id="cb379-2"><a href="maps-1.html#cb379-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(team, lat, long)</span>
+<span id="cb379-3"><a href="maps-1.html#cb379-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb379-4"><a href="maps-1.html#cb379-4" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Location of NBA Teams&quot;</span></span>
+<span id="cb379-5"><a href="maps-1.html#cb379-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> long, </span>
+<span id="cb379-6"><a href="maps-1.html#cb379-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> lat, </span>
+<span id="cb379-7"><a href="maps-1.html#cb379-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">label =</span> team))<span class="sc">+</span></span>
+<span id="cb379-8"><a href="maps-1.html#cb379-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">borders</span>(<span class="st">&#39;state&#39;</span>, </span>
+<span id="cb379-9"><a href="maps-1.html#cb379-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> publightgray)<span class="sc">+</span></span>
+<span id="cb379-10"><a href="maps-1.html#cb379-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> pubred)<span class="sc">+</span></span>
+<span id="cb379-11"><a href="maps-1.html#cb379-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust  =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>), <span class="dv">16</span>))<span class="sc">+</span></span>
+<span id="cb379-12"><a href="maps-1.html#cb379-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title)<span class="sc">+</span></span>
+<span id="cb379-13"><a href="maps-1.html#cb379-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">expand =</span> F, </span>
+<span id="cb379-14"><a href="maps-1.html#cb379-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">clip   =</span> <span class="st">&#39;off&#39;</span>)<span class="sc">+</span></span>
+<span id="cb379-15"><a href="maps-1.html#cb379-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pub</span>(<span class="at">type =</span> <span class="st">&#39;map&#39;</span>)</span>
+<span id="cb379-16"><a href="maps-1.html#cb379-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb379-17"><a href="maps-1.html#cb379-17" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

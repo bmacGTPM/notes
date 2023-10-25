@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,10 +436,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">A.4</span> Choosing columns with <code>select</code><a href="choosing-columns-with-select.html#choosing-columns-with-select" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s get rid of some columns we won’t use. In base R, we could subset columns like this</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb295-1"><a href="choosing-columns-with-select.html#cb295-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">=</span> d[,<span class="fu">c</span>(<span class="st">&#39;date&#39;</span>  , <span class="st">&#39;gid&#39;</span>, </span>
-<span id="cb295-2"><a href="choosing-columns-with-select.html#cb295-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;away&#39;</span>  , <span class="st">&#39;home&#39;</span>, </span>
-<span id="cb295-3"><a href="choosing-columns-with-select.html#cb295-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;ascore&#39;</span>, <span class="st">&#39;hscore&#39;</span>)]</span>
-<span id="cb295-4"><a href="choosing-columns-with-select.html#cb295-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb298-1"><a href="choosing-columns-with-select.html#cb298-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">=</span> d[,<span class="fu">c</span>(<span class="st">&#39;date&#39;</span>  , <span class="st">&#39;gid&#39;</span>, </span>
+<span id="cb298-2"><a href="choosing-columns-with-select.html#cb298-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;away&#39;</span>  , <span class="st">&#39;home&#39;</span>, </span>
+<span id="cb298-3"><a href="choosing-columns-with-select.html#cb298-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;ascore&#39;</span>, <span class="st">&#39;hscore&#39;</span>)]</span>
+<span id="cb298-4"><a href="choosing-columns-with-select.html#cb298-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
 </details>
 <pre><code>        date      gid away home ascore hscore
 1 2021-10-19 22100001  BKN  MIL    104    127
@@ -443,11 +450,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 2021-10-20 22100010  ORL  SAS     97    123</code></pre>
 <p>In tidyverse, we can use <code>select</code> and avoid typing quotes repeatedly.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb297-1"><a href="choosing-columns-with-select.html#cb297-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
-<span id="cb297-2"><a href="choosing-columns-with-select.html#cb297-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date  , gid, </span>
-<span id="cb297-3"><a href="choosing-columns-with-select.html#cb297-3" aria-hidden="true" tabindex="-1"></a>         away  , home, </span>
-<span id="cb297-4"><a href="choosing-columns-with-select.html#cb297-4" aria-hidden="true" tabindex="-1"></a>         ascore, hscore)</span>
-<span id="cb297-5"><a href="choosing-columns-with-select.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb300-1"><a href="choosing-columns-with-select.html#cb300-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb300-2"><a href="choosing-columns-with-select.html#cb300-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date  , gid, </span>
+<span id="cb300-3"><a href="choosing-columns-with-select.html#cb300-3" aria-hidden="true" tabindex="-1"></a>         away  , home, </span>
+<span id="cb300-4"><a href="choosing-columns-with-select.html#cb300-4" aria-hidden="true" tabindex="-1"></a>         ascore, hscore)</span>
+<span id="cb300-5"><a href="choosing-columns-with-select.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
 </details>
 <pre><code>        date      gid away home ascore hscore
 1 2021-10-19 22100001  BKN  MIL    104    127
@@ -459,10 +466,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We put new lines in to split up the columns given to <code>select</code> in a reasonable way. The first row <code>date</code> and <code>gid</code> are game information (id and date), the second row has the teams, and the third row has the scores. Note that <code>ascore</code>, the away team’s score, is under <code>away</code>, the away team, and likewise with <code>hscore</code> and <code>home</code>.</p>
 <p>Note that we can also use <code>-</code> to specify which columns we <em>don’t</em> want. This is equivalent to the above:</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb299-1"><a href="choosing-columns-with-select.html#cb299-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
-<span id="cb299-2"><a href="choosing-columns-with-select.html#cb299-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>lg, <span class="sc">-</span>season, </span>
-<span id="cb299-3"><a href="choosing-columns-with-select.html#cb299-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span>season.type, <span class="sc">-</span>gkey)</span>
-<span id="cb299-4"><a href="choosing-columns-with-select.html#cb299-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb302-1"><a href="choosing-columns-with-select.html#cb302-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb302-2"><a href="choosing-columns-with-select.html#cb302-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>lg, <span class="sc">-</span>season, </span>
+<span id="cb302-3"><a href="choosing-columns-with-select.html#cb302-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span>season.type, <span class="sc">-</span>gkey)</span>
+<span id="cb302-4"><a href="choosing-columns-with-select.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
 </details>
 <pre><code>        date away home ascore hscore      gid
 1 2021-10-19  BKN  MIL    104    127 22100001
@@ -473,14 +480,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 2021-10-20  ORL  SAS     97    123 22100010</code></pre>
 <p>If we want to do choose rows and columns in the same step, we can use filter and select together in the same block of code using the pipe. Let’s finalize this data by saving as the object <code>d</code> instead of <code>temp</code>, and also add in that we want only regular season data.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb301-1"><a href="choosing-columns-with-select.html#cb301-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
-<span id="cb301-2"><a href="choosing-columns-with-select.html#cb301-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lg <span class="sc">==</span> <span class="st">&#39;nba&#39;</span>, </span>
-<span id="cb301-3"><a href="choosing-columns-with-select.html#cb301-3" aria-hidden="true" tabindex="-1"></a>         season <span class="sc">==</span> <span class="dv">2022</span>, </span>
-<span id="cb301-4"><a href="choosing-columns-with-select.html#cb301-4" aria-hidden="true" tabindex="-1"></a>         season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-5"><a href="choosing-columns-with-select.html#cb301-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date  , gid, </span>
-<span id="cb301-6"><a href="choosing-columns-with-select.html#cb301-6" aria-hidden="true" tabindex="-1"></a>         away  , home, </span>
-<span id="cb301-7"><a href="choosing-columns-with-select.html#cb301-7" aria-hidden="true" tabindex="-1"></a>         ascore, hscore)</span>
-<span id="cb301-8"><a href="choosing-columns-with-select.html#cb301-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb304-1"><a href="choosing-columns-with-select.html#cb304-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb304-2"><a href="choosing-columns-with-select.html#cb304-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lg <span class="sc">==</span> <span class="st">&#39;nba&#39;</span>, </span>
+<span id="cb304-3"><a href="choosing-columns-with-select.html#cb304-3" aria-hidden="true" tabindex="-1"></a>         season <span class="sc">==</span> <span class="dv">2022</span>, </span>
+<span id="cb304-4"><a href="choosing-columns-with-select.html#cb304-4" aria-hidden="true" tabindex="-1"></a>         season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb304-5"><a href="choosing-columns-with-select.html#cb304-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date  , gid, </span>
+<span id="cb304-6"><a href="choosing-columns-with-select.html#cb304-6" aria-hidden="true" tabindex="-1"></a>         away  , home, </span>
+<span id="cb304-7"><a href="choosing-columns-with-select.html#cb304-7" aria-hidden="true" tabindex="-1"></a>         ascore, hscore)</span>
+<span id="cb304-8"><a href="choosing-columns-with-select.html#cb304-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
 </details>
 <pre><code>        date      gid away home ascore hscore
 1 2021-10-19 22100001  BKN  MIL    104    127

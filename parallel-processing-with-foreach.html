@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -430,80 +437,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you have a for loop that is embarrassingly parallel, where each iteration is completely independent of the others, you can potentially use foreach to run mutiple iterations simultaneously on multiple cores on your computer. Here is an embarrassingly simple example.</p>
 <p>This takes about 100 seconds.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb232-1"><a href="parallel-processing-with-foreach.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
-<span id="cb232-2"><a href="parallel-processing-with-foreach.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb232-3"><a href="parallel-processing-with-foreach.html#cb232-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb232-4"><a href="parallel-processing-with-foreach.html#cb232-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
-<span id="cb232-5"><a href="parallel-processing-with-foreach.html#cb232-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb232-6"><a href="parallel-processing-with-foreach.html#cb232-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb235-1"><a href="parallel-processing-with-foreach.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
+<span id="cb235-2"><a href="parallel-processing-with-foreach.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb235-3"><a href="parallel-processing-with-foreach.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb235-4"><a href="parallel-processing-with-foreach.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb235-5"><a href="parallel-processing-with-foreach.html#cb235-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb235-6"><a href="parallel-processing-with-foreach.html#cb235-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span></code></pre></div>
 </details>
 <p>This takes 19 seconds with 6 cores (plus some time spent on the initial setup). Note the <code>j =</code> instead of <code>j in</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb233-1"><a href="parallel-processing-with-foreach.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doSNOW)</span>
-<span id="cb233-2"><a href="parallel-processing-with-foreach.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb233-3"><a href="parallel-processing-with-foreach.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
-<span id="cb233-4"><a href="parallel-processing-with-foreach.html#cb233-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb233-5"><a href="parallel-processing-with-foreach.html#cb233-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb233-6"><a href="parallel-processing-with-foreach.html#cb233-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Setup</span></span>
-<span id="cb233-7"><a href="parallel-processing-with-foreach.html#cb233-7" aria-hidden="true" tabindex="-1"></a>n.cores <span class="ot">=</span> <span class="fu">detectCores</span>()<span class="sc">-</span><span class="dv">2</span> <span class="do">## leave 2 cores unused so I can keep using computer</span></span>
-<span id="cb233-8"><a href="parallel-processing-with-foreach.html#cb233-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb233-9"><a href="parallel-processing-with-foreach.html#cb233-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
-<span id="cb233-10"><a href="parallel-processing-with-foreach.html#cb233-10" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">=</span> <span class="fu">makeCluster</span>(n.cores)</span>
-<span id="cb233-11"><a href="parallel-processing-with-foreach.html#cb233-11" aria-hidden="true" tabindex="-1"></a><span class="fu">registerDoSNOW</span>(cl)</span>
-<span id="cb233-12"><a href="parallel-processing-with-foreach.html#cb233-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
-<span id="cb233-13"><a href="parallel-processing-with-foreach.html#cb233-13" aria-hidden="true" tabindex="-1"></a><span class="fu">foreach</span>(<span class="at">j =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">.verbose=</span>F) <span class="sc">%dopar%</span> {</span>
-<span id="cb233-14"><a href="parallel-processing-with-foreach.html#cb233-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr) <span class="do">## you might need to load libraries that you use in the loop</span></span>
-<span id="cb233-15"><a href="parallel-processing-with-foreach.html#cb233-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j,<span class="st">&#39;&#39;</span>)</span>
-<span id="cb233-16"><a href="parallel-processing-with-foreach.html#cb233-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
-<span id="cb233-17"><a href="parallel-processing-with-foreach.html#cb233-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb233-18"><a href="parallel-processing-with-foreach.html#cb233-18" aria-hidden="true" tabindex="-1"></a><span class="fu">stopCluster</span>(cl)</span>
-<span id="cb233-19"><a href="parallel-processing-with-foreach.html#cb233-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb236-1"><a href="parallel-processing-with-foreach.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doSNOW)</span>
+<span id="cb236-2"><a href="parallel-processing-with-foreach.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb236-3"><a href="parallel-processing-with-foreach.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb236-4"><a href="parallel-processing-with-foreach.html#cb236-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb236-5"><a href="parallel-processing-with-foreach.html#cb236-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb236-6"><a href="parallel-processing-with-foreach.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Setup</span></span>
+<span id="cb236-7"><a href="parallel-processing-with-foreach.html#cb236-7" aria-hidden="true" tabindex="-1"></a>n.cores <span class="ot">=</span> <span class="fu">detectCores</span>()<span class="sc">-</span><span class="dv">2</span> <span class="do">## leave 2 cores unused so I can keep using computer</span></span>
+<span id="cb236-8"><a href="parallel-processing-with-foreach.html#cb236-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb236-9"><a href="parallel-processing-with-foreach.html#cb236-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
+<span id="cb236-10"><a href="parallel-processing-with-foreach.html#cb236-10" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">=</span> <span class="fu">makeCluster</span>(n.cores)</span>
+<span id="cb236-11"><a href="parallel-processing-with-foreach.html#cb236-11" aria-hidden="true" tabindex="-1"></a><span class="fu">registerDoSNOW</span>(cl)</span>
+<span id="cb236-12"><a href="parallel-processing-with-foreach.html#cb236-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
+<span id="cb236-13"><a href="parallel-processing-with-foreach.html#cb236-13" aria-hidden="true" tabindex="-1"></a><span class="fu">foreach</span>(<span class="at">j =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">.verbose=</span>F) <span class="sc">%dopar%</span> {</span>
+<span id="cb236-14"><a href="parallel-processing-with-foreach.html#cb236-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr) <span class="do">## you might need to load libraries that you use in the loop</span></span>
+<span id="cb236-15"><a href="parallel-processing-with-foreach.html#cb236-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j,<span class="st">&#39;&#39;</span>)</span>
+<span id="cb236-16"><a href="parallel-processing-with-foreach.html#cb236-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb236-17"><a href="parallel-processing-with-foreach.html#cb236-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb236-18"><a href="parallel-processing-with-foreach.html#cb236-18" aria-hidden="true" tabindex="-1"></a><span class="fu">stopCluster</span>(cl)</span>
+<span id="cb236-19"><a href="parallel-processing-with-foreach.html#cb236-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>())</span></code></pre></div>
 </details>
 <p>Depending where are using <code>foreach</code>, you may want to save <code>.rds</code> files each run through the loop, or you may want to combine the result of each iteration of the loop at the end. This link shows the argument <code>.combine</code> can be used to do the latter. <a href="https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html" class="uri">https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html</a></p>
 <p>Here is an example of using <code>rbind</code> to combine data frames from each iteration: <a href="https://stackoverflow.com/questions/14815810/append-rows-to-dataframe-using-foreach-package" class="uri">https://stackoverflow.com/questions/14815810/append-rows-to-dataframe-using-foreach-package</a>. Here is the minimal reproducible example from that page.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb234-1"><a href="parallel-processing-with-foreach.html#cb234-1" aria-hidden="true" tabindex="-1"></a>resultdf <span class="ot">=</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">.combine =</span> rbind) <span class="sc">%dopar%</span> { </span>
-<span id="cb234-2"><a href="parallel-processing-with-foreach.html#cb234-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">4</span>), </span>
-<span id="cb234-3"><a href="parallel-processing-with-foreach.html#cb234-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">i =</span> i)</span>
-<span id="cb234-4"><a href="parallel-processing-with-foreach.html#cb234-4" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb237-1"><a href="parallel-processing-with-foreach.html#cb237-1" aria-hidden="true" tabindex="-1"></a>resultdf <span class="ot">=</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">.combine =</span> rbind) <span class="sc">%dopar%</span> { </span>
+<span id="cb237-2"><a href="parallel-processing-with-foreach.html#cb237-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">4</span>), </span>
+<span id="cb237-3"><a href="parallel-processing-with-foreach.html#cb237-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">i =</span> i)</span>
+<span id="cb237-4"><a href="parallel-processing-with-foreach.html#cb237-4" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 </details>
 <p>The final objects from each <code>foreach</code> iteration get <code>rbind</code>ed together. In this case, the final object in each iteration is a <code>data.frame</code> with 4 rows and 2 columns.</p>
 <p>If you have a process that takes a long time, you’ll definitely want to save your results somewhere, even if you are using this <code>rbind</code> functionality. If, for example, you are using <code>foreach</code> inside another <code>for</code> loop, then you can save the result of <code>foreach</code> like this.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb235-1"><a href="parallel-processing-with-foreach.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Non-parallel for loop</span></span>
-<span id="cb235-2"><a href="parallel-processing-with-foreach.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb235-3"><a href="parallel-processing-with-foreach.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb235-4"><a href="parallel-processing-with-foreach.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Parallel for loop</span></span>
-<span id="cb235-5"><a href="parallel-processing-with-foreach.html#cb235-5" aria-hidden="true" tabindex="-1"></a>  resultdf <span class="ot">=</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">.combine =</span> rbind) <span class="sc">%dopar%</span> { </span>
-<span id="cb235-6"><a href="parallel-processing-with-foreach.html#cb235-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb235-7"><a href="parallel-processing-with-foreach.html#cb235-7" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Do some stuff that creates a data frame </span></span>
-<span id="cb235-8"><a href="parallel-processing-with-foreach.html#cb235-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">4</span>), </span>
-<span id="cb235-9"><a href="parallel-processing-with-foreach.html#cb235-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">i =</span> i)</span>
-<span id="cb235-10"><a href="parallel-processing-with-foreach.html#cb235-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb235-11"><a href="parallel-processing-with-foreach.html#cb235-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb235-12"><a href="parallel-processing-with-foreach.html#cb235-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## create file name for this iteration, and save</span></span>
-<span id="cb235-13"><a href="parallel-processing-with-foreach.html#cb235-13" aria-hidden="true" tabindex="-1"></a>  myfilename <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&#39;filename&#39;</span>, j, <span class="st">&#39;.rds&#39;</span>) </span>
-<span id="cb235-14"><a href="parallel-processing-with-foreach.html#cb235-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS</span>(df, <span class="at">file=</span>myfilename)      </span>
-<span id="cb235-15"><a href="parallel-processing-with-foreach.html#cb235-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb238-1"><a href="parallel-processing-with-foreach.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Non-parallel for loop</span></span>
+<span id="cb238-2"><a href="parallel-processing-with-foreach.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb238-3"><a href="parallel-processing-with-foreach.html#cb238-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb238-4"><a href="parallel-processing-with-foreach.html#cb238-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Parallel for loop</span></span>
+<span id="cb238-5"><a href="parallel-processing-with-foreach.html#cb238-5" aria-hidden="true" tabindex="-1"></a>  resultdf <span class="ot">=</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">.combine =</span> rbind) <span class="sc">%dopar%</span> { </span>
+<span id="cb238-6"><a href="parallel-processing-with-foreach.html#cb238-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb238-7"><a href="parallel-processing-with-foreach.html#cb238-7" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Do some stuff that creates a data frame </span></span>
+<span id="cb238-8"><a href="parallel-processing-with-foreach.html#cb238-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">4</span>), </span>
+<span id="cb238-9"><a href="parallel-processing-with-foreach.html#cb238-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">i =</span> i)</span>
+<span id="cb238-10"><a href="parallel-processing-with-foreach.html#cb238-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb238-11"><a href="parallel-processing-with-foreach.html#cb238-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb238-12"><a href="parallel-processing-with-foreach.html#cb238-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## create file name for this iteration, and save</span></span>
+<span id="cb238-13"><a href="parallel-processing-with-foreach.html#cb238-13" aria-hidden="true" tabindex="-1"></a>  myfilename <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&#39;filename&#39;</span>, j, <span class="st">&#39;.rds&#39;</span>) </span>
+<span id="cb238-14"><a href="parallel-processing-with-foreach.html#cb238-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS</span>(df, <span class="at">file=</span>myfilename)      </span>
+<span id="cb238-15"><a href="parallel-processing-with-foreach.html#cb238-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <p>Or, if the <code>foreach</code> iteration takes a long time, you can save the result instead each iteration.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb236-1"><a href="parallel-processing-with-foreach.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Non-parallel for loop</span></span>
-<span id="cb236-2"><a href="parallel-processing-with-foreach.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb236-3"><a href="parallel-processing-with-foreach.html#cb236-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb236-4"><a href="parallel-processing-with-foreach.html#cb236-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Parallel for loop</span></span>
-<span id="cb236-5"><a href="parallel-processing-with-foreach.html#cb236-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">.combine =</span> rbind) <span class="sc">%dopar%</span> { </span>
-<span id="cb236-6"><a href="parallel-processing-with-foreach.html#cb236-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb236-7"><a href="parallel-processing-with-foreach.html#cb236-7" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Do some stuff that creates a data frame or another object</span></span>
-<span id="cb236-8"><a href="parallel-processing-with-foreach.html#cb236-8" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">4</span>), </span>
-<span id="cb236-9"><a href="parallel-processing-with-foreach.html#cb236-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">i =</span> i)</span>
-<span id="cb236-10"><a href="parallel-processing-with-foreach.html#cb236-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb236-11"><a href="parallel-processing-with-foreach.html#cb236-11" aria-hidden="true" tabindex="-1"></a>    <span class="do">## create file name for this iteration, and save</span></span>
-<span id="cb236-12"><a href="parallel-processing-with-foreach.html#cb236-12" aria-hidden="true" tabindex="-1"></a>    myfilename <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&#39;filename-&#39;</span>, j, <span class="st">&#39;-&#39;</span>, i, <span class="st">&#39;.rds&#39;</span>) </span>
-<span id="cb236-13"><a href="parallel-processing-with-foreach.html#cb236-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">saveRDS</span>(df, <span class="at">file=</span>myfilename)      </span>
-<span id="cb236-14"><a href="parallel-processing-with-foreach.html#cb236-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb236-15"><a href="parallel-processing-with-foreach.html#cb236-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb236-16"><a href="parallel-processing-with-foreach.html#cb236-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb239-1"><a href="parallel-processing-with-foreach.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Non-parallel for loop</span></span>
+<span id="cb239-2"><a href="parallel-processing-with-foreach.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb239-3"><a href="parallel-processing-with-foreach.html#cb239-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb239-4"><a href="parallel-processing-with-foreach.html#cb239-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Parallel for loop</span></span>
+<span id="cb239-5"><a href="parallel-processing-with-foreach.html#cb239-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">.combine =</span> rbind) <span class="sc">%dopar%</span> { </span>
+<span id="cb239-6"><a href="parallel-processing-with-foreach.html#cb239-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb239-7"><a href="parallel-processing-with-foreach.html#cb239-7" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Do some stuff that creates a data frame or another object</span></span>
+<span id="cb239-8"><a href="parallel-processing-with-foreach.html#cb239-8" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">4</span>), </span>
+<span id="cb239-9"><a href="parallel-processing-with-foreach.html#cb239-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">i =</span> i)</span>
+<span id="cb239-10"><a href="parallel-processing-with-foreach.html#cb239-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb239-11"><a href="parallel-processing-with-foreach.html#cb239-11" aria-hidden="true" tabindex="-1"></a>    <span class="do">## create file name for this iteration, and save</span></span>
+<span id="cb239-12"><a href="parallel-processing-with-foreach.html#cb239-12" aria-hidden="true" tabindex="-1"></a>    myfilename <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&#39;filename-&#39;</span>, j, <span class="st">&#39;-&#39;</span>, i, <span class="st">&#39;.rds&#39;</span>) </span>
+<span id="cb239-13"><a href="parallel-processing-with-foreach.html#cb239-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">saveRDS</span>(df, <span class="at">file=</span>myfilename)      </span>
+<span id="cb239-14"><a href="parallel-processing-with-foreach.html#cb239-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb239-15"><a href="parallel-processing-with-foreach.html#cb239-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb239-16"><a href="parallel-processing-with-foreach.html#cb239-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <p>Your approach will depend on how long each iteration takes to run, how big the file sizes are etc. However you choose to do it, you will have a collection of <code>.rds</code> files that can be read back into R and joined using <code>rbind</code> or some other method.</p>
 </div>

@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -430,24 +437,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If there are lots of overlapping points, and we can adjust the transparency using <code>alpha</code>.</p>
 <p>First here is a plot using <code>geom_point</code> that has a lot of points plotted on top of one another.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb350-1"><a href="transparency-using-alpha.html#cb350-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> hscore, </span>
-<span id="cb350-2"><a href="transparency-using-alpha.html#cb350-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> home))<span class="sc">+</span></span>
-<span id="cb350-3"><a href="transparency-using-alpha.html#cb350-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb350-4"><a href="transparency-using-alpha.html#cb350-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-5"><a href="transparency-using-alpha.html#cb350-5" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb350-6"><a href="transparency-using-alpha.html#cb350-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">155</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb353-1"><a href="transparency-using-alpha.html#cb353-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> hscore, </span>
+<span id="cb353-2"><a href="transparency-using-alpha.html#cb353-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> home))<span class="sc">+</span></span>
+<span id="cb353-3"><a href="transparency-using-alpha.html#cb353-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb353-4"><a href="transparency-using-alpha.html#cb353-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-5"><a href="transparency-using-alpha.html#cb353-5" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb353-6"><a href="transparency-using-alpha.html#cb353-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">155</span>))</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-177-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-180-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Now we add <code>alpha = 0.5</code>, which means we want points to be halfway between transparent and opaque (1 = opaque, 0 = transparent).</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb351-1"><a href="transparency-using-alpha.html#cb351-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> hscore, </span>
-<span id="cb351-2"><a href="transparency-using-alpha.html#cb351-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> home))<span class="sc">+</span></span>
-<span id="cb351-3"><a href="transparency-using-alpha.html#cb351-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
-<span id="cb351-4"><a href="transparency-using-alpha.html#cb351-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-5"><a href="transparency-using-alpha.html#cb351-5" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb351-6"><a href="transparency-using-alpha.html#cb351-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">155</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb354-1"><a href="transparency-using-alpha.html#cb354-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> hscore, </span>
+<span id="cb354-2"><a href="transparency-using-alpha.html#cb354-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> home))<span class="sc">+</span></span>
+<span id="cb354-3"><a href="transparency-using-alpha.html#cb354-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
+<span id="cb354-4"><a href="transparency-using-alpha.html#cb354-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-5"><a href="transparency-using-alpha.html#cb354-5" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb354-6"><a href="transparency-using-alpha.html#cb354-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">155</span>))</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-178-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-181-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

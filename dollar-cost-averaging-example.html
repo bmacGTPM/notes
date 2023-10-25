@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -428,30 +435,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="dollar-cost-averaging-example" class="section level2 hasAnchor" number="26.1">
 <h2><span class="header-section-number">26.1</span> Dollar cost averaging example<a href="dollar-cost-averaging-example.html#dollar-cost-averaging-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb269-1"><a href="dollar-cost-averaging-example.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Fake price data for a stock</span></span>
-<span id="cb269-2"><a href="dollar-cost-averaging-example.html#cb269-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">52</span></span>
-<span id="cb269-3"><a href="dollar-cost-averaging-example.html#cb269-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">week =</span> x, </span>
-<span id="cb269-4"><a href="dollar-cost-averaging-example.html#cb269-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">price =</span> <span class="dv">10</span> <span class="sc">+</span> x<span class="sc">/</span><span class="dv">100</span> <span class="sc">-</span> x <span class="sc">%%</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">50</span>, </span>
-<span id="cb269-5"><a href="dollar-cost-averaging-example.html#cb269-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">shares =</span> <span class="cn">NA</span>)</span>
-<span id="cb269-6"><a href="dollar-cost-averaging-example.html#cb269-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>week, </span>
-<span id="cb269-7"><a href="dollar-cost-averaging-example.html#cb269-7" aria-hidden="true" tabindex="-1"></a>     df<span class="sc">$</span>price, </span>
-<span id="cb269-8"><a href="dollar-cost-averaging-example.html#cb269-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&#39;l&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb272-1"><a href="dollar-cost-averaging-example.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Fake price data for a stock</span></span>
+<span id="cb272-2"><a href="dollar-cost-averaging-example.html#cb272-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">52</span></span>
+<span id="cb272-3"><a href="dollar-cost-averaging-example.html#cb272-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">week =</span> x, </span>
+<span id="cb272-4"><a href="dollar-cost-averaging-example.html#cb272-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">price =</span> <span class="dv">10</span> <span class="sc">+</span> x<span class="sc">/</span><span class="dv">100</span> <span class="sc">-</span> x <span class="sc">%%</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">50</span>, </span>
+<span id="cb272-5"><a href="dollar-cost-averaging-example.html#cb272-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">shares =</span> <span class="cn">NA</span>)</span>
+<span id="cb272-6"><a href="dollar-cost-averaging-example.html#cb272-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>week, </span>
+<span id="cb272-7"><a href="dollar-cost-averaging-example.html#cb272-7" aria-hidden="true" tabindex="-1"></a>     df<span class="sc">$</span>price, </span>
+<span id="cb272-8"><a href="dollar-cost-averaging-example.html#cb272-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&#39;l&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Suppose you have $5,200 to invest. If the S&amp;P500 goes up more often than it goes down in a year, then should you buy up front at the start of the year, or dollar cost average?</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb270-1"><a href="dollar-cost-averaging-example.html#cb270-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5200</span></span>
-<span id="cb270-2"><a href="dollar-cost-averaging-example.html#cb270-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb270-3"><a href="dollar-cost-averaging-example.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Buy all up front</span></span>
-<span id="cb270-4"><a href="dollar-cost-averaging-example.html#cb270-4" aria-hidden="true" tabindex="-1"></a>shares <span class="ot">=</span> n<span class="sc">/</span>df<span class="sc">$</span>price[<span class="dv">1</span>]</span>
-<span id="cb270-5"><a href="dollar-cost-averaging-example.html#cb270-5" aria-hidden="true" tabindex="-1"></a>final.value <span class="ot">=</span> shares<span class="sc">*</span>df<span class="sc">$</span>price[<span class="dv">52</span>]</span>
-<span id="cb270-6"><a href="dollar-cost-averaging-example.html#cb270-6" aria-hidden="true" tabindex="-1"></a>final.value</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb273-1"><a href="dollar-cost-averaging-example.html#cb273-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5200</span></span>
+<span id="cb273-2"><a href="dollar-cost-averaging-example.html#cb273-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb273-3"><a href="dollar-cost-averaging-example.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Buy all up front</span></span>
+<span id="cb273-4"><a href="dollar-cost-averaging-example.html#cb273-4" aria-hidden="true" tabindex="-1"></a>shares <span class="ot">=</span> n<span class="sc">/</span>df<span class="sc">$</span>price[<span class="dv">1</span>]</span>
+<span id="cb273-5"><a href="dollar-cost-averaging-example.html#cb273-5" aria-hidden="true" tabindex="-1"></a>final.value <span class="ot">=</span> shares<span class="sc">*</span>df<span class="sc">$</span>price[<span class="dv">52</span>]</span>
+<span id="cb273-6"><a href="dollar-cost-averaging-example.html#cb273-6" aria-hidden="true" tabindex="-1"></a>final.value</span></code></pre></div>
 </details>
 <pre><code>[1] 5475.876</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb272-1"><a href="dollar-cost-averaging-example.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="do">## DCF, $100 per week</span></span>
-<span id="cb272-2"><a href="dollar-cost-averaging-example.html#cb272-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>shares <span class="ot">=</span> <span class="dv">100</span><span class="sc">/</span>df<span class="sc">$</span>price</span>
-<span id="cb272-3"><a href="dollar-cost-averaging-example.html#cb272-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>shares)<span class="sc">*</span>df<span class="sc">$</span>price[<span class="dv">52</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb275-1"><a href="dollar-cost-averaging-example.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="do">## DCF, $100 per week</span></span>
+<span id="cb275-2"><a href="dollar-cost-averaging-example.html#cb275-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>shares <span class="ot">=</span> <span class="dv">100</span><span class="sc">/</span>df<span class="sc">$</span>price</span>
+<span id="cb275-3"><a href="dollar-cost-averaging-example.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>shares)<span class="sc">*</span>df<span class="sc">$</span>price[<span class="dv">52</span>]</span></code></pre></div>
 </details>
 <pre><code>[1] 5335.527</code></pre>
 <p>The linear with oscillation increase is too simple. Should use actual stock prices.</p>

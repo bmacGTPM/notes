@@ -81,10 +81,12 @@ random-useful-functions
 data-visualization
 esquisse
 animating-normal-pdfs
+leaflet
 analysis
 variable-importance
 compariable-observations
 other-types-of-regression-models
+calibration
 bayesian-estimates
 beta-binomial
 normal
@@ -100,6 +102,9 @@ shiny
 getting-started-1
 dynamic-ui
 example-app-clt
+click-leaflet-map
+draw-a-shape-on-a-leaflet-map
+save-data-generated-from-user-inputs
 understanding-how-functions-work
 help
 code

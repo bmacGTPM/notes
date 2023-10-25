@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,58 +436,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">24.2</span> Alternatives to <code>rbind</code> for big data frames<a href="alternatives-to-rbind-for-big-data-frames.html#alternatives-to-rbind-for-big-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When working with very large data frames, and iteratively adding rows using <code>rbind</code>, say, within a for loop, to grow the data frame, the process starts out fast but tends to become slow. This is because <code>rbind</code> creates a new data frame each time it is used, and as the data frame gets bigger and bigger, it becomes more difficult to find contiguous blocks of memory to store the data frame. Here is an example that starts out taking 1-2 second per iteration at <code>j=1</code> but ends up taking 3-4 seconds at <code>j=10</code>. If you have memory issues running this example, make <code>N</code> or <code>J</code> smaller (but not too small because you won’t notice it slow down).</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb237-1"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-1" aria-hidden="true" tabindex="-1"></a>start.time1 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb237-2"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb237-3"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">100000000</span></span>
-<span id="cb237-4"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-4" aria-hidden="true" tabindex="-1"></a>J <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb237-5"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-5" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">=</span> <span class="cn">NULL</span></span>
-<span id="cb237-6"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb237-7"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>J){</span>
-<span id="cb237-8"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb237-9"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb237-10"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
-<span id="cb237-11"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb237-12"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-12" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N), </span>
-<span id="cb237-13"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">j =</span> j)</span>
-<span id="cb237-14"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-14" aria-hidden="true" tabindex="-1"></a>  df1 <span class="ot">=</span> <span class="fu">rbind</span>(df1, temp)</span>
-<span id="cb237-15"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb237-16"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb237-17"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb237-18"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-18" aria-hidden="true" tabindex="-1"></a>final.time1 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb237-19"><a href="alternatives-to-rbind-for-big-data-frames.html#cb237-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time1)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb240-1"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-1" aria-hidden="true" tabindex="-1"></a>start.time1 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb240-2"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb240-3"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">100000000</span></span>
+<span id="cb240-4"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-4" aria-hidden="true" tabindex="-1"></a>J <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb240-5"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-5" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">=</span> <span class="cn">NULL</span></span>
+<span id="cb240-6"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-7"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>J){</span>
+<span id="cb240-8"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb240-9"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb240-10"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
+<span id="cb240-11"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb240-12"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-12" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N), </span>
+<span id="cb240-13"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">j =</span> j)</span>
+<span id="cb240-14"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-14" aria-hidden="true" tabindex="-1"></a>  df1 <span class="ot">=</span> <span class="fu">rbind</span>(df1, temp)</span>
+<span id="cb240-15"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb240-16"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb240-17"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-18"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-18" aria-hidden="true" tabindex="-1"></a>final.time1 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb240-19"><a href="alternatives-to-rbind-for-big-data-frames.html#cb240-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time1)</span></code></pre></div>
 </details>
 <p>In cases like these, it is faster to initialize the large data frame up front and insert rows into that data frame like this.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb238-1"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-1" aria-hidden="true" tabindex="-1"></a>start.time2 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb238-2"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb238-3"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">100000000</span></span>
-<span id="cb238-4"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-4" aria-hidden="true" tabindex="-1"></a>J <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb238-5"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, N<span class="sc">*</span>J), <span class="do">## Initialize large data frame</span></span>
-<span id="cb238-6"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">j =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, N<span class="sc">*</span>J))</span>
-<span id="cb238-7"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb238-8"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>J){</span>
-<span id="cb238-9"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb238-10"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb238-11"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
-<span id="cb238-12"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb238-13"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-13" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N), </span>
-<span id="cb238-14"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">j =</span> j)</span>
-<span id="cb238-15"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb238-16"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Instead of rbind-ing, insert this data frame into the large data frame</span></span>
-<span id="cb238-17"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># when J=1, start.row = 1, when J=2, start.row = N+1</span></span>
-<span id="cb238-18"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-18" aria-hidden="true" tabindex="-1"></a>  start.row <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> N<span class="sc">*</span>(j<span class="dv">-1</span>) </span>
-<span id="cb238-19"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-19" aria-hidden="true" tabindex="-1"></a>  end.row <span class="ot">=</span> N<span class="sc">*</span>j</span>
-<span id="cb238-20"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-20" aria-hidden="true" tabindex="-1"></a>  df2[start.row<span class="sc">:</span>end.row,] <span class="ot">=</span> temp</span>
-<span id="cb238-21"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb238-22"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb238-23"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb238-24"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-24" aria-hidden="true" tabindex="-1"></a>final.time2 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb238-25"><a href="alternatives-to-rbind-for-big-data-frames.html#cb238-25" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time2)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb241-1"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-1" aria-hidden="true" tabindex="-1"></a>start.time2 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb241-2"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb241-3"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">100000000</span></span>
+<span id="cb241-4"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-4" aria-hidden="true" tabindex="-1"></a>J <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb241-5"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, N<span class="sc">*</span>J), <span class="do">## Initialize large data frame</span></span>
+<span id="cb241-6"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">j =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, N<span class="sc">*</span>J))</span>
+<span id="cb241-7"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb241-8"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>J){</span>
+<span id="cb241-9"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb241-10"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb241-11"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">Sys.time</span>())</span>
+<span id="cb241-12"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb241-13"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-13" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N), </span>
+<span id="cb241-14"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">j =</span> j)</span>
+<span id="cb241-15"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb241-16"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Instead of rbind-ing, insert this data frame into the large data frame</span></span>
+<span id="cb241-17"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># when J=1, start.row = 1, when J=2, start.row = N+1</span></span>
+<span id="cb241-18"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-18" aria-hidden="true" tabindex="-1"></a>  start.row <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> N<span class="sc">*</span>(j<span class="dv">-1</span>) </span>
+<span id="cb241-19"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-19" aria-hidden="true" tabindex="-1"></a>  end.row <span class="ot">=</span> N<span class="sc">*</span>j</span>
+<span id="cb241-20"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-20" aria-hidden="true" tabindex="-1"></a>  df2[start.row<span class="sc">:</span>end.row,] <span class="ot">=</span> temp</span>
+<span id="cb241-21"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb241-22"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb241-23"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb241-24"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-24" aria-hidden="true" tabindex="-1"></a>final.time2 <span class="ot">=</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb241-25"><a href="alternatives-to-rbind-for-big-data-frames.html#cb241-25" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time2)</span></code></pre></div>
 </details>
 <p>This one takes 1-2 seconds each loop from <code>j = 1</code> to <code>j = 10</code> and does not appear to slow down for higher <code>j</code>. Here are the total times for each <code>for</code> loop.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb239-1"><a href="alternatives-to-rbind-for-big-data-frames.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time1 <span class="sc">-</span> start.time1)</span>
-<span id="cb239-2"><a href="alternatives-to-rbind-for-big-data-frames.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time2 <span class="sc">-</span> start.time2)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb242-1"><a href="alternatives-to-rbind-for-big-data-frames.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time1 <span class="sc">-</span> start.time1)</span>
+<span id="cb242-2"><a href="alternatives-to-rbind-for-big-data-frames.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final.time2 <span class="sc">-</span> start.time2)</span></code></pre></div>
 </details>
 <ul>
 <li><code>for</code> loop #1, with <code>rbind</code>, took 21 seconds</li>

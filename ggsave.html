@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -430,18 +437,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Use <code>ggsave</code> instead of clicking Export, Save As in R Studio. When using <code>pubtheme</code> choose
 <code>base_size = 36</code> and <code>width = 20</code>, as is done in the template. The <code>height = 20</code> option can be changed if you need to change the dimension of the plot.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb344-1"><a href="ggsave.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Save to a file</span></span>
-<span id="cb344-2"><a href="ggsave.html#cb344-2" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">=</span> g <span class="sc">%&gt;%</span></span>
-<span id="cb344-3"><a href="ggsave.html#cb344-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), </span>
-<span id="cb344-4"><a href="ggsave.html#cb344-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), </span>
-<span id="cb344-5"><a href="ggsave.html#cb344-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">base_size =</span> <span class="dv">36</span>)</span>
-<span id="cb344-6"><a href="ggsave.html#cb344-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb344-7"><a href="ggsave.html#cb344-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="fu">paste0</span>(<span class="st">&quot;img/&quot;</span>, <span class="fu">gsub</span>(<span class="st">&quot;%&quot;</span>, <span class="st">&quot; Perc&quot;</span>, title), <span class="st">&quot;.jpg&quot;</span>), </span>
-<span id="cb344-8"><a href="ggsave.html#cb344-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> gg,</span>
-<span id="cb344-9"><a href="ggsave.html#cb344-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">width  =</span> <span class="dv">20</span>,   <span class="do">## don&#39;t change</span></span>
-<span id="cb344-10"><a href="ggsave.html#cb344-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">20</span>,   <span class="do">## ok to change </span></span>
-<span id="cb344-11"><a href="ggsave.html#cb344-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">units  =</span> <span class="st">&#39;in&#39;</span>, <span class="do">## don&#39;t change</span></span>
-<span id="cb344-12"><a href="ggsave.html#cb344-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">72</span>)      <span class="do">## don&#39;t change</span></span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb347-1"><a href="ggsave.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Save to a file</span></span>
+<span id="cb347-2"><a href="ggsave.html#cb347-2" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">=</span> g <span class="sc">%&gt;%</span></span>
+<span id="cb347-3"><a href="ggsave.html#cb347-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), </span>
+<span id="cb347-4"><a href="ggsave.html#cb347-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">165</span>), </span>
+<span id="cb347-5"><a href="ggsave.html#cb347-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">base_size =</span> <span class="dv">36</span>)</span>
+<span id="cb347-6"><a href="ggsave.html#cb347-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb347-7"><a href="ggsave.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="fu">paste0</span>(<span class="st">&quot;img/&quot;</span>, <span class="fu">gsub</span>(<span class="st">&quot;%&quot;</span>, <span class="st">&quot; Perc&quot;</span>, title), <span class="st">&quot;.jpg&quot;</span>), </span>
+<span id="cb347-8"><a href="ggsave.html#cb347-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> gg,</span>
+<span id="cb347-9"><a href="ggsave.html#cb347-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">width  =</span> <span class="dv">20</span>,   <span class="do">## don&#39;t change</span></span>
+<span id="cb347-10"><a href="ggsave.html#cb347-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">20</span>,   <span class="do">## ok to change </span></span>
+<span id="cb347-11"><a href="ggsave.html#cb347-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">units  =</span> <span class="st">&#39;in&#39;</span>, <span class="do">## don&#39;t change</span></span>
+<span id="cb347-12"><a href="ggsave.html#cb347-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">72</span>)      <span class="do">## don&#39;t change</span></span></code></pre></div>
 </details>
 <p>If using <code>theme_pub</code>, you can use <code>theme_pub(base_size = 36)</code></p>
 </div>

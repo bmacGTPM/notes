@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>19.3 Example App: CLT | Data Analysis</title>
+  <title>19.5 Save data generated from user inputs | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
   <meta name="generator" content="bookdown 0.30.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="19.3 Example App: CLT | Data Analysis" />
+  <meta property="og:title" content="19.5 Save data generated from user inputs | Data Analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course notes for Data Analysis." />
   <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="19.3 Example App: CLT | Data Analysis" />
+  <meta name="twitter:title" content="19.5 Save data generated from user inputs | Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for Data Analysis." />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dynamic-ui.html"/>
+<link rel="prev" href="draw-a-shape-on-a-leaflet-map.html"/>
 <link rel="next" href="understanding-how-functions-work.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -425,9 +432,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="example-app-clt" class="section level2 hasAnchor" number="19.3">
-<h2><span class="header-section-number">19.3</span> Example App: CLT<a href="example-app-clt.html#example-app-clt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>See CLTapp.r on GitHub for an example app where UI labels change based on the selection in another dropdown.</p>
+<div id="save-data-generated-from-user-inputs" class="section level2 hasAnchor" number="19.5">
+<h2><span class="header-section-number">19.5</span> Save data generated from user inputs<a href="save-data-generated-from-user-inputs.html#save-data-generated-from-user-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Modified from here <a href="https://stackoverflow.com/questions/63329561/r-shiny-load-data-in-to-form-fields-from-previously-persistent-stored-data" class="uri">https://stackoverflow.com/questions/63329561/r-shiny-load-data-in-to-form-fields-from-previously-persistent-stored-data</a>. See also the links given in the answer to that question. There is a New button, which resets the user inputs. There is a Delete button, which I thought was supposed to delete entries but it doesn’t seem to work.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb194-1"><a href="save-data-generated-from-user-inputs.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb194-2"><a href="save-data-generated-from-user-inputs.html#cb194-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-3"><a href="save-data-generated-from-user-inputs.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the fields we want to save from the form</span></span>
+<span id="cb194-4"><a href="save-data-generated-from-user-inputs.html#cb194-4" aria-hidden="true" tabindex="-1"></a>fields <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;used_shiny&quot;</span>, <span class="st">&quot;r_num_years&quot;</span>)</span>
+<span id="cb194-5"><a href="save-data-generated-from-user-inputs.html#cb194-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-6"><a href="save-data-generated-from-user-inputs.html#cb194-6" aria-hidden="true" tabindex="-1"></a>outputDir <span class="ot">&lt;-</span> <span class="st">&quot;responses&quot;</span></span>
+<span id="cb194-7"><a href="save-data-generated-from-user-inputs.html#cb194-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-8"><a href="save-data-generated-from-user-inputs.html#cb194-8" aria-hidden="true" tabindex="-1"></a>saveData <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb194-9"><a href="save-data-generated-from-user-inputs.html#cb194-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-10"><a href="save-data-generated-from-user-inputs.html#cb194-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a unique file name</span></span>
+<span id="cb194-11"><a href="save-data-generated-from-user-inputs.html#cb194-11" aria-hidden="true" tabindex="-1"></a>  fileName <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;%s_%s.csv&quot;</span>, <span class="fu">as.integer</span>(<span class="fu">Sys.time</span>()), digest<span class="sc">::</span><span class="fu">digest</span>(data))</span>
+<span id="cb194-12"><a href="save-data-generated-from-user-inputs.html#cb194-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb194-13"><a href="save-data-generated-from-user-inputs.html#cb194-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Write the file to the local system</span></span>
+<span id="cb194-14"><a href="save-data-generated-from-user-inputs.html#cb194-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv</span>(</span>
+<span id="cb194-15"><a href="save-data-generated-from-user-inputs.html#cb194-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> data,</span>
+<span id="cb194-16"><a href="save-data-generated-from-user-inputs.html#cb194-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">file =</span> <span class="fu">file.path</span>(outputDir, fileName), </span>
+<span id="cb194-17"><a href="save-data-generated-from-user-inputs.html#cb194-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">quote =</span> <span class="cn">TRUE</span></span>
+<span id="cb194-18"><a href="save-data-generated-from-user-inputs.html#cb194-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb194-19"><a href="save-data-generated-from-user-inputs.html#cb194-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb194-20"><a href="save-data-generated-from-user-inputs.html#cb194-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-21"><a href="save-data-generated-from-user-inputs.html#cb194-21" aria-hidden="true" tabindex="-1"></a>loadData <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb194-22"><a href="save-data-generated-from-user-inputs.html#cb194-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb194-23"><a href="save-data-generated-from-user-inputs.html#cb194-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read all the files into a list</span></span>
+<span id="cb194-24"><a href="save-data-generated-from-user-inputs.html#cb194-24" aria-hidden="true" tabindex="-1"></a>    files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(outputDir, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb194-25"><a href="save-data-generated-from-user-inputs.html#cb194-25" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">lapply</span>(files, read.csv, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb194-26"><a href="save-data-generated-from-user-inputs.html#cb194-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb194-27"><a href="save-data-generated-from-user-inputs.html#cb194-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Concatenate all data together into one data.frame</span></span>
+<span id="cb194-28"><a href="save-data-generated-from-user-inputs.html#cb194-28" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, data)</span>
+<span id="cb194-29"><a href="save-data-generated-from-user-inputs.html#cb194-29" aria-hidden="true" tabindex="-1"></a>    data</span>
+<span id="cb194-30"><a href="save-data-generated-from-user-inputs.html#cb194-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb194-31"><a href="save-data-generated-from-user-inputs.html#cb194-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-32"><a href="save-data-generated-from-user-inputs.html#cb194-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Shiny app with 3 fields that the user can submit data for</span></span>
+<span id="cb194-33"><a href="save-data-generated-from-user-inputs.html#cb194-33" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(</span>
+<span id="cb194-34"><a href="save-data-generated-from-user-inputs.html#cb194-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">ui =</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb194-35"><a href="save-data-generated-from-user-inputs.html#cb194-35" aria-hidden="true" tabindex="-1"></a>        DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="st">&quot;responses&quot;</span>, <span class="at">width =</span> <span class="dv">300</span>), tags<span class="sc">$</span><span class="fu">hr</span>(),</span>
+<span id="cb194-36"><a href="save-data-generated-from-user-inputs.html#cb194-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">textInput</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;Name&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
+<span id="cb194-37"><a href="save-data-generated-from-user-inputs.html#cb194-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">checkboxInput</span>(<span class="st">&quot;used_shiny&quot;</span>, <span class="st">&quot;I&#39;ve built a Shiny app in R before&quot;</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb194-38"><a href="save-data-generated-from-user-inputs.html#cb194-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sliderInput</span>(<span class="st">&quot;r_num_years&quot;</span>, <span class="st">&quot;Number of years using R&quot;</span>,</span>
+<span id="cb194-39"><a href="save-data-generated-from-user-inputs.html#cb194-39" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">2</span>, <span class="at">ticks =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb194-40"><a href="save-data-generated-from-user-inputs.html#cb194-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">actionButton</span>(<span class="st">&quot;submit&quot;</span>, <span class="st">&quot;Submit&quot;</span>)</span>
+<span id="cb194-41"><a href="save-data-generated-from-user-inputs.html#cb194-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb194-42"><a href="save-data-generated-from-user-inputs.html#cb194-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb194-43"><a href="save-data-generated-from-user-inputs.html#cb194-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">server =</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb194-44"><a href="save-data-generated-from-user-inputs.html#cb194-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-45"><a href="save-data-generated-from-user-inputs.html#cb194-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># When the Submit button is clicked, save the form data</span></span>
+<span id="cb194-46"><a href="save-data-generated-from-user-inputs.html#cb194-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">observeEvent</span>(input<span class="sc">$</span>submit, {</span>
+<span id="cb194-47"><a href="save-data-generated-from-user-inputs.html#cb194-47" aria-hidden="true" tabindex="-1"></a>            df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">name=</span>input<span class="sc">$</span>name, </span>
+<span id="cb194-48"><a href="save-data-generated-from-user-inputs.html#cb194-48" aria-hidden="true" tabindex="-1"></a>                            <span class="at">used_shiny =</span> input<span class="sc">$</span>used_shiny, </span>
+<span id="cb194-49"><a href="save-data-generated-from-user-inputs.html#cb194-49" aria-hidden="true" tabindex="-1"></a>                            <span class="at">r_num_years =</span> input<span class="sc">$</span>r_num_years)</span>
+<span id="cb194-50"><a href="save-data-generated-from-user-inputs.html#cb194-50" aria-hidden="true" tabindex="-1"></a>            df</span>
+<span id="cb194-51"><a href="save-data-generated-from-user-inputs.html#cb194-51" aria-hidden="true" tabindex="-1"></a>            <span class="fu">saveData</span>(df)</span>
+<span id="cb194-52"><a href="save-data-generated-from-user-inputs.html#cb194-52" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb194-53"><a href="save-data-generated-from-user-inputs.html#cb194-53" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb194-54"><a href="save-data-generated-from-user-inputs.html#cb194-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Show the previous responses</span></span>
+<span id="cb194-55"><a href="save-data-generated-from-user-inputs.html#cb194-55" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (update with current response when Submit is clicked)</span></span>
+<span id="cb194-56"><a href="save-data-generated-from-user-inputs.html#cb194-56" aria-hidden="true" tabindex="-1"></a>        output<span class="sc">$</span>responses <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDataTable</span>({</span>
+<span id="cb194-57"><a href="save-data-generated-from-user-inputs.html#cb194-57" aria-hidden="true" tabindex="-1"></a>            input<span class="sc">$</span>submit</span>
+<span id="cb194-58"><a href="save-data-generated-from-user-inputs.html#cb194-58" aria-hidden="true" tabindex="-1"></a>            <span class="fu">loadData</span>()</span>
+<span id="cb194-59"><a href="save-data-generated-from-user-inputs.html#cb194-59" aria-hidden="true" tabindex="-1"></a>        })     </span>
+<span id="cb194-60"><a href="save-data-generated-from-user-inputs.html#cb194-60" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb194-61"><a href="save-data-generated-from-user-inputs.html#cb194-61" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</details>
 </div>
 <!-- </div> -->
             </section>
@@ -435,7 +505,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="dynamic-ui.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="draw-a-shape-on-a-leaflet-map.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="understanding-how-functions-work.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

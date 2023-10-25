@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,38 +436,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">23.1</span> Showing progress<a href="showing-progress.html#showing-progress" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can add some code to a for loop that prints <code>j</code>, the iterator in a for loop.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb226-1"><a href="showing-progress.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb226-2"><a href="showing-progress.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb226-3"><a href="showing-progress.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
-<span id="cb226-4"><a href="showing-progress.html#cb226-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb229-1"><a href="showing-progress.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb229-2"><a href="showing-progress.html#cb229-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb229-3"><a href="showing-progress.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb229-4"><a href="showing-progress.html#cb229-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <pre><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 </code></pre>
 <p>If you don’t want to show every new <code>j</code>, you can add an if statement like this that prints every 10 <code>j</code>s for example.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb228-1"><a href="showing-progress.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb228-2"><a href="showing-progress.html#cb228-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(j <span class="sc">%%</span> <span class="dv">10</span> <span class="sc">==</span> <span class="dv">0</span>){<span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)}</span>
-<span id="cb228-3"><a href="showing-progress.html#cb228-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
-<span id="cb228-4"><a href="showing-progress.html#cb228-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb231-1"><a href="showing-progress.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb231-2"><a href="showing-progress.html#cb231-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(j <span class="sc">%%</span> <span class="dv">10</span> <span class="sc">==</span> <span class="dv">0</span>){<span class="fu">cat</span>(j, <span class="st">&#39;&#39;</span>)}</span>
+<span id="cb231-3"><a href="showing-progress.html#cb231-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb231-4"><a href="showing-progress.html#cb231-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <pre><code>10 20 30 40 50 60 70 80 90 100 </code></pre>
 <p>Another option is to use the package <code>progress</code> to add a progress bar.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb230-1"><a href="showing-progress.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
-<span id="cb230-2"><a href="showing-progress.html#cb230-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">100</span>, )</span>
-<span id="cb230-3"><a href="showing-progress.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb230-4"><a href="showing-progress.html#cb230-4" aria-hidden="true" tabindex="-1"></a>  pb<span class="sc">$</span><span class="fu">tick</span>()</span>
-<span id="cb230-5"><a href="showing-progress.html#cb230-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
-<span id="cb230-6"><a href="showing-progress.html#cb230-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb233-1"><a href="showing-progress.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
+<span id="cb233-2"><a href="showing-progress.html#cb233-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">100</span>, )</span>
+<span id="cb233-3"><a href="showing-progress.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb233-4"><a href="showing-progress.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  pb<span class="sc">$</span><span class="fu">tick</span>()</span>
+<span id="cb233-5"><a href="showing-progress.html#cb233-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb233-6"><a href="showing-progress.html#cb233-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb231-1"><a href="showing-progress.html#cb231-1" aria-hidden="true" tabindex="-1"></a>cli<span class="sc">::</span><span class="fu">cli_progress_bar</span>(<span class="st">&#39;Title&#39;</span>, </span>
-<span id="cb231-2"><a href="showing-progress.html#cb231-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">total =</span> <span class="dv">100</span>, </span>
-<span id="cb231-3"><a href="showing-progress.html#cb231-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">clear =</span> <span class="cn">FALSE</span>, )</span>
-<span id="cb231-4"><a href="showing-progress.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb231-5"><a href="showing-progress.html#cb231-5" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_progress_update</span>()</span>
-<span id="cb231-6"><a href="showing-progress.html#cb231-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
-<span id="cb231-7"><a href="showing-progress.html#cb231-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb231-8"><a href="showing-progress.html#cb231-8" aria-hidden="true" tabindex="-1"></a>cli<span class="sc">::</span><span class="fu">cli_progress_done</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb234-1"><a href="showing-progress.html#cb234-1" aria-hidden="true" tabindex="-1"></a>cli<span class="sc">::</span><span class="fu">cli_progress_bar</span>(<span class="st">&#39;Title&#39;</span>, </span>
+<span id="cb234-2"><a href="showing-progress.html#cb234-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">total =</span> <span class="dv">100</span>, </span>
+<span id="cb234-3"><a href="showing-progress.html#cb234-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">clear =</span> <span class="cn">FALSE</span>, )</span>
+<span id="cb234-4"><a href="showing-progress.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb234-5"><a href="showing-progress.html#cb234-5" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_progress_update</span>()</span>
+<span id="cb234-6"><a href="showing-progress.html#cb234-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb234-7"><a href="showing-progress.html#cb234-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb234-8"><a href="showing-progress.html#cb234-8" aria-hidden="true" tabindex="-1"></a>cli<span class="sc">::</span><span class="fu">cli_progress_done</span>()</span></code></pre></div>
 </details>
 </div>
             </section>

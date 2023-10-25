@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,56 +436,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">25.9</span> Read pixel values of images<a href="read-pixel-values-of-images.html#read-pixel-values-of-images" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The outputs are suppressed using <code>eval = F</code> because of issues with ImageMagick and GitHub Actions.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb265-1"><a href="read-pixel-values-of-images.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb265-2"><a href="read-pixel-values-of-images.html#cb265-2" aria-hidden="true" tabindex="-1"></a>image <span class="ot">=</span> <span class="fu">image_read</span>(<span class="st">&quot;https://www.r-project.org/logo/Rlogo.png&quot;</span>)</span>
-<span id="cb265-3"><a href="read-pixel-values-of-images.html#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(image)</span>
-<span id="cb265-4"><a href="read-pixel-values-of-images.html#cb265-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(image)</span>
-<span id="cb265-5"><a href="read-pixel-values-of-images.html#cb265-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(image)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb268-1"><a href="read-pixel-values-of-images.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb268-2"><a href="read-pixel-values-of-images.html#cb268-2" aria-hidden="true" tabindex="-1"></a>image <span class="ot">=</span> <span class="fu">image_read</span>(<span class="st">&quot;https://www.r-project.org/logo/Rlogo.png&quot;</span>)</span>
+<span id="cb268-3"><a href="read-pixel-values-of-images.html#cb268-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(image)</span>
+<span id="cb268-4"><a href="read-pixel-values-of-images.html#cb268-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(image)</span>
+<span id="cb268-5"><a href="read-pixel-values-of-images.html#cb268-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(image)</span></code></pre></div>
 </details>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb266-1"><a href="read-pixel-values-of-images.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb266-2"><a href="read-pixel-values-of-images.html#cb266-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-3"><a href="read-pixel-values-of-images.html#cb266-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> image[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
-<span id="cb266-4"><a href="read-pixel-values-of-images.html#cb266-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.integer</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb266-5"><a href="read-pixel-values-of-images.html#cb266-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">melt</span>()</span>
-<span id="cb266-6"><a href="read-pixel-values-of-images.html#cb266-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-7"><a href="read-pixel-values-of-images.html#cb266-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;rgba&#39;</span>, <span class="st">&#39;value&#39;</span>)</span>
-<span id="cb266-8"><a href="read-pixel-values-of-images.html#cb266-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-9"><a href="read-pixel-values-of-images.html#cb266-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb266-10"><a href="read-pixel-values-of-images.html#cb266-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rgba =</span> <span class="fu">case_when</span>(rgba <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&#39;red&#39;</span>,</span>
-<span id="cb266-11"><a href="read-pixel-values-of-images.html#cb266-11" aria-hidden="true" tabindex="-1"></a>                          rgba <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">&#39;green&#39;</span>,</span>
-<span id="cb266-12"><a href="read-pixel-values-of-images.html#cb266-12" aria-hidden="true" tabindex="-1"></a>                          rgba <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">&#39;blue&#39;</span>,</span>
-<span id="cb266-13"><a href="read-pixel-values-of-images.html#cb266-13" aria-hidden="true" tabindex="-1"></a>                          rgba <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">&#39;alpha&#39;</span>,</span>
-<span id="cb266-14"><a href="read-pixel-values-of-images.html#cb266-14" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;&#39;</span>),</span>
-<span id="cb266-15"><a href="read-pixel-values-of-images.html#cb266-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">rgba =</span> <span class="fu">factor</span>(rgba, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,</span>
-<span id="cb266-16"><a href="read-pixel-values-of-images.html#cb266-16" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&#39;green&#39;</span>,</span>
-<span id="cb266-17"><a href="read-pixel-values-of-images.html#cb266-17" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&#39;blue&#39;</span>,</span>
-<span id="cb266-18"><a href="read-pixel-values-of-images.html#cb266-18" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&#39;alpha&#39;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb269-1"><a href="read-pixel-values-of-images.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb269-2"><a href="read-pixel-values-of-images.html#cb269-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-3"><a href="read-pixel-values-of-images.html#cb269-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> image[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
+<span id="cb269-4"><a href="read-pixel-values-of-images.html#cb269-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.integer</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb269-5"><a href="read-pixel-values-of-images.html#cb269-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">melt</span>()</span>
+<span id="cb269-6"><a href="read-pixel-values-of-images.html#cb269-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-7"><a href="read-pixel-values-of-images.html#cb269-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;rgba&#39;</span>, <span class="st">&#39;value&#39;</span>)</span>
+<span id="cb269-8"><a href="read-pixel-values-of-images.html#cb269-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-9"><a href="read-pixel-values-of-images.html#cb269-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb269-10"><a href="read-pixel-values-of-images.html#cb269-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rgba =</span> <span class="fu">case_when</span>(rgba <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&#39;red&#39;</span>,</span>
+<span id="cb269-11"><a href="read-pixel-values-of-images.html#cb269-11" aria-hidden="true" tabindex="-1"></a>                          rgba <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">&#39;green&#39;</span>,</span>
+<span id="cb269-12"><a href="read-pixel-values-of-images.html#cb269-12" aria-hidden="true" tabindex="-1"></a>                          rgba <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb269-13"><a href="read-pixel-values-of-images.html#cb269-13" aria-hidden="true" tabindex="-1"></a>                          rgba <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">&#39;alpha&#39;</span>,</span>
+<span id="cb269-14"><a href="read-pixel-values-of-images.html#cb269-14" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;&#39;</span>),</span>
+<span id="cb269-15"><a href="read-pixel-values-of-images.html#cb269-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">rgba =</span> <span class="fu">factor</span>(rgba, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,</span>
+<span id="cb269-16"><a href="read-pixel-values-of-images.html#cb269-16" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&#39;green&#39;</span>,</span>
+<span id="cb269-17"><a href="read-pixel-values-of-images.html#cb269-17" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb269-18"><a href="read-pixel-values-of-images.html#cb269-18" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&#39;alpha&#39;</span>)))</span></code></pre></div>
 </details>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb267-1"><a href="read-pixel-values-of-images.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Take a random sample so it plots faster</span></span>
-<span id="cb267-2"><a href="read-pixel-values-of-images.html#cb267-2" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> df[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="dv">100000</span>),]</span>
-<span id="cb267-3"><a href="read-pixel-values-of-images.html#cb267-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb267-4"><a href="read-pixel-values-of-images.html#cb267-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg,</span>
-<span id="cb267-5"><a href="read-pixel-values-of-images.html#cb267-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> value,</span>
-<span id="cb267-6"><a href="read-pixel-values-of-images.html#cb267-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> rgba))<span class="sc">+</span></span>
-<span id="cb267-7"><a href="read-pixel-values-of-images.html#cb267-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> pubbackgray,</span>
-<span id="cb267-8"><a href="read-pixel-values-of-images.html#cb267-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb267-9"><a href="read-pixel-values-of-images.html#cb267-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>rgba) <span class="sc">+</span></span>
-<span id="cb267-10"><a href="read-pixel-values-of-images.html#cb267-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,</span>
-<span id="cb267-11"><a href="read-pixel-values-of-images.html#cb267-11" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;green&#39;</span>,</span>
-<span id="cb267-12"><a href="read-pixel-values-of-images.html#cb267-12" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;blue&#39;</span> ,</span>
-<span id="cb267-13"><a href="read-pixel-values-of-images.html#cb267-13" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;gray&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb267-14"><a href="read-pixel-values-of-images.html#cb267-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Distribution of Red, Green, Blue, and Transparency&#39;</span>) <span class="sc">+</span></span>
-<span id="cb267-15"><a href="read-pixel-values-of-images.html#cb267-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>))</span>
-<span id="cb267-16"><a href="read-pixel-values-of-images.html#cb267-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb267-17"><a href="read-pixel-values-of-images.html#cb267-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb267-18"><a href="read-pixel-values-of-images.html#cb267-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb267-19"><a href="read-pixel-values-of-images.html#cb267-19" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span></span>
-<span id="cb267-20"><a href="read-pixel-values-of-images.html#cb267-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type  =</span> <span class="st">&#39;hist&#39;</span>,</span>
-<span id="cb267-21"><a href="read-pixel-values-of-images.html#cb267-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">255</span>),</span>
-<span id="cb267-22"><a href="read-pixel-values-of-images.html#cb267-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ylim  = c(0, 15000),</span></span>
-<span id="cb267-23"><a href="read-pixel-values-of-images.html#cb267-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">facet =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb270-1"><a href="read-pixel-values-of-images.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Take a random sample so it plots faster</span></span>
+<span id="cb270-2"><a href="read-pixel-values-of-images.html#cb270-2" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> df[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="dv">100000</span>),]</span>
+<span id="cb270-3"><a href="read-pixel-values-of-images.html#cb270-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-4"><a href="read-pixel-values-of-images.html#cb270-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg,</span>
+<span id="cb270-5"><a href="read-pixel-values-of-images.html#cb270-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> value,</span>
+<span id="cb270-6"><a href="read-pixel-values-of-images.html#cb270-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> rgba))<span class="sc">+</span></span>
+<span id="cb270-7"><a href="read-pixel-values-of-images.html#cb270-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> pubbackgray,</span>
+<span id="cb270-8"><a href="read-pixel-values-of-images.html#cb270-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb270-9"><a href="read-pixel-values-of-images.html#cb270-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>rgba) <span class="sc">+</span></span>
+<span id="cb270-10"><a href="read-pixel-values-of-images.html#cb270-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,</span>
+<span id="cb270-11"><a href="read-pixel-values-of-images.html#cb270-11" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;green&#39;</span>,</span>
+<span id="cb270-12"><a href="read-pixel-values-of-images.html#cb270-12" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;blue&#39;</span> ,</span>
+<span id="cb270-13"><a href="read-pixel-values-of-images.html#cb270-13" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;gray&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb270-14"><a href="read-pixel-values-of-images.html#cb270-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Distribution of Red, Green, Blue, and Transparency&#39;</span>) <span class="sc">+</span></span>
+<span id="cb270-15"><a href="read-pixel-values-of-images.html#cb270-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>))</span>
+<span id="cb270-16"><a href="read-pixel-values-of-images.html#cb270-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-17"><a href="read-pixel-values-of-images.html#cb270-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-18"><a href="read-pixel-values-of-images.html#cb270-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-19"><a href="read-pixel-values-of-images.html#cb270-19" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span></span>
+<span id="cb270-20"><a href="read-pixel-values-of-images.html#cb270-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type  =</span> <span class="st">&#39;hist&#39;</span>,</span>
+<span id="cb270-21"><a href="read-pixel-values-of-images.html#cb270-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">255</span>),</span>
+<span id="cb270-22"><a href="read-pixel-values-of-images.html#cb270-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ylim  = c(0, 15000),</span></span>
+<span id="cb270-23"><a href="read-pixel-values-of-images.html#cb270-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">facet =</span> T)</span></code></pre></div>
 </details>
 </div>
             </section>

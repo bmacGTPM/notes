@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,38 +436,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">20.2</span> Code<a href="code.html#code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can actually see the contents of a function by typing <code>sd</code> (with no <code>?</code> and no parentheses). Sometimes we will see the function explicitly written out. Here is the code for <code>sd</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb192-1"><a href="code.html#cb192-1" aria-hidden="true" tabindex="-1"></a>sd</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb195-1"><a href="code.html#cb195-1" aria-hidden="true" tabindex="-1"></a>sd</span></code></pre></div>
 </details>
 <pre><code>function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-&lt;bytecode: 0x556713751bc0&gt;
+&lt;bytecode: 0x56435d56d240&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <p>The code for <code>sd</code> finds the square root of the variance of <code>x</code>.</p>
 <div id="generic-functions" class="section level3 hasAnchor" number="20.2.1">
 <h3><span class="header-section-number">20.2.1</span> Generic functions<a href="code.html#generic-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we try to look at the code for <code>print</code>, we’ll see this.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb194-1"><a href="code.html#cb194-1" aria-hidden="true" tabindex="-1"></a>print</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb197-1"><a href="code.html#cb197-1" aria-hidden="true" tabindex="-1"></a>print</span></code></pre></div>
 </details>
 <pre><code>function (x, ...) 
 UseMethod(&quot;print&quot;)
-&lt;bytecode: 0x5566fcaa0da8&gt;
+&lt;bytecode: 0x56435a5a7120&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>All we see here is <code>UseMethod("print")</code> because <code>print</code> is a generic function that will use different code depending on whether we give it a <code>data.frame</code>, <code>list</code> or some other object. For example, if we give <code>print</code> a <code>list</code>, it will show each object in the list, each labeled with <code>$nameoftheobject</code> and separated by a blank line.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb196-1"><a href="code.html#cb196-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
-<span id="cb196-2"><a href="code.html#cb196-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">x2 =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>, </span>
-<span id="cb196-3"><a href="code.html#cb196-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">x3 =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>, </span>
-<span id="cb196-4"><a href="code.html#cb196-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">x4 =</span> <span class="dv">31</span><span class="sc">:</span><span class="dv">40</span>, </span>
-<span id="cb196-5"><a href="code.html#cb196-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">x5 =</span> <span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>, </span>
-<span id="cb196-6"><a href="code.html#cb196-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">x6 =</span> <span class="dv">51</span><span class="sc">:</span><span class="dv">60</span>, </span>
-<span id="cb196-7"><a href="code.html#cb196-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">x7 =</span> <span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>)</span>
-<span id="cb196-8"><a href="code.html#cb196-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(mylist)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb199-1"><a href="code.html#cb199-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb199-2"><a href="code.html#cb199-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">x2 =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>, </span>
+<span id="cb199-3"><a href="code.html#cb199-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">x3 =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>, </span>
+<span id="cb199-4"><a href="code.html#cb199-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">x4 =</span> <span class="dv">31</span><span class="sc">:</span><span class="dv">40</span>, </span>
+<span id="cb199-5"><a href="code.html#cb199-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">x5 =</span> <span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>, </span>
+<span id="cb199-6"><a href="code.html#cb199-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">x6 =</span> <span class="dv">51</span><span class="sc">:</span><span class="dv">60</span>, </span>
+<span id="cb199-7"><a href="code.html#cb199-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">x7 =</span> <span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>)</span>
+<span id="cb199-8"><a href="code.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(mylist)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;list&quot;   &quot;vector&quot;</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb198-1"><a href="code.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mylist)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb201-1"><a href="code.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mylist)</span></code></pre></div>
 </details>
 <pre><code>$x1
  [1]  1  2  3  4  5  6  7  8  9 10
@@ -484,12 +491,12 @@ $x7
  [1] 61 62 63 64 65 66 67 68 69 70</code></pre>
 <p>If this <code>list</code> were a <code>data.frame</code> object, it would show a table of data.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb200-1"><a href="code.html#cb200-1" aria-hidden="true" tabindex="-1"></a>my.df <span class="ot">=</span> <span class="fu">as.data.frame</span>(mylist)</span>
-<span id="cb200-2"><a href="code.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(my.df)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb203-1"><a href="code.html#cb203-1" aria-hidden="true" tabindex="-1"></a>my.df <span class="ot">=</span> <span class="fu">as.data.frame</span>(mylist)</span>
+<span id="cb203-2"><a href="code.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(my.df)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;data.frame&quot; &quot;list&quot;       &quot;oldClass&quot;   &quot;vector&quot;    </code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb202-1"><a href="code.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my.df)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb205-1"><a href="code.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my.df)</span></code></pre></div>
 </details>
 <pre><code>   x1 x2 x3 x4 x5 x6 x7
 1   1 11 21 31 41 51 61
@@ -504,13 +511,13 @@ $x7
 10 10 20 30 40 50 60 70</code></pre>
 <p>If we have an <code>lm</code> object that is the result of fitting a linear regression to data using the function <code>lm</code>, <code>print</code> shows some basic information about the model.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb204-1"><a href="code.html#cb204-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">=</span> <span class="fu">lm</span>(mpg  <span class="sc">~</span> wt, </span>
-<span id="cb204-2"><a href="code.html#cb204-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> mtcars)</span>
-<span id="cb204-3"><a href="code.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb207-1"><a href="code.html#cb207-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">=</span> <span class="fu">lm</span>(mpg  <span class="sc">~</span> wt, </span>
+<span id="cb207-2"><a href="code.html#cb207-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> mtcars)</span>
+<span id="cb207-3"><a href="code.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(lm1)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;lm&quot;       &quot;oldClass&quot;</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb206-1"><a href="code.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb209-1"><a href="code.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lm1)</span></code></pre></div>
 </details>
 <pre><code>
 Call:
@@ -521,12 +528,12 @@ Coefficients:
      37.285       -5.344  </code></pre>
 <p>If we have a <code>summary.lm</code> object, <code>print</code> will give an output with coefficients, standard errors, <em>t</em>-statistics, <em>p</em>-values, the significance stars, <span class="math inline">\(R^2\)</span>, Adjusted <span class="math inline">\(R^2\)</span>, and so on</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb208-1"><a href="code.html#cb208-1" aria-hidden="true" tabindex="-1"></a>lm1.summary <span class="ot">=</span> <span class="fu">summary</span>(lm1)</span>
-<span id="cb208-2"><a href="code.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(lm1.summary)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb211-1"><a href="code.html#cb211-1" aria-hidden="true" tabindex="-1"></a>lm1.summary <span class="ot">=</span> <span class="fu">summary</span>(lm1)</span>
+<span id="cb211-2"><a href="code.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(lm1.summary)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;summary.lm&quot;</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb210-1"><a href="code.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lm1.summary)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb213-1"><a href="code.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lm1.summary)</span></code></pre></div>
 </details>
 <pre><code>
 Call:
@@ -551,7 +558,7 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <h3><span class="header-section-number">20.2.2</span> <code>methods</code><a href="code.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use <code>methods</code> to see what objects the function <code>print</code> has methods for.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb212-1"><a href="code.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb215-1"><a href="code.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
 </details>
 <pre><code> [1] &quot;print,ANY-method&quot;            &quot;print,diagonalMatrix-method&quot;
  [3] &quot;print,sparseMatrix-method&quot;   &quot;print.aareg&quot;                
@@ -565,14 +572,14 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 [19] &quot;print.api&quot;                   &quot;print.api_grid&quot;             </code></pre>
 <p>We are using <code>head</code> (also generic!) to only show the first 20 methods. There are actually several hundred!</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb214-1"><a href="code.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb217-1"><a href="code.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>))</span></code></pre></div>
 </details>
 <pre><code>[1] 601</code></pre>
 <p>Here are the methods that contain the character string <code>lm</code> as part of the name.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb216-1"><a href="code.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&#39;lm&#39;</span>, </span>
-<span id="cb216-2"><a href="code.html#cb216-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>), </span>
-<span id="cb216-3"><a href="code.html#cb216-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb219-1"><a href="code.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&#39;lm&#39;</span>, </span>
+<span id="cb219-2"><a href="code.html#cb219-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>), </span>
+<span id="cb219-3"><a href="code.html#cb219-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </details>
 <pre><code> [1] &quot;print.anova.lme&quot;        &quot;print.anova.loglm&quot;      &quot;print.glm&quot;             
  [4] &quot;print.glm.dose&quot;         &quot;print.intervals.lme&quot;    &quot;print.intervals.lmList&quot;
@@ -586,7 +593,7 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <h3><span class="header-section-number">20.2.3</span> <code>getAnywhere</code><a href="code.html#getanywhere" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we want to see the code for one of these methods, we can use <code>getAnywhere</code>. Let’s see the code for <code>print.lm</code> and <code>print.summary.lm</code>. Since the output of <code>print(summary.lm)</code> above is much more detailed than <code>print(lm1)</code>, it is not surprising that the code for <code>print.summary.lm</code> is much more involved than the code for <code>print.lm</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb218-1"><a href="code.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb221-1"><a href="code.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.lm&#39;</span>)</span></code></pre></div>
 </details>
 <pre><code>A single object matching &#39;print.lm&#39; was found
 It was found in the following places
@@ -607,10 +614,10 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), ...)
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x55671554bd10&gt;
+&lt;bytecode: 0x5643672b4518&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb220-1"><a href="code.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.summary.lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb223-1"><a href="code.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.summary.lm&#39;</span>)</span></code></pre></div>
 </details>
 <pre><code>A single object matching &#39;print.summary.lm&#39; was found
 It was found in the following places
@@ -698,7 +705,7 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), symbolic.cor 
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x5567098ba5a8&gt;
+&lt;bytecode: 0x564366ec9e08&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 <div id="other-resources" class="section level3 hasAnchor" number="20.2.4">

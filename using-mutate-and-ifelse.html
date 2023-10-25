@@ -289,12 +289,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
 <li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
 <li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
 <li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
+<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
 <ul>
@@ -314,8 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a></li>
-<li class="chapter" data-level="19.3" data-path="example-app-clt.html"><a href="example-app-clt.html"><i class="fa fa-check"></i><b>19.3</b> Example App: CLT</a></li>
+<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
 <ul>
@@ -429,14 +436,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">A.12</span> Using <code>mutate</code> and <code>ifelse</code><a href="using-mutate-and-ifelse.html#using-mutate-and-ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s add a column to the data set that indicates the location of the game. We had this explicitly before (we had a column <code>home</code>) but lost it when we rearranged our data. We’ll also create a column for the previous location.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb325-1"><a href="using-mutate-and-ifelse.html#cb325-1" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
-<span id="cb325-2"><a href="using-mutate-and-ifelse.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">loc =</span> <span class="fu">ifelse</span>(ha <span class="sc">==</span> <span class="st">&#39;home&#39;</span>, </span>
-<span id="cb325-3"><a href="using-mutate-and-ifelse.html#cb325-3" aria-hidden="true" tabindex="-1"></a>                      team, </span>
-<span id="cb325-4"><a href="using-mutate-and-ifelse.html#cb325-4" aria-hidden="true" tabindex="-1"></a>                      opp), </span>
-<span id="cb325-5"><a href="using-mutate-and-ifelse.html#cb325-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">prev.loc =</span> <span class="fu">lag</span>(loc))</span>
-<span id="cb325-6"><a href="using-mutate-and-ifelse.html#cb325-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb325-7"><a href="using-mutate-and-ifelse.html#cb325-7" aria-hidden="true" tabindex="-1"></a>dd <span class="sc">%&gt;%</span> </span>
-<span id="cb325-8"><a href="using-mutate-and-ifelse.html#cb325-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team <span class="sc">==</span> <span class="st">&#39;PHI&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb328-1"><a href="using-mutate-and-ifelse.html#cb328-1" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
+<span id="cb328-2"><a href="using-mutate-and-ifelse.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">loc =</span> <span class="fu">ifelse</span>(ha <span class="sc">==</span> <span class="st">&#39;home&#39;</span>, </span>
+<span id="cb328-3"><a href="using-mutate-and-ifelse.html#cb328-3" aria-hidden="true" tabindex="-1"></a>                      team, </span>
+<span id="cb328-4"><a href="using-mutate-and-ifelse.html#cb328-4" aria-hidden="true" tabindex="-1"></a>                      opp), </span>
+<span id="cb328-5"><a href="using-mutate-and-ifelse.html#cb328-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">prev.loc =</span> <span class="fu">lag</span>(loc))</span>
+<span id="cb328-6"><a href="using-mutate-and-ifelse.html#cb328-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-7"><a href="using-mutate-and-ifelse.html#cb328-7" aria-hidden="true" tabindex="-1"></a>dd <span class="sc">%&gt;%</span> </span>
+<span id="cb328-8"><a href="using-mutate-and-ifelse.html#cb328-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team <span class="sc">==</span> <span class="st">&#39;PHI&#39;</span>)</span></code></pre></div>
 </details>
 <pre><code># A tibble: 82 × 10
 # Groups:   team [1]
