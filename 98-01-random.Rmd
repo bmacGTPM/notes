@@ -128,6 +128,33 @@ d2 = read_html(
 
 See https://rvest.tidyverse.org/articles/rvest.html for an intro to `rvest`. 
 
+To save the object created using `read_html`, you can use `write_html`. 
+
+```{r eval = F}
+write_html(d2, file=myfilename)
+```
+
+You can then use `read_html` again to load `myfilename`. If you try to use `saveRDS` then `readRDS`, and then try to do something with that object like use `html_table`, you will get an error like `Error in xml_ns.xml_document(x) : external pointer is not valid`.  
+
+The output `read_html` doesn't immediately look like the full HTML code like `scan` gives. To get the full HTML code, 
+
+```{r}
+d3 = d2 %>% as.character() %>% strsplit(split = '\n') %>% unlist()
+```
+
+This won't give exactly the same result as `scan`. It seems to create more lines of code - some longer lines of HTML code are split into multiple entries in the vector. 
+
+```{r}
+length(d1)
+length(d3)
+```
+
+```{r}
+d1[3]
+d2
+```
+
+
 ## Parsing HTML tables
 
 `html_table` gives a list of data frames, one for every HTML table in the page.
@@ -142,6 +169,8 @@ The `readHTMLTable` function is similar.
 library(XML)
 d1 %>% readHTMLTable()
 ```
+
+
 
 ## Scraping pages that require log-in
 
@@ -296,6 +325,12 @@ I don't have much to write up yet, but here are some links taken from the RSelen
 
 This from Stack Overflow might be useful, but it is a few years old so it might no longer be applicable.
 https://stackoverflow.com/questions/43580133/how-to-use-rselenium-to-login-to-a-website-on-windows-machine
+
+## Excel
+
+You can use the `xlsx` package, or the `tidyverse` package `readxl`. 
+https://readxl.tidyverse.org/
+
 
 ## Census data with `tidycensus`
 
