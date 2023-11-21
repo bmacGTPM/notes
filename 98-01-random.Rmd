@@ -107,6 +107,18 @@ Once again we are not bound to exactly the structure that we create in this part
 
 5. **Visualize the pipeline (Optional)** If you write functions, you can try using the package `vizdataflow` https://github.com/bmacGTPM/vizdataflow to visualize your workflow. This is a package I started developing and it's only like Version 0.1 alpha, but you still might find it useful. This is purely optional. If you do use it, I'd be interested in your feedback. What do you wish the packages could do?
 
+## Backwards planning
+
+(Under construction). You can use "backwards planning" not just for outlining the steps of your project (as described above) but also for creating a timeline for the project (not to mention many other planning tasks in life). 
+
+Start with the deadline and work backwards. Allow a chunk of time for all of the main steps you outlined for your project. 
+
+Everyone has their own personal scaling factor they can use to make their time estimates more accurate.  You can start doing this for regular class assignments. Before you start a coding exercise, try estimating how long you think the coding exercise will take, and then keep track of the actual time. Ideally, exclude breaks and time spent/wasted checking TikTok.
+
+It is easy to underestimate how much time you will spend on data preparation. Add extra time for data acquisition/cleaning/wrangling, especially if you are not already familiar with your data. It will probably take more time then you think. 
+
+
+
 # Data acquistion
 
 ## Scrape HTML pages
@@ -465,12 +477,16 @@ head(dd)
 
 ```
 
+## JSON
+
 ## Connecting to SQL databases
 
 
 
 
 # Data cleaning
+
+
 
 ## RecordLinkage
 
@@ -550,6 +566,7 @@ head(dd,20)
 
 
 
+## Unnesting lists
 
 
 
@@ -560,13 +577,20 @@ https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing
 
 Scroll down to the `Hmisc` section.  The function `aregImpute` can be used for multiple imputation. 
 
+### Example with simulations
+
+Are uncertainties smaller than they should be? Without knowing a theoretical result, can we simulate to answer this question? 
+
 
 ## Random useful functions
 
+### Formatting for display
 ```{r}
 str_to_title('hello there')
 ```
 
+### Distance from point to line
+https://www.rdocumentation.org/packages/geosphere/versions/1.5-18/topics/dist2Line
 
 # Data visualization
 
@@ -676,7 +700,18 @@ g +
 - **Discussion of Ridge, Lasso, and Bayes. **
 https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
 - **Bayesian regression**. https://stat.columbia.edu/~gelman/book/
+- **Splines**. Piecewise polynomials with continuity constraints. See ISLR https://www.statlearning.com/ Section 7.4 Regression Splines, Section 7.5 Smoothing Splines, and 7.8.2 (lab exercises). 
 
+### Multivariate regression
+
+- Multivariate linear regression https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression
+- Multivariate Poisson regression slides: http://www2.stat-athens.aueb.gr/%7Ekarlis/multivariate%20Poisson%20models.pdf
+- Bivariate Poisson https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9884.00366
+- Paper: A multivariate Poisson regression model for count data.  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9041711/
+
+## Time series
+
+- Bootstrapping: https://towardsdatascience.com/time-series-bootstrap-in-the-age-of-deep-learning-b98aa2aa32c4
 
 ## Calibration
 
@@ -770,6 +805,10 @@ beta
 ## Normal
 
 
+## Data augmentation
+See maybe here https://www.math.unm.edu/~fletcher/PDF/PUB-PDF/SANDER.PDF and maybe, but probably not, here https://staffblogs.le.ac.uk/bayeswithstata/2015/04/10/poisson-regression-with-two-random-effects-mcmc-by-data-augmentation-part-ii/
+
+Note to self: See ChatGPT answer :)
 
 # Simulating data
 
@@ -1477,7 +1516,25 @@ print(final.time2 - start.time2)
 The difference isn't huge in this case, but it can be very big 
 This doesn't mean you should never use `rbind` in a `for` loop. With smaller data, you won't notice the difference, and it is easier to code up. 
 
+# Intro Prob/Stat
+
+## Poisson approximates binomial
+
 # Other
+
+## GitHub Copilot in RStudio
+
+https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
+
+- Verify you are a student or faculty member and get free access:  https://education.github.com/discount_requests/application
+
+Other potentially helpful links: 
+- https://techcommunity.microsoft.com/t5/educator-developer-blog/step-by-step-setting-up-github-student-and-github-copilot-as-an/ba-p/3736279
+- https://docs.github.com/en/github/getting-started-with-github/githubs-products#github-copilot
+- https://github.blog/2022-09-08-github-copilot-now-available-for-teachers/
+
+
+
 
 ## Minimal reproducible examples
 
@@ -1526,6 +1583,7 @@ g %>%
   theme(axis.text.x.top = element_text(angle = 90, 
                                        vjust = .5,
                                        hjust = 0))
+
 
 ```
 
