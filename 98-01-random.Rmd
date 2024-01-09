@@ -481,6 +481,7 @@ head(dd)
 
 ## Connecting to SQL databases
 
+## Shape files .shp
 
 
 
@@ -592,6 +593,15 @@ str_to_title('hello there')
 ### Distance from point to line
 https://www.rdocumentation.org/packages/geosphere/versions/1.5-18/topics/dist2Line
 
+### Holidays
+
+Use `timeDate::holiday` to get the date of a holiday in a year. 
+
+```{r}
+holiday(year = 2023, Holiday = "USThanksgivingDay") %>%
+  as.Date()
+```
+
 # Data visualization
 
 ## Esquisse
@@ -677,6 +687,13 @@ g +
 
 ![](img/normal-dist.gif)     
 
+## HTML formatting in ggplot
+
+Use HTML to format text and include images in ggplot axes labels (`element_markdown`) and point labels (`geom_richtext`).
+
+- https://wilkelab.org/ggtext/
+- With country flags, downloaded from wikipedia https://www.r-bloggers.com/2019/08/ggtext-for-images-as-x-axis-labels/#google_vignette
+
 ## Leaflet
 
 - Provider tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -685,6 +702,9 @@ g +
 # Analysis
 
 ## Variable importance
+
+- RF variable importance
+- Shapely values
 
 ## Compariable observations
 
@@ -701,6 +721,11 @@ g +
 https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
 - **Bayesian regression**. https://stat.columbia.edu/~gelman/book/
 - **Splines**. Piecewise polynomials with continuity constraints. See ISLR https://www.statlearning.com/ Section 7.4 Regression Splines, Section 7.5 Smoothing Splines, and 7.8.2 (lab exercises). 
+- **Ordinal regression**. Function `polr` in `MASS`. 
+- **Regularized ordinal regression**. https://stackoverflow.com/questions/75790997/why-do-the-coefficents-from-orginal-regularized-regression-ordinalnet-have-the
+- **Mixed effects ordinal regression**. https://stats.stackexchange.com/questions/238581/how-to-use-ordinal-logistic-regression-with-random-effects
+- **Random Forest.** Packages `randomForest`, and maybe `Rborist`, `ranger`, `h20ai`. Some of these behaved weirdly, if I recall correctly.
+
 
 ### Multivariate regression
 
@@ -1527,6 +1552,8 @@ This doesn't mean you should never use `rbind` in a `for` loop. With smaller dat
 https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
 
 - Verify you are a student or faculty member and get free access:  https://education.github.com/discount_requests/application
+
+- Then, in RStudio, go to Tools, Global Options, Copilot, and make sure Enable Github Copilot is checked. 
 
 Other potentially helpful links: 
 - https://techcommunity.microsoft.com/t5/educator-developer-blog/step-by-step-setting-up-github-student-and-github-copilot-as-an/ba-p/3736279
