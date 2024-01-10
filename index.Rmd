@@ -13,7 +13,7 @@ link-citations: yes
 github-repo: https://github.com/bmacGTPM/book
 ---
 
-# Getting started
+# (Getting started
 
 ```{r, warning=F, message=F, echo=F, include=F}
 knitr::opts_chunk$set(
@@ -31,38 +31,6 @@ knitr::opts_chunk$set(
   #fig.weight = 5      ## set the default width
   )
 
-library(knitr)
-library(tidyverse)
-library(pubtheme)
-# library(plotly)
-# library(scales)
-# library(DT)
-# library(leaflet)
-# library(gganimate)
-# library(corrplot)
-# library(GGally)
-# library(ggmap)
-# library(shiny)
-# library(MASS)
-# library(lme4)
-# library(arm)
-# library(pROC)
-# library(MLmetrics)
-# library(viridis)
-# library(RSelenium)
-# library(rvest)
-# library(randomForest)
-# library(FNN)
-# library(caret)
-# library(pls)
-# library(devtools)
-# library(splines)
-# library(RecordLinkage)
-# library(rsconnect)
-# library(grid)
-# library(foreign)
-library(maps) ## leave uncommented. For some reason GitHub Actions had a problem when this wasn't explicitly loaded.
-
 ```
 
 These are course notes for S&DS 361 Data Analysis. 
@@ -73,13 +41,51 @@ These are course notes for S&DS 361 Data Analysis.
 
 **Data.** The data used in these notes can be found at https://github.com/bmacGTPM/notes/tree/main/data.
 
-## Preparation
+## Software installation
 
-### Packages
+### Download R
+
+Download the latest version of R. You can do this in a couple of ways. 
+
+- Download the latest version of R from https://cran.r-project.org/. This will not copy over your old packages. So you might want to try one of the next two approaches instead. 
+- Windows only: use the `installr` package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Windows machine.
+
+```
+install.packages("installr")
+library(installr)
+updateR()
+```
+- Mac only: use `updateR` package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Mac.
+
+```
+install.packages("devtools")
+devtools::install_github("AndreaCirilloAC/updateR")
+library(updateR)
+update()
+```
+
+This code will show your version of R when you knit the document. It should say `r R.Version()$version.string` or later.
+
+```{r}
+R.Version()$version.string
+```
+
+### Download R Studio
+
+Download the latest version of R Studio. Go to Help, Check for Updates. Or, go to https://posit.co/download/rstudio-desktop/. Note that you will see "Posit" in a lot of places. RStudio changed their name to Posit.
+
+This code will show your version of R when you knit the document. It should say `r rstudioapi::versionInfo()$long_version` (or later).
+
+```{r}
+rstudioapi::versionInfo()$long_version
+```
+
+### Install/update packages
 
 Here are packages we'll definitely use. Install these now. We will likely use others as well but we'll have to install those on the fly as we need them. 
 
-I recommend closing all R Studio windows except one, and restart R. Then install all packages listed one by one. 
+I recommend closing all R Studio windows except one, and restart R. Then install all packages listed here  by one. 
+
 
 ```
 install.packages("tidyverse")
@@ -89,6 +95,8 @@ install.packages("scales")
 install.packages("DT")
 install.packages("leaflet")
 install.packages("gganimate")
+install.packages('gifski')
+install.packages('png')
 install.packages("corrplot")
 install.packages("GGally")
 install.packages("ggmap")
@@ -114,11 +122,110 @@ install.packages('maps')
 devtools::install_github("bmacGTPM/pubtheme")
 ```
 
-If you get any sort of "permission denied" errors when trying to install the packages, you can try going to the folder with the library (e.g. `C:\Program Files\R\R-4.2.2\library`). For me, this seems to happen often with `rlang` and `htmltools`. 
+If you get any sort of "permission denied" errors when trying to install the packages, you can try going to the folder with the library (e.g. `C:\Program Files\R\R-4.2.2\library`), delete the folder, and then install the packages again. For me, this seems to happen often with `rlang` and `htmltools`. 
+
+Check that you can load all of the libraries by running this chunk of code and showing that it executes without error. There may be some messages, and maybe warnings about versions. Those are ok.
+
+```{r error=T}
+library(knitr)
+library(plotly)
+library(scales)
+library(DT)
+library(leaflet)
+library(gganimate)
+library(gifski)
+library(png)
+library(corrplot)
+library(GGally)
+library(ggmap)
+library(shiny)
+library(MASS)
+library(lme4)
+library(arm)
+library(pROC)
+library(MLmetrics)
+library(viridis)
+library(RSelenium)
+library(rvest)
+library(randomForest)
+library(FNN)
+library(caret)
+library(pls)
+library(devtools)
+library(splines)
+library(RecordLinkage)
+library(rsconnect)
+library(grid)
+library(foreign)
+library(maps) ## leave uncommented. For some reason GitHub Actions had a problem when this wasn't explicitly loaded here. 
+
+## load tidyverse last!
+library(tidyverse)
+library(pubtheme)
+```
+
+### Check `gganimate`
+
+Let's create a really quick animation that appears in the  `gganimate` introduction. First a static (non-animated) plot. 
+
+```{r}
+library(gganimate)
+
+# We'll start with a static plot
+g = ggplot(iris, 
+            aes(x = Petal.Width, 
+                y = Petal.Length)) + 
+  geom_point() 
+g
+```
+
+That should give a static plot. The following code should give an animation. 
+
+```
+a = g + 
+  transition_states(Species,
+                    transition_length = 2,
+                    state_length = 1)
+a
+```
+That should ideally show an animation in the Viewer in R Studio. The default location of the view is a tabs in the lower right window. 
+
+If it looks like R starts saving several image files to your computer, make sure that the package `gifski` is installed and that `library(gifski)` doesn't give any errors. 
+
+This should save the animation `a` as an animated `.gif` file. 
+
+```
+anim_save(a, 
+          filename = 'img/test.gif')
+```
+It should be in the same folder as this R Markdown file. If that works, `gganimate` is good to go!
+
+![](img/test.gif)
+
 
 
 ### Bookmarks
-Bookmark this book https://bmacgtpm.github.io/notes/ and the pubtheme Github page https://github.com/bmacGTPM/pubtheme.
+
+Bookmark these pages: 
+
+- These notes https://bmacgtpm.github.io/notes/ 
+- The Github page for these notes https://github.com/bmacGTPM/notes
+- The `pubtheme` Github page https://github.com/bmacGTPM/pubtheme
+
+### Github
+
+- Create a GitHub account at <https://github.com/> if you don't have one.
+- Download GitHub Desktop at <https://desktop.github.com/>.
+
+### Backing up work
+
+Most of your coding should take place in a source file or R Markdown file. Very little coding should occur in the console. This will make it far easier to reproduce what you did, and to back up your work.
+
+There are a copy of options for backing up your work
+
+- Use a cloud service like OneDrive, Google Drive, Dropbox, Box, iCloud, or use Time Machine, to automatically back up your files. 
+- If you are using Git/Github as part of your typical workflow (recommended), you'll have a copy of your code in the "cloud" every time you push to Github. 
+- Manually backup your files to an external hard drive on a regular basis. 
 
 
 ## Learning Objectives
@@ -144,10 +251,12 @@ although we'll focus more on #1, #4, #5, and #6 than on the others.
 
 ## Coding conventions
 
-We mostly/loosely follow the `tidyverse` [style guide](https://style.tidyverse.org/) with a couple exceptions. The primary purpose of these exceptions is to speed up typing by eliminating characters or reducing the need to use the Shift key. 
+We mostly/loosely follow the `tidyverse` [style guide](https://style.tidyverse.org/) with a couple exceptions. The primary purpose of these exceptions is to speed up typing by eliminating characters or reducing the need to use the Shift key. Sorry `tidyverse` style guide team! 
 
-### Assignment with `<-` vs `=`
-Most R coders use `<-` for object assignment (e.g. `x <- 2` to store `2` as the object `x`). We will use the equals sign (e.g. `x=2`) because it is faster to type, it is similar to what is used in Python, MATLAB, and Julia, and will be equivalent to `<-` in almost all situations. A couple of examples of when `<-` works and `=` doesn't involves trying to make an assignment when calling another function. 
+### Exception: We'll use `=` not `<-` for assignments
+Most R coders use `<-` for object assignment (e.g. `x <- 2` to store `2` as the object `x`). We will use the equals sign (e.g. `x=2`) because it is faster to type, it is similar to what is used in Python, MATLAB, and Julia, and will be equivalent to `<-` in almost all situations. When they are not equivalent, we'll resort to using `<-`. 
+
+One situation when `<-` works and `=` doesn't involves trying to make an assignment when calling another function. 
 
 ```
 tryCatch(x =  runif(1))  # Fails. It interprets x as an argument of tryCatch
@@ -169,7 +278,7 @@ In rare cases, we may not be able to avoid it, in which case we'll use `<-`.
 
 You can of course feel free to use `<-` when you are coding, but we won't typically be using it in these notes.
 
-### Underscore `_` vs `.`
+### Exception: We'll use `.` more than `_` for names
 The style guide recommends using `_` instead of `.` in function names, column names, etc. (e.g. `first_name` instead of `first.name`, `add_row()` instead of `add.row()`). We'll use both, but we will more often use `.` because it is faster to type.
 
 At times we'll probably be a little lazy with some of the conventions in the style guide but we'll do our best. 
