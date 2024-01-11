@@ -750,6 +750,7 @@ https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-a
 
 ### Multivariate regression
 
+- Vignette https://cran.r-project.org/web/packages/rrr/vignettes/rrr.html
 - Multivariate linear regression https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression
 - Multivariate Poisson regression slides: http://www2.stat-athens.aueb.gr/%7Ekarlis/multivariate%20Poisson%20models.pdf
 - Bivariate Poisson https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9884.00366
