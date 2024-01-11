@@ -64,7 +64,7 @@ library(updateR)
 update()
 ```
 
-This code will show your version of R when you knit the document. It should say `r R.Version()$version.string` or later.
+This code will show your version of R when you knit the document. It should say `r R.Version()$version.string`.
 
 ```{r}
 R.Version()$version.string
@@ -74,11 +74,13 @@ R.Version()$version.string
 
 Download the latest version of R Studio. Go to Help, Check for Updates. Or, go to https://posit.co/download/rstudio-desktop/. Note that you will see "Posit" in a lot of places. RStudio changed their name to Posit.
 
-This code will show your version of R when you knit the document. It should say `r rstudioapi::versionInfo()$long_version` (or later).
+This code will show your version of R when you knit the document. 
 
-```{r}
+```{r eval=F}
 rstudioapi::versionInfo()$long_version
 ```
+
+
 
 ### Install/update packages
 
