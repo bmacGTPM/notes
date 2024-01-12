@@ -598,6 +598,7 @@ https://www.rdocumentation.org/packages/geosphere/versions/1.5-18/topics/dist2Li
 Use `timeDate::holiday` to get the date of a holiday in a year. 
 
 ```{r}
+library(timeDate)
 holiday(year = 2023, Holiday = "USThanksgivingDay") %>%
   as.Date()
 ```
