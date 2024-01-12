@@ -119,6 +119,7 @@ install.packages("rsconnect")
 install.packages('grid')
 install.packages('foreign')
 install.packages('maps')
+install.packages('timeDate')
 
 ## Install packages from my GitHub
 devtools::install_github("bmacGTPM/pubtheme")
@@ -160,6 +161,7 @@ library(rsconnect)
 library(grid)
 library(foreign)
 library(maps) ## leave uncommented. For some reason GitHub Actions had a problem when this wasn't explicitly loaded here. 
+library(timeDate)
 
 ## load tidyverse last!
 library(tidyverse)
