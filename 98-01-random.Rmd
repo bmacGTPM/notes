@@ -1820,6 +1820,13 @@ Ways to improve accessibility of documents.
 - See https://bookdown.org/yihui/rmarkdown-cookbook/html-accessibility.html. That page also has a link to here  https://r-resources.massey.ac.nz/rmarkdown/.
 
 
+## Github Actions
+
+This section is very incomplete. All I'm gonna write right now is this reminder to myself:
+
+- Use `renv::snapshot()`, then commit the `renv.lock` file to the repo.     
+- Github Actions won't find new packages that I recently added to the notes unless the `renv.lock` file is updated. So gotta use `renv::snapshot()` and commit the `renv.lock` file to the repo after adding a new package. 
+
 ## Math symbols in plots
 
 This describes how to use mathematical expressions in plots. 
