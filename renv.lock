@@ -2268,7 +2268,13 @@
     "pubtheme": {
       "Package": "pubtheme",
       "Version": "0.3.0",
-      "Source": "unknown",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "pubtheme",
+      "RemoteUsername": "bmacGTPM",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "2d4373d38b2cb758a95b02e3ff7455449483b264",
       "Requirements": [
         "R",
         "dplyr",
@@ -2282,7 +2288,7 @@
         "tidyverse",
         "utils"
       ],
-      "Hash": "4f7ce4e646ac8d1ffe20c1a640001e0e"
+      "Hash": "c06fc52dc294b97d101a3921993a3091"
     },
     "purrr": {
       "Package": "purrr",
