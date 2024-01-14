@@ -48,14 +48,29 @@ These are course notes for S&DS 361 Data Analysis.
 Download the latest version of R. You can do this in a couple of ways. 
 
 - Download the latest version of R from https://cran.r-project.org/. This will not copy over your old packages. So you might want to try one of the next two approaches instead. 
-- Windows only: use the `installr` package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Windows machine.
+- **Windows only**: use the `installr` package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Windows machine.
 
 ```
 install.packages("installr")
 library(installr)
 updateR()
 ```
-- Mac only: use `updateR` package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Mac.
+
+It will say that "It is best to run this from the Rgui and not from RStudio. Would you like to abort the installation and run it again from Rgui?" I say yes. Then I go to `C:\Program Files\R\R-x.x.x\bin\x64` (my latest version of R) and double click on `Rgui.exe`. Then I run the code again. 
+
+After it installs, it will ask if you want to copy your packages from your old version of R. I say yes. Then it asks if you want to keep the packages in your old version of R. I say yes again. I say yes to the question about Rprofile and yes to the question about updating packages. 
+
+The copying of packages to the old version of R to the new version sometimes doesn't work. If that happens, you can running this function. 
+
+```
+installr::copy.packages.between.libraries()
+```
+
+If that doesn't work, you can try to copy the packages manually by going to the library folder of your old version of R (e.g. `C:\Program Files\R\R-4.3.1\library`) and copying the folders of the packages you want to the library folder of your new version of R (e.g. `C:\Program Files\R\R-4.3.3\library`). 
+
+The updating of packages sometimes doesn't work either.  You can use `update.packages()` to update all packages, or `update.packages(ask = FALSE)` to update all packages without asking for permission.
+
+- **Mac only**: use `updateR` package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Mac.
 
 ```
 install.packages("devtools")
@@ -63,6 +78,8 @@ devtools::install_github("AndreaCirilloAC/updateR")
 library(updateR)
 update()
 ```
+
+After installing the newest version of R, restart R Studio. R Studio should automatically detect the new version of R, especially if you update R Studio as well (see below). If it doesn't automatically detect the new version of R, you can go to Tools, Global Options, General, and change the version of R that R Studio uses to the one you just installed. 
 
 This code will show your version of R when you knit the document. It should say `r R.Version()$version.string`.
 
@@ -86,7 +103,7 @@ rstudioapi::versionInfo()$long_version
 
 Here are packages we'll definitely use. Install these now. We will likely use others as well but we'll have to install those on the fly as we need them. 
 
-I recommend closing all R Studio windows except one, and restart R. Then install all packages listed here  by one. 
+I recommend closing all R Studio windows except one, and restart R. Then install all packages listed here.
 
 
 ```
@@ -125,7 +142,12 @@ install.packages('timeDate')
 devtools::install_github("bmacGTPM/pubtheme")
 ```
 
-If you get any sort of "permission denied" errors when trying to install the packages, you can try going to the folder with the library (e.g. `C:\Program Files\R\R-4.2.2\library`), delete the folder, and then install the packages again. For me, this seems to happen often with `rlang` and `htmltools`. 
+
+If you get errors you don't understand, try installing them one by one. 
+
+If you get any sort of "permission denied" errors when trying to install the packages, you can try going to the folder with the library (e.g. `C:\Program Files\R\R-4.2.2\library`), delete the folder, and then install the packages again. For me, this happens often with `rlang` and `htmltools`. 
+
+If it seems to freeze at the statement "There are binary versions available but the source versions are later:" check for a small window that opened but hidden behind other windows, with the question "Do you want to install from sources the packages that needs compilation?" Say yes. If you get an error with any of these, you can try saying no. 
 
 Check that you can load all of the libraries by running this chunk of code and showing that it executes without error. There may be some messages, and maybe warnings about versions. Those are ok.
 
@@ -215,6 +237,16 @@ Bookmark these pages:
 - These notes https://bmacgtpm.github.io/notes/ 
 - The Github page for these notes https://github.com/bmacGTPM/notes
 - The `pubtheme` Github page https://github.com/bmacGTPM/pubtheme
+- These books
+    - Beyond Multiple Linear Regression https://bookdown.org/roback/bookdown-BeyondMLR/
+    - Regression and Other Stories https://avehtari.github.io/ROS-Examples/
+    - Introduction to Statistical Learning https://www.statlearning.com/
+- These resources
+    - [R for Data Science](https://r4ds.had.co.nz/)
+    - [Advanced R](https://adv-r.hadley.nz/)
+    - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+    - The [RStudio cheatsheets](https://rstudio.com/resources/cheatsheets/)
+
 
 ### Github
 
