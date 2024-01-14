@@ -7,11 +7,12 @@
 # ACS:        https://www.census.gov/data/developers/data-sets/acs-1year.html
 # Decennial:  https://www.census.gov/data/developers/data-sets/decennial-census.html
 
-library(tidycensus)
+# commenting this b/c it installs package `units` which causes Github Actions to fail
+#library(tidycensus) ## ******************uncomment this**************
 library(tidyverse)
 year=2019
 
-asdf
+
 ## You need a census API key. 
 ## See https://api.census.gov/data/key_signup.html
 ## Once you get it, you can store it using 
