@@ -1828,6 +1828,14 @@ This section is very incomplete. All I'm gonna write right now is this reminder 
 - Github Actions won't find new packages that I recently added to the notes unless the `renv.lock` file is updated. So gotta use `renv::snapshot()` and commit the `renv.lock` file to the repo after adding a new package. 
 - If `pubtheme` has been updated and re-installed on my machine, I need to reinstall it via `devtools::install_github("bmacGTPM/pubtheme")`. If I install it from the `pubtheme` package R project Build -> Install, then I think `renv` won't be able to automatically detect where the packages comes from. The `renv.lock` will say source unknown. It's not reproducible on another machine. If, however, I install it from Github, which is reproducible on another machine, then `renv` will auto-detect the source and all will be well. 
 - When updating packages, I should remember to install the binary versions when the source version is more recent. Github Actions wasn't able to find these. So I had to reinstall the binary versions.  If the project has been activate, check which packages are binary and which are source with `renv::status()`. If it hasn't been activate (like the first time I dealt with this), I installed a package that gave an error in Github Actions, reran Github Actions, see which package errored, install the binary version, and repeat.
+- It seems like the Windows repo and Linux repo don't have the same package versions. For plotly, I downloaded 4.10.4, but version 4.10.3 was listed here
+
+I installed an earlier version using this
+```
+devtools::install_version("plotly", 
+version = "4.10.3", 
+repos = "http://cran.us.r-project.org")
+```
 
 ## Math symbols in plots
 
