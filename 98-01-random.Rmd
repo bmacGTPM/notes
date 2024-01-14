@@ -1838,6 +1838,18 @@ version = "4.10.3",
 repos = "http://cran.us.r-project.org")
 ```
 
+- `terra` was failing on Github Actions. I tried this to reinstall all packages that depend on `terra`
+
+```
+## Check for dependencies, and reinstall all packages
+d1 = revdep('terra')
+d2 = installed.packages()
+re.install = d1[d1 %in% d2[,'Package']] ## d2 is matrix, can't use $
+if (length(re.install) > 0) {
+  install.packages(re.install, dependencies=TRUE)
+}
+```
+
 ## Math symbols in plots
 
 This describes how to use mathematical expressions in plots. 

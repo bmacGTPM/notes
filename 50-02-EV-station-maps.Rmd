@@ -6,8 +6,8 @@
 library(tidyverse)
 library(pubtheme)
 library(gganimate)
-library(leaflet)
-library(terra)
+#library(leaflet)
+#library(terra)
 
 title = "Level 2 and Level 3 Charging Stations in US and Canada"
 g = ggplot(d, 
