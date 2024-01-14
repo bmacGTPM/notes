@@ -495,6 +495,7 @@ When joining data sets, you ideally have a unique id, or key, to join on. Someti
 
 ### Example data
 ```{r}
+library(ff) ## keep this
 library(RecordLinkage)
 d = data.frame(name = c('Alexander Ovechkin', 
                         'Alex Ovechkin', 

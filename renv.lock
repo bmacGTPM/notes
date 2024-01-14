@@ -1058,7 +1058,7 @@
     },
     "ff": {
       "Package": "ff",
-      "Version": "4.0.12",
+      "Version": "4.0.9",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1066,7 +1066,7 @@
         "bit",
         "utils"
       ],
-      "Hash": "d9b28516c0bc1b8543fb453aa0d57863"
+      "Hash": "53fc01365326b8b68e814a03d4ab6307"
     },
     "fontawesome": {
       "Package": "fontawesome",
