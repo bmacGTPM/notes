@@ -107,6 +107,18 @@ Once again we are not bound to exactly the structure that we create in this part
 
 5. **Visualize the pipeline (Optional)** If you write functions, you can try using the package `vizdataflow` https://github.com/bmacGTPM/vizdataflow to visualize your workflow. This is a package I started developing and it's only like Version 0.1 alpha, but you still might find it useful. This is purely optional. If you do use it, I'd be interested in your feedback. What do you wish the packages could do?
 
+## Backwards planning
+
+(Under construction). You can use "backwards planning" not just for outlining the steps of your project (as described above) but also for creating a timeline for the project (not to mention many other planning tasks in life). 
+
+Start with the deadline and work backwards. Allow a chunk of time for all of the main steps you outlined for your project. 
+
+Everyone has their own personal scaling factor they can use to make their time estimates more accurate.  You can start doing this for regular class assignments. Before you start a coding exercise, try estimating how long you think the coding exercise will take, and then keep track of the actual time. Ideally, exclude breaks and time spent/wasted checking TikTok.
+
+It is easy to underestimate how much time you will spend on data preparation. Add extra time for data acquisition/cleaning/wrangling, especially if you are not already familiar with your data. It will probably take more time then you think. 
+
+
+
 # Data acquistion
 
 ## Scrape HTML pages
@@ -128,6 +140,33 @@ d2 = read_html(
 
 See https://rvest.tidyverse.org/articles/rvest.html for an intro to `rvest`. 
 
+To save the object created using `read_html`, you can use `write_html`. 
+
+```{r eval = F}
+write_html(d2, file=myfilename)
+```
+
+You can then use `read_html` again to load `myfilename`. If you try to use `saveRDS` then `readRDS`, and then try to do something with that object like use `html_table`, you will get an error like `Error in xml_ns.xml_document(x) : external pointer is not valid`.  
+
+The output `read_html` doesn't immediately look like the full HTML code like `scan` gives. To get the full HTML code, 
+
+```{r}
+d3 = d2 %>% as.character() %>% strsplit(split = '\n') %>% unlist()
+```
+
+This won't give exactly the same result as `scan`. It seems to create more lines of code - some longer lines of HTML code are split into multiple entries in the vector. 
+
+```{r}
+length(d1)
+length(d3)
+```
+
+```{r}
+d1[3]
+d2
+```
+
+
 ## Parsing HTML tables
 
 `html_table` gives a list of data frames, one for every HTML table in the page.
@@ -142,6 +181,8 @@ The `readHTMLTable` function is similar.
 library(XML)
 d1 %>% readHTMLTable()
 ```
+
+
 
 ## Scraping pages that require log-in
 
@@ -297,6 +338,12 @@ I don't have much to write up yet, but here are some links taken from the RSelen
 This from Stack Overflow might be useful, but it is a few years old so it might no longer be applicable.
 https://stackoverflow.com/questions/43580133/how-to-use-rselenium-to-login-to-a-website-on-windows-machine
 
+## Excel
+
+You can use the `xlsx` package, or the `tidyverse` package `readxl`. 
+https://readxl.tidyverse.org/
+
+
 ## Census data with `tidycensus`
 
 See [R/census](https://github.com/bmacGTPM/notes/tree/main/R/census)
@@ -307,7 +354,7 @@ At the top of `get.census.data.r`, there are URLs you can use to determine what 
 
 If you keep the line `us <- unique(fips_codes$state)[1]` the same, it will only pull census info for the first state, Alabama.  It's quick and a good way to check and make sure your code is running properly. To do all states and DC, change [1] to [1:51]. There are some US territories in this data, so you likely want to stop at 51.
 
-```{r eval = F}
+```
 ## get.census.data.r
 ## Script retrieves, cleans and saves Census data to rds file 
 ## (GEOID, Median Income, Total Population, Total Age, etc)
@@ -430,12 +477,17 @@ head(dd)
 
 ```
 
+## JSON
+
 ## Connecting to SQL databases
 
+## Shape files .shp
 
 
 
 # Data cleaning
+
+
 
 ## RecordLinkage
 
@@ -443,6 +495,7 @@ When joining data sets, you ideally have a unique id, or key, to join on. Someti
 
 ### Example data
 ```{r}
+library(ff) ## keep this
 library(RecordLinkage)
 d = data.frame(name = c('Alexander Ovechkin', 
                         'Alex Ovechkin', 
@@ -515,6 +568,7 @@ head(dd,20)
 
 
 
+## Unnesting lists
 
 
 
@@ -525,13 +579,30 @@ https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing
 
 Scroll down to the `Hmisc` section.  The function `aregImpute` can be used for multiple imputation. 
 
+### Example with simulations
+
+Are uncertainties smaller than they should be? Without knowing a theoretical result, can we simulate to answer this question? 
+
 
 ## Random useful functions
 
+### Formatting for display
 ```{r}
 str_to_title('hello there')
 ```
 
+### Distance from point to line
+https://www.rdocumentation.org/packages/geosphere/versions/1.5-18/topics/dist2Line
+
+### Holidays
+
+Use `timeDate::holiday` to get the date of a holiday in a year. 
+
+```{r}
+library(timeDate)
+holiday(year = 2023, Holiday = "USThanksgivingDay") %>%
+  as.Date()
+```
 
 # Data visualization
 
@@ -618,14 +689,45 @@ g +
 
 ![](img/normal-dist.gif)     
 
+## HTML formatting in ggplot
+
+Use HTML to format text and include images in ggplot axes labels (`element_markdown`) and point labels (`geom_richtext`).
+
+- https://wilkelab.org/ggtext/
+- With country flags, downloaded from wikipedia https://www.r-bloggers.com/2019/08/ggtext-for-images-as-x-axis-labels/#google_vignette
+
 ## Leaflet
 
 - Provider tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
+
+## geom_polygon
+
+See also the hexbin templates in `pubtheme`. 
+
+```{r}
+## Data frame with coordinates of the corners of polygons
+## along with which polygon each x,y cooresponds to, 
+## and a probability to be used to fill the polygon
+df = data.frame(    x=c(1,2,2,1, 3,4,4),
+                    y=c(1,1,2,2, 1,1,2), 
+                group=c(1,1,1,1, 2,2,2), 
+                    p=c(.1,.1,.1,.1, .2, .2, .2))
+ggplot(df, 
+       aes(x, y, 
+           group=group, ## says which shape each x,y belong to 
+           fill=p))+    ## says to color by p
+  geom_polygon()
+
+```
+
 
 
 # Analysis
 
 ## Variable importance
+
+- RF variable importance
+- Shapely values
 
 ## Compariable observations
 
@@ -641,7 +743,24 @@ g +
 - **Discussion of Ridge, Lasso, and Bayes. **
 https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
 - **Bayesian regression**. https://stat.columbia.edu/~gelman/book/
+- **Splines**. Piecewise polynomials with continuity constraints. See ISLR https://www.statlearning.com/ Section 7.4 Regression Splines, Section 7.5 Smoothing Splines, and 7.8.2 (lab exercises). 
+- **Ordinal regression**. Function `polr` in `MASS`. 
+- **Regularized ordinal regression**. https://stackoverflow.com/questions/75790997/why-do-the-coefficents-from-orginal-regularized-regression-ordinalnet-have-the
+- **Mixed effects ordinal regression**. https://stats.stackexchange.com/questions/238581/how-to-use-ordinal-logistic-regression-with-random-effects
+- **Random Forest.** Packages `randomForest`, and maybe `Rborist`, `ranger`, `h20ai`. Some of these behaved weirdly, if I recall correctly.
 
+
+### Multivariate regression
+
+- Vignette https://cran.r-project.org/web/packages/rrr/vignettes/rrr.html
+- Multivariate linear regression https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression
+- Multivariate Poisson regression slides: http://www2.stat-athens.aueb.gr/%7Ekarlis/multivariate%20Poisson%20models.pdf
+- Bivariate Poisson https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9884.00366
+- Paper: A multivariate Poisson regression model for count data.  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9041711/
+
+## Time series
+
+- Bootstrapping: https://towardsdatascience.com/time-series-bootstrap-in-the-age-of-deep-learning-b98aa2aa32c4
 
 ## Calibration
 
@@ -735,6 +854,10 @@ beta
 ## Normal
 
 
+## Data augmentation
+See maybe here https://www.math.unm.edu/~fletcher/PDF/PUB-PDF/SANDER.PDF and maybe, but probably not, here https://staffblogs.le.ac.uk/bayeswithstata/2015/04/10/poisson-regression-with-two-random-effects-mcmc-by-data-augmentation-part-ii/
+
+Note to self: See ChatGPT answer :)
 
 # Simulating data
 
@@ -1442,7 +1565,27 @@ print(final.time2 - start.time2)
 The difference isn't huge in this case, but it can be very big 
 This doesn't mean you should never use `rbind` in a `for` loop. With smaller data, you won't notice the difference, and it is easier to code up. 
 
+# Intro Prob/Stat
+
+## Poisson approximates binomial
+
 # Other
+
+## GitHub Copilot in RStudio
+
+https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
+
+- Verify you are a student or faculty member and get free access:  https://education.github.com/discount_requests/application
+
+- Then, in RStudio, go to Tools, Global Options, Copilot, and make sure Enable Github Copilot is checked. 
+
+Other potentially helpful links: 
+- https://techcommunity.microsoft.com/t5/educator-developer-blog/step-by-step-setting-up-github-student-and-github-copilot-as-an/ba-p/3736279
+- https://docs.github.com/en/github/getting-started-with-github/githubs-products#github-copilot
+- https://github.blog/2022-09-08-github-copilot-now-available-for-teachers/
+
+
+
 
 ## Minimal reproducible examples
 
@@ -1491,6 +1634,7 @@ g %>%
   theme(axis.text.x.top = element_text(angle = 90, 
                                        vjust = .5,
                                        hjust = 0))
+
 
 ```
 
@@ -1676,6 +1820,38 @@ Ways to improve accessibility of documents.
 - You can knit to Word, click Review, and click Check Accessibility
 - See https://bookdown.org/yihui/rmarkdown-cookbook/html-accessibility.html. That page also has a link to here  https://r-resources.massey.ac.nz/rmarkdown/.
 
+
+## Github Actions
+
+This section is very incomplete. All I'm gonna write right now is this reminder to myself:
+
+- Use `renv::snapshot()`, then commit the `renv.lock` file to the repo.     
+- Github Actions won't find new packages that I recently added to the notes unless the `renv.lock` file is updated. So gotta use `renv::snapshot()` and commit the `renv.lock` file to the repo after adding a new package. 
+- If `pubtheme` has been updated and re-installed on my machine, I need to reinstall it via `devtools::install_github("bmacGTPM/pubtheme")`. If I install it from the `pubtheme` package R project Build -> Install, then I think `renv` won't be able to automatically detect where the packages comes from. The `renv.lock` will say source unknown. It's not reproducible on another machine. If, however, I install it from Github, which is reproducible on another machine, then `renv` will auto-detect the source and all will be well. 
+- When updating packages, I should remember to install the binary versions when the source version is more recent. Github Actions wasn't able to find these. So I had to reinstall the binary versions.  If the project has been activate, check which packages are binary and which are source with `renv::status()`. If it hasn't been activate (like the first time I dealt with this), I installed a package that gave an error in Github Actions, reran Github Actions, see which package errored, install the binary version, and repeat.
+- It seems like the Windows repo and Linux repo don't have the same package versions. For plotly, I downloaded 4.10.4, but version 4.10.3 was listed here
+
+I installed an earlier version using this
+```
+devtools::install_version("plotly", 
+version = "4.10.3", 
+repos = "http://cran.us.r-project.org")
+```
+
+- `terra` was failing on Github Actions. I tried this to reinstall all packages that depend on `terra`
+
+```
+## Check for dependencies, and reinstall all packages
+d1 = revdep('terra')
+d2 = installed.packages()
+re.install = d1[d1 %in% d2[,'Package']] ## d2 is matrix, can't use $
+if (length(re.install) > 0) {
+  install.packages(re.install, dependencies=TRUE)
+}
+```
+
+- I had issues with `units`, which is needed for `sf`, which is needed for `tidycensus`. So I removed `tidycensus` for now. 
+- I had issues with `terra`, which is needed for `raster`, which is needed for `leaflet.` But `terra` wasn't need for the earlier version `3.4-13` of `raster` that I was using. So installed that version. Didn't work. Tried downloading the dev version of terra using `install.packages('terra', repos='https://rspatial.r-universe.dev')` and 
 
 ## Math symbols in plots
 
