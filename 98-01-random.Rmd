@@ -1850,6 +1850,9 @@ if (length(re.install) > 0) {
 }
 ```
 
+- I had issues with `units`, which is needed for `sf`, which is needed for `tidycensus`. So I removed `tidycensus` for now. 
+- I had issues with `terra`, which is needed for `raster`, which is needed for `leaflet.` But `terra` wasn't need for the earlier version `3.4-13` of `raster` that I was using. So installed that version. Didn't work. Tried downloading the dev version of terra using `install.packages('terra', repos='https://rspatial.r-universe.dev')` and 
+
 ## Math symbols in plots
 
 This describes how to use mathematical expressions in plots. 

@@ -13,7 +13,7 @@ link-citations: yes
 github-repo: https://github.com/bmacGTPM/book
 ---
 
-# (Getting started
+# Getting started
 
 ```{r, warning=F, message=F, echo=F, include=F}
 knitr::opts_chunk$set(
@@ -139,6 +139,7 @@ install.packages('grid')
 install.packages('foreign')
 install.packages('maps')
 install.packages('timeDate')
+install.packages('tidycensus')
 
 ## Install packages from my GitHub
 devtools::install_github("bmacGTPM/pubtheme")
@@ -155,7 +156,6 @@ Check that you can load all of the libraries by running this chunk of code and s
 
 ```{r error=T}
 library(knitr)
-library(plotly)
 library(scales)
 library(DT)
 #library(leaflet)
@@ -175,7 +175,7 @@ library(MLmetrics)
 library(viridis)
 library(RSelenium)
 library(rvest)
-library(randomForest)
+library(randomForest, exclude = 'margin')
 library(FNN)
 library(caret)
 library(pls)
@@ -188,9 +188,12 @@ library(grid)
 library(foreign)
 library(maps) ## leave uncommented. For some reason GitHub Actions had a problem when this wasn't explicitly loaded here. 
 library(timeDate)
+#library(tidycensus)
+
 
 ## load tidyverse last!
 library(tidyverse)
+library(plotly)
 library(pubtheme)
 ```
 
