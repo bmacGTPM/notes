@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.1 Software installation | Data Analysis</title>
+  <meta name="description" content="Course notes for Data Analysis." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.1 Software installation | Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Course notes for Data Analysis." />
+  <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.1 Software installation | Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for Data Analysis." />
+  
+
+<meta name="author" content="Brian Macdonald" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="learning-objectives.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">S&DS 361 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="software-installation.html"><a href="software-installation.html"><i class="fa fa-check"></i><b>1.1</b> Software installation</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="software-installation.html"><a href="software-installation.html#download-r"><i class="fa fa-check"></i><b>1.1.1</b> Download R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="software-installation.html"><a href="software-installation.html#download-r-studio"><i class="fa fa-check"></i><b>1.1.2</b> Download R Studio</a></li>
+<li class="chapter" data-level="1.1.3" data-path="software-installation.html"><a href="software-installation.html#installupdate-packages"><i class="fa fa-check"></i><b>1.1.3</b> Install/update packages</a></li>
+<li class="chapter" data-level="1.1.4" data-path="software-installation.html"><a href="software-installation.html#check-gganimate"><i class="fa fa-check"></i><b>1.1.4</b> Check <code>gganimate</code></a></li>
+<li class="chapter" data-level="1.1.5" data-path="software-installation.html"><a href="software-installation.html#bookmarks"><i class="fa fa-check"></i><b>1.1.5</b> Bookmarks</a></li>
+<li class="chapter" data-level="1.1.6" data-path="software-installation.html"><a href="software-installation.html#github"><i class="fa fa-check"></i><b>1.1.6</b> Github</a></li>
+<li class="chapter" data-level="1.1.7" data-path="software-installation.html"><a href="software-installation.html#backing-up-work"><i class="fa fa-check"></i><b>1.1.7</b> Backing up work</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="1.3" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.3</b> Coding conventions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="coding-conventions.html"><a href="coding-conventions.html#exception-well-use-not---for-assignments"><i class="fa fa-check"></i><b>1.3.1</b> Exception: We’ll use <code>=</code> not <code>&lt;-</code> for assignments</a></li>
+<li class="chapter" data-level="1.3.2" data-path="coding-conventions.html"><a href="coding-conventions.html#exception-well-use-.-more-than-_-for-names"><i class="fa fa-check"></i><b>1.3.2</b> Exception: We’ll use <code>.</code> more than <code>_</code> for names</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="formatting-plots-with-pubtheme.html"><a href="formatting-plots-with-pubtheme.html"><i class="fa fa-check"></i><b>2</b> Formatting plots with <code>pubtheme</code></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="simple-example.html"><a href="simple-example.html"><i class="fa fa-check"></i><b>2.1</b> Simple Example</a></li>
+<li class="chapter" data-level="2.2" data-path="gallery.html"><a href="gallery.html"><i class="fa fa-check"></i><b>2.2</b> Gallery</a></li>
+</ul></li>
+<li class="part"><span><b>I Random</b></span></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>4</b> Project development and planning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>4.1</b> Brainstorming, determining the end deliverables</a></li>
+<li class="chapter" data-level="4.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>4.2</b> Create a basic framework</a></li>
+<li class="chapter" data-level="4.3" data-path="backwards-planning.html"><a href="backwards-planning.html"><i class="fa fa-check"></i><b>4.3</b> Backwards planning</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-acquistion.html"><a href="data-acquistion.html"><i class="fa fa-check"></i><b>5</b> Data acquistion</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="scrape-html-pages.html"><a href="scrape-html-pages.html"><i class="fa fa-check"></i><b>5.1</b> Scrape HTML pages</a></li>
+<li class="chapter" data-level="5.2" data-path="parsing-html-tables.html"><a href="parsing-html-tables.html"><i class="fa fa-check"></i><b>5.2</b> Parsing HTML tables</a></li>
+<li class="chapter" data-level="5.3" data-path="scraping-pages-that-require-log-in.html"><a href="scraping-pages-that-require-log-in.html"><i class="fa fa-check"></i><b>5.3</b> Scraping pages that require log-in</a></li>
+<li class="chapter" data-level="5.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>5.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
+<li class="chapter" data-level="5.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>5.5</b> Scrape PDFs</a></li>
+<li class="chapter" data-level="5.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>5.6</b> RSelenium, Docker</a></li>
+<li class="chapter" data-level="5.7" data-path="excel.html"><a href="excel.html"><i class="fa fa-check"></i><b>5.7</b> Excel</a></li>
+<li class="chapter" data-level="5.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>5.8</b> Census data with <code>tidycensus</code></a></li>
+<li class="chapter" data-level="5.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>5.9</b> JSON</a></li>
+<li class="chapter" data-level="5.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>5.10</b> Connecting to SQL databases</a></li>
+<li class="chapter" data-level="5.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>5.11</b> Shape files .shp</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>6</b> Data cleaning</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="recordlinkage.html"><a href="recordlinkage.html"><i class="fa fa-check"></i><b>6.1</b> RecordLinkage</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="recordlinkage.html"><a href="recordlinkage.html#example-data"><i class="fa fa-check"></i><b>6.1.1</b> Example data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="recordlinkage.html"><a href="recordlinkage.html#comparededup"><i class="fa fa-check"></i><b>6.1.2</b> Compare/Dedup</a></li>
+<li class="chapter" data-level="6.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>6.1.3</b> Attach names to IDs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="unnesting-lists.html"><a href="unnesting-lists.html"><i class="fa fa-check"></i><b>6.2</b> Unnesting lists</a></li>
+<li class="chapter" data-level="6.3" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>6.3</b> Data imputation</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="data-imputation.html"><a href="data-imputation.html#example-with-simulations"><i class="fa fa-check"></i><b>6.3.1</b> Example with simulations</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>6.4</b> Random useful functions</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>6.4.1</b> Formatting for display</a></li>
+<li class="chapter" data-level="6.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>6.4.2</b> Distance from point to line</a></li>
+<li class="chapter" data-level="6.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>6.4.3</b> Holidays</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>7.1</b> Esquisse</a></li>
+<li class="chapter" data-level="7.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>7.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="7.3" data-path="html-formatting-in-ggplot.html"><a href="html-formatting-in-ggplot.html"><i class="fa fa-check"></i><b>7.3</b> HTML formatting in ggplot</a></li>
+<li class="chapter" data-level="7.4" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>7.4</b> Leaflet</a></li>
+<li class="chapter" data-level="7.5" data-path="geom_polygon.html"><a href="geom_polygon.html"><i class="fa fa-check"></i><b>7.5</b> geom_polygon</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>8.1</b> Variable importance</a></li>
+<li class="chapter" data-level="8.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>8.2</b> Compariable observations</a></li>
+<li class="chapter" data-level="8.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>8.3</b> Other types of regression models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html#multivariate-regression"><i class="fa fa-check"></i><b>8.3.1</b> Multivariate regression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>8.4</b> Time series</a></li>
+<li class="chapter" data-level="8.5" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>8.5</b> Calibration</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>9</b> Bayesian estimates</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>9.1</b> Beta-binomial</a></li>
+<li class="chapter" data-level="9.2" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>9.2</b> Normal</a></li>
+<li class="chapter" data-level="9.3" data-path="data-augmentation.html"><a href="data-augmentation.html"><i class="fa fa-check"></i><b>9.3</b> Data augmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>10</b> Simulating data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="continuous-and-binary-predictors.html"><a href="continuous-and-binary-predictors.html"><i class="fa fa-check"></i><b>10.1</b> Continuous and binary predictors</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-regression-with-a-continuous-predictor.html"><a href="linear-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>10.2</b> Linear regression with a continuous predictor</a></li>
+<li class="chapter" data-level="10.3" data-path="poisson-regression-with-a-continuous-predictor.html"><a href="poisson-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>10.3</b> Poisson regression with a continuous predictor</a></li>
+<li class="chapter" data-level="10.4" data-path="linear-regression-with-an-extra-binary-predictor.html"><a href="linear-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>10.4</b> Linear regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="10.5" data-path="poisson-regression-with-an-extra-binary-predictor.html"><a href="poisson-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>10.5</b> Poisson regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="10.6" data-path="linear-regression-with-interaction.html"><a href="linear-regression-with-interaction.html"><i class="fa fa-check"></i><b>10.6</b> Linear regression with interaction</a></li>
+<li class="chapter" data-level="10.7" data-path="poisson-regression-with-interaction.html"><a href="poisson-regression-with-interaction.html"><i class="fa fa-check"></i><b>10.7</b> Poisson regression with interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>11</b> Shiny</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>11.1</b> Getting started</a></li>
+<li class="chapter" data-level="11.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>11.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>11.2.1</b> Example App: CLT</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>11.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="11.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>11.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="11.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>11.5</b> Save data generated from user inputs</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>12</b> Understanding how functions work</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>12.1</b> Help</a></li>
+<li class="chapter" data-level="12.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>12.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>12.2.1</b> Generic functions</a></li>
+<li class="chapter" data-level="12.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>12.2.2</b> <code>methods</code></a></li>
+<li class="chapter" data-level="12.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>12.2.3</b> <code>getAnywhere</code></a></li>
+<li class="chapter" data-level="12.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>12.2.4</b> Other resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>12.3</b> Functions with unquoted arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>13</b> Debugging</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>13.1</b> <code>browser()</code></a></li>
+<li class="chapter" data-level="13.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>13.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>14</b> Testing</a></li>
+<li class="chapter" data-level="15" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>15</b> For loops</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>15.1</b> Showing progress</a></li>
+<li class="chapter" data-level="15.2" data-path="parallel-processing-with-foreach.html"><a href="parallel-processing-with-foreach.html"><i class="fa fa-check"></i><b>15.2</b> Parallel processing with <code>foreach</code></a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="efficient-programming.html"><a href="efficient-programming.html"><i class="fa fa-check"></i><b>16</b> Efficient Programming</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>16.1</b> Efficient R Programming online book</a></li>
+<li class="chapter" data-level="16.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>16.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>17</b> Intro Prob/Stat</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>17.1</b> Poisson approximates binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>18</b> Other</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>18.1</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="18.2" data-path="minimal-reproducible-examples.html"><a href="minimal-reproducible-examples.html"><i class="fa fa-check"></i><b>18.2</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="18.3" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>18.3</b> Accessible Documents</a></li>
+<li class="chapter" data-level="18.4" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>18.4</b> Github Actions</a></li>
+<li class="chapter" data-level="18.5" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>18.5</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="18.6" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>18.6</b> Writing R packages</a></li>
+<li class="chapter" data-level="18.7" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>18.7</b> Blogdown</a></li>
+<li class="chapter" data-level="18.8" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>18.8</b> Bookdown</a></li>
+<li class="chapter" data-level="18.9" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>18.9</b> Quarto</a></li>
+<li class="chapter" data-level="18.10" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>18.10</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="18.11" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>18.11</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="18.12" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>18.12</b> Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>19</b> Not data science</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>19.1</b> Dollar cost averaging example</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="intro-to-nba-games-data.html"><a href="intro-to-nba-games-data.html"><i class="fa fa-check"></i><b>A.1</b> Intro to NBA games data</a></li>
+<li class="chapter" data-level="A.2" data-path="choosing-rows-with-filter.html"><a href="choosing-rows-with-filter.html"><i class="fa fa-check"></i><b>A.2</b> Choosing rows with <code>filter</code></a></li>
+<li class="chapter" data-level="A.3" data-path="pipe-operator.html"><a href="pipe-operator.html"><i class="fa fa-check"></i><b>A.3</b> Pipe Operator</a></li>
+<li class="chapter" data-level="A.4" data-path="choosing-columns-with-select.html"><a href="choosing-columns-with-select.html"><i class="fa fa-check"></i><b>A.4</b> Choosing columns with <code>select</code></a></li>
+<li class="chapter" data-level="A.5" data-path="checking-data-types-with-str.html"><a href="checking-data-types-with-str.html"><i class="fa fa-check"></i><b>A.5</b> Checking data types with <code>str</code></a></li>
+<li class="chapter" data-level="A.6" data-path="addedit-columns-with-mutate.html"><a href="addedit-columns-with-mutate.html"><i class="fa fa-check"></i><b>A.6</b> Add/Edit columns with <code>mutate</code></a></li>
+<li class="chapter" data-level="A.7" data-path="ordering-rows-with-arrange.html"><a href="ordering-rows-with-arrange.html"><i class="fa fa-check"></i><b>A.7</b> Ordering rows with <code>arrange</code></a></li>
+<li class="chapter" data-level="A.8" data-path="summaries-using-summarise.html"><a href="summaries-using-summarise.html"><i class="fa fa-check"></i><b>A.8</b> Summaries using <code>summarise</code></a></li>
+<li class="chapter" data-level="A.9" data-path="gluing-data.frames-using-bind_rows.html"><a href="gluing-data.frames-using-bind_rows.html"><i class="fa fa-check"></i><b>A.9</b> Gluing data.frames using <code>bind_rows</code></a></li>
+<li class="chapter" data-level="A.10" data-path="summaries-by-team-using-group_by.html"><a href="summaries-by-team-using-group_by.html"><i class="fa fa-check"></i><b>A.10</b> Summaries by team using <code>group_by</code></a></li>
+<li class="chapter" data-level="A.11" data-path="using-mutate-and-group_by.html"><a href="using-mutate-and-group_by.html"><i class="fa fa-check"></i><b>A.11</b> Using <code>mutate</code> and <code>group_by</code></a></li>
+<li class="chapter" data-level="A.12" data-path="using-mutate-and-ifelse.html"><a href="using-mutate-and-ifelse.html"><i class="fa fa-check"></i><b>A.12</b> Using <code>mutate</code> and <code>ifelse</code></a></li>
+<li class="chapter" data-level="A.13" data-path="rearranging-data-with-pivot_wider-and-pivot_longer.html"><a href="rearranging-data-with-pivot_wider-and-pivot_longer.html"><i class="fa fa-check"></i><b>A.13</b> Rearranging data with <code>pivot_wider</code> and <code>pivot_longer</code></a></li>
+<li class="chapter" data-level="A.14" data-path="joining-two-data-frames-with-left_join.html"><a href="joining-two-data-frames-with-left_join.html"><i class="fa fa-check"></i><b>A.14</b> Joining two data frames with <code>left_join</code></a></li>
+<li class="chapter" data-level="A.15" data-path="for-more-information.html"><a href="for-more-information.html"><i class="fa fa-check"></i><b>A.15</b> For more information</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="data-visualization-with-ggplot.html"><a href="data-visualization-with-ggplot.html"><i class="fa fa-check"></i><b>B</b> Data visualization with <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="scatter-plot-with-geom_point.html"><a href="scatter-plot-with-geom_point.html"><i class="fa fa-check"></i><b>B.1</b> Scatter plot with <code>geom_point</code></a></li>
+<li class="chapter" data-level="B.2" data-path="color-size-shape.html"><a href="color-size-shape.html"><i class="fa fa-check"></i><b>B.2</b> Color, size, shape</a></li>
+<li class="chapter" data-level="B.3" data-path="formatting-with-the-pubtheme-package.html"><a href="formatting-with-the-pubtheme-package.html"><i class="fa fa-check"></i><b>B.3</b> Formatting with the <code>pubtheme</code> package</a></li>
+<li class="chapter" data-level="B.4" data-path="ggsave.html"><a href="ggsave.html"><i class="fa fa-check"></i><b>B.4</b> <code>ggsave</code></a></li>
+<li class="chapter" data-level="B.5" data-path="trend-line-with-geom_smooth.html"><a href="trend-line-with-geom_smooth.html"><i class="fa fa-check"></i><b>B.5</b> Trend line with <code>geom_smooth</code></a></li>
+<li class="chapter" data-level="B.6" data-path="grouping-observations-with-group.html"><a href="grouping-observations-with-group.html"><i class="fa fa-check"></i><b>B.6</b> Grouping observations with <code>group</code></a></li>
+<li class="chapter" data-level="B.7" data-path="faceting-with-facet_wrap.html"><a href="faceting-with-facet_wrap.html"><i class="fa fa-check"></i><b>B.7</b> Faceting with <code>facet_wrap</code></a></li>
+<li class="chapter" data-level="B.8" data-path="transparency-using-alpha.html"><a href="transparency-using-alpha.html"><i class="fa fa-check"></i><b>B.8</b> Transparency using <code>alpha</code></a></li>
+<li class="chapter" data-level="B.9" data-path="scatter-plot-with-geom_jitter.html"><a href="scatter-plot-with-geom_jitter.html"><i class="fa fa-check"></i><b>B.9</b> Scatter plot with <code>geom_jitter</code></a></li>
+<li class="chapter" data-level="B.10" data-path="hex-bins-geom_hex.html"><a href="hex-bins-geom_hex.html"><i class="fa fa-check"></i><b>B.10</b> Hex bins <code>geom_hex</code></a></li>
+<li class="chapter" data-level="B.11" data-path="bar-plot-geom_col.html"><a href="bar-plot-geom_col.html"><i class="fa fa-check"></i><b>B.11</b> Bar plot <code>geom_col</code></a></li>
+<li class="chapter" data-level="B.12" data-path="color-bars-using-fill.html"><a href="color-bars-using-fill.html"><i class="fa fa-check"></i><b>B.12</b> Color bars using <code>fill</code></a></li>
+<li class="chapter" data-level="B.13" data-path="side-by-side-bar-charts-with-position_dodge.html"><a href="side-by-side-bar-charts-with-position_dodge.html"><i class="fa fa-check"></i><b>B.13</b> Side-by-side bar charts with <code>position_dodge</code></a></li>
+<li class="chapter" data-level="B.14" data-path="text-with-geom_text.html"><a href="text-with-geom_text.html"><i class="fa fa-check"></i><b>B.14</b> Text with <code>geom_text</code></a></li>
+<li class="chapter" data-level="B.15" data-path="histogram-with-geom_histogram.html"><a href="histogram-with-geom_histogram.html"><i class="fa fa-check"></i><b>B.15</b> Histogram with <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="B.16" data-path="line-plot-with-geom_line.html"><a href="line-plot-with-geom_line.html"><i class="fa fa-check"></i><b>B.16</b> Line plot with <code>geom_line</code></a></li>
+<li class="chapter" data-level="B.17" data-path="grid-plot-with-geom_tile.html"><a href="grid-plot-with-geom_tile.html"><i class="fa fa-check"></i><b>B.17</b> Grid plot with <code>geom_tile</code></a></li>
+<li class="chapter" data-level="B.18" data-path="customizing-with-theme.html"><a href="customizing-with-theme.html"><i class="fa fa-check"></i><b>B.18</b> Customizing with <code>theme</code></a></li>
+<li class="chapter" data-level="B.19" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>B.19</b> Maps</a></li>
+<li class="chapter" data-level="B.20" data-path="quick-interactive-plots-with-ggplotly.html"><a href="quick-interactive-plots-with-ggplotly.html"><i class="fa fa-check"></i><b>B.20</b> Quick interactive plots with <code>ggplotly</code></a></li>
+<li class="chapter" data-level="B.21" data-path="for-more-information-1.html"><a href="for-more-information-1.html"><i class="fa fa-check"></i><b>B.21</b> For more information</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="software-installation" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Software installation<a href="software-installation.html#software-installation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="download-r" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Download R<a href="software-installation.html#download-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Download the latest version of R. You can do this in a couple of ways.</p>
+<ul>
+<li>Download the latest version of R from <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>. This will not copy over your old packages. So you might want to try one of the next two approaches instead.</li>
+<li><strong>Windows only</strong>: use the <code>installr</code> package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Windows machine.</li>
+</ul>
+<pre><code>install.packages(&quot;installr&quot;)
+library(installr)
+updateR()</code></pre>
+<p>It will say that “It is best to run this from the Rgui and not from RStudio. Would you like to abort the installation and run it again from Rgui?” I say yes. Then I go to <code>C:\Program Files\R\R-x.x.x\bin\x64</code> (my latest version of R) and double click on <code>Rgui.exe</code>. Then I run the code again.</p>
+<p>After it installs, it will ask if you want to copy your packages from your old version of R. I say yes. Then it asks if you want to keep the packages in your old version of R. I say yes again. I say yes to the question about Rprofile and yes to the question about updating packages.</p>
+<p>The copying of packages to the old version of R to the new version sometimes doesn’t work. If that happens, you can running this function.</p>
+<pre><code>installr::copy.packages.between.libraries()</code></pre>
+<p>If that doesn’t work, you can try to copy the packages manually by going to the library folder of your old version of R (e.g. <code>C:\Program Files\R\R-4.3.1\library</code>) and copying the folders of the packages you want to the library folder of your new version of R (e.g. <code>C:\Program Files\R\R-4.3.3\library</code>).</p>
+<p>The updating of packages sometimes doesn’t work either. You can use <code>update.packages()</code> to update all packages, or <code>update.packages(ask = FALSE)</code> to update all packages without asking for permission.</p>
+<ul>
+<li><strong>Mac only</strong>: use <code>updateR</code> package by running these lines of code. This will help you copy old packages over to your new version of R if you have a Mac.</li>
+</ul>
+<pre><code>install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;AndreaCirilloAC/updateR&quot;)
+library(updateR)
+update()</code></pre>
+<p>After installing the newest version of R, restart R Studio. R Studio should automatically detect the new version of R, especially if you update R Studio as well (see below). If it doesn’t automatically detect the new version of R, you can go to Tools, Global Options, General, and change the version of R that R Studio uses to the one you just installed.</p>
+<p>This code will show your version of R when you knit the document. It should say R version 4.3.2 (2023-10-31).</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb4-1"><a href="software-installation.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()<span class="sc">$</span>version.string</span></code></pre></div>
+</details>
+<pre><code>[1] &quot;R version 4.3.2 (2023-10-31)&quot;</code></pre>
+</div>
+<div id="download-r-studio" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Download R Studio<a href="software-installation.html#download-r-studio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Download the latest version of R Studio. Go to Help, Check for Updates. Or, go to <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>. Note that you will see “Posit” in a lot of places. RStudio changed their name to Posit.</p>
+<p>This code will show your version of R when you knit the document.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb6-1"><a href="software-installation.html#cb6-1" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()<span class="sc">$</span>long_version</span></code></pre></div>
+</details>
+</div>
+<div id="installupdate-packages" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Install/update packages<a href="software-installation.html#installupdate-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here are packages we’ll definitely use. Install these now. We will likely use others as well but we’ll have to install those on the fly as we need them.</p>
+<p>I recommend closing all R Studio windows except one, and restart R. Then install all packages listed here.</p>
+<pre><code>install.packages(&quot;tidyverse&quot;)
+install.packages(&quot;knitr&quot;)
+install.packages(&quot;plotly&quot;)
+install.packages(&quot;scales&quot;)
+install.packages(&quot;DT&quot;)
+install.packages(&quot;leaflet&quot;)
+install.packages(&#39;terra&#39;)
+install.packages(&quot;gganimate&quot;)
+install.packages(&#39;gifski&#39;)
+install.packages(&#39;png&#39;)
+install.packages(&quot;corrplot&quot;)
+install.packages(&quot;GGally&quot;)
+install.packages(&quot;ggmap&quot;)
+install.packages(&quot;shiny&quot;)
+install.packages(&quot;MASS&quot;)
+install.packages(&quot;lme4&quot;)
+install.packages(&quot;arm&quot;)
+install.packages(&quot;pROC&quot;)
+install.packages(&quot;MLmetrics&quot;)
+install.packages(&quot;viridis&quot;)
+install.packages(&quot;RSelenium&quot;)
+install.packages(&quot;rvest&quot;)
+install.packages(&quot;randomForest&quot;)
+install.packages(&quot;devtools&quot;)
+install.packages(&quot;splines&quot;)
+install.packages(&quot;RecordLinkage&quot;)
+install.packages(&quot;ff&quot;)
+install.packages(&quot;rsconnect&quot;)
+install.packages(&#39;grid&#39;)
+install.packages(&#39;foreign&#39;)
+install.packages(&#39;maps&#39;)
+install.packages(&#39;timeDate&#39;)
+install.packages(&#39;tidycensus&#39;)
+
+## Install packages from my GitHub
+devtools::install_github(&quot;bmacGTPM/pubtheme&quot;)</code></pre>
+<p>If you get errors you don’t understand, try installing them one by one.</p>
+<p>If you get any sort of “permission denied” errors when trying to install the packages, you can try going to the folder with the library (e.g. <code>C:\Program Files\R\R-4.2.2\library</code>), delete the folder, and then install the packages again. For me, this happens often with <code>rlang</code> and <code>htmltools</code>.</p>
+<p>If it seems to freeze at the statement “There are binary versions available but the source versions are later:” check for a small window that opened but hidden behind other windows, with the question “Do you want to install from sources the packages that needs compilation?” Say yes. If you get an error with any of these, you can try saying no.</p>
+<p>Check that you can load all of the libraries by running this chunk of code and showing that it executes without error. There may be some messages, and maybe warnings about versions. Those are ok.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb8-1"><a href="software-installation.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb8-2"><a href="software-installation.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb8-3"><a href="software-installation.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb8-4"><a href="software-installation.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(leaflet)</span></span>
+<span id="cb8-5"><a href="software-installation.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#library(terra)</span></span>
+<span id="cb8-6"><a href="software-installation.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb8-7"><a href="software-installation.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gifski)</span>
+<span id="cb8-8"><a href="software-installation.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb8-9"><a href="software-installation.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb8-10"><a href="software-installation.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb8-11"><a href="software-installation.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb8-12"><a href="software-installation.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb8-13"><a href="software-installation.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb8-14"><a href="software-installation.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb8-15"><a href="software-installation.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arm)</span>
+<span id="cb8-16"><a href="software-installation.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
+<span id="cb8-17"><a href="software-installation.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MLmetrics)</span>
+<span id="cb8-18"><a href="software-installation.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb8-19"><a href="software-installation.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSelenium)</span>
+<span id="cb8-20"><a href="software-installation.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb8-21"><a href="software-installation.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest, <span class="at">exclude =</span> <span class="st">&#39;margin&#39;</span>)</span>
+<span id="cb8-22"><a href="software-installation.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FNN)</span>
+<span id="cb8-23"><a href="software-installation.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb8-24"><a href="software-installation.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pls)</span>
+<span id="cb8-25"><a href="software-installation.html#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb8-26"><a href="software-installation.html#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb8-27"><a href="software-installation.html#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RecordLinkage)</span>
+<span id="cb8-28"><a href="software-installation.html#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ff)</span>
+<span id="cb8-29"><a href="software-installation.html#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsconnect)</span>
+<span id="cb8-30"><a href="software-installation.html#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb8-31"><a href="software-installation.html#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb8-32"><a href="software-installation.html#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps) <span class="do">## leave uncommented. For some reason GitHub Actions had a problem when this wasn&#39;t explicitly loaded here. </span></span>
+<span id="cb8-33"><a href="software-installation.html#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(timeDate)</span>
+<span id="cb8-34"><a href="software-installation.html#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidycensus)</span></span>
+<span id="cb8-35"><a href="software-installation.html#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="software-installation.html#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="software-installation.html#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="do">## load tidyverse last!</span></span>
+<span id="cb8-38"><a href="software-installation.html#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-39"><a href="software-installation.html#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb8-40"><a href="software-installation.html#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pubtheme)</span></code></pre></div>
+</details>
+</div>
+<div id="check-gganimate" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Check <code>gganimate</code><a href="software-installation.html#check-gganimate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s create a really quick animation that appears in the <code>gganimate</code> introduction. First a static (non-animated) plot.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb9-1"><a href="software-installation.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb9-2"><a href="software-installation.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="software-installation.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll start with a static plot</span></span>
+<span id="cb9-4"><a href="software-installation.html#cb9-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(iris, </span>
+<span id="cb9-5"><a href="software-installation.html#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Petal.Width, </span>
+<span id="cb9-6"><a href="software-installation.html#cb9-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb9-7"><a href="software-installation.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb9-8"><a href="software-installation.html#cb9-8" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+</details>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>That should give a static plot. The following code should give an animation.</p>
+<pre><code>a = g + 
+  transition_states(Species,
+                    transition_length = 2,
+                    state_length = 1)
+a</code></pre>
+<p>That should ideally show an animation in the Viewer in R Studio. The default location of the view is a tabs in the lower right window.</p>
+<p>If it looks like R starts saving several image files to your computer, make sure that the package <code>gifski</code> is installed and that <code>library(gifski)</code> doesn’t give any errors.</p>
+<p>This should save the animation <code>a</code> as an animated <code>.gif</code> file.</p>
+<pre><code>anim_save(a, 
+          filename = &#39;img/test.gif&#39;)</code></pre>
+<p>It should be in the same folder as this R Markdown file. If that works, <code>gganimate</code> is good to go!</p>
+<p><img src="img/test.gif" /></p>
+</div>
+<div id="bookmarks" class="section level3 hasAnchor" number="1.1.5">
+<h3><span class="header-section-number">1.1.5</span> Bookmarks<a href="software-installation.html#bookmarks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bookmark these pages:</p>
+<ul>
+<li>These notes <a href="https://bmacgtpm.github.io/notes/" class="uri">https://bmacgtpm.github.io/notes/</a></li>
+<li>The Github page for these notes <a href="https://github.com/bmacGTPM/notes" class="uri">https://github.com/bmacGTPM/notes</a></li>
+<li>The <code>pubtheme</code> Github page <a href="https://github.com/bmacGTPM/pubtheme" class="uri">https://github.com/bmacGTPM/pubtheme</a></li>
+<li>These books
+<ul>
+<li>Beyond Multiple Linear Regression <a href="https://bookdown.org/roback/bookdown-BeyondMLR/" class="uri">https://bookdown.org/roback/bookdown-BeyondMLR/</a></li>
+<li>Regression and Other Stories <a href="https://avehtari.github.io/ROS-Examples/" class="uri">https://avehtari.github.io/ROS-Examples/</a></li>
+<li>Introduction to Statistical Learning <a href="https://www.statlearning.com/" class="uri">https://www.statlearning.com/</a></li>
+</ul></li>
+<li>These resources
+<ul>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+<li><a href="https://adv-r.hadley.nz/">Advanced R</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></li>
+<li>The <a href="https://rstudio.com/resources/cheatsheets/">RStudio cheatsheets</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="github" class="section level3 hasAnchor" number="1.1.6">
+<h3><span class="header-section-number">1.1.6</span> Github<a href="software-installation.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Create a GitHub account at <a href="https://github.com/" class="uri">https://github.com/</a> if you don’t have one.</li>
+<li>Download GitHub Desktop at <a href="https://desktop.github.com/" class="uri">https://desktop.github.com/</a>.</li>
+</ul>
+</div>
+<div id="backing-up-work" class="section level3 hasAnchor" number="1.1.7">
+<h3><span class="header-section-number">1.1.7</span> Backing up work<a href="software-installation.html#backing-up-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Most of your coding should take place in a source file or R Markdown file. Very little coding should occur in the console. This will make it far easier to reproduce what you did, and to back up your work.</p>
+<p>There are a copy of options for backing up your work</p>
+<ul>
+<li>Use a cloud service like OneDrive, Google Drive, Dropbox, Box, iCloud, or use Time Machine, to automatically back up your files.</li>
+<li>If you are using Git/Github as part of your typical workflow (recommended), you’ll have a copy of your code in the “cloud” every time you push to Github.</li>
+<li>Manually backup your files to an external hard drive on a regular basis.</li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="learning-objectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bmacgtpm/notes/edit/main/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

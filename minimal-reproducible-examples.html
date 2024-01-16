@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>25.1 Minimal reproducible examples | Data Analysis</title>
+  <title>18.2 Minimal reproducible examples | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
-  <meta name="generator" content="bookdown 0.30.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="25.1 Minimal reproducible examples | Data Analysis" />
+  <meta property="og:title" content="18.2 Minimal reproducible examples | Data Analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course notes for Data Analysis." />
   <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="25.1 Minimal reproducible examples | Data Analysis" />
+  <meta name="twitter:title" content="18.2 Minimal reproducible examples | Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for Data Analysis." />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="other.html"/>
+<link rel="prev" href="github-copilot-in-rstudio.html"/>
 <link rel="next" href="accessible-documents.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -47,44 +47,15 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.26/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/dt-ext-colreorder-1.12.1/css/colReorder.dataTables.min.css" rel="stylesheet" />
-<script src="libs/dt-ext-colreorder-1.12.1/js/dataTables.colReorder.min.js"></script>
-<link href="libs/dt-ext-fixedheader-1.12.1/css/fixedHeader.dataTables.min.css" rel="stylesheet" />
-<script src="libs/dt-ext-fixedheader-1.12.1/js/dataTables.fixedHeader.min.js"></script>
-<link href="libs/dt-ext-keytable-1.12.1/css/keyTable.dataTables.min.css" rel="stylesheet" />
-<script src="libs/dt-ext-keytable-1.12.1/js/dataTables.keyTable.min.js"></script>
-<script src="libs/jszip-1.12.1/jszip.min.js"></script>
-<link href="libs/dt-ext-buttons-1.12.1/css/buttons.dataTables.min.css" rel="stylesheet" />
-<script src="libs/dt-ext-buttons-1.12.1/js/dataTables.buttons.min.js"></script>
-<script src="libs/dt-ext-buttons-1.12.1/js/buttons.html5.min.js"></script>
-<script src="libs/dt-ext-buttons-1.12.1/js/buttons.colVis.min.js"></script>
-<script src="libs/dt-ext-buttons-1.12.1/js/buttons.print.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.13.0/leaflet-providers_1.13.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
@@ -154,6 +125,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -173,16 +148,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Getting started</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="preparation.html"><a href="preparation.html"><i class="fa fa-check"></i><b>1.1</b> Preparation</a>
+<li class="chapter" data-level="1.1" data-path="software-installation.html"><a href="software-installation.html"><i class="fa fa-check"></i><b>1.1</b> Software installation</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="preparation.html"><a href="preparation.html#packages"><i class="fa fa-check"></i><b>1.1.1</b> Packages</a></li>
-<li class="chapter" data-level="1.1.2" data-path="preparation.html"><a href="preparation.html#bookmarks"><i class="fa fa-check"></i><b>1.1.2</b> Bookmarks</a></li>
+<li class="chapter" data-level="1.1.1" data-path="software-installation.html"><a href="software-installation.html#download-r"><i class="fa fa-check"></i><b>1.1.1</b> Download R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="software-installation.html"><a href="software-installation.html#download-r-studio"><i class="fa fa-check"></i><b>1.1.2</b> Download R Studio</a></li>
+<li class="chapter" data-level="1.1.3" data-path="software-installation.html"><a href="software-installation.html#installupdate-packages"><i class="fa fa-check"></i><b>1.1.3</b> Install/update packages</a></li>
+<li class="chapter" data-level="1.1.4" data-path="software-installation.html"><a href="software-installation.html#check-gganimate"><i class="fa fa-check"></i><b>1.1.4</b> Check <code>gganimate</code></a></li>
+<li class="chapter" data-level="1.1.5" data-path="software-installation.html"><a href="software-installation.html#bookmarks"><i class="fa fa-check"></i><b>1.1.5</b> Bookmarks</a></li>
+<li class="chapter" data-level="1.1.6" data-path="software-installation.html"><a href="software-installation.html#github"><i class="fa fa-check"></i><b>1.1.6</b> Github</a></li>
+<li class="chapter" data-level="1.1.7" data-path="software-installation.html"><a href="software-installation.html#backing-up-work"><i class="fa fa-check"></i><b>1.1.7</b> Backing up work</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.2</b> Learning Objectives</a></li>
 <li class="chapter" data-level="1.3" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.3</b> Coding conventions</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="coding-conventions.html"><a href="coding-conventions.html#assignment-with---vs"><i class="fa fa-check"></i><b>1.3.1</b> Assignment with <code>&lt;-</code> vs <code>=</code></a></li>
-<li class="chapter" data-level="1.3.2" data-path="coding-conventions.html"><a href="coding-conventions.html#underscore-_-vs-."><i class="fa fa-check"></i><b>1.3.2</b> Underscore <code>_</code> vs <code>.</code></a></li>
+<li class="chapter" data-level="1.3.1" data-path="coding-conventions.html"><a href="coding-conventions.html#exception-well-use-not---for-assignments"><i class="fa fa-check"></i><b>1.3.1</b> Exception: We’ll use <code>=</code> not <code>&lt;-</code> for assignments</a></li>
+<li class="chapter" data-level="1.3.2" data-path="coding-conventions.html"><a href="coding-conventions.html#exception-well-use-.-more-than-_-for-names"><i class="fa fa-check"></i><b>1.3.2</b> Exception: We’ll use <code>.</code> more than <code>_</code> for names</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="formatting-plots-with-pubtheme.html"><a href="formatting-plots-with-pubtheme.html"><i class="fa fa-check"></i><b>2</b> Formatting plots with <code>pubtheme</code></a>
@@ -190,189 +170,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="simple-example.html"><a href="simple-example.html"><i class="fa fa-check"></i><b>2.1</b> Simple Example</a></li>
 <li class="chapter" data-level="2.2" data-path="gallery.html"><a href="gallery.html"><i class="fa fa-check"></i><b>2.2</b> Gallery</a></li>
 </ul></li>
-<li class="part"><span><b>I Explore NBA data with <code>tidyverse</code></b></span></li>
-<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a>
+<li class="part"><span><b>I Random</b></span></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>4</b> Project development and planning</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="what-questions-can-we-ask.html"><a href="what-questions-can-we-ask.html"><i class="fa fa-check"></i><b>3.1</b> What questions can we ask?</a></li>
-<li class="chapter" data-level="3.2" data-path="intro-to-nba-games-data.html"><a href="intro-to-nba-games-data.html"><i class="fa fa-check"></i><b>3.2</b> Intro to NBA games data</a></li>
+<li class="chapter" data-level="4.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>4.1</b> Brainstorming, determining the end deliverables</a></li>
+<li class="chapter" data-level="4.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>4.2</b> Create a basic framework</a></li>
+<li class="chapter" data-level="4.3" data-path="backwards-planning.html"><a href="backwards-planning.html"><i class="fa fa-check"></i><b>4.3</b> Backwards planning</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="game-level-data.html"><a href="game-level-data.html"><i class="fa fa-check"></i><b>4</b> Game level data</a>
+<li class="chapter" data-level="5" data-path="data-acquistion.html"><a href="data-acquistion.html"><i class="fa fa-check"></i><b>5</b> Data acquistion</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="interactive-tables-with-dt.html"><a href="interactive-tables-with-dt.html"><i class="fa fa-check"></i><b>4.1</b> Interactive tables with <code>DT</code></a></li>
-<li class="chapter" data-level="4.2" data-path="recommended-options-with-dt.html"><a href="recommended-options-with-dt.html"><i class="fa fa-check"></i><b>4.2</b> Recommended options with <code>DT</code></a></li>
-<li class="chapter" data-level="4.3" data-path="previous-season-scoring-averages.html"><a href="previous-season-scoring-averages.html"><i class="fa fa-check"></i><b>4.3</b> Previous season scoring averages</a></li>
-<li class="chapter" data-level="4.4" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage</a></li>
-<li class="chapter" data-level="4.5" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.5</b> Home advantage by team</a></li>
-<li class="chapter" data-level="4.6" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.6</b> Points previous vs current season</a></li>
-<li class="chapter" data-level="4.7" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.7</b> Formatting with <code>pubtheme</code></a></li>
-<li class="chapter" data-level="4.8" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.8</b> Scoring vs stronger/weaker opponents</a></li>
+<li class="chapter" data-level="5.1" data-path="scrape-html-pages.html"><a href="scrape-html-pages.html"><i class="fa fa-check"></i><b>5.1</b> Scrape HTML pages</a></li>
+<li class="chapter" data-level="5.2" data-path="parsing-html-tables.html"><a href="parsing-html-tables.html"><i class="fa fa-check"></i><b>5.2</b> Parsing HTML tables</a></li>
+<li class="chapter" data-level="5.3" data-path="scraping-pages-that-require-log-in.html"><a href="scraping-pages-that-require-log-in.html"><i class="fa fa-check"></i><b>5.3</b> Scraping pages that require log-in</a></li>
+<li class="chapter" data-level="5.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>5.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
+<li class="chapter" data-level="5.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>5.5</b> Scrape PDFs</a></li>
+<li class="chapter" data-level="5.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>5.6</b> RSelenium, Docker</a></li>
+<li class="chapter" data-level="5.7" data-path="excel.html"><a href="excel.html"><i class="fa fa-check"></i><b>5.7</b> Excel</a></li>
+<li class="chapter" data-level="5.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>5.8</b> Census data with <code>tidycensus</code></a></li>
+<li class="chapter" data-level="5.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>5.9</b> JSON</a></li>
+<li class="chapter" data-level="5.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>5.10</b> Connecting to SQL databases</a></li>
+<li class="chapter" data-level="5.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>5.11</b> Shape files .shp</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="schedule-data.html"><a href="schedule-data.html"><i class="fa fa-check"></i><b>5</b> Schedule data</a>
+<li class="chapter" data-level="6" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>6</b> Data cleaning</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="schedule-matrix-grid-plot.html"><a href="schedule-matrix-grid-plot.html"><i class="fa fa-check"></i><b>5.1</b> Schedule matrix grid plot</a></li>
-<li class="chapter" data-level="5.2" data-path="order-character-vectors-using-factor.html"><a href="order-character-vectors-using-factor.html"><i class="fa fa-check"></i><b>5.2</b> Order character vectors using <code>factor</code></a></li>
-<li class="chapter" data-level="5.3" data-path="schedule-matrix-ordered-by-division.html"><a href="schedule-matrix-ordered-by-division.html"><i class="fa fa-check"></i><b>5.3</b> Schedule matrix, ordered by division</a></li>
-<li class="chapter" data-level="5.4" data-path="schedule-matrix-faceted-by-division.html"><a href="schedule-matrix-faceted-by-division.html"><i class="fa fa-check"></i><b>5.4</b> Schedule matrix, faceted by division</a></li>
-<li class="chapter" data-level="5.5" data-path="schedule-matrix-faceted-by-season.html"><a href="schedule-matrix-faceted-by-season.html"><i class="fa fa-check"></i><b>5.5</b> Schedule matrix faceted by season</a></li>
-<li class="chapter" data-level="5.6" data-path="animated-schedule-matrix.html"><a href="animated-schedule-matrix.html"><i class="fa fa-check"></i><b>5.6</b> Animated Schedule Matrix</a></li>
-<li class="chapter" data-level="5.7" data-path="animated-schedule-matrix-mlb-edition.html"><a href="animated-schedule-matrix-mlb-edition.html"><i class="fa fa-check"></i><b>5.7</b> Animated schedule matrix, MLB edition</a></li>
-<li class="chapter" data-level="5.8" data-path="days-rest-by-team.html"><a href="days-rest-by-team.html"><i class="fa fa-check"></i><b>5.8</b> Days rest by team</a></li>
-<li class="chapter" data-level="5.9" data-path="days-rest-and-game-outcomes.html"><a href="days-rest-and-game-outcomes.html"><i class="fa fa-check"></i><b>5.9</b> Days rest and game outcomes</a></li>
+<li class="chapter" data-level="6.1" data-path="recordlinkage.html"><a href="recordlinkage.html"><i class="fa fa-check"></i><b>6.1</b> RecordLinkage</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="recordlinkage.html"><a href="recordlinkage.html#example-data"><i class="fa fa-check"></i><b>6.1.1</b> Example data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="recordlinkage.html"><a href="recordlinkage.html#comparededup"><i class="fa fa-check"></i><b>6.1.2</b> Compare/Dedup</a></li>
+<li class="chapter" data-level="6.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>6.1.3</b> Attach names to IDs</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="travel-data.html"><a href="travel-data.html"><i class="fa fa-check"></i><b>6</b> Travel data</a>
+<li class="chapter" data-level="6.2" data-path="unnesting-lists.html"><a href="unnesting-lists.html"><i class="fa fa-check"></i><b>6.2</b> Unnesting lists</a></li>
+<li class="chapter" data-level="6.3" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>6.3</b> Data imputation</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="distance-matrix-grid-plot.html"><a href="distance-matrix-grid-plot.html"><i class="fa fa-check"></i><b>6.1</b> Distance matrix grid plot</a></li>
-<li class="chapter" data-level="6.2" data-path="total-distance-traveled-by-team.html"><a href="total-distance-traveled-by-team.html"><i class="fa fa-check"></i><b>6.2</b> Total distance traveled by team</a></li>
-<li class="chapter" data-level="6.3" data-path="travel-distance-and-game-outcomes.html"><a href="travel-distance-and-game-outcomes.html"><i class="fa fa-check"></i><b>6.3</b> Travel distance and game outcomes</a></li>
-<li class="chapter" data-level="6.4" data-path="travel-paths.html"><a href="travel-paths.html"><i class="fa fa-check"></i><b>6.4</b> Travel paths</a></li>
-<li class="chapter" data-level="6.5" data-path="travel-paths-weighted-by-trips.html"><a href="travel-paths-weighted-by-trips.html"><i class="fa fa-check"></i><b>6.5</b> Travel paths weighted by trips</a></li>
-<li class="chapter" data-level="6.6" data-path="travel-matrix.html"><a href="travel-matrix.html"><i class="fa fa-check"></i><b>6.6</b> Travel matrix</a></li>
+<li class="chapter" data-level="6.3.1" data-path="data-imputation.html"><a href="data-imputation.html#example-with-simulations"><i class="fa fa-check"></i><b>6.3.1</b> Example with simulations</a></li>
 </ul></li>
-<li class="part"><span><b>II Team ratings and game predictions using linear regression</b></span></li>
-<li class="chapter" data-level="7" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
-<li class="part"><span><b>III EV charging stations</b></span></li>
-<li class="chapter" data-level="8" data-path="explore-ev-charging-station-data.html"><a href="explore-ev-charging-station-data.html"><i class="fa fa-check"></i><b>8</b> Explore EV Charging Station data</a>
+<li class="chapter" data-level="6.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>6.4</b> Random useful functions</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="data-prepration.html"><a href="data-prepration.html"><i class="fa fa-check"></i><b>8.2</b> Data prepration</a></li>
-<li class="chapter" data-level="8.3" data-path="column-descriptions.html"><a href="column-descriptions.html"><i class="fa fa-check"></i><b>8.3</b> Column descriptions</a></li>
-<li class="chapter" data-level="8.4" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>8.4</b> Discussion</a></li>
+<li class="chapter" data-level="6.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>6.4.1</b> Formatting for display</a></li>
+<li class="chapter" data-level="6.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>6.4.2</b> Distance from point to line</a></li>
+<li class="chapter" data-level="6.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>6.4.3</b> Holidays</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>9</b> Maps</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="charging-stations-in-us-and-canada.html"><a href="charging-stations-in-us-and-canada.html"><i class="fa fa-check"></i><b>9.1</b> Charging Stations in US and Canada</a></li>
-<li class="chapter" data-level="9.2" data-path="level-2-and-level-3-stations.html"><a href="level-2-and-level-3-stations.html"><i class="fa fa-check"></i><b>9.2</b> Level 2 and Level 3 stations</a></li>
-<li class="chapter" data-level="9.3" data-path="level-2-charging-stations-by-network.html"><a href="level-2-charging-stations-by-network.html"><i class="fa fa-check"></i><b>9.3</b> Level 2 Charging Stations by Network</a></li>
-<li class="chapter" data-level="9.4" data-path="level-3-charging-stations-by-network.html"><a href="level-3-charging-stations-by-network.html"><i class="fa fa-check"></i><b>9.4</b> Level 3 Charging Stations by Network</a></li>
-<li class="chapter" data-level="9.5" data-path="create-a-month-year-column.html"><a href="create-a-month-year-column.html"><i class="fa fa-check"></i><b>9.5</b> Create a Month Year column</a></li>
-<li class="chapter" data-level="9.6" data-path="level-2-charging-stations-animation.html"><a href="level-2-charging-stations-animation.html"><i class="fa fa-check"></i><b>9.6</b> Level 2 Charging Stations Animation</a></li>
-<li class="chapter" data-level="9.7" data-path="level-3-charging-stations-animation.html"><a href="level-3-charging-stations-animation.html"><i class="fa fa-check"></i><b>9.7</b> Level 3 Charging Stations Animation</a></li>
-<li class="chapter" data-level="9.8" data-path="interative-map-with-leaflet.html"><a href="interative-map-with-leaflet.html"><i class="fa fa-check"></i><b>9.8</b> Interative map with Leaflet</a></li>
-<li class="chapter" data-level="9.9" data-path="plotting-stations-over-census-data.html"><a href="plotting-stations-over-census-data.html"><i class="fa fa-check"></i><b>9.9</b> Plotting stations over census data</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="growth-over-time.html"><a href="growth-over-time.html"><i class="fa fa-check"></i><b>10</b> Growth over time</a>
+<li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="level-2-cumulative-charging-stations-over-time.html"><a href="level-2-cumulative-charging-stations-over-time.html"><i class="fa fa-check"></i><b>10.1</b> Level 2 Cumulative Charging Stations Over Time</a></li>
-<li class="chapter" data-level="10.2" data-path="level-3-cumulative-charging-stations-over-time.html"><a href="level-3-cumulative-charging-stations-over-time.html"><i class="fa fa-check"></i><b>10.2</b> Level 3 Cumulative Charging Stations Over Time</a></li>
-<li class="chapter" data-level="10.3" data-path="level-3-cumulative-stations-line-animation.html"><a href="level-3-cumulative-stations-line-animation.html"><i class="fa fa-check"></i><b>10.3</b> Level 3 Cumulative Stations Line Animation</a></li>
+<li class="chapter" data-level="7.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>7.1</b> Esquisse</a></li>
+<li class="chapter" data-level="7.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>7.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="7.3" data-path="html-formatting-in-ggplot.html"><a href="html-formatting-in-ggplot.html"><i class="fa fa-check"></i><b>7.3</b> HTML formatting in ggplot</a></li>
+<li class="chapter" data-level="7.4" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>7.4</b> Leaflet</a></li>
+<li class="chapter" data-level="7.5" data-path="geom_polygon.html"><a href="geom_polygon.html"><i class="fa fa-check"></i><b>7.5</b> geom_polygon</a></li>
 </ul></li>
-<li class="part"><span><b>IV Random</b></span></li>
-<li class="chapter" data-level="11" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>11</b> Introduction</a></li>
-<li class="chapter" data-level="12" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>12</b> Project development and planning</a>
+<li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>12.1</b> Brainstorming, determining the end deliverables</a></li>
-<li class="chapter" data-level="12.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>12.2</b> Create a basic framework</a></li>
+<li class="chapter" data-level="8.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>8.1</b> Variable importance</a></li>
+<li class="chapter" data-level="8.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>8.2</b> Compariable observations</a></li>
+<li class="chapter" data-level="8.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>8.3</b> Other types of regression models</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html#multivariate-regression"><i class="fa fa-check"></i><b>8.3.1</b> Multivariate regression</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="data-acquistion.html"><a href="data-acquistion.html"><i class="fa fa-check"></i><b>13</b> Data acquistion</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="scrape-html-pages.html"><a href="scrape-html-pages.html"><i class="fa fa-check"></i><b>13.1</b> Scrape HTML pages</a></li>
-<li class="chapter" data-level="13.2" data-path="parsing-html-tables.html"><a href="parsing-html-tables.html"><i class="fa fa-check"></i><b>13.2</b> Parsing HTML tables</a></li>
-<li class="chapter" data-level="13.3" data-path="scraping-pages-that-require-log-in.html"><a href="scraping-pages-that-require-log-in.html"><i class="fa fa-check"></i><b>13.3</b> Scraping pages that require log-in</a></li>
-<li class="chapter" data-level="13.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>13.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
-<li class="chapter" data-level="13.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>13.5</b> Scrape PDFs</a></li>
-<li class="chapter" data-level="13.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>13.6</b> RSelenium, Docker</a></li>
-<li class="chapter" data-level="13.7" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>13.7</b> Census data with <code>tidycensus</code></a></li>
-<li class="chapter" data-level="13.8" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>13.8</b> Connecting to SQL databases</a></li>
+<li class="chapter" data-level="8.4" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>8.4</b> Time series</a></li>
+<li class="chapter" data-level="8.5" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>8.5</b> Calibration</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>14</b> Data cleaning</a>
+<li class="chapter" data-level="9" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>9</b> Bayesian estimates</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="recordlinkage.html"><a href="recordlinkage.html"><i class="fa fa-check"></i><b>14.1</b> RecordLinkage</a>
-<ul>
-<li class="chapter" data-level="14.1.1" data-path="recordlinkage.html"><a href="recordlinkage.html#example-data"><i class="fa fa-check"></i><b>14.1.1</b> Example data</a></li>
-<li class="chapter" data-level="14.1.2" data-path="recordlinkage.html"><a href="recordlinkage.html#comparededup"><i class="fa fa-check"></i><b>14.1.2</b> Compare/Dedup</a></li>
-<li class="chapter" data-level="14.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>14.1.3</b> Attach names to IDs</a></li>
+<li class="chapter" data-level="9.1" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>9.1</b> Beta-binomial</a></li>
+<li class="chapter" data-level="9.2" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>9.2</b> Normal</a></li>
+<li class="chapter" data-level="9.3" data-path="data-augmentation.html"><a href="data-augmentation.html"><i class="fa fa-check"></i><b>9.3</b> Data augmentation</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>14.2</b> Data imputation</a></li>
-<li class="chapter" data-level="14.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>14.3</b> Random useful functions</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>15</b> Data visualization</a>
+<li class="chapter" data-level="10" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>10</b> Simulating data</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>15.1</b> Esquisse</a></li>
-<li class="chapter" data-level="15.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>15.2</b> Animating normal PDFs</a></li>
-<li class="chapter" data-level="15.3" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>15.3</b> Leaflet</a></li>
+<li class="chapter" data-level="10.1" data-path="continuous-and-binary-predictors.html"><a href="continuous-and-binary-predictors.html"><i class="fa fa-check"></i><b>10.1</b> Continuous and binary predictors</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-regression-with-a-continuous-predictor.html"><a href="linear-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>10.2</b> Linear regression with a continuous predictor</a></li>
+<li class="chapter" data-level="10.3" data-path="poisson-regression-with-a-continuous-predictor.html"><a href="poisson-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>10.3</b> Poisson regression with a continuous predictor</a></li>
+<li class="chapter" data-level="10.4" data-path="linear-regression-with-an-extra-binary-predictor.html"><a href="linear-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>10.4</b> Linear regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="10.5" data-path="poisson-regression-with-an-extra-binary-predictor.html"><a href="poisson-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>10.5</b> Poisson regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="10.6" data-path="linear-regression-with-interaction.html"><a href="linear-regression-with-interaction.html"><i class="fa fa-check"></i><b>10.6</b> Linear regression with interaction</a></li>
+<li class="chapter" data-level="10.7" data-path="poisson-regression-with-interaction.html"><a href="poisson-regression-with-interaction.html"><i class="fa fa-check"></i><b>10.7</b> Poisson regression with interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>16</b> Analysis</a>
+<li class="chapter" data-level="11" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>11</b> Shiny</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>16.1</b> Variable importance</a></li>
-<li class="chapter" data-level="16.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>16.2</b> Compariable observations</a></li>
-<li class="chapter" data-level="16.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>16.3</b> Other types of regression models</a></li>
-<li class="chapter" data-level="16.4" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>16.4</b> Calibration</a></li>
+<li class="chapter" data-level="11.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>11.1</b> Getting started</a></li>
+<li class="chapter" data-level="11.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>11.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>11.2.1</b> Example App: CLT</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>17</b> Bayesian estimates</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>17.1</b> Beta-binomial</a></li>
-<li class="chapter" data-level="17.2" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>17.2</b> Normal</a></li>
+<li class="chapter" data-level="11.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>11.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="11.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>11.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="11.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>11.5</b> Save data generated from user inputs</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>18</b> Simulating data</a>
+<li class="chapter" data-level="12" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>12</b> Understanding how functions work</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="continuous-and-binary-predictors.html"><a href="continuous-and-binary-predictors.html"><i class="fa fa-check"></i><b>18.1</b> Continuous and binary predictors</a></li>
-<li class="chapter" data-level="18.2" data-path="linear-regression-with-a-continuous-predictor.html"><a href="linear-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>18.2</b> Linear regression with a continuous predictor</a></li>
-<li class="chapter" data-level="18.3" data-path="poisson-regression-with-a-continuous-predictor.html"><a href="poisson-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>18.3</b> Poisson regression with a continuous predictor</a></li>
-<li class="chapter" data-level="18.4" data-path="linear-regression-with-an-extra-binary-predictor.html"><a href="linear-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>18.4</b> Linear regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="18.5" data-path="poisson-regression-with-an-extra-binary-predictor.html"><a href="poisson-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>18.5</b> Poisson regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="18.6" data-path="linear-regression-with-interaction.html"><a href="linear-regression-with-interaction.html"><i class="fa fa-check"></i><b>18.6</b> Linear regression with interaction</a></li>
-<li class="chapter" data-level="18.7" data-path="poisson-regression-with-interaction.html"><a href="poisson-regression-with-interaction.html"><i class="fa fa-check"></i><b>18.7</b> Poisson regression with interaction</a></li>
+<li class="chapter" data-level="12.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>12.1</b> Help</a></li>
+<li class="chapter" data-level="12.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>12.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>12.2.1</b> Generic functions</a></li>
+<li class="chapter" data-level="12.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>12.2.2</b> <code>methods</code></a></li>
+<li class="chapter" data-level="12.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>12.2.3</b> <code>getAnywhere</code></a></li>
+<li class="chapter" data-level="12.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>12.2.4</b> Other resources</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>19</b> Shiny</a>
-<ul>
-<li class="chapter" data-level="19.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>19.1</b> Getting started</a></li>
-<li class="chapter" data-level="19.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>19.2</b> Dynamic UI</a>
-<ul>
-<li class="chapter" data-level="19.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>19.2.1</b> Example App: CLT</a></li>
+<li class="chapter" data-level="12.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>12.3</b> Functions with unquoted arguments</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>19.3</b> Click leaflet map</a></li>
-<li class="chapter" data-level="19.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>19.4</b> Draw a shape on a leaflet map</a></li>
-<li class="chapter" data-level="19.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>19.5</b> Save data generated from user inputs</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>20</b> Understanding how functions work</a>
+<li class="chapter" data-level="13" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>13</b> Debugging</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>20.1</b> Help</a></li>
-<li class="chapter" data-level="20.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>20.2</b> Code</a>
-<ul>
-<li class="chapter" data-level="20.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>20.2.1</b> Generic functions</a></li>
-<li class="chapter" data-level="20.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>20.2.2</b> <code>methods</code></a></li>
-<li class="chapter" data-level="20.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>20.2.3</b> <code>getAnywhere</code></a></li>
-<li class="chapter" data-level="20.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>20.2.4</b> Other resources</a></li>
+<li class="chapter" data-level="13.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>13.1</b> <code>browser()</code></a></li>
+<li class="chapter" data-level="13.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>13.2</b> <code>debug</code>, <code>debugonce</code></a></li>
 </ul></li>
-<li class="chapter" data-level="20.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>20.3</b> Functions with unquoted arguments</a></li>
-</ul></li>
-<li class="chapter" data-level="21" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>21</b> Debugging</a>
+<li class="chapter" data-level="14" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>14</b> Testing</a></li>
+<li class="chapter" data-level="15" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>15</b> For loops</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>21.1</b> <code>browser()</code></a></li>
-<li class="chapter" data-level="21.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>21.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+<li class="chapter" data-level="15.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>15.1</b> Showing progress</a></li>
+<li class="chapter" data-level="15.2" data-path="parallel-processing-with-foreach.html"><a href="parallel-processing-with-foreach.html"><i class="fa fa-check"></i><b>15.2</b> Parallel processing with <code>foreach</code></a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>22</b> Testing</a></li>
-<li class="chapter" data-level="23" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>23</b> For loops</a>
+<li class="chapter" data-level="16" data-path="efficient-programming.html"><a href="efficient-programming.html"><i class="fa fa-check"></i><b>16</b> Efficient Programming</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>23.1</b> Showing progress</a></li>
-<li class="chapter" data-level="23.2" data-path="parallel-processing-with-foreach.html"><a href="parallel-processing-with-foreach.html"><i class="fa fa-check"></i><b>23.2</b> Parallel processing with <code>foreach</code></a></li>
+<li class="chapter" data-level="16.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>16.1</b> Efficient R Programming online book</a></li>
+<li class="chapter" data-level="16.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>16.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="efficient-programming.html"><a href="efficient-programming.html"><i class="fa fa-check"></i><b>24</b> Efficient Programming</a>
+<li class="chapter" data-level="17" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>17</b> Intro Prob/Stat</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>24.1</b> Efficient R Programming online book</a></li>
-<li class="chapter" data-level="24.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>24.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+<li class="chapter" data-level="17.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>17.1</b> Poisson approximates binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>25</b> Other</a>
+<li class="chapter" data-level="18" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>18</b> Other</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="minimal-reproducible-examples.html"><a href="minimal-reproducible-examples.html"><i class="fa fa-check"></i><b>25.1</b> Minimal reproducible examples</a></li>
-<li class="chapter" data-level="25.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>25.2</b> Accessible Documents</a></li>
-<li class="chapter" data-level="25.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>25.3</b> Math symbols in plots</a></li>
-<li class="chapter" data-level="25.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>25.4</b> Writing R packages</a></li>
-<li class="chapter" data-level="25.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>25.5</b> Blogdown</a></li>
-<li class="chapter" data-level="25.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>25.6</b> Bookdown</a></li>
-<li class="chapter" data-level="25.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>25.7</b> Quarto</a></li>
-<li class="chapter" data-level="25.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>25.8</b> Multiple authors in R Markdown</a></li>
-<li class="chapter" data-level="25.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>25.9</b> Read pixel values of images</a></li>
-<li class="chapter" data-level="25.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>25.10</b> Cloud</a></li>
+<li class="chapter" data-level="18.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>18.1</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="18.2" data-path="minimal-reproducible-examples.html"><a href="minimal-reproducible-examples.html"><i class="fa fa-check"></i><b>18.2</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="18.3" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>18.3</b> Accessible Documents</a></li>
+<li class="chapter" data-level="18.4" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>18.4</b> Github Actions</a></li>
+<li class="chapter" data-level="18.5" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>18.5</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="18.6" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>18.6</b> Writing R packages</a></li>
+<li class="chapter" data-level="18.7" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>18.7</b> Blogdown</a></li>
+<li class="chapter" data-level="18.8" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>18.8</b> Bookdown</a></li>
+<li class="chapter" data-level="18.9" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>18.9</b> Quarto</a></li>
+<li class="chapter" data-level="18.10" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>18.10</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="18.11" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>18.11</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="18.12" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>18.12</b> Cloud</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>26</b> Not data science</a>
+<li class="chapter" data-level="19" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>19</b> Not data science</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>26.1</b> Dollar cost averaging example</a></li>
+<li class="chapter" data-level="19.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>19.1</b> Dollar cost averaging example</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="intro-to-nba-games-data-1.html"><a href="intro-to-nba-games-data-1.html"><i class="fa fa-check"></i><b>A.1</b> Intro to NBA games data</a></li>
+<li class="chapter" data-level="A.1" data-path="intro-to-nba-games-data.html"><a href="intro-to-nba-games-data.html"><i class="fa fa-check"></i><b>A.1</b> Intro to NBA games data</a></li>
 <li class="chapter" data-level="A.2" data-path="choosing-rows-with-filter.html"><a href="choosing-rows-with-filter.html"><i class="fa fa-check"></i><b>A.2</b> Choosing rows with <code>filter</code></a></li>
 <li class="chapter" data-level="A.3" data-path="pipe-operator.html"><a href="pipe-operator.html"><i class="fa fa-check"></i><b>A.3</b> Pipe Operator</a></li>
 <li class="chapter" data-level="A.4" data-path="choosing-columns-with-select.html"><a href="choosing-columns-with-select.html"><i class="fa fa-check"></i><b>A.4</b> Choosing columns with <code>select</code></a></li>
@@ -408,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="B.16" data-path="line-plot-with-geom_line.html"><a href="line-plot-with-geom_line.html"><i class="fa fa-check"></i><b>B.16</b> Line plot with <code>geom_line</code></a></li>
 <li class="chapter" data-level="B.17" data-path="grid-plot-with-geom_tile.html"><a href="grid-plot-with-geom_tile.html"><i class="fa fa-check"></i><b>B.17</b> Grid plot with <code>geom_tile</code></a></li>
 <li class="chapter" data-level="B.18" data-path="customizing-with-theme.html"><a href="customizing-with-theme.html"><i class="fa fa-check"></i><b>B.18</b> Customizing with <code>theme</code></a></li>
-<li class="chapter" data-level="B.19" data-path="maps-1.html"><a href="maps-1.html"><i class="fa fa-check"></i><b>B.19</b> Maps</a></li>
+<li class="chapter" data-level="B.19" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>B.19</b> Maps</a></li>
 <li class="chapter" data-level="B.20" data-path="quick-interactive-plots-with-ggplotly.html"><a href="quick-interactive-plots-with-ggplotly.html"><i class="fa fa-check"></i><b>B.20</b> Quick interactive plots with <code>ggplotly</code></a></li>
 <li class="chapter" data-level="B.21" data-path="for-more-information-1.html"><a href="for-more-information-1.html"><i class="fa fa-check"></i><b>B.21</b> For more information</a></li>
 </ul></li>
@@ -432,8 +372,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="minimal-reproducible-examples" class="section level2 hasAnchor" number="25.1">
-<h2><span class="header-section-number">25.1</span> Minimal reproducible examples<a href="minimal-reproducible-examples.html#minimal-reproducible-examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="minimal-reproducible-examples" class="section level2 hasAnchor" number="18.2">
+<h2><span class="header-section-number">18.2</span> Minimal reproducible examples<a href="minimal-reproducible-examples.html#minimal-reproducible-examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When asking someone for help in an email, on Slack, on Github, on a discussion board (e.g. stackoverflow.com), etc., use a minimal reproducible example. Here is the Stack Overflow page on the topic: <a href="https://stackoverflow.com/help/minimal-reproducible-example" class="uri">https://stackoverflow.com/help/minimal-reproducible-example</a></p>
 <ul>
 <li>Minimal: Use as little code as necessary that still results in the error</li>
@@ -441,99 +381,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Here is an example. Suppose you are working on a schedule matrix and have this code:</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb243-1"><a href="minimal-reproducible-examples.html#cb243-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/games.rds&#39;</span>)</span>
-<span id="cb243-2"><a href="minimal-reproducible-examples.html#cb243-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-3"><a href="minimal-reproducible-examples.html#cb243-3" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
-<span id="cb243-4"><a href="minimal-reproducible-examples.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lg <span class="sc">==</span> <span class="st">&#39;nba&#39;</span>, </span>
-<span id="cb243-5"><a href="minimal-reproducible-examples.html#cb243-5" aria-hidden="true" tabindex="-1"></a>         season <span class="sc">%in%</span> <span class="dv">2022</span>, </span>
-<span id="cb243-6"><a href="minimal-reproducible-examples.html#cb243-6" aria-hidden="true" tabindex="-1"></a>         season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb243-7"><a href="minimal-reproducible-examples.html#cb243-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(away, </span>
-<span id="cb243-8"><a href="minimal-reproducible-examples.html#cb243-8" aria-hidden="true" tabindex="-1"></a>           home, </span>
-<span id="cb243-9"><a href="minimal-reproducible-examples.html#cb243-9" aria-hidden="true" tabindex="-1"></a>           season) <span class="sc">%&gt;%</span></span>
-<span id="cb243-10"><a href="minimal-reproducible-examples.html#cb243-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">games =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb243-11"><a href="minimal-reproducible-examples.html#cb243-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb243-12"><a href="minimal-reproducible-examples.html#cb243-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(away, </span>
-<span id="cb243-13"><a href="minimal-reproducible-examples.html#cb243-13" aria-hidden="true" tabindex="-1"></a>           home, </span>
-<span id="cb243-14"><a href="minimal-reproducible-examples.html#cb243-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">games =</span> <span class="dv">0</span>))</span>
-<span id="cb243-15"><a href="minimal-reproducible-examples.html#cb243-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-16"><a href="minimal-reproducible-examples.html#cb243-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span>
-<span id="cb243-17"><a href="minimal-reproducible-examples.html#cb243-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-18"><a href="minimal-reproducible-examples.html#cb243-18" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
-<span id="cb243-19"><a href="minimal-reproducible-examples.html#cb243-19" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb243-20"><a href="minimal-reproducible-examples.html#cb243-20" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home,</span>
-<span id="cb243-21"><a href="minimal-reproducible-examples.html#cb243-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
-<span id="cb243-22"><a href="minimal-reproducible-examples.html#cb243-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
-<span id="cb243-23"><a href="minimal-reproducible-examples.html#cb243-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
-<span id="cb243-24"><a href="minimal-reproducible-examples.html#cb243-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
-<span id="cb243-25"><a href="minimal-reproducible-examples.html#cb243-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> <span class="do">## used char above so leg is discrete</span></span>
-<span id="cb243-26"><a href="minimal-reproducible-examples.html#cb243-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
-<span id="cb243-27"><a href="minimal-reproducible-examples.html#cb243-27" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
-<span id="cb243-28"><a href="minimal-reproducible-examples.html#cb243-28" aria-hidden="true" tabindex="-1"></a>                               pubred)) <span class="sc">+</span></span>
-<span id="cb243-29"><a href="minimal-reproducible-examples.html#cb243-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
-<span id="cb243-30"><a href="minimal-reproducible-examples.html#cb243-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Home Team&#39;</span>, </span>
-<span id="cb243-31"><a href="minimal-reproducible-examples.html#cb243-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Away Team&#39;</span>)</span>
-<span id="cb243-32"><a href="minimal-reproducible-examples.html#cb243-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-33"><a href="minimal-reproducible-examples.html#cb243-33" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span></span>
-<span id="cb243-34"><a href="minimal-reproducible-examples.html#cb243-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;grid&#39;</span>) <span class="sc">+</span></span>
-<span id="cb243-35"><a href="minimal-reproducible-examples.html#cb243-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x.top =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, </span>
-<span id="cb243-36"><a href="minimal-reproducible-examples.html#cb243-36" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">vjust =</span> .<span class="dv">5</span>,</span>
-<span id="cb243-37"><a href="minimal-reproducible-examples.html#cb243-37" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">hjust =</span> <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb127-1"><a href="minimal-reproducible-examples.html#cb127-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/games.rds&#39;</span>)</span>
+<span id="cb127-2"><a href="minimal-reproducible-examples.html#cb127-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-3"><a href="minimal-reproducible-examples.html#cb127-3" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb127-4"><a href="minimal-reproducible-examples.html#cb127-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lg <span class="sc">==</span> <span class="st">&#39;nba&#39;</span>, </span>
+<span id="cb127-5"><a href="minimal-reproducible-examples.html#cb127-5" aria-hidden="true" tabindex="-1"></a>         season <span class="sc">%in%</span> <span class="dv">2022</span>, </span>
+<span id="cb127-6"><a href="minimal-reproducible-examples.html#cb127-6" aria-hidden="true" tabindex="-1"></a>         season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb127-7"><a href="minimal-reproducible-examples.html#cb127-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(away, </span>
+<span id="cb127-8"><a href="minimal-reproducible-examples.html#cb127-8" aria-hidden="true" tabindex="-1"></a>           home, </span>
+<span id="cb127-9"><a href="minimal-reproducible-examples.html#cb127-9" aria-hidden="true" tabindex="-1"></a>           season) <span class="sc">%&gt;%</span></span>
+<span id="cb127-10"><a href="minimal-reproducible-examples.html#cb127-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">games =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb127-11"><a href="minimal-reproducible-examples.html#cb127-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb127-12"><a href="minimal-reproducible-examples.html#cb127-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(away, </span>
+<span id="cb127-13"><a href="minimal-reproducible-examples.html#cb127-13" aria-hidden="true" tabindex="-1"></a>           home, </span>
+<span id="cb127-14"><a href="minimal-reproducible-examples.html#cb127-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">games =</span> <span class="dv">0</span>))</span>
+<span id="cb127-15"><a href="minimal-reproducible-examples.html#cb127-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-16"><a href="minimal-reproducible-examples.html#cb127-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span>
+<span id="cb127-17"><a href="minimal-reproducible-examples.html#cb127-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-18"><a href="minimal-reproducible-examples.html#cb127-18" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
+<span id="cb127-19"><a href="minimal-reproducible-examples.html#cb127-19" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb127-20"><a href="minimal-reproducible-examples.html#cb127-20" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home,</span>
+<span id="cb127-21"><a href="minimal-reproducible-examples.html#cb127-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
+<span id="cb127-22"><a href="minimal-reproducible-examples.html#cb127-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
+<span id="cb127-23"><a href="minimal-reproducible-examples.html#cb127-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
+<span id="cb127-24"><a href="minimal-reproducible-examples.html#cb127-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
+<span id="cb127-25"><a href="minimal-reproducible-examples.html#cb127-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> <span class="do">## used char above so leg is discrete</span></span>
+<span id="cb127-26"><a href="minimal-reproducible-examples.html#cb127-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
+<span id="cb127-27"><a href="minimal-reproducible-examples.html#cb127-27" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
+<span id="cb127-28"><a href="minimal-reproducible-examples.html#cb127-28" aria-hidden="true" tabindex="-1"></a>                               pubred)) <span class="sc">+</span></span>
+<span id="cb127-29"><a href="minimal-reproducible-examples.html#cb127-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
+<span id="cb127-30"><a href="minimal-reproducible-examples.html#cb127-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Home Team&#39;</span>, </span>
+<span id="cb127-31"><a href="minimal-reproducible-examples.html#cb127-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Away Team&#39;</span>)</span>
+<span id="cb127-32"><a href="minimal-reproducible-examples.html#cb127-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-33"><a href="minimal-reproducible-examples.html#cb127-33" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span></span>
+<span id="cb127-34"><a href="minimal-reproducible-examples.html#cb127-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;grid&#39;</span>) <span class="sc">+</span></span>
+<span id="cb127-35"><a href="minimal-reproducible-examples.html#cb127-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x.top =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb127-36"><a href="minimal-reproducible-examples.html#cb127-36" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">vjust =</span> .<span class="dv">5</span>,</span>
+<span id="cb127-37"><a href="minimal-reproducible-examples.html#cb127-37" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">hjust =</span> <span class="dv">0</span>))</span></code></pre></div>
 </details>
 <p>This results in the error <code>Error: Continuous value supplied to discrete scale</code>. Suppose we want help on this error. If the person we are asking has the <code>games.rds</code> data, then we can start stripping down the <code>ggplot</code> code as much as possible until we still have the error. Most lines of code can be removed because they are unrelated to the error. You can start commenting out one line at a time. This still gives the same error:</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb244-1"><a href="minimal-reproducible-examples.html#cb244-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
-<span id="cb244-2"><a href="minimal-reproducible-examples.html#cb244-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb244-3"><a href="minimal-reproducible-examples.html#cb244-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
-<span id="cb244-4"><a href="minimal-reproducible-examples.html#cb244-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
-<span id="cb244-5"><a href="minimal-reproducible-examples.html#cb244-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
-<span id="cb244-6"><a href="minimal-reproducible-examples.html#cb244-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
-<span id="cb244-7"><a href="minimal-reproducible-examples.html#cb244-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
-<span id="cb244-8"><a href="minimal-reproducible-examples.html#cb244-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> </span>
-<span id="cb244-9"><a href="minimal-reproducible-examples.html#cb244-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
-<span id="cb244-10"><a href="minimal-reproducible-examples.html#cb244-10" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
-<span id="cb244-11"><a href="minimal-reproducible-examples.html#cb244-11" aria-hidden="true" tabindex="-1"></a>                               pubred)) <span class="co">#+</span></span>
-<span id="cb244-12"><a href="minimal-reproducible-examples.html#cb244-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># labs(title    = title,</span></span>
-<span id="cb244-13"><a href="minimal-reproducible-examples.html#cb244-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#      x = &#39;Home Team&#39;, </span></span>
-<span id="cb244-14"><a href="minimal-reproducible-examples.html#cb244-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#      y = &#39;Away Team&#39;)  </span></span>
-<span id="cb244-15"><a href="minimal-reproducible-examples.html#cb244-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb244-16"><a href="minimal-reproducible-examples.html#cb244-16" aria-hidden="true" tabindex="-1"></a><span class="co"># g %&gt;%</span></span>
-<span id="cb244-17"><a href="minimal-reproducible-examples.html#cb244-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   pub(type = &#39;grid&#39;) +</span></span>
-<span id="cb244-18"><a href="minimal-reproducible-examples.html#cb244-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme(axis.text.x.top = element_text(angle = 90, </span></span>
-<span id="cb244-19"><a href="minimal-reproducible-examples.html#cb244-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                                        vjust = .5,</span></span>
-<span id="cb244-20"><a href="minimal-reproducible-examples.html#cb244-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                                        hjust = 0))</span></span>
-<span id="cb244-21"><a href="minimal-reproducible-examples.html#cb244-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-22"><a href="minimal-reproducible-examples.html#cb244-22" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb128-1"><a href="minimal-reproducible-examples.html#cb128-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
+<span id="cb128-2"><a href="minimal-reproducible-examples.html#cb128-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb128-3"><a href="minimal-reproducible-examples.html#cb128-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
+<span id="cb128-4"><a href="minimal-reproducible-examples.html#cb128-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
+<span id="cb128-5"><a href="minimal-reproducible-examples.html#cb128-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
+<span id="cb128-6"><a href="minimal-reproducible-examples.html#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
+<span id="cb128-7"><a href="minimal-reproducible-examples.html#cb128-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
+<span id="cb128-8"><a href="minimal-reproducible-examples.html#cb128-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> </span>
+<span id="cb128-9"><a href="minimal-reproducible-examples.html#cb128-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
+<span id="cb128-10"><a href="minimal-reproducible-examples.html#cb128-10" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
+<span id="cb128-11"><a href="minimal-reproducible-examples.html#cb128-11" aria-hidden="true" tabindex="-1"></a>                               pubred)) <span class="co">#+</span></span>
+<span id="cb128-12"><a href="minimal-reproducible-examples.html#cb128-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># labs(title    = title,</span></span>
+<span id="cb128-13"><a href="minimal-reproducible-examples.html#cb128-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#      x = &#39;Home Team&#39;, </span></span>
+<span id="cb128-14"><a href="minimal-reproducible-examples.html#cb128-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#      y = &#39;Away Team&#39;)  </span></span>
+<span id="cb128-15"><a href="minimal-reproducible-examples.html#cb128-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb128-16"><a href="minimal-reproducible-examples.html#cb128-16" aria-hidden="true" tabindex="-1"></a><span class="co"># g %&gt;%</span></span>
+<span id="cb128-17"><a href="minimal-reproducible-examples.html#cb128-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   pub(type = &#39;grid&#39;) +</span></span>
+<span id="cb128-18"><a href="minimal-reproducible-examples.html#cb128-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme(axis.text.x.top = element_text(angle = 90, </span></span>
+<span id="cb128-19"><a href="minimal-reproducible-examples.html#cb128-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                                        vjust = .5,</span></span>
+<span id="cb128-20"><a href="minimal-reproducible-examples.html#cb128-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                                        hjust = 0))</span></span>
+<span id="cb128-21"><a href="minimal-reproducible-examples.html#cb128-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-22"><a href="minimal-reproducible-examples.html#cb128-22" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
 </details>
 <p>So we can delete those lines of code. If we remove <code>scale_fill_manual</code> the error goes away, so we have to keep that in.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb245-1"><a href="minimal-reproducible-examples.html#cb245-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb245-2"><a href="minimal-reproducible-examples.html#cb245-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
-<span id="cb245-3"><a href="minimal-reproducible-examples.html#cb245-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
-<span id="cb245-4"><a href="minimal-reproducible-examples.html#cb245-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
-<span id="cb245-5"><a href="minimal-reproducible-examples.html#cb245-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
-<span id="cb245-6"><a href="minimal-reproducible-examples.html#cb245-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
-<span id="cb245-7"><a href="minimal-reproducible-examples.html#cb245-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> </span>
-<span id="cb245-8"><a href="minimal-reproducible-examples.html#cb245-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
-<span id="cb245-9"><a href="minimal-reproducible-examples.html#cb245-9" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
-<span id="cb245-10"><a href="minimal-reproducible-examples.html#cb245-10" aria-hidden="true" tabindex="-1"></a>                               pubred)) </span>
-<span id="cb245-11"><a href="minimal-reproducible-examples.html#cb245-11" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb129-1"><a href="minimal-reproducible-examples.html#cb129-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb129-2"><a href="minimal-reproducible-examples.html#cb129-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
+<span id="cb129-3"><a href="minimal-reproducible-examples.html#cb129-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
+<span id="cb129-4"><a href="minimal-reproducible-examples.html#cb129-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
+<span id="cb129-5"><a href="minimal-reproducible-examples.html#cb129-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
+<span id="cb129-6"><a href="minimal-reproducible-examples.html#cb129-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
+<span id="cb129-7"><a href="minimal-reproducible-examples.html#cb129-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> </span>
+<span id="cb129-8"><a href="minimal-reproducible-examples.html#cb129-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
+<span id="cb129-9"><a href="minimal-reproducible-examples.html#cb129-9" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
+<span id="cb129-10"><a href="minimal-reproducible-examples.html#cb129-10" aria-hidden="true" tabindex="-1"></a>                               pubred)) </span>
+<span id="cb129-11"><a href="minimal-reproducible-examples.html#cb129-11" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
 </details>
 <p>We can also try getting rid of some of the arguments, like <code>linewidth</code>, <code>show.legend</code>, <code>color</code>, and we still get the error. Also, we can change the colors <code>pubbackgray</code>, <code>publightred</code>, and <code>pubred</code> to <code>'gray</code>’, <code>'lightpink'</code>, and <code>'red'</code> which come with <code>R</code> and don’t require the <code>pubtheme</code> package.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb246-1"><a href="minimal-reproducible-examples.html#cb246-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb246-2"><a href="minimal-reproducible-examples.html#cb246-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
-<span id="cb246-3"><a href="minimal-reproducible-examples.html#cb246-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
-<span id="cb246-4"><a href="minimal-reproducible-examples.html#cb246-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
-<span id="cb246-5"><a href="minimal-reproducible-examples.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
-<span id="cb246-6"><a href="minimal-reproducible-examples.html#cb246-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;gray&#39;</span>, </span>
-<span id="cb246-7"><a href="minimal-reproducible-examples.html#cb246-7" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;lightpink&#39;</span>, </span>
-<span id="cb246-8"><a href="minimal-reproducible-examples.html#cb246-8" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;red&#39;</span>)) </span>
-<span id="cb246-9"><a href="minimal-reproducible-examples.html#cb246-9" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb130-1"><a href="minimal-reproducible-examples.html#cb130-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb130-2"><a href="minimal-reproducible-examples.html#cb130-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
+<span id="cb130-3"><a href="minimal-reproducible-examples.html#cb130-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
+<span id="cb130-4"><a href="minimal-reproducible-examples.html#cb130-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
+<span id="cb130-5"><a href="minimal-reproducible-examples.html#cb130-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb130-6"><a href="minimal-reproducible-examples.html#cb130-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;gray&#39;</span>, </span>
+<span id="cb130-7"><a href="minimal-reproducible-examples.html#cb130-7" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;lightpink&#39;</span>, </span>
+<span id="cb130-8"><a href="minimal-reproducible-examples.html#cb130-8" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;red&#39;</span>)) </span>
+<span id="cb130-9"><a href="minimal-reproducible-examples.html#cb130-9" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
 </details>
 <p>That is about all we can remove and still get the error. So if the person we are asking the question to has this data, they can copy/paste this code to their own computer and reproduce the error.</p>
 <p>If the person we are asking doesn’t have the data, then we should use a widely available data set. The <code>mtcars</code> data is available to anyone with <code>R</code> and can be used here.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb247-1"><a href="minimal-reproducible-examples.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb131-1"><a href="minimal-reproducible-examples.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 </details>
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -543,30 +483,30 @@ Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb249-1"><a href="minimal-reproducible-examples.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb249-2"><a href="minimal-reproducible-examples.html#cb249-2" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb249-3"><a href="minimal-reproducible-examples.html#cb249-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, vs) <span class="sc">%&gt;%</span></span>
-<span id="cb249-4"><a href="minimal-reproducible-examples.html#cb249-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mpg =</span> <span class="fu">mean</span>(mpg), </span>
-<span id="cb249-5"><a href="minimal-reproducible-examples.html#cb249-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
-<span id="cb249-6"><a href="minimal-reproducible-examples.html#cb249-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span>
-<span id="cb249-7"><a href="minimal-reproducible-examples.html#cb249-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb249-8"><a href="minimal-reproducible-examples.html#cb249-8" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> cyl, </span>
-<span id="cb249-9"><a href="minimal-reproducible-examples.html#cb249-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> vs,</span>
-<span id="cb249-10"><a href="minimal-reproducible-examples.html#cb249-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> mpg))<span class="sc">+</span> </span>
-<span id="cb249-11"><a href="minimal-reproducible-examples.html#cb249-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
-<span id="cb249-12"><a href="minimal-reproducible-examples.html#cb249-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;gray&#39;</span>, </span>
-<span id="cb249-13"><a href="minimal-reproducible-examples.html#cb249-13" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;lightpink&#39;</span>, </span>
-<span id="cb249-14"><a href="minimal-reproducible-examples.html#cb249-14" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;red&#39;</span>))</span>
-<span id="cb249-15"><a href="minimal-reproducible-examples.html#cb249-15" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb133-1"><a href="minimal-reproducible-examples.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb133-2"><a href="minimal-reproducible-examples.html#cb133-2" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb133-3"><a href="minimal-reproducible-examples.html#cb133-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, vs) <span class="sc">%&gt;%</span></span>
+<span id="cb133-4"><a href="minimal-reproducible-examples.html#cb133-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mpg =</span> <span class="fu">mean</span>(mpg), </span>
+<span id="cb133-5"><a href="minimal-reproducible-examples.html#cb133-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
+<span id="cb133-6"><a href="minimal-reproducible-examples.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span>
+<span id="cb133-7"><a href="minimal-reproducible-examples.html#cb133-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-8"><a href="minimal-reproducible-examples.html#cb133-8" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> cyl, </span>
+<span id="cb133-9"><a href="minimal-reproducible-examples.html#cb133-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> vs,</span>
+<span id="cb133-10"><a href="minimal-reproducible-examples.html#cb133-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> mpg))<span class="sc">+</span> </span>
+<span id="cb133-11"><a href="minimal-reproducible-examples.html#cb133-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb133-12"><a href="minimal-reproducible-examples.html#cb133-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;gray&#39;</span>, </span>
+<span id="cb133-13"><a href="minimal-reproducible-examples.html#cb133-13" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;lightpink&#39;</span>, </span>
+<span id="cb133-14"><a href="minimal-reproducible-examples.html#cb133-14" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&#39;red&#39;</span>))</span>
+<span id="cb133-15"><a href="minimal-reproducible-examples.html#cb133-15" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
 </details>
 <p>Anyone, regardless of whether they have your data set, can copy/paste this code to diagnose. They will hopefully notice that <code>mpg</code>, the variable chosen to <code>fill</code> by, is continuous, while <code>scale_fill_manual</code> applies to discrete color scales. You’d have to use a continuous color scale with the continuous variable <code>mpg</code>. Something like this works:</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb250-1"><a href="minimal-reproducible-examples.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb250-2"><a href="minimal-reproducible-examples.html#cb250-2" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb250-3"><a href="minimal-reproducible-examples.html#cb250-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, vs) <span class="sc">%&gt;%</span></span>
-<span id="cb250-4"><a href="minimal-reproducible-examples.html#cb250-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mpg =</span> <span class="fu">mean</span>(mpg), </span>
-<span id="cb250-5"><a href="minimal-reproducible-examples.html#cb250-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
-<span id="cb250-6"><a href="minimal-reproducible-examples.html#cb250-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb134-1"><a href="minimal-reproducible-examples.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb134-2"><a href="minimal-reproducible-examples.html#cb134-2" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb134-3"><a href="minimal-reproducible-examples.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, vs) <span class="sc">%&gt;%</span></span>
+<span id="cb134-4"><a href="minimal-reproducible-examples.html#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mpg =</span> <span class="fu">mean</span>(mpg), </span>
+<span id="cb134-5"><a href="minimal-reproducible-examples.html#cb134-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
+<span id="cb134-6"><a href="minimal-reproducible-examples.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span></code></pre></div>
 </details>
 <pre><code># A tibble: 5 × 3
 # Groups:   cyl, vs [5]
@@ -578,33 +518,33 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 4     6     1  19.1
 5     8     0  15.1</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb252-1"><a href="minimal-reproducible-examples.html#cb252-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb252-2"><a href="minimal-reproducible-examples.html#cb252-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> cyl, </span>
-<span id="cb252-3"><a href="minimal-reproducible-examples.html#cb252-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> vs, </span>
-<span id="cb252-4"><a href="minimal-reproducible-examples.html#cb252-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> mpg))<span class="sc">+</span> </span>
-<span id="cb252-5"><a href="minimal-reproducible-examples.html#cb252-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
-<span id="cb252-6"><a href="minimal-reproducible-examples.html#cb252-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&#39;gray&#39;</span>, </span>
-<span id="cb252-7"><a href="minimal-reproducible-examples.html#cb252-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb252-8"><a href="minimal-reproducible-examples.html#cb252-8" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb136-1"><a href="minimal-reproducible-examples.html#cb136-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb136-2"><a href="minimal-reproducible-examples.html#cb136-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> cyl, </span>
+<span id="cb136-3"><a href="minimal-reproducible-examples.html#cb136-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> vs, </span>
+<span id="cb136-4"><a href="minimal-reproducible-examples.html#cb136-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> mpg))<span class="sc">+</span> </span>
+<span id="cb136-5"><a href="minimal-reproducible-examples.html#cb136-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb136-6"><a href="minimal-reproducible-examples.html#cb136-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&#39;gray&#39;</span>, </span>
+<span id="cb136-7"><a href="minimal-reproducible-examples.html#cb136-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb136-8"><a href="minimal-reproducible-examples.html#cb136-8" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-127-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Now that we know how we can fix the error, let’s go back to our original plot and replace <code>scale_fill_manual</code> with <code>scale_fill_gradient</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb253-1"><a href="minimal-reproducible-examples.html#cb253-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/games.rds&#39;</span>)</span>
-<span id="cb253-2"><a href="minimal-reproducible-examples.html#cb253-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-3"><a href="minimal-reproducible-examples.html#cb253-3" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
-<span id="cb253-4"><a href="minimal-reproducible-examples.html#cb253-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lg <span class="sc">==</span> <span class="st">&#39;nba&#39;</span>, </span>
-<span id="cb253-5"><a href="minimal-reproducible-examples.html#cb253-5" aria-hidden="true" tabindex="-1"></a>         season <span class="sc">%in%</span> <span class="dv">2022</span>, </span>
-<span id="cb253-6"><a href="minimal-reproducible-examples.html#cb253-6" aria-hidden="true" tabindex="-1"></a>         season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb253-7"><a href="minimal-reproducible-examples.html#cb253-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(away, </span>
-<span id="cb253-8"><a href="minimal-reproducible-examples.html#cb253-8" aria-hidden="true" tabindex="-1"></a>           home, </span>
-<span id="cb253-9"><a href="minimal-reproducible-examples.html#cb253-9" aria-hidden="true" tabindex="-1"></a>           season) <span class="sc">%&gt;%</span></span>
-<span id="cb253-10"><a href="minimal-reproducible-examples.html#cb253-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">games =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb253-11"><a href="minimal-reproducible-examples.html#cb253-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb253-12"><a href="minimal-reproducible-examples.html#cb253-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(away, </span>
-<span id="cb253-13"><a href="minimal-reproducible-examples.html#cb253-13" aria-hidden="true" tabindex="-1"></a>           home, </span>
-<span id="cb253-14"><a href="minimal-reproducible-examples.html#cb253-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">games =</span> <span class="dv">0</span>))</span>
-<span id="cb253-15"><a href="minimal-reproducible-examples.html#cb253-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb137-1"><a href="minimal-reproducible-examples.html#cb137-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/games.rds&#39;</span>)</span>
+<span id="cb137-2"><a href="minimal-reproducible-examples.html#cb137-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="minimal-reproducible-examples.html#cb137-3" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb137-4"><a href="minimal-reproducible-examples.html#cb137-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lg <span class="sc">==</span> <span class="st">&#39;nba&#39;</span>, </span>
+<span id="cb137-5"><a href="minimal-reproducible-examples.html#cb137-5" aria-hidden="true" tabindex="-1"></a>         season <span class="sc">%in%</span> <span class="dv">2022</span>, </span>
+<span id="cb137-6"><a href="minimal-reproducible-examples.html#cb137-6" aria-hidden="true" tabindex="-1"></a>         season.type <span class="sc">==</span> <span class="st">&#39;reg&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb137-7"><a href="minimal-reproducible-examples.html#cb137-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(away, </span>
+<span id="cb137-8"><a href="minimal-reproducible-examples.html#cb137-8" aria-hidden="true" tabindex="-1"></a>           home, </span>
+<span id="cb137-9"><a href="minimal-reproducible-examples.html#cb137-9" aria-hidden="true" tabindex="-1"></a>           season) <span class="sc">%&gt;%</span></span>
+<span id="cb137-10"><a href="minimal-reproducible-examples.html#cb137-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">games =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb137-11"><a href="minimal-reproducible-examples.html#cb137-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb137-12"><a href="minimal-reproducible-examples.html#cb137-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(away, </span>
+<span id="cb137-13"><a href="minimal-reproducible-examples.html#cb137-13" aria-hidden="true" tabindex="-1"></a>           home, </span>
+<span id="cb137-14"><a href="minimal-reproducible-examples.html#cb137-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">games =</span> <span class="dv">0</span>))</span>
+<span id="cb137-15"><a href="minimal-reproducible-examples.html#cb137-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dg)</span></code></pre></div>
 </details>
 <pre><code># A tibble: 6 × 4
   away  home  season games
@@ -616,61 +556,61 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 5 ATL   CHI   2022       2
 6 ATL   CLE   2022       2</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb255-1"><a href="minimal-reproducible-examples.html#cb255-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
-<span id="cb255-2"><a href="minimal-reproducible-examples.html#cb255-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb255-3"><a href="minimal-reproducible-examples.html#cb255-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
-<span id="cb255-4"><a href="minimal-reproducible-examples.html#cb255-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
-<span id="cb255-5"><a href="minimal-reproducible-examples.html#cb255-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
-<span id="cb255-6"><a href="minimal-reproducible-examples.html#cb255-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
-<span id="cb255-7"><a href="minimal-reproducible-examples.html#cb255-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
-<span id="cb255-8"><a href="minimal-reproducible-examples.html#cb255-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> </span>
-<span id="cb255-9"><a href="minimal-reproducible-examples.html#cb255-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> pubbackgray, </span>
-<span id="cb255-10"><a href="minimal-reproducible-examples.html#cb255-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> pubred) <span class="sc">+</span></span>
-<span id="cb255-11"><a href="minimal-reproducible-examples.html#cb255-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
-<span id="cb255-12"><a href="minimal-reproducible-examples.html#cb255-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Home Team&#39;</span>, </span>
-<span id="cb255-13"><a href="minimal-reproducible-examples.html#cb255-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Away Team&#39;</span>)</span>
-<span id="cb255-14"><a href="minimal-reproducible-examples.html#cb255-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-15"><a href="minimal-reproducible-examples.html#cb255-15" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span></span>
-<span id="cb255-16"><a href="minimal-reproducible-examples.html#cb255-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;grid&#39;</span>) <span class="sc">+</span></span>
-<span id="cb255-17"><a href="minimal-reproducible-examples.html#cb255-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x.top =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, </span>
-<span id="cb255-18"><a href="minimal-reproducible-examples.html#cb255-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">vjust =</span> .<span class="dv">5</span>, </span>
-<span id="cb255-19"><a href="minimal-reproducible-examples.html#cb255-19" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">hjust =</span> <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb139-1"><a href="minimal-reproducible-examples.html#cb139-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
+<span id="cb139-2"><a href="minimal-reproducible-examples.html#cb139-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb139-3"><a href="minimal-reproducible-examples.html#cb139-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
+<span id="cb139-4"><a href="minimal-reproducible-examples.html#cb139-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
+<span id="cb139-5"><a href="minimal-reproducible-examples.html#cb139-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
+<span id="cb139-6"><a href="minimal-reproducible-examples.html#cb139-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
+<span id="cb139-7"><a href="minimal-reproducible-examples.html#cb139-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
+<span id="cb139-8"><a href="minimal-reproducible-examples.html#cb139-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> </span>
+<span id="cb139-9"><a href="minimal-reproducible-examples.html#cb139-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> pubbackgray, </span>
+<span id="cb139-10"><a href="minimal-reproducible-examples.html#cb139-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> pubred) <span class="sc">+</span></span>
+<span id="cb139-11"><a href="minimal-reproducible-examples.html#cb139-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
+<span id="cb139-12"><a href="minimal-reproducible-examples.html#cb139-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Home Team&#39;</span>, </span>
+<span id="cb139-13"><a href="minimal-reproducible-examples.html#cb139-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Away Team&#39;</span>)</span>
+<span id="cb139-14"><a href="minimal-reproducible-examples.html#cb139-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-15"><a href="minimal-reproducible-examples.html#cb139-15" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span></span>
+<span id="cb139-16"><a href="minimal-reproducible-examples.html#cb139-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;grid&#39;</span>) <span class="sc">+</span></span>
+<span id="cb139-17"><a href="minimal-reproducible-examples.html#cb139-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x.top =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb139-18"><a href="minimal-reproducible-examples.html#cb139-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">vjust =</span> .<span class="dv">5</span>, </span>
+<span id="cb139-19"><a href="minimal-reproducible-examples.html#cb139-19" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">hjust =</span> <span class="dv">0</span>))</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-128-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Another option would have been to convert <code>games</code> to a character or factor and keep <code>scale_fill_manual</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb256-1"><a href="minimal-reproducible-examples.html#cb256-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> dg <span class="sc">%&gt;%</span></span>
-<span id="cb256-2"><a href="minimal-reproducible-examples.html#cb256-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">games =</span> <span class="fu">as.character</span>(games))</span>
-<span id="cb256-3"><a href="minimal-reproducible-examples.html#cb256-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb256-4"><a href="minimal-reproducible-examples.html#cb256-4" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
-<span id="cb256-5"><a href="minimal-reproducible-examples.html#cb256-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
-<span id="cb256-6"><a href="minimal-reproducible-examples.html#cb256-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
-<span id="cb256-7"><a href="minimal-reproducible-examples.html#cb256-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
-<span id="cb256-8"><a href="minimal-reproducible-examples.html#cb256-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
-<span id="cb256-9"><a href="minimal-reproducible-examples.html#cb256-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
-<span id="cb256-10"><a href="minimal-reproducible-examples.html#cb256-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
-<span id="cb256-11"><a href="minimal-reproducible-examples.html#cb256-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> <span class="do">## used char above so leg is discrete</span></span>
-<span id="cb256-12"><a href="minimal-reproducible-examples.html#cb256-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
-<span id="cb256-13"><a href="minimal-reproducible-examples.html#cb256-13" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
-<span id="cb256-14"><a href="minimal-reproducible-examples.html#cb256-14" aria-hidden="true" tabindex="-1"></a>                               pubred)) <span class="sc">+</span></span>
-<span id="cb256-15"><a href="minimal-reproducible-examples.html#cb256-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
-<span id="cb256-16"><a href="minimal-reproducible-examples.html#cb256-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Home Team&#39;</span>, </span>
-<span id="cb256-17"><a href="minimal-reproducible-examples.html#cb256-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Away Team&#39;</span>)</span>
-<span id="cb256-18"><a href="minimal-reproducible-examples.html#cb256-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb256-19"><a href="minimal-reproducible-examples.html#cb256-19" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb256-20"><a href="minimal-reproducible-examples.html#cb256-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;grid&#39;</span>) <span class="sc">+</span></span>
-<span id="cb256-21"><a href="minimal-reproducible-examples.html#cb256-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x.top =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, </span>
-<span id="cb256-22"><a href="minimal-reproducible-examples.html#cb256-22" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">vjust =</span> .<span class="dv">5</span>, </span>
-<span id="cb256-23"><a href="minimal-reproducible-examples.html#cb256-23" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">hjust =</span> <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb140-1"><a href="minimal-reproducible-examples.html#cb140-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">=</span> dg <span class="sc">%&gt;%</span></span>
+<span id="cb140-2"><a href="minimal-reproducible-examples.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">games =</span> <span class="fu">as.character</span>(games))</span>
+<span id="cb140-3"><a href="minimal-reproducible-examples.html#cb140-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-4"><a href="minimal-reproducible-examples.html#cb140-4" aria-hidden="true" tabindex="-1"></a>title <span class="ot">=</span> <span class="st">&quot;Number of Games Between Each Pair of Teams&quot;</span> </span>
+<span id="cb140-5"><a href="minimal-reproducible-examples.html#cb140-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, </span>
+<span id="cb140-6"><a href="minimal-reproducible-examples.html#cb140-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> home, </span>
+<span id="cb140-7"><a href="minimal-reproducible-examples.html#cb140-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> away, </span>
+<span id="cb140-8"><a href="minimal-reproducible-examples.html#cb140-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> games))<span class="sc">+</span> </span>
+<span id="cb140-9"><a href="minimal-reproducible-examples.html#cb140-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">linewidth =</span> <span class="fl">0.4</span>, </span>
+<span id="cb140-10"><a href="minimal-reproducible-examples.html#cb140-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> T, </span>
+<span id="cb140-11"><a href="minimal-reproducible-examples.html#cb140-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> pubdarkgray) <span class="sc">+</span> <span class="do">## used char above so leg is discrete</span></span>
+<span id="cb140-12"><a href="minimal-reproducible-examples.html#cb140-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(pubbackgray, </span>
+<span id="cb140-13"><a href="minimal-reproducible-examples.html#cb140-13" aria-hidden="true" tabindex="-1"></a>                               publightred, </span>
+<span id="cb140-14"><a href="minimal-reproducible-examples.html#cb140-14" aria-hidden="true" tabindex="-1"></a>                               pubred)) <span class="sc">+</span></span>
+<span id="cb140-15"><a href="minimal-reproducible-examples.html#cb140-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title    =</span> title,</span>
+<span id="cb140-16"><a href="minimal-reproducible-examples.html#cb140-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Home Team&#39;</span>, </span>
+<span id="cb140-17"><a href="minimal-reproducible-examples.html#cb140-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Away Team&#39;</span>)</span>
+<span id="cb140-18"><a href="minimal-reproducible-examples.html#cb140-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-19"><a href="minimal-reproducible-examples.html#cb140-19" aria-hidden="true" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb140-20"><a href="minimal-reproducible-examples.html#cb140-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;grid&#39;</span>) <span class="sc">+</span></span>
+<span id="cb140-21"><a href="minimal-reproducible-examples.html#cb140-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x.top =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb140-22"><a href="minimal-reproducible-examples.html#cb140-22" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">vjust =</span> .<span class="dv">5</span>, </span>
+<span id="cb140-23"><a href="minimal-reproducible-examples.html#cb140-23" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">hjust =</span> <span class="dv">0</span>))</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-129-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="other.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github-copilot-in-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="accessible-documents.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
