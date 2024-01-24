@@ -260,6 +260,9 @@ Bookmark these pages:
 - Create a GitHub account at <https://github.com/> if you don't have one.
 - Download GitHub Desktop at <https://desktop.github.com/>.
 
+
+## Tips 
+
 ### Backing up work
 
 Most of your coding should take place in a source file or R Markdown file. Very little coding should occur in the console. This will make it far easier to reproduce what you did, and to back up your work.
@@ -269,6 +272,241 @@ There are a copy of options for backing up your work
 - Use a cloud service like OneDrive, Google Drive, Dropbox, Box, iCloud, or use Time Machine, to automatically back up your files. 
 - If you are using Git/Github as part of your typical workflow (recommended), you'll have a copy of your code in the "cloud" every time you push to Github. 
 - Manually backup your files to an external hard drive on a regular basis. 
+
+### Test code often
+
+Test your code by running your script or knitting your R Markdown file often. This will help you catch errors early and it will likely make it easier to troubleshoot the errors. 
+
+### Minimal reproducible examples
+
+When asking someone for help in an email, on Slack, on Github, on a discussion board (e.g. stackoverflow.com), etc., use a minimal reproducible example. 
+
+- Minimal: Use as little code as necessary that still results in the error
+- Reproducible: provide all code and data necessary so that someone can copy/paste and reproduce the problem on their own machine.  
+
+A minimal reproducible example makes it easier for someone to help you, and makes it easier to troubleshoot your own code. It might help an LLM help you also (I haven't tried this yet).
+
+Here is the Stack Overflow page on the topic: https://stackoverflow.com/help/minimal-reproducible-example
+
+Here is an example. Suppose you are working on using game results data to create a schedule matrix and have this code:
+
+```{r eval = F}
+library(pubtheme)
+library(scales)
+library(tidyverse)
+
+d = readRDS('data/games.rds')
+
+dg = d %>% 
+  filter(lg == 'nba', 
+         season %in% 2022, 
+         season.type == 'reg') %>%
+  group_by(away, 
+           home, 
+           season) %>%
+  summarise(games = n()) %>%
+  ungroup() %>%
+  complete(away, 
+           home, 
+           fill = list(games = 0))
+
+head(dg)
+
+title = "Number of Games Between Each Pair of Teams" 
+g = ggplot(dg, 
+           aes(x = home,
+               y = away, 
+               fill = games))+ 
+  geom_tile(linewidth = 0.4, 
+            show.legend = T, 
+            color = pubdarkgray) + ## used char above so leg is discrete
+  scale_fill_manual(values = c(pubbackgray, 
+                               publightred, 
+                               pubred)) +
+  labs(title    = title,
+       x = 'Home Team', 
+       y = 'Away Team')
+
+g %>%
+  pub(type = 'grid') +
+  theme(axis.text.x.top = element_text(angle = 90, 
+                                       vjust = .5,
+                                       hjust = 0))
+
+
+```
+
+This results in the error `Error: Continuous value supplied to discrete scale`. Suppose we want help on this error. If the person we are asking has the `games.rds` data, then we can start stripping down the `ggplot` code as much as possible until we still have the error. Most lines of code can be removed because they are unrelated to the error. You can start commenting out one line at a time. This still gives the same error:
+
+```{r eval = F}
+title = "Number of Games Between Each Pair of Teams" 
+g = ggplot(dg, 
+           aes(x = home, 
+               y = away, 
+               fill = games))+ 
+  geom_tile(linewidth = 0.4, 
+            show.legend = T, 
+            color = pubdarkgray) + 
+  scale_fill_manual(values = c(pubbackgray, 
+                               publightred, 
+                               pubred)) #+
+  # labs(title    = title,
+  #      x = 'Home Team', 
+  #      y = 'Away Team')  
+  
+# g %>%
+#   pub(type = 'grid') +
+#   theme(axis.text.x.top = element_text(angle = 90, 
+#                                        vjust = .5,
+#                                        hjust = 0))
+
+g
+```
+
+So we can delete those lines of code. If we remove `scale_fill_manual` the error goes away, so we have to keep that in. 
+
+```{r eval = F}
+g = ggplot(dg, 
+           aes(x = home, 
+               y = away, 
+               fill = games))+ 
+  geom_tile(linewidth = 0.4, 
+            show.legend = T, 
+            color = pubdarkgray) + 
+  scale_fill_manual(values = c(pubbackgray, 
+                               publightred, 
+                               pubred)) 
+g
+```
+ We can also try getting rid of some of the arguments, like `linewidth`, `show.legend`, `color`, and we still get the error. Also, we can change the colors `pubbackgray`, `publightred`, and `pubred` to `'gray`', `'lightpink'`, and `'red'` which come with `R` and don't require the `pubtheme` package. 
+
+```{r eval = F}
+g = ggplot(dg, 
+           aes(x = home, 
+               y = away, 
+               fill = games))+ 
+  geom_tile() + 
+  scale_fill_manual(values = c('gray', 
+                               'lightpink', 
+                               'red')) 
+g
+```
+
+That is about all we can remove and still get the error. So if the person we are asking the question to has this data, they can copy/paste this code to their own computer and reproduce the error. 
+
+If the person we are asking doesn't have the data, then we should use a widely available data set. The `mtcars` data is available to anyone with `R` and can be used here. 
+
+```{r}
+head(mtcars)
+```
+
+```{r eval = F}
+library(tidyverse) 
+dg = mtcars %>%
+  group_by(cyl, vs) %>%
+  summarise(mpg = mean(mpg), 
+            .groups = 'keep')
+head(dg)
+
+g = ggplot(dg, aes(x = cyl, 
+                   y = vs,
+                   fill = mpg))+ 
+  geom_tile() + 
+  scale_fill_manual(values = c('gray', 
+                               'lightpink', 
+                               'red'))
+g
+```
+
+Anyone, regardless of whether they have your data set, can copy/paste this code to diagnose. They will hopefully notice that `mpg`, the variable chosen to `fill` by, is continuous, while `scale_fill_manual` applies to discrete color scales. You'd have to use a continuous color scale with the continuous variable `mpg`. Something like this works: 
+
+```{r}
+library(tidyverse) 
+dg = mtcars %>%
+  group_by(cyl, vs) %>%
+  summarise(mpg = mean(mpg), 
+            .groups = 'keep')
+head(dg)
+
+g = ggplot(dg, 
+           aes(x = cyl, 
+               y = vs, 
+               fill = mpg))+ 
+  geom_tile() + 
+  scale_fill_gradient(low = 'gray', 
+                      high = 'red')
+g
+```
+
+Now that we know how we can fix the error, let's go back to our original plot and replace `scale_fill_manual` with `scale_fill_gradient`. 
+
+```{r fig.height = 7, fig.width = 7}
+d = readRDS('data/games.rds')
+
+dg = d %>% 
+  filter(lg == 'nba', 
+         season %in% 2022, 
+         season.type == 'reg') %>%
+  group_by(away, 
+           home, 
+           season) %>%
+  summarise(games = n()) %>%
+  ungroup() %>%
+  complete(away, 
+           home, 
+           fill = list(games = 0))
+head(dg)
+
+title = "Number of Games Between Each Pair of Teams" 
+g = ggplot(dg, 
+           aes(x = home, 
+               y = away, 
+               fill = games))+ 
+  geom_tile(linewidth = 0.4, 
+            show.legend = T, 
+            color = pubdarkgray) + 
+  scale_fill_gradient(low = pubbackgray, 
+                      high = pubred) +
+  labs(title    = title,
+       x = 'Home Team', 
+       y = 'Away Team')
+
+g %>%
+  pub(type = 'grid') +
+  theme(axis.text.x.top = element_text(angle = 90, 
+                                       vjust = .5, 
+                                       hjust = 0))
+
+```
+
+Another option would have been to convert `games` to a character or factor and keep `scale_fill_manual`. 
+
+
+```{r fig.height = 7, fig.width = 7}
+dg = dg %>%
+  mutate(games = as.character(games))
+
+title = "Number of Games Between Each Pair of Teams" 
+g = ggplot(dg, 
+           aes(x = home, 
+               y = away, 
+               fill = games))+ 
+  geom_tile(linewidth = 0.4, 
+            show.legend = T, 
+            color = pubdarkgray) + ## used char above so leg is discrete
+  scale_fill_manual(values = c(pubbackgray, 
+                               publightred, 
+                               pubred)) +
+  labs(title    = title,
+       x = 'Home Team', 
+       y = 'Away Team')
+
+g %>% 
+  pub(type = 'grid') +
+  theme(axis.text.x.top = element_text(angle = 90, 
+                                       vjust = .5, 
+                                       hjust = 0))
+```
 
 
 ## Learning Objectives

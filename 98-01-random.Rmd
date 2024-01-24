@@ -727,7 +727,7 @@ ggplot(df,
 ## Variable importance
 
 - RF variable importance
-- Shapely values
+- Shapely values https://h2o.ai/blog/2022/shapley-values-a-gentle-introduction/
 
 ## Compariable observations
 
@@ -1569,6 +1569,10 @@ This doesn't mean you should never use `rbind` in a `for` loop. With smaller dat
 
 ## Poisson approximates binomial
 
+# Random online resources
+- AI intro from MSFT. https://github.com/microsoft/AI-For-Beginners
+- 
+
 # Other
 
 ## GitHub Copilot in RStudio
@@ -1587,228 +1591,6 @@ Other potentially helpful links:
 
 
 
-## Minimal reproducible examples
-
-When asking someone for help in an email, on Slack, on Github, on a discussion board (e.g. stackoverflow.com), etc., use a minimal reproducible example. Here is the Stack Overflow page on the topic: https://stackoverflow.com/help/minimal-reproducible-example
-
-- Minimal: Use as little code as necessary that still results in the error
-- Reproducible: provide all code and data necessary so that someone can copy/paste and reproduce the problem on their own machine.  
-
-Here is an example. Suppose you are working on a schedule matrix and have this code:
-
-```{r eval = F}
-d = readRDS('data/games.rds')
-
-dg = d %>% 
-  filter(lg == 'nba', 
-         season %in% 2022, 
-         season.type == 'reg') %>%
-  group_by(away, 
-           home, 
-           season) %>%
-  summarise(games = n()) %>%
-  ungroup() %>%
-  complete(away, 
-           home, 
-           fill = list(games = 0))
-
-head(dg)
-
-title = "Number of Games Between Each Pair of Teams" 
-g = ggplot(dg, 
-           aes(x = home,
-               y = away, 
-               fill = games))+ 
-  geom_tile(linewidth = 0.4, 
-            show.legend = T, 
-            color = pubdarkgray) + ## used char above so leg is discrete
-  scale_fill_manual(values = c(pubbackgray, 
-                               publightred, 
-                               pubred)) +
-  labs(title    = title,
-       x = 'Home Team', 
-       y = 'Away Team')
-
-g %>%
-  pub(type = 'grid') +
-  theme(axis.text.x.top = element_text(angle = 90, 
-                                       vjust = .5,
-                                       hjust = 0))
-
-
-```
-
-This results in the error `Error: Continuous value supplied to discrete scale`. Suppose we want help on this error. If the person we are asking has the `games.rds` data, then we can start stripping down the `ggplot` code as much as possible until we still have the error. Most lines of code can be removed because they are unrelated to the error. You can start commenting out one line at a time. This still gives the same error:
-
-```{r eval = F}
-title = "Number of Games Between Each Pair of Teams" 
-g = ggplot(dg, 
-           aes(x = home, 
-               y = away, 
-               fill = games))+ 
-  geom_tile(linewidth = 0.4, 
-            show.legend = T, 
-            color = pubdarkgray) + 
-  scale_fill_manual(values = c(pubbackgray, 
-                               publightred, 
-                               pubred)) #+
-  # labs(title    = title,
-  #      x = 'Home Team', 
-  #      y = 'Away Team')  
-  
-# g %>%
-#   pub(type = 'grid') +
-#   theme(axis.text.x.top = element_text(angle = 90, 
-#                                        vjust = .5,
-#                                        hjust = 0))
-
-g
-```
-
-So we can delete those lines of code. If we remove `scale_fill_manual` the error goes away, so we have to keep that in. 
-
-```{r eval = F}
-g = ggplot(dg, 
-           aes(x = home, 
-               y = away, 
-               fill = games))+ 
-  geom_tile(linewidth = 0.4, 
-            show.legend = T, 
-            color = pubdarkgray) + 
-  scale_fill_manual(values = c(pubbackgray, 
-                               publightred, 
-                               pubred)) 
-g
-```
- We can also try getting rid of some of the arguments, like `linewidth`, `show.legend`, `color`, and we still get the error. Also, we can change the colors `pubbackgray`, `publightred`, and `pubred` to `'gray`', `'lightpink'`, and `'red'` which come with `R` and don't require the `pubtheme` package. 
-
-```{r eval = F}
-g = ggplot(dg, 
-           aes(x = home, 
-               y = away, 
-               fill = games))+ 
-  geom_tile() + 
-  scale_fill_manual(values = c('gray', 
-                               'lightpink', 
-                               'red')) 
-g
-```
-
-That is about all we can remove and still get the error. So if the person we are asking the question to has this data, they can copy/paste this code to their own computer and reproduce the error. 
-
-If the person we are asking doesn't have the data, then we should use a widely available data set. The `mtcars` data is available to anyone with `R` and can be used here. 
-
-```{r}
-head(mtcars)
-```
-
-```{r eval = F}
-library(tidyverse) 
-dg = mtcars %>%
-  group_by(cyl, vs) %>%
-  summarise(mpg = mean(mpg), 
-            .groups = 'keep')
-head(dg)
-
-g = ggplot(dg, aes(x = cyl, 
-                   y = vs,
-                   fill = mpg))+ 
-  geom_tile() + 
-  scale_fill_manual(values = c('gray', 
-                               'lightpink', 
-                               'red'))
-g
-```
-
-Anyone, regardless of whether they have your data set, can copy/paste this code to diagnose. They will hopefully notice that `mpg`, the variable chosen to `fill` by, is continuous, while `scale_fill_manual` applies to discrete color scales. You'd have to use a continuous color scale with the continuous variable `mpg`. Something like this works: 
-
-```{r}
-library(tidyverse) 
-dg = mtcars %>%
-  group_by(cyl, vs) %>%
-  summarise(mpg = mean(mpg), 
-            .groups = 'keep')
-head(dg)
-
-g = ggplot(dg, 
-           aes(x = cyl, 
-               y = vs, 
-               fill = mpg))+ 
-  geom_tile() + 
-  scale_fill_gradient(low = 'gray', 
-                      high = 'red')
-g
-```
-
-Now that we know how we can fix the error, let's go back to our original plot and replace `scale_fill_manual` with `scale_fill_gradient`. 
-
-```{r fig.height = 7, fig.width = 7}
-d = readRDS('data/games.rds')
-
-dg = d %>% 
-  filter(lg == 'nba', 
-         season %in% 2022, 
-         season.type == 'reg') %>%
-  group_by(away, 
-           home, 
-           season) %>%
-  summarise(games = n()) %>%
-  ungroup() %>%
-  complete(away, 
-           home, 
-           fill = list(games = 0))
-head(dg)
-
-title = "Number of Games Between Each Pair of Teams" 
-g = ggplot(dg, 
-           aes(x = home, 
-               y = away, 
-               fill = games))+ 
-  geom_tile(linewidth = 0.4, 
-            show.legend = T, 
-            color = pubdarkgray) + 
-  scale_fill_gradient(low = pubbackgray, 
-                      high = pubred) +
-  labs(title    = title,
-       x = 'Home Team', 
-       y = 'Away Team')
-
-g %>%
-  pub(type = 'grid') +
-  theme(axis.text.x.top = element_text(angle = 90, 
-                                       vjust = .5, 
-                                       hjust = 0))
-
-```
-
-Another option would have been to convert `games` to a character or factor and keep `scale_fill_manual`. 
-
-
-```{r fig.height = 7, fig.width = 7}
-dg = dg %>%
-  mutate(games = as.character(games))
-
-title = "Number of Games Between Each Pair of Teams" 
-g = ggplot(dg, 
-           aes(x = home, 
-               y = away, 
-               fill = games))+ 
-  geom_tile(linewidth = 0.4, 
-            show.legend = T, 
-            color = pubdarkgray) + ## used char above so leg is discrete
-  scale_fill_manual(values = c(pubbackgray, 
-                               publightred, 
-                               pubred)) +
-  labs(title    = title,
-       x = 'Home Team', 
-       y = 'Away Team')
-
-g %>% 
-  pub(type = 'grid') +
-  theme(axis.text.x.top = element_text(angle = 90, 
-                                       vjust = .5, 
-                                       hjust = 0))
-```
 
 
 ## Accessible Documents
@@ -1848,10 +1630,28 @@ re.install = d1[d1 %in% d2[,'Package']] ## d2 is matrix, can't use $
 if (length(re.install) > 0) {
   install.packages(re.install, dependencies=TRUE)
 }
+
+
+## Check for dependencies, and reinstall all packages
+d1 = revdep('units')
+d2 = installed.packages()
+re.install = d1[d1 %in% d2[,'Package']] ## d2 is matrix, can't use $
+if (length(re.install) > 0) {
+  install.packages(re.install, dependencies=TRUE)
+}
+
+## then use code like this
+devtools::install_version('tidycensus', version = '1.1')
+devtools::install_version('sf', version = '1.0-2')
+devtools::install_version('units', version = '0.7-2')
+devtools::install_version('raster', version = "3.4-13")
 ```
 
 - I had issues with `units`, which is needed for `sf`, which is needed for `tidycensus`. So I removed `tidycensus` for now. 
-- I had issues with `terra`, which is needed for `raster`, which is needed for `leaflet.` But `terra` wasn't need for the earlier version `3.4-13` of `raster` that I was using. So installed that version. Didn't work. Tried downloading the dev version of terra using `install.packages('terra', repos='https://rspatial.r-universe.dev')` and 
+- I had issues with `terra`, which is needed for `raster`, which is needed for `leaflet.` But `terra` wasn't need for the earlier version `3.4-13` of `raster` that I was using. So installed that version. Didn't work. Tried downloading the dev version of terra using `install.packages('terra', repos='https://rspatial.r-universe.dev')`. Did this work? 
+- Temporary fix: remove 50*.Rmd files, which require leaflet, from the main folder into the R folder
+
+
 
 ## Math symbols in plots
 
