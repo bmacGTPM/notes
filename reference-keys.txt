@@ -4,9 +4,13 @@ download-r
 download-r-studio
 installupdate-packages
 check-gganimate
-bookmarks
 github
+other-preparation
+bookmarks
 backing-up-work
+test-code-often
+dplyr-and-ggplot2
+minimal-reproducible-examples
 learning-objectives
 coding-conventions
 exception-well-use-not---for-assignments
@@ -95,9 +99,9 @@ efficient-r-programming-online-book
 alternatives-to-rbind-for-big-data-frames
 intro-probstat
 poisson-approximates-binomial
+random-online-resources
 other
 github-copilot-in-rstudio
-minimal-reproducible-examples
 accessible-documents
 github-actions
 math-symbols-in-plots
