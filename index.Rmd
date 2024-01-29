@@ -37,7 +37,7 @@ These are course notes for S&DS 361 Data Analysis.
 
 **Prerequisites.** It is assumed you have had a introductory course in probability and statistics, have some experience with R, linear regression, and matrix algebra. 
 
-**Errors.** If you notice any errors in these notes, please submit a [pull request](https://github.com/bmacGTPM/notes/pulls).
+**Errors.** If you notice any errors in these notes, please submit a [pull request](https://github.com/bmacGTPM/notes/pulls). 
 
 **Data.** The data used in these notes can be found at https://github.com/bmacGTPM/notes/tree/main/data.
 
@@ -236,13 +236,27 @@ It should be in the same folder as this R Markdown file. If that works, `gganima
 ![](img/test.gif)
 
 
+### Github
+
+- Create a GitHub account at <https://github.com/> if you don't have one.
+- Download GitHub Desktop at <https://desktop.github.com/>.
+
+
+## Other preparation 
 
 ### Bookmarks
 
 Bookmark these pages: 
 
 - These notes https://bmacgtpm.github.io/notes/ 
-- The Github page for these notes https://github.com/bmacGTPM/notes
+- The Github page for these notes https://github.com/bmacGTPM/notes. If you want to work with the R Markdown versions of these notes, you can find them in that GitHub repo. You can also ask questions, and create pull requests to add content or fix typos. In the main folder, there are several Rmd files:
+
+    - `index.Rmd`. This is the first Rmd file and corresponds to the first section of the Notes https://bmacgtpm.github.io/notes/
+    - All other `Rmd` files are numbered and appear in the Notes in the same order as the `Rmd` files. For example, the `Rmd` files for the `dplyr` and `ggplot` sections in the Appendix are 
+    
+        - `99-01-appendix-dplyr.Rmd`
+        - `99-02-appendix-ggplot.Rmd`
+        
 - The `pubtheme` Github page https://github.com/bmacGTPM/pubtheme
 - These books
     - Beyond Multiple Linear Regression https://bookdown.org/roback/bookdown-BeyondMLR/
@@ -255,19 +269,11 @@ Bookmark these pages:
     - The [RStudio cheatsheets](https://rstudio.com/resources/cheatsheets/)
 
 
-### Github
-
-- Create a GitHub account at <https://github.com/> if you don't have one.
-- Download GitHub Desktop at <https://desktop.github.com/>.
-
-
-## Tips 
-
 ### Backing up work
 
-Most of your coding should take place in a source file or R Markdown file. Very little coding should occur in the console. This will make it far easier to reproduce what you did, and to back up your work.
+Most of your coding should take place in a source file or R Markdown file. Very little coding should occur in the console. This will make it far easier to reproduce what you did and back up your work.
 
-There are a copy of options for backing up your work
+There are a couple of options for backing up your work
 
 - Use a cloud service like OneDrive, Google Drive, Dropbox, Box, iCloud, or use Time Machine, to automatically back up your files. 
 - If you are using Git/Github as part of your typical workflow (recommended), you'll have a copy of your code in the "cloud" every time you push to Github. 
@@ -276,6 +282,14 @@ There are a copy of options for backing up your work
 ### Test code often
 
 Test your code by running your script or knitting your R Markdown file often. This will help you catch errors early and it will likely make it easier to troubleshoot the errors. 
+
+### dplyr and ggplot2
+If you are unfamiliar with `tidyverse` and specifically the packages `dplyr` and `ggplot2`, there are two sections in the Appendix that are quick intros of `dplyr` and `ggplot2`:
+
+- https://bmacgtpm.github.io/notes/data-exploration-with-dplyr.html
+- https://bmacgtpm.github.io/notes/data-visualization-with-ggplot.html
+
+The end of those sections contain links to more in-depth resources.
 
 ### Minimal reproducible examples
 
