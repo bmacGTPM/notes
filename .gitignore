@@ -47,6 +47,7 @@ libs/
 ## Other data types
 *.docx
 book-output/
+_main_files/
 
 # ignore all html files except:
 !**/mathjax_header.html
