@@ -61,10 +61,6 @@ More examples and options can be found here https://rstudio.github.io/DT or here
 >
 > ```options(DT.options = list(pageLength = 5, language = list(search = 'Filter:')))```
 
-## Previous season scoring averages
-
-
-
 ## Home advantage
 
 Let's see if we can detect any sort of home advantage. It will be more appropriate to do this in the context of regression later but for now the easiest way to do this is to find the average margin of victory by the home team. 
@@ -164,7 +160,7 @@ cor(ds$s2021,
 
 
 ## Formatting with `pubtheme`
-The previous plot was functional and told us what we wanted to know. But let's start using `pubtheme`.  We'll copy and paste the scatter plot code from here and edit it for our data. 
+The previous plot was functional and told us what we wanted to know. But let's start using `pubtheme`.  We'll copy and paste the scatter plot code from https://github.com/bmacGTPM/pubtheme and edit it for our data. 
 
 ```{r fig.height=6, fig.width=6}
 title = 'Average Points in 2021-22 vs 2020-21'
@@ -189,9 +185,10 @@ A few notes about the additional code for this plot
 - With `scale_x_continuous` (resp. `scale_y_continuous`) we can specify the left and right (resp. upper and lower) `limits` for the axis, as well as where the grid lines show (`breaks`). `oob=squish` means if a point is slighly out of bounds, squish it in so that it is shown. `labels=comma` means if we have a number like `1000000` on the axis ticks, we want it to display with commas like `1,000,000`
 - `coord_cartesian(clip='off', expand=FALSE)` means if a point or some text is slightly outside the plotting range, we don't want it to be clipped, we still want to show it, and we don't want to `expand` the plot range, we want it to be exactly what we specified in `limits`. The default is to expand by 5% on each side. 
 
-The function `pub` can save us a lot of code if we are comfortable accepting the defaults for `scale*` and `coord*`. This results in the same plot as above.
+The function `pub` can save us a lot of code if we are comfortable accepting the defaults for `scale*` and `coord*`. This results in the same plot as above. By default `pub` chooses the breaks to be at the minimum, maximum, and midpoint between the min and max for both the x and y axes, turns clipping off, and does not expand the plot range. 
 
-```{r}
+
+```{r fig.height=6, fig.width=6}
 title = 'Average Points in 2021-22 vs 2020-21'
 g = ggplot(ds, aes(x = s2021, 
                    y = s2022, 
@@ -210,6 +207,9 @@ g %>%
 
 
 ## Scoring vs stronger/weaker opponents
+
+Let's find the average points allowed for each team, and add a column to the data frame that says the average points allowed by the `opp`. 
+
 
 ```{r}
 opp.pts = dd %>%
