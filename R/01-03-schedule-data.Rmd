@@ -31,7 +31,7 @@ dgm = d %>%
            home, 
            season, 
            fill = list(games = 0)) %>% ## new function! 
-  mutate(Games = as.character(games))
+  mutate(games = as.character(games))
 head(dgm)
 ```
 
@@ -43,7 +43,7 @@ title = "Number of Games Between Each Pair of Teams"
 g = ggplot(dg, 
            aes(x = home, 
                y = away, 
-               fill = Games))+ 
+               fill = games))+ 
   geom_tile(linewidth = 0.4, 
             show.legend = T, 
             color = pubdarkgray) + ## used char above so leg is discrete
@@ -52,7 +52,8 @@ g = ggplot(dg,
                                pubred)) +
   labs(title = title,
        x = 'Home Team', 
-       y = 'Away Team') 
+       y = 'Away Team', 
+       fill = 'Games') 
 
   
 
@@ -113,7 +114,7 @@ title = "Number of Games Between Each Pair of Teams"
 g = ggplot(dg, 
            aes(x = home, 
                y = away, 
-               fill = Games))+
+               fill = games))+
   geom_tile(linewidth = 0.4, 
             show.legend = T, 
             color = pubdarkgray) + ## used char above so leg is discrete
@@ -122,7 +123,8 @@ g = ggplot(dg,
                                pubred)) +
   labs(title = title,
        x = 'Home Team', 
-       y = 'Away Team')
+       y = 'Away Team', 
+       fill = 'Games')
 
 g %>% 
   pub(type = 'grid') + 
@@ -144,7 +146,7 @@ title = "Number of Games Between Each Pair of Teams"
 g = ggplot(dg, 
            aes(x = home, 
                y = away, 
-               fill = Games))+
+               fill = games))+
   geom_tile(linewidth = 0.4, 
             show.legend = T, 
             color = pubdarkgray) + 
@@ -155,7 +157,8 @@ g = ggplot(dg,
                                pubred)) +
   labs(title = title,
        x = 'Home Team', 
-       y = 'Away Team')
+       y = 'Away Team', 
+       fill = 'Games')
 
 g %>%
   pub(type = 'grid', 
@@ -191,7 +194,7 @@ title = "Number of Games Between Each Pair of Teams, {next_state}"
 
 g = ggplot(dg, aes(x = home, 
                    y = away, 
-                   fill = Games))+
+                   fill = games))+
   geom_tile(linewidth = 0.4, 
             show.legend = T, 
             color = pubdarkgray) +
@@ -203,7 +206,8 @@ g = ggplot(dg, aes(x = home,
                                'red4')) +
   labs(title = title,
        x = 'Home Team', 
-       y = 'Away Team') +  
+       y = 'Away Team', 
+       fill = 'Games') +  
   theme(axis.text.x.top = element_text(angle = 90, 
                                        vjust = .5, 
                                        hjust = 0),
@@ -271,8 +275,8 @@ dgm = d %>%
   complete(away, 
            home, 
            season, 
-           fill = list(games = 0)) %>% ## new function! 
-  mutate(Games = (games))
+           fill = list(games = 0))  ## new function! 
+  
 head(dgm)
 ```
 
@@ -317,7 +321,7 @@ title = "Number of Games Between Each Pair of Teams, {next_state}"
 g = ggplot(dg, 
            aes(x = home, 
                y = away, 
-               fill = Games))+
+               fill = games))+
   geom_tile(linewidth = 0.4, 
             show.legend = T, 
             color = pubdarkgray) + 
@@ -331,7 +335,8 @@ g = ggplot(dg,
                       guide    = guide_colorbar(frame.colour = pubdarkgray)) +
   labs(title = title,
        x = 'Home Team', 
-       y = 'Away Team')  
+       y = 'Away Team', 
+       fill = 'Games')  
   
 g = g %>% 
   pub(type = 'grid', 
@@ -372,27 +377,33 @@ gg = g +
 ## Days rest by team
 
 ```{r}
-da = d %>% select(date, away, ascore, home, hscore, season, gid) %>% mutate(ha = 'away')
-dh = d %>% select(date, home, hscore, away, ascore, season, gid) %>% mutate(ha = 'home')
-colnames(da) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
-colnames(dh) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'gid', 'ha')
+da = d %>% select(date, away, ascore, home, hscore, season, lg, gid) %>% mutate(ha = 'away')
+dh = d %>% select(date, home, hscore, away, ascore, season, lg, gid) %>% mutate(ha = 'home')
+colnames(da) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'lg', 'gid', 'ha')
+colnames(dh) = c('date', 'team', 'score',  'opp', 'opp.score', 'season', 'lg', 'gid', 'ha')
+
 dd = bind_rows(da, dh) %>% 
   arrange(date, gid)
 head(dd)
 
 dd = dd %>%
   arrange(date) %>%
-  group_by(team) %>%
-  mutate(days.rest = c(NA, diff(date))) 
+  group_by(team, season, lg) %>%
+  mutate(days.rest = c(NA, diff(date))) %>%
+  ungroup()
 
 dd %>% 
-  filter(team == 'PHI') %>% 
+  filter(team == 'PHI', 
+         lg == 'nba', 
+         season == max(season)) %>% 
   head()
 ```
 
 ```{r}
 dg = dd %>%
-  filter(season == 2022) %>%
+  
+  filter(lg == 'nba', 
+         season == 2022) %>%
   mutate(days.rest = 
            ifelse(days.rest >= 3 | is.na(days.rest), 
                   '3 or more', 
@@ -407,17 +418,19 @@ head(dg)
 ```
 
 ```{r fig.height = 6, fig.width = 6}
+## reverse the order so that it is alphabetical from top to bottom
+dg$team = factor(dg$team, levels = rev(unique(dg$team)))
 
 title = "Number of Games With Each Number of Days Rest" 
 
 g = ggplot(dg, 
            aes(x = games, 
                y = team))+
-  geom_bar(stat  = 'identity', 
+  geom_bar(stat  = 'identity', ## optional lightgray background bars 
            aes(x = max+10), 
            color = NA, 
            fill  = publightgray, 
-           width = 0.8) + ## optional background bars. 
+           width = 0.8) + 
   geom_bar(stat = 'identity', 
            fill = pubred, 
            color = NA, 
@@ -443,13 +456,18 @@ Let's explore the relationship between `days.rest` and game outcomes.
 
 ```{r}
 dr = dd %>%
+  filter(lg == 'nba', 
+         season == 2022) %>%
+  mutate(days.rest = 
+           ifelse(days.rest >= 5 | is.na(days.rest), 
+                  '5 or more', 
+                  days.rest)) %>%
   group_by(days.rest) %>%
   summarise(score     = round(mean(    score),2), 
             opp.score = round(mean(opp.score),2), 
             n = n()) %>%
   mutate(days.rest = factor(days.rest, 
-                            levels = 6:1)) %>%
-  filter(!is.na(days.rest))
+                            levels = c('5 or more', 4:1))) 
 dr
 ```
 
