@@ -24,7 +24,6 @@ intro-to-nba-games-data
 game-level-data
 interactive-tables-with-dt
 recommended-options-with-dt
-previous-season-scoring-averages
 home-advantage
 home-advantage-by-team
 points-previous-vs-current-season

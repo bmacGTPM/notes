@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.5 Home advantage by team | Data Analysis</title>
+  <title>4.4 Home advantage by team | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.5 Home advantage by team | Data Analysis" />
+  <meta property="og:title" content="4.4 Home advantage by team | Data Analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course notes for Data Analysis." />
   <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.5 Home advantage by team | Data Analysis" />
+  <meta name="twitter:title" content="4.4 Home advantage by team | Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for Data Analysis." />
   
@@ -207,12 +207,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="interactive-tables-with-dt.html"><a href="interactive-tables-with-dt.html"><i class="fa fa-check"></i><b>4.1</b> Interactive tables with <code>DT</code></a></li>
 <li class="chapter" data-level="4.2" data-path="recommended-options-with-dt.html"><a href="recommended-options-with-dt.html"><i class="fa fa-check"></i><b>4.2</b> Recommended options with <code>DT</code></a></li>
-<li class="chapter" data-level="4.3" data-path="previous-season-scoring-averages.html"><a href="previous-season-scoring-averages.html"><i class="fa fa-check"></i><b>4.3</b> Previous season scoring averages</a></li>
-<li class="chapter" data-level="4.4" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage</a></li>
-<li class="chapter" data-level="4.5" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.5</b> Home advantage by team</a></li>
-<li class="chapter" data-level="4.6" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.6</b> Points previous vs current season</a></li>
-<li class="chapter" data-level="4.7" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.7</b> Formatting with <code>pubtheme</code></a></li>
-<li class="chapter" data-level="4.8" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.8</b> Scoring vs stronger/weaker opponents</a></li>
+<li class="chapter" data-level="4.3" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.3</b> Home advantage</a></li>
+<li class="chapter" data-level="4.4" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage by team</a></li>
+<li class="chapter" data-level="4.5" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.5</b> Points previous vs current season</a></li>
+<li class="chapter" data-level="4.6" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.6</b> Formatting with <code>pubtheme</code></a></li>
+<li class="chapter" data-level="4.7" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.7</b> Scoring vs stronger/weaker opponents</a></li>
 </ul></li>
 <li class="part"><span><b>II Random</b></span></li>
 <li class="chapter" data-level="5" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5</b> Introduction</a></li>
@@ -416,8 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="home-advantage-by-team" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Home advantage by team<a href="home-advantage-by-team.html#home-advantage-by-team" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="home-advantage-by-team" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Home advantage by team<a href="home-advantage-by-team.html#home-advantage-by-team" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We might think that home advantage varies by team, if certain venues are particularly difficult to play in. Let’s see how much variation there is in home advantage. It will be more appropriate to do this in the context of regression later but for now we can look at score differential when a team is the home team, score differential when a team is the away team, and the difference between those.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb43-1"><a href="home-advantage-by-team.html#cb43-1" aria-hidden="true" tabindex="-1"></a>dh <span class="ot">=</span> d <span class="sc">%&gt;%</span></span>

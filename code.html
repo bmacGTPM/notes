@@ -207,12 +207,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="interactive-tables-with-dt.html"><a href="interactive-tables-with-dt.html"><i class="fa fa-check"></i><b>4.1</b> Interactive tables with <code>DT</code></a></li>
 <li class="chapter" data-level="4.2" data-path="recommended-options-with-dt.html"><a href="recommended-options-with-dt.html"><i class="fa fa-check"></i><b>4.2</b> Recommended options with <code>DT</code></a></li>
-<li class="chapter" data-level="4.3" data-path="previous-season-scoring-averages.html"><a href="previous-season-scoring-averages.html"><i class="fa fa-check"></i><b>4.3</b> Previous season scoring averages</a></li>
-<li class="chapter" data-level="4.4" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage</a></li>
-<li class="chapter" data-level="4.5" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.5</b> Home advantage by team</a></li>
-<li class="chapter" data-level="4.6" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.6</b> Points previous vs current season</a></li>
-<li class="chapter" data-level="4.7" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.7</b> Formatting with <code>pubtheme</code></a></li>
-<li class="chapter" data-level="4.8" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.8</b> Scoring vs stronger/weaker opponents</a></li>
+<li class="chapter" data-level="4.3" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.3</b> Home advantage</a></li>
+<li class="chapter" data-level="4.4" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage by team</a></li>
+<li class="chapter" data-level="4.5" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.5</b> Points previous vs current season</a></li>
+<li class="chapter" data-level="4.6" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.6</b> Formatting with <code>pubtheme</code></a></li>
+<li class="chapter" data-level="4.7" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.7</b> Scoring vs stronger/weaker opponents</a></li>
 </ul></li>
 <li class="part"><span><b>II Random</b></span></li>
 <li class="chapter" data-level="5" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5</b> Introduction</a></li>
@@ -425,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-&lt;bytecode: 0x5614d2e78e20&gt;
+&lt;bytecode: 0x559af12d1228&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <p>The code for <code>sd</code> finds the square root of the variance of <code>x</code>.</p>
 <div id="generic-functions" class="section level3 hasAnchor" number="14.2.1">
@@ -438,7 +437,7 @@ sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x),
 
 function (x, ...) 
 standardGeneric(&quot;print&quot;)
-&lt;environment: 0x5614d5089e00&gt;
+&lt;environment: 0x559af4819810&gt;
 Methods may be defined for arguments: x
 Use  showMethods(print)  for currently available ones.</code></pre>
 <p>All we see here is <code>UseMethod("print")</code> because <code>print</code> is a generic function that will use different code depending on whether we give it a <code>data.frame</code>, <code>list</code> or some other object. For example, if we give <code>print</code> a <code>list</code>, it will show each object in the list, each labeled with <code>$nameoftheobject</code> and separated by a blank line.</p>
@@ -602,7 +601,7 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), ...)
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x5614d1aeb530&gt;
+&lt;bytecode: 0x559aec1f5e48&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb156"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb156-1"><a href="code.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.summary.lm&#39;</span>)</span></code></pre></div>
@@ -693,7 +692,7 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), symbolic.cor 
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x5614d133a290&gt;
+&lt;bytecode: 0x559afbb2f3b8&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 <div id="other-resources" class="section level3 hasAnchor" number="14.2.4">
