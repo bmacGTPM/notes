@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.2 Parsing HTML tables | Data Analysis</title>
+  <title>7.2 Parsing HTML tables | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.2 Parsing HTML tables | Data Analysis" />
+  <meta property="og:title" content="7.2 Parsing HTML tables | Data Analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course notes for Data Analysis." />
   <meta name="github-repo" content="https://github.com/bmacGTPM/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 Parsing HTML tables | Data Analysis" />
+  <meta name="twitter:title" content="7.2 Parsing HTML tables | Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for Data Analysis." />
   
@@ -52,10 +52,31 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.3/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.31/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/dt-ext-colreorder-1.13.6/css/colReorder.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-colreorder-1.13.6/js/dataTables.colReorder.min.js"></script>
+<link href="libs/dt-ext-fixedheader-1.13.6/css/fixedHeader.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedheader-1.13.6/js/dataTables.fixedHeader.min.js"></script>
+<link href="libs/dt-ext-keytable-1.13.6/css/keyTable.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-keytable-1.13.6/js/dataTables.keyTable.min.js"></script>
+<script src="libs/jszip-1.13.6/jszip.min.js"></script>
+<link href="libs/dt-ext-buttons-1.13.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.13.6/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.13.6/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.13.6/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.13.6/js/buttons.print.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<script src="libs/plotly-binding-4.10.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
@@ -176,149 +197,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="simple-example.html"><a href="simple-example.html"><i class="fa fa-check"></i><b>2.1</b> Simple Example</a></li>
 <li class="chapter" data-level="2.2" data-path="gallery.html"><a href="gallery.html"><i class="fa fa-check"></i><b>2.2</b> Gallery</a></li>
 </ul></li>
-<li class="part"><span><b>I Random</b></span></li>
-<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
-<li class="chapter" data-level="4" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>4</b> Project development and planning</a>
+<li class="part"><span><b>I Explore NBA data with <code>tidyverse</code></b></span></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>4.1</b> Brainstorming, determining the end deliverables</a></li>
-<li class="chapter" data-level="4.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>4.2</b> Create a basic framework</a></li>
-<li class="chapter" data-level="4.3" data-path="backwards-planning.html"><a href="backwards-planning.html"><i class="fa fa-check"></i><b>4.3</b> Backwards planning</a></li>
+<li class="chapter" data-level="3.1" data-path="what-questions-can-we-ask.html"><a href="what-questions-can-we-ask.html"><i class="fa fa-check"></i><b>3.1</b> What questions can we ask?</a></li>
+<li class="chapter" data-level="3.2" data-path="intro-to-nba-games-data.html"><a href="intro-to-nba-games-data.html"><i class="fa fa-check"></i><b>3.2</b> Intro to NBA games data</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-acquistion.html"><a href="data-acquistion.html"><i class="fa fa-check"></i><b>5</b> Data acquistion</a>
+<li class="chapter" data-level="4" data-path="game-level-data.html"><a href="game-level-data.html"><i class="fa fa-check"></i><b>4</b> Game level data</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="scrape-html-pages.html"><a href="scrape-html-pages.html"><i class="fa fa-check"></i><b>5.1</b> Scrape HTML pages</a></li>
-<li class="chapter" data-level="5.2" data-path="parsing-html-tables.html"><a href="parsing-html-tables.html"><i class="fa fa-check"></i><b>5.2</b> Parsing HTML tables</a></li>
-<li class="chapter" data-level="5.3" data-path="scraping-pages-that-require-log-in.html"><a href="scraping-pages-that-require-log-in.html"><i class="fa fa-check"></i><b>5.3</b> Scraping pages that require log-in</a></li>
-<li class="chapter" data-level="5.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>5.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
-<li class="chapter" data-level="5.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>5.5</b> Scrape PDFs</a></li>
-<li class="chapter" data-level="5.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>5.6</b> RSelenium, Docker</a></li>
-<li class="chapter" data-level="5.7" data-path="excel.html"><a href="excel.html"><i class="fa fa-check"></i><b>5.7</b> Excel</a></li>
-<li class="chapter" data-level="5.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>5.8</b> Census data with <code>tidycensus</code></a></li>
-<li class="chapter" data-level="5.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>5.9</b> JSON</a></li>
-<li class="chapter" data-level="5.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>5.10</b> Connecting to SQL databases</a></li>
-<li class="chapter" data-level="5.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>5.11</b> Shape files .shp</a></li>
+<li class="chapter" data-level="4.1" data-path="interactive-tables-with-dt.html"><a href="interactive-tables-with-dt.html"><i class="fa fa-check"></i><b>4.1</b> Interactive tables with <code>DT</code></a></li>
+<li class="chapter" data-level="4.2" data-path="recommended-options-with-dt.html"><a href="recommended-options-with-dt.html"><i class="fa fa-check"></i><b>4.2</b> Recommended options with <code>DT</code></a></li>
+<li class="chapter" data-level="4.3" data-path="previous-season-scoring-averages.html"><a href="previous-season-scoring-averages.html"><i class="fa fa-check"></i><b>4.3</b> Previous season scoring averages</a></li>
+<li class="chapter" data-level="4.4" data-path="home-advantage.html"><a href="home-advantage.html"><i class="fa fa-check"></i><b>4.4</b> Home advantage</a></li>
+<li class="chapter" data-level="4.5" data-path="home-advantage-by-team.html"><a href="home-advantage-by-team.html"><i class="fa fa-check"></i><b>4.5</b> Home advantage by team</a></li>
+<li class="chapter" data-level="4.6" data-path="points-previous-vs-current-season.html"><a href="points-previous-vs-current-season.html"><i class="fa fa-check"></i><b>4.6</b> Points previous vs current season</a></li>
+<li class="chapter" data-level="4.7" data-path="formatting-with-pubtheme.html"><a href="formatting-with-pubtheme.html"><i class="fa fa-check"></i><b>4.7</b> Formatting with <code>pubtheme</code></a></li>
+<li class="chapter" data-level="4.8" data-path="scoring-vs-strongerweaker-opponents.html"><a href="scoring-vs-strongerweaker-opponents.html"><i class="fa fa-check"></i><b>4.8</b> Scoring vs stronger/weaker opponents</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>6</b> Data cleaning</a>
+<li class="part"><span><b>II Random</b></span></li>
+<li class="chapter" data-level="5" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5</b> Introduction</a></li>
+<li class="chapter" data-level="6" data-path="project-development-and-planning.html"><a href="project-development-and-planning.html"><i class="fa fa-check"></i><b>6</b> Project development and planning</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="recordlinkage.html"><a href="recordlinkage.html"><i class="fa fa-check"></i><b>6.1</b> RecordLinkage</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="recordlinkage.html"><a href="recordlinkage.html#example-data"><i class="fa fa-check"></i><b>6.1.1</b> Example data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="recordlinkage.html"><a href="recordlinkage.html#comparededup"><i class="fa fa-check"></i><b>6.1.2</b> Compare/Dedup</a></li>
-<li class="chapter" data-level="6.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>6.1.3</b> Attach names to IDs</a></li>
+<li class="chapter" data-level="6.1" data-path="brainstorming-determining-the-end-deliverables.html"><a href="brainstorming-determining-the-end-deliverables.html"><i class="fa fa-check"></i><b>6.1</b> Brainstorming, determining the end deliverables</a></li>
+<li class="chapter" data-level="6.2" data-path="create-a-basic-framework.html"><a href="create-a-basic-framework.html"><i class="fa fa-check"></i><b>6.2</b> Create a basic framework</a></li>
+<li class="chapter" data-level="6.3" data-path="backwards-planning.html"><a href="backwards-planning.html"><i class="fa fa-check"></i><b>6.3</b> Backwards planning</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="unnesting-lists.html"><a href="unnesting-lists.html"><i class="fa fa-check"></i><b>6.2</b> Unnesting lists</a></li>
-<li class="chapter" data-level="6.3" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>6.3</b> Data imputation</a>
+<li class="chapter" data-level="7" data-path="data-acquistion.html"><a href="data-acquistion.html"><i class="fa fa-check"></i><b>7</b> Data acquistion</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="data-imputation.html"><a href="data-imputation.html#example-with-simulations"><i class="fa fa-check"></i><b>6.3.1</b> Example with simulations</a></li>
+<li class="chapter" data-level="7.1" data-path="scrape-html-pages.html"><a href="scrape-html-pages.html"><i class="fa fa-check"></i><b>7.1</b> Scrape HTML pages</a></li>
+<li class="chapter" data-level="7.2" data-path="parsing-html-tables.html"><a href="parsing-html-tables.html"><i class="fa fa-check"></i><b>7.2</b> Parsing HTML tables</a></li>
+<li class="chapter" data-level="7.3" data-path="scraping-pages-that-require-log-in.html"><a href="scraping-pages-that-require-log-in.html"><i class="fa fa-check"></i><b>7.3</b> Scraping pages that require log-in</a></li>
+<li class="chapter" data-level="7.4" data-path="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><a href="scraping-data-that-appears-in-javascript-tables-coming-soon.html"><i class="fa fa-check"></i><b>7.4</b> Scraping data that appears in javascript tables (coming soon!)</a></li>
+<li class="chapter" data-level="7.5" data-path="scrape-pdfs.html"><a href="scrape-pdfs.html"><i class="fa fa-check"></i><b>7.5</b> Scrape PDFs</a></li>
+<li class="chapter" data-level="7.6" data-path="rselenium-docker.html"><a href="rselenium-docker.html"><i class="fa fa-check"></i><b>7.6</b> RSelenium, Docker</a></li>
+<li class="chapter" data-level="7.7" data-path="excel.html"><a href="excel.html"><i class="fa fa-check"></i><b>7.7</b> Excel</a></li>
+<li class="chapter" data-level="7.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>7.8</b> Census data with <code>tidycensus</code></a></li>
+<li class="chapter" data-level="7.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>7.9</b> JSON</a></li>
+<li class="chapter" data-level="7.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>7.10</b> Connecting to SQL databases</a></li>
+<li class="chapter" data-level="7.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>7.11</b> Shape files .shp</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>6.4</b> Random useful functions</a>
+<li class="chapter" data-level="8" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>8</b> Data cleaning</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>6.4.1</b> Formatting for display</a></li>
-<li class="chapter" data-level="6.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>6.4.2</b> Distance from point to line</a></li>
-<li class="chapter" data-level="6.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>6.4.3</b> Holidays</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data visualization</a>
+<li class="chapter" data-level="8.1" data-path="recordlinkage.html"><a href="recordlinkage.html"><i class="fa fa-check"></i><b>8.1</b> RecordLinkage</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>7.1</b> Esquisse</a></li>
-<li class="chapter" data-level="7.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>7.2</b> Animating normal PDFs</a></li>
-<li class="chapter" data-level="7.3" data-path="html-formatting-in-ggplot.html"><a href="html-formatting-in-ggplot.html"><i class="fa fa-check"></i><b>7.3</b> HTML formatting in ggplot</a></li>
-<li class="chapter" data-level="7.4" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>7.4</b> Leaflet</a></li>
-<li class="chapter" data-level="7.5" data-path="geom_polygon.html"><a href="geom_polygon.html"><i class="fa fa-check"></i><b>7.5</b> geom_polygon</a></li>
+<li class="chapter" data-level="8.1.1" data-path="recordlinkage.html"><a href="recordlinkage.html#example-data"><i class="fa fa-check"></i><b>8.1.1</b> Example data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="recordlinkage.html"><a href="recordlinkage.html#comparededup"><i class="fa fa-check"></i><b>8.1.2</b> Compare/Dedup</a></li>
+<li class="chapter" data-level="8.1.3" data-path="recordlinkage.html"><a href="recordlinkage.html#attach-names-to-ids"><i class="fa fa-check"></i><b>8.1.3</b> Attach names to IDs</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis</a>
+<li class="chapter" data-level="8.2" data-path="unnesting-lists.html"><a href="unnesting-lists.html"><i class="fa fa-check"></i><b>8.2</b> Unnesting lists</a></li>
+<li class="chapter" data-level="8.3" data-path="data-imputation.html"><a href="data-imputation.html"><i class="fa fa-check"></i><b>8.3</b> Data imputation</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>8.1</b> Variable importance</a></li>
-<li class="chapter" data-level="8.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>8.2</b> Compariable observations</a></li>
-<li class="chapter" data-level="8.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>8.3</b> Other types of regression models</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html#multivariate-regression"><i class="fa fa-check"></i><b>8.3.1</b> Multivariate regression</a></li>
+<li class="chapter" data-level="8.3.1" data-path="data-imputation.html"><a href="data-imputation.html#example-with-simulations"><i class="fa fa-check"></i><b>8.3.1</b> Example with simulations</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>8.4</b> Time series</a></li>
-<li class="chapter" data-level="8.5" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>8.5</b> Calibration</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>9</b> Bayesian estimates</a>
+<li class="chapter" data-level="8.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>8.4</b> Random useful functions</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>9.1</b> Beta-binomial</a></li>
-<li class="chapter" data-level="9.2" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>9.2</b> Normal</a></li>
-<li class="chapter" data-level="9.3" data-path="data-augmentation.html"><a href="data-augmentation.html"><i class="fa fa-check"></i><b>9.3</b> Data augmentation</a></li>
+<li class="chapter" data-level="8.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>8.4.1</b> Formatting for display</a></li>
+<li class="chapter" data-level="8.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>8.4.2</b> Distance from point to line</a></li>
+<li class="chapter" data-level="8.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>8.4.3</b> Holidays</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>10</b> Simulating data</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="continuous-and-binary-predictors.html"><a href="continuous-and-binary-predictors.html"><i class="fa fa-check"></i><b>10.1</b> Continuous and binary predictors</a></li>
-<li class="chapter" data-level="10.2" data-path="linear-regression-with-a-continuous-predictor.html"><a href="linear-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>10.2</b> Linear regression with a continuous predictor</a></li>
-<li class="chapter" data-level="10.3" data-path="poisson-regression-with-a-continuous-predictor.html"><a href="poisson-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>10.3</b> Poisson regression with a continuous predictor</a></li>
-<li class="chapter" data-level="10.4" data-path="linear-regression-with-an-extra-binary-predictor.html"><a href="linear-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>10.4</b> Linear regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="10.5" data-path="poisson-regression-with-an-extra-binary-predictor.html"><a href="poisson-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>10.5</b> Poisson regression with an extra binary predictor</a></li>
-<li class="chapter" data-level="10.6" data-path="linear-regression-with-interaction.html"><a href="linear-regression-with-interaction.html"><i class="fa fa-check"></i><b>10.6</b> Linear regression with interaction</a></li>
-<li class="chapter" data-level="10.7" data-path="poisson-regression-with-interaction.html"><a href="poisson-regression-with-interaction.html"><i class="fa fa-check"></i><b>10.7</b> Poisson regression with interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>11</b> Shiny</a>
+<li class="chapter" data-level="9" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>9</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>11.1</b> Getting started</a></li>
-<li class="chapter" data-level="11.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>11.2</b> Dynamic UI</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>11.2.1</b> Example App: CLT</a></li>
+<li class="chapter" data-level="9.1" data-path="esquisse.html"><a href="esquisse.html"><i class="fa fa-check"></i><b>9.1</b> Esquisse</a></li>
+<li class="chapter" data-level="9.2" data-path="animating-normal-pdfs.html"><a href="animating-normal-pdfs.html"><i class="fa fa-check"></i><b>9.2</b> Animating normal PDFs</a></li>
+<li class="chapter" data-level="9.3" data-path="html-formatting-in-ggplot.html"><a href="html-formatting-in-ggplot.html"><i class="fa fa-check"></i><b>9.3</b> HTML formatting in ggplot</a></li>
+<li class="chapter" data-level="9.4" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>9.4</b> Leaflet</a></li>
+<li class="chapter" data-level="9.5" data-path="geom_polygon.html"><a href="geom_polygon.html"><i class="fa fa-check"></i><b>9.5</b> geom_polygon</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>11.3</b> Click leaflet map</a></li>
-<li class="chapter" data-level="11.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>11.4</b> Draw a shape on a leaflet map</a></li>
-<li class="chapter" data-level="11.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>11.5</b> Save data generated from user inputs</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>12</b> Understanding how functions work</a>
+<li class="chapter" data-level="10" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>10</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>12.1</b> Help</a></li>
-<li class="chapter" data-level="12.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>12.2</b> Code</a>
+<li class="chapter" data-level="10.1" data-path="variable-importance.html"><a href="variable-importance.html"><i class="fa fa-check"></i><b>10.1</b> Variable importance</a></li>
+<li class="chapter" data-level="10.2" data-path="compariable-observations.html"><a href="compariable-observations.html"><i class="fa fa-check"></i><b>10.2</b> Compariable observations</a></li>
+<li class="chapter" data-level="10.3" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html"><i class="fa fa-check"></i><b>10.3</b> Other types of regression models</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>12.2.1</b> Generic functions</a></li>
-<li class="chapter" data-level="12.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>12.2.2</b> <code>methods</code></a></li>
-<li class="chapter" data-level="12.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>12.2.3</b> <code>getAnywhere</code></a></li>
-<li class="chapter" data-level="12.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>12.2.4</b> Other resources</a></li>
+<li class="chapter" data-level="10.3.1" data-path="other-types-of-regression-models.html"><a href="other-types-of-regression-models.html#multivariate-regression"><i class="fa fa-check"></i><b>10.3.1</b> Multivariate regression</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>12.3</b> Functions with unquoted arguments</a></li>
+<li class="chapter" data-level="10.4" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>10.4</b> Time series</a></li>
+<li class="chapter" data-level="10.5" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>10.5</b> Calibration</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>13</b> Debugging</a>
+<li class="chapter" data-level="11" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>11</b> Bayesian estimates</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>13.1</b> <code>browser()</code></a></li>
-<li class="chapter" data-level="13.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>13.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+<li class="chapter" data-level="11.1" data-path="beta-binomial.html"><a href="beta-binomial.html"><i class="fa fa-check"></i><b>11.1</b> Beta-binomial</a></li>
+<li class="chapter" data-level="11.2" data-path="normal.html"><a href="normal.html"><i class="fa fa-check"></i><b>11.2</b> Normal</a></li>
+<li class="chapter" data-level="11.3" data-path="data-augmentation.html"><a href="data-augmentation.html"><i class="fa fa-check"></i><b>11.3</b> Data augmentation</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>14</b> Testing</a></li>
-<li class="chapter" data-level="15" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>15</b> For loops</a>
+<li class="chapter" data-level="12" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>12</b> Simulating data</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>15.1</b> Showing progress</a></li>
-<li class="chapter" data-level="15.2" data-path="parallel-processing-with-foreach.html"><a href="parallel-processing-with-foreach.html"><i class="fa fa-check"></i><b>15.2</b> Parallel processing with <code>foreach</code></a></li>
+<li class="chapter" data-level="12.1" data-path="continuous-and-binary-predictors.html"><a href="continuous-and-binary-predictors.html"><i class="fa fa-check"></i><b>12.1</b> Continuous and binary predictors</a></li>
+<li class="chapter" data-level="12.2" data-path="linear-regression-with-a-continuous-predictor.html"><a href="linear-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>12.2</b> Linear regression with a continuous predictor</a></li>
+<li class="chapter" data-level="12.3" data-path="poisson-regression-with-a-continuous-predictor.html"><a href="poisson-regression-with-a-continuous-predictor.html"><i class="fa fa-check"></i><b>12.3</b> Poisson regression with a continuous predictor</a></li>
+<li class="chapter" data-level="12.4" data-path="linear-regression-with-an-extra-binary-predictor.html"><a href="linear-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>12.4</b> Linear regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="12.5" data-path="poisson-regression-with-an-extra-binary-predictor.html"><a href="poisson-regression-with-an-extra-binary-predictor.html"><i class="fa fa-check"></i><b>12.5</b> Poisson regression with an extra binary predictor</a></li>
+<li class="chapter" data-level="12.6" data-path="linear-regression-with-interaction.html"><a href="linear-regression-with-interaction.html"><i class="fa fa-check"></i><b>12.6</b> Linear regression with interaction</a></li>
+<li class="chapter" data-level="12.7" data-path="poisson-regression-with-interaction.html"><a href="poisson-regression-with-interaction.html"><i class="fa fa-check"></i><b>12.7</b> Poisson regression with interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="efficient-programming.html"><a href="efficient-programming.html"><i class="fa fa-check"></i><b>16</b> Efficient Programming</a>
+<li class="chapter" data-level="13" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>13</b> Shiny</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>16.1</b> Efficient R Programming online book</a></li>
-<li class="chapter" data-level="16.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>16.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+<li class="chapter" data-level="13.1" data-path="getting-started-1.html"><a href="getting-started-1.html"><i class="fa fa-check"></i><b>13.1</b> Getting started</a></li>
+<li class="chapter" data-level="13.2" data-path="dynamic-ui.html"><a href="dynamic-ui.html"><i class="fa fa-check"></i><b>13.2</b> Dynamic UI</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="dynamic-ui.html"><a href="dynamic-ui.html#example-app-clt"><i class="fa fa-check"></i><b>13.2.1</b> Example App: CLT</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>17</b> Intro Prob/Stat</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>17.1</b> Poisson approximates binomial</a></li>
+<li class="chapter" data-level="13.3" data-path="click-leaflet-map.html"><a href="click-leaflet-map.html"><i class="fa fa-check"></i><b>13.3</b> Click leaflet map</a></li>
+<li class="chapter" data-level="13.4" data-path="draw-a-shape-on-a-leaflet-map.html"><a href="draw-a-shape-on-a-leaflet-map.html"><i class="fa fa-check"></i><b>13.4</b> Draw a shape on a leaflet map</a></li>
+<li class="chapter" data-level="13.5" data-path="save-data-generated-from-user-inputs.html"><a href="save-data-generated-from-user-inputs.html"><i class="fa fa-check"></i><b>13.5</b> Save data generated from user inputs</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="random-online-resources.html"><a href="random-online-resources.html"><i class="fa fa-check"></i><b>18</b> Random online resources</a></li>
-<li class="chapter" data-level="19" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>19</b> Other</a>
+<li class="chapter" data-level="14" data-path="understanding-how-functions-work.html"><a href="understanding-how-functions-work.html"><i class="fa fa-check"></i><b>14</b> Understanding how functions work</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>19.1</b> GitHub Copilot in RStudio</a></li>
-<li class="chapter" data-level="19.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>19.2</b> Accessible Documents</a></li>
-<li class="chapter" data-level="19.3" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>19.3</b> Github Actions</a></li>
-<li class="chapter" data-level="19.4" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>19.4</b> Math symbols in plots</a></li>
-<li class="chapter" data-level="19.5" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>19.5</b> Writing R packages</a></li>
-<li class="chapter" data-level="19.6" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>19.6</b> Blogdown</a></li>
-<li class="chapter" data-level="19.7" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>19.7</b> Bookdown</a></li>
-<li class="chapter" data-level="19.8" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>19.8</b> Quarto</a></li>
-<li class="chapter" data-level="19.9" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>19.9</b> Multiple authors in R Markdown</a></li>
-<li class="chapter" data-level="19.10" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>19.10</b> Read pixel values of images</a></li>
-<li class="chapter" data-level="19.11" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>19.11</b> Cloud</a></li>
+<li class="chapter" data-level="14.1" data-path="help.html"><a href="help.html"><i class="fa fa-check"></i><b>14.1</b> Help</a></li>
+<li class="chapter" data-level="14.2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>14.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="code.html"><a href="code.html#generic-functions"><i class="fa fa-check"></i><b>14.2.1</b> Generic functions</a></li>
+<li class="chapter" data-level="14.2.2" data-path="code.html"><a href="code.html#methods"><i class="fa fa-check"></i><b>14.2.2</b> <code>methods</code></a></li>
+<li class="chapter" data-level="14.2.3" data-path="code.html"><a href="code.html#getanywhere"><i class="fa fa-check"></i><b>14.2.3</b> <code>getAnywhere</code></a></li>
+<li class="chapter" data-level="14.2.4" data-path="code.html"><a href="code.html#other-resources"><i class="fa fa-check"></i><b>14.2.4</b> Other resources</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>20</b> Not data science</a>
+<li class="chapter" data-level="14.3" data-path="functions-with-unquoted-arguments.html"><a href="functions-with-unquoted-arguments.html"><i class="fa fa-check"></i><b>14.3</b> Functions with unquoted arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>15</b> Debugging</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>20.1</b> Dollar cost averaging example</a></li>
+<li class="chapter" data-level="15.1" data-path="browser.html"><a href="browser.html"><i class="fa fa-check"></i><b>15.1</b> <code>browser()</code></a></li>
+<li class="chapter" data-level="15.2" data-path="debug-debugonce.html"><a href="debug-debugonce.html"><i class="fa fa-check"></i><b>15.2</b> <code>debug</code>, <code>debugonce</code></a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>16</b> Testing</a></li>
+<li class="chapter" data-level="17" data-path="for-loops.html"><a href="for-loops.html"><i class="fa fa-check"></i><b>17</b> For loops</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="showing-progress.html"><a href="showing-progress.html"><i class="fa fa-check"></i><b>17.1</b> Showing progress</a></li>
+<li class="chapter" data-level="17.2" data-path="parallel-processing-with-foreach.html"><a href="parallel-processing-with-foreach.html"><i class="fa fa-check"></i><b>17.2</b> Parallel processing with <code>foreach</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="efficient-programming.html"><a href="efficient-programming.html"><i class="fa fa-check"></i><b>18</b> Efficient Programming</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>18.1</b> Efficient R Programming online book</a></li>
+<li class="chapter" data-level="18.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>18.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>19</b> Intro Prob/Stat</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>19.1</b> Poisson approximates binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="random-online-resources.html"><a href="random-online-resources.html"><i class="fa fa-check"></i><b>20</b> Random online resources</a></li>
+<li class="chapter" data-level="21" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>21</b> Other</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>21.1</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="21.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>21.2</b> Accessible Documents</a></li>
+<li class="chapter" data-level="21.3" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>21.3</b> Github Actions</a></li>
+<li class="chapter" data-level="21.4" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>21.4</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="21.5" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>21.5</b> Writing R packages</a></li>
+<li class="chapter" data-level="21.6" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>21.6</b> Blogdown</a></li>
+<li class="chapter" data-level="21.7" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>21.7</b> Bookdown</a></li>
+<li class="chapter" data-level="21.8" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>21.8</b> Quarto</a></li>
+<li class="chapter" data-level="21.9" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>21.9</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="21.10" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>21.10</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="21.11" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>21.11</b> Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>22</b> Not data science</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>22.1</b> Dollar cost averaging example</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="intro-to-nba-games-data.html"><a href="intro-to-nba-games-data.html"><i class="fa fa-check"></i><b>A.1</b> Intro to NBA games data</a></li>
+<li class="chapter" data-level="A.1" data-path="intro-to-nba-games-data-1.html"><a href="intro-to-nba-games-data-1.html"><i class="fa fa-check"></i><b>A.1</b> Intro to NBA games data</a></li>
 <li class="chapter" data-level="A.2" data-path="choosing-rows-with-filter.html"><a href="choosing-rows-with-filter.html"><i class="fa fa-check"></i><b>A.2</b> Choosing rows with <code>filter</code></a></li>
 <li class="chapter" data-level="A.3" data-path="pipe-operator.html"><a href="pipe-operator.html"><i class="fa fa-check"></i><b>A.3</b> Pipe Operator</a></li>
 <li class="chapter" data-level="A.4" data-path="choosing-columns-with-select.html"><a href="choosing-columns-with-select.html"><i class="fa fa-check"></i><b>A.4</b> Choosing columns with <code>select</code></a></li>
@@ -378,111 +416,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="parsing-html-tables" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Parsing HTML tables<a href="parsing-html-tables.html#parsing-html-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="parsing-html-tables" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Parsing HTML tables<a href="parsing-html-tables.html#parsing-html-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>html_table</code> gives a list of data frames, one for every HTML table in the page.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb46-1"><a href="parsing-html-tables.html#cb46-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb81-1"><a href="parsing-html-tables.html#cb81-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span></code></pre></div>
 </details>
 <pre><code>[[1]]
 # A tibble: 2 × 5
   Watchlist       `Change Today` `1 Month Return` `1 Year Return` `Total Return`
   &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;         
-1 Most Active Sm… +10.03%        -                -               -             
-2 ^GSPC           +0.24%         +3.37%           +22.03%         +5171.80%     
+1 Most Active Sm… +5.68%         -                -               -             
+2 ^GSPC           +1.03%         +3.22%           +17.13%         +5164.07%     
 
 [[2]]
 # A tibble: 30 × 9
    Symbol `Company Name`     `Last Price` Change `% Change` `Market Time` Volume
    &lt;chr&gt;  &lt;chr&gt;                     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt; 
- 1 ARRY   Array Technologie…        13.2    0.18 +1.42%     2:13 PM EST   1.80M 
- 2 PACB   Pacific Bioscienc…         7.14   0.12 +1.71%     2:13 PM EST   2.37M 
- 3 JBLU   JetBlue Airways C…         5.44  -0.1  -1.72%     2:13 PM EST   12.13M
- 4 RUM    Rumble Inc.                6.45   0.41 +6.79%     2:13 PM EST   9.28M 
- 5 ZIM    ZIM Integrated Sh…        14.1    0.68 +5.02%     2:13 PM EST   13.93M
- 6 ENVX   Enovix Corporation         9.92   0.26 +2.69%     2:13 PM EST   1.88M 
- 7 HOLI   Hollysys Automati…        25.6    0.23 +0.89%     2:13 PM EST   2.65M 
- 8 CLSK   CleanSpark, Inc.           8.37   0.36 +4.55%     2:13 PM EST   25.83M
- 9 ACHR   Archer Aviation I…         5.10   0.2  +4.08%     2:13 PM EST   2.06M 
-10 VERA   Vera Therapeutics…        33.1    2.92 +9.68%     2:13 PM EST   1.73M 
+ 1 RUM    Rumble Inc.                6.98   0.13 +1.87%     12:55 PM EST  9.28M 
+ 2 JBLU   JetBlue Airways C…         5.48   0.16 +3.11%     12:55 PM EST  6.68M 
+ 3 PACB   Pacific Bioscienc…         6.82   0.31 +4.76%     12:55 PM EST  3.85M 
+ 4 EXTR   Extreme Networks,…        13.2   -0.32 -2.33%     12:55 PM EST  2.57M 
+ 5 CLSK   CleanSpark, Inc.           8.36   0.3  +3.79%     12:55 PM EST  19.15M
+ 6 ZIM    ZIM Integrated Sh…        13.4   -1.56 -10.38%    12:55 PM EST  9.26M 
+ 7 PTGX   Protagonist Thera…        27.7    2.72 +10.88%    12:55 PM EST  2.49M 
+ 8 BORR   Borr Drilling Lim…         6.08  -0.07 -1.14%     12:55 PM EST  1.87M 
+ 9 ENVX   Enovix Corporation         9.32   0.01 +0.16%     12:55 PM EST  2.71M 
+10 OCSL   Oaktree Specialty…        19.6   -1.59 -7.52%     12:55 PM EST  2.79M 
 # ℹ 20 more rows
 # ℹ 2 more variables: `Avg Vol (3 month)` &lt;chr&gt;, `Market Cap` &lt;chr&gt;</code></pre>
 <p>The <code>readHTMLTable</code> function is similar.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb48-1"><a href="parsing-html-tables.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
-<span id="cb48-2"><a href="parsing-html-tables.html#cb48-2" aria-hidden="true" tabindex="-1"></a>d1 <span class="sc">%&gt;%</span> <span class="fu">readHTMLTable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb83-1"><a href="parsing-html-tables.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
+<span id="cb83-2"><a href="parsing-html-tables.html#cb83-2" aria-hidden="true" tabindex="-1"></a>d1 <span class="sc">%&gt;%</span> <span class="fu">readHTMLTable</span>()</span></code></pre></div>
 </details>
 <pre><code>$`NULL`
                      Watchlist Change Today 1 Month Return 1 Year Return
-1 Most Active Small-Cap Stocks      +10.03%              -             -
-2                        ^GSPC       +0.24%         +3.37%       +22.03%
+1 Most Active Small-Cap Stocks       +5.68%              -             -
+2                        ^GSPC       +1.03%         +3.22%       +17.13%
   Total Return
 1            -
-2    +5171.84%
+2    +5164.07%
 
 $`NULL`
    Symbol                            Company Name Last Price Change % Change
-1    ARRY                Array Technologies, Inc.     13.205  +0.18   +1.42%
-2    PACB Pacific Biosciences of California, Inc.     7.1399  +0.12   +1.71%
-3    JBLU             JetBlue Airways Corporation       5.44  -0.09   -1.63%
-4     RUM                             Rumble Inc.     6.4499  +0.41   +6.79%
-5     ZIM   ZIM Integrated Shipping Services Ltd.     14.115  +0.68   +5.02%
-6    ENVX                      Enovix Corporation       9.92  +0.26   +2.69%
-7    HOLI   Hollysys Automation Technologies Ltd.     25.615  +0.23   +0.89%
-8    CLSK                        CleanSpark, Inc.     8.3745  +0.36   +4.55%
-9    ACHR                    Archer Aviation Inc.     5.0997  +0.20   +4.08%
-10   VERA                 Vera Therapeutics, Inc.       33.1  +2.92   +9.68%
-11   DWAC         Digital World Acquisition Corp.    36.2953  -1.88   -4.94%
-12   NOVA       Sunnova Energy International Inc.    10.4445  +0.20   +2.00%
-13   RDFN                      Redfin Corporation       8.73  +0.38   +4.55%
-14   GRCL            Gracell Biotechnologies Inc.     10.195  +0.13   +1.34%
-15   BTDR              Bitdeer Technologies Group       8.76  +1.16  +15.26%
-16    GCT               GigaCloud Technology Inc.     22.335  -3.29  -12.82%
-17    HUT                             Hut 8 Corp.      8.465  +0.02   +0.18%
-18     DX                     Dynex Capital, Inc.      12.77  +0.08   +0.63%
-19   SAVE                   Spirit Airlines, Inc.       6.26  +0.01   +0.16%
-20   AAOI           Applied Optoelectronics, Inc.      15.93  +0.94   +6.27%
-21   ARQT           Arcutis Biotherapeutics, Inc.      5.875  +0.57  +10.85%
-22   FATE                 Fate Therapeutics, Inc.       5.39  +0.83  +18.20%
-23    ALT                         Altimmune, Inc.       9.76  +0.43   +4.61%
-24   IRBT                      iRobot Corporation       15.8  -1.19   -7.00%
-25   CCCC                   C4 Therapeutics, Inc.       6.13  +0.66  +12.07%
-26   CDLX                        Cardlytics, Inc.       7.32  +1.55  +26.86%
-27   CRBP   Corbus Pharmaceuticals Holdings, Inc.    22.9623  -6.53  -22.14%
-28   RVSN                        Rail Vision Ltd.    17.0618  +7.56  +79.60%
-29   NEXI                         NexImmune, Inc.       10.1  +4.75  +88.79%
-30   REVB            Revelation Biosciences, Inc.      13.97  +4.10  +41.54%
-   Market Time Volume Avg Vol (3 month) Market Cap
-1  2:13 PM EST  1.80M             5.91M      2.00B
-2  2:13 PM EST  2.37M             6.93M      1.91B
-3  2:13 PM EST 12.13M            18.10M      1.81B
-4  2:13 PM EST  9.28M             4.13M      1.81B
-5  2:13 PM EST 13.93M             6.99M      1.70B
-6  2:13 PM EST  1.88M             4.25M      1.66B
-7  2:13 PM EST  2.65M             1.14M      1.59B
-8  2:13 PM EST 25.83M            24.57M      1.55B
-9  2:13 PM EST  2.06M             4.93M      1.53B
-10 2:13 PM EST  1.73M           835.55k      1.47B
-11 2:12 PM EST  1.78M             2.15M      1.35B
-12 2:13 PM EST  3.34M             5.61M      1.28B
-13 2:12 PM EST  2.11M             6.03M      1.01B
-14 2:13 PM EST  1.53M             1.22M    984.56M
-15 2:13 PM EST  2.64M             1.41M    974.37M
-16 2:13 PM EST  3.13M             1.80M    910.23M
-17 2:13 PM EST  6.73M             5.90M    753.07M
-18 2:13 PM EST  1.71M           937.51k    723.36M
-19 2:13 PM EST 12.65M            15.24M    683.39M
-20 2:13 PM EST  2.09M             2.95M    603.46M
-21 2:13 PM EST  7.51M             4.99M    568.66M
-22 2:13 PM EST  5.69M             2.10M    531.46M
-23 2:13 PM EST  2.65M            11.17M    524.39M
-24 2:13 PM EST 15.05M             1.62M    440.28M
-25 2:13 PM EST  3.47M            14.76M    302.09M
-26 2:13 PM EST  5.22M           747.73k    287.34M
-27 2:13 PM EST  2.48M           570.77k    101.58M
-28 2:13 PM EST 26.15M             3.81M     51.16M
-29 2:13 PM EST  6.31M             1.94M     10.69M
-30 2:13 PM EST  5.01M             7.54k      2.93M</code></pre>
+1     RUM                             Rumble Inc.      6.978  +0.13   +1.87%
+2    JBLU             JetBlue Airways Corporation      5.475  +0.16   +3.11%
+3    PACB Pacific Biosciences of California, Inc.       6.82  +0.31   +4.76%
+4    EXTR                  Extreme Networks, Inc.     13.195  -0.32   -2.33%
+5    CLSK                        CleanSpark, Inc.      8.355  +0.30   +3.79%
+6     ZIM   ZIM Integrated Shipping Services Ltd.    13.4599  -1.54  -10.27%
+7    PTGX          Protagonist Therapeutics, Inc.      27.73  +2.72  +10.88%
+8    BORR                   Borr Drilling Limited       6.08  -0.07   -1.14%
+9    ENVX                      Enovix Corporation      9.325  +0.01   +0.16%
+10   OCSL   Oaktree Specialty Lending Corporation    19.5882  -1.59   -7.52%
+11    LPG                         Dorian LPG Ltd.     37.375  -0.06   -0.17%
+12   DWAC         Digital World Acquisition Corp.    40.7052  +2.76   +7.26%
+13   NOVA       Sunnova Energy International Inc.      10.69  +0.17   +1.62%
+14   UUUU                       Energy Fuels Inc.       8.01  +0.46   +6.09%
+15   GOOS              Canada Goose Holdings Inc.       12.7  +0.71   +5.92%
+16    WNC             Wabash National Corporation      26.12  +0.82   +3.24%
+17   OXLC               Oxford Lane Capital Corp.      5.245  +0.13   +2.44%
+18    HPP         Hudson Pacific Properties, Inc.      7.985  -0.20   -2.50%
+19   AUTL                Autolus Therapeutics plc        6.1  +0.08   +1.33%
+20   SCRM       Screaming Eagle Acquisition Corp.     10.625  +0.01   +0.05%
+21   RDFN                      Redfin Corporation     8.5939  +0.43   +5.32%
+22   OLMA             Olema Pharmaceuticals, Inc.      15.06  +2.02  +15.49%
+23   SAVE                   Spirit Airlines, Inc.     6.4087  +0.12   +1.89%
+24   FATE                 Fate Therapeutics, Inc.      6.565  +0.41   +6.57%
+25   ARQT           Arcutis Biotherapeutics, Inc.       6.57  +0.70  +11.93%
+26   EZPW                            EZCORP, Inc.       9.67  +1.07  +12.44%
+27   IRBT                      iRobot Corporation      13.24  -0.36   -2.65%
+28   CCCC                   C4 Therapeutics, Inc.        5.9  -0.28   -4.53%
+29   NRBO           NeuroBo Pharmaceuticals, Inc.        5.3  +2.03  +62.08%
+30   MINM                             Minim, Inc.     5.8298  +1.73  +42.19%
+    Market Time Volume Avg Vol (3 month) Market Cap
+1  12:55 PM EST  9.28M             4.57M      1.96B
+2  12:55 PM EST  6.68M            17.96M      1.82B
+3  12:55 PM EST  3.85M             6.81M      1.82B
+4  12:55 PM EST  2.57M             2.20M      1.70B
+5  12:55 PM EST 19.15M            25.22M      1.64B
+6  12:55 PM EST  9.26M             7.48M      1.62B
+7  12:55 PM EST  2.49M           742.95k      1.60B
+8  12:55 PM EST  1.87M             1.75M      1.57B
+9  12:55 PM EST  2.71M             4.20M      1.56B
+10 12:55 PM EST  2.79M           657.63k      1.55B
+11 12:55 PM EST  1.53M             1.05M      1.52B
+12 12:55 PM EST  1.66M             2.31M      1.51B
+13 12:55 PM EST  4.32M             5.61M      1.31B
+14 12:55 PM EST  3.29M             2.62M      1.30B
+15 12:55 PM EST  3.45M             1.54M      1.29B
+16 12:55 PM EST  1.47M           548.28k      1.20B
+17 12:54 PM EST  1.37M             1.70M      1.15B
+18 12:55 PM EST  3.04M             3.41M      1.15B
+19 12:55 PM EST  1.45M             1.26M      1.06B
+20 12:53 PM EST  1.52M           539.32k    996.09M
+21 12:55 PM EST  2.38M             5.91M    990.38M
+22 12:54 PM EST  1.49M           901.94k    824.83M
+23 12:55 PM EST  5.68M            15.78M    699.62M
+24 12:54 PM EST  3.11M             2.31M    647.32M
+25 12:55 PM EST  4.68M             5.26M    635.93M
+26 12:55 PM EST  1.65M           365.74k    529.11M
+27 12:55 PM EST  1.78M             2.06M    368.94M
+28 12:55 PM EST  1.73M            14.95M    290.76M
+29 12:55 PM EST 55.04M            34.88k     25.71M
+30 12:55 PM EST 35.27M             3.44M     16.84M</code></pre>
 </div>
             </section>
 
