@@ -143,7 +143,7 @@ g = ggplot(dg,
            fill  = pubred, 
            color = NA, 
            width = 0.8)+ 
-  geom_text(aes(label = round(miles,2)), 
+  geom_text(aes(label =  comma(miles)), 
             hjust = -0.1)+ ## optional numbers with reasonable number of digits
   facet_wrap(~div, 
              scales = 'free', 
