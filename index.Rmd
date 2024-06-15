@@ -148,6 +148,7 @@ install.packages('timeDate')
 install.packages('tidycensus')
 install.packages('pscl')
 
+
 ## Install packages from my GitHub
 devtools::install_github("bmacGTPM/pubtheme")
 ```
@@ -195,8 +196,9 @@ library(grid)
 library(foreign)
 library(maps) ## leave uncommented. For some reason GitHub Actions had a problem when this wasn't explicitly loaded here. 
 library(timeDate)
-#library(tidycensus) ## might need to comment
+library(tidycensus) ## might need to comment
 library(pscl)
+
 
 ## load tidyverse last!
 library(tidyverse)
