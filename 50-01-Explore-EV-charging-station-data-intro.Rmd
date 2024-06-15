@@ -1,0 +1,108 @@
+# (PART) EV charging stations {-}
+
+# Explore EV Charging Station data
+
+## Introduction 
+
+This data set contains Electric Vehicle (EV) Charging Station locations in US and Canada as of Jan 15, 2023. These data come from the US Department of Energy's Alternative Fuels Data Center website  
+https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC.
+
+
+
+## Data prepration
+
+There are a lot of columns, and a lot of weird names, so let's clean things up a little bit. Let's keep only the rows for which `Fuel.Type.Code` is `ELEC`, so that we are dealing with only electric vehicle charging stations. This data set also has ethanol, hydrogen, etc., but we don't want to focus on those. Let's also rename some columns, and transform the `Status.Code` into something more human readable. Since there are some NA values in the `lev2` and `lev3` columns, we'll replace each NA with 0. We'll also clean up some network names, 
+
+```{r}
+#library(leaflet)
+library(htmltools)
+library(tidyverse)
+library(pubtheme)
+
+d = readRDS('data/EVstations.rds')
+colnames(d) = tolower(colnames(d))
+
+d = d %>%
+  select(-matches('cng|lng|lpg|hydrogen|e85|bd[.]blends|french|^ng[.]|plus4|level1')) %>%
+  filter(fuel.type.code == 'ELEC') %>%
+  rename(lev2    = ev.level2.evse.num, 
+         lev3    = ev.dc.fast.count, 
+         network = ev.network, 
+         lat     = latitude, 
+         lon     = longitude) %>%
+  filter(lat > 20, 
+         lon < -60,
+         lat < 55, 
+         lon >-130) %>%
+  mutate(status = case_when(status.code == 'E' ~ 'avail', 
+                            status.code == 'P' ~ 'planned', 
+                            status.code == 'T' ~ 'temp.unavail', 
+                            TRUE ~ ''), 
+         lev2  = ifelse(is.na(lev2), 0, lev2), 
+         lev3  = ifelse(is.na(lev3), 0, lev3), 
+         lev23 = lev2 + lev3) %>%
+  mutate(network = ifelse(network == 'Tesla Destination', 
+                          'Tesla', 
+                          network), 
+         network = gsub('Ã©', 'E', network), 
+         network = gsub('Ã‰', 'E', network), 
+         network = gsub('SemaCharge', 'Blink', network), ## https://www.semaconnect.com/
+         network = gsub(' Network', '', network)) 
+
+head(d,2)
+```
+
+Which are the biggest networks?
+
+```{r}
+dn = d %>% 
+  filter(status == 'avail') %>%
+  group_by(network) %>% 
+  summarise(lev2 = sum(lev2), 
+            lev3 = sum(lev3)) %>%
+  mutate(tot = lev2 + lev3)
+
+dn %>% arrange(desc(lev2))
+dn %>% arrange(desc(lev3))
+dn %>% arrange(desc(tot ))
+```
+
+Let's create a new network column where all networks other than the top 5 networks with Level 2 charging stations a grouped together as an "Other" category. Likewise with Level 3 charging stations. 
+
+```{r}
+top5lev2 = c('ChargePoint', 
+             'Non-Networked', 
+             'Tesla', 
+             'Blink', 
+             'FLO')
+
+top5lev3 = c('Tesla',
+             'Electrify America', 
+             'eVgo', 
+             'ChargePoint',
+             'Non-Networked')
+d = d %>%
+  mutate(network2 = ifelse(network %in% top5lev2, network, 'Other'), 
+         network3 = ifelse(network %in% top5lev3, network, 'Other'), 
+         network2 = factor(network2,  levels = c(top5lev2, 'Other')), 
+         network3 = factor(network3,  levels = c(top5lev3, 'Other')))
+head(d,2)
+```
+
+
+## Column descriptions
+
+Some key columns in the data include
+
+- the new `status` column we just created indicates whether an EV charging station is currently available and operational, whether it is planned for the future, or whether it is temporarily unavailable.  
+- `lev2` is the number of level 2 charging stations at this location. These are "fast" charging stations, but not as fast as `lev3`.
+- `lev3` is the number of level 3 charging stations, also known as DC fast chargers. These are the fastest type of charging station. 
+- `network` is the company or organization that operates the charging station. You'll see, e.g. Tesla, ChargePoint, Electrify America, EVgo, Blink, SemaConnect, etc.
+- `open.date` is the date the charging station became active.
+
+## Discussion
+
+- What questions about EV charging stations are you interested in answering? 
+- How can you answer those with this data? Can some of them not be answered? Possibly update your list of questions. 
+
+

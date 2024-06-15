@@ -1,0 +1,212 @@
+# Growth over time
+
+## Level 2 Cumulative Charging Stations Over Time
+```{r}
+dg = d %>%
+  filter(status == 'avail', 
+         open.date >= '2010-01-01', 
+         lev2 > 0) %>%
+  group_by(open.date, 
+           network2) %>%
+  summarise(lev2 = sum(lev2, na.rm=T)) %>%
+  ungroup() %>%
+  complete(open.date, 
+           network2, 
+           fill = list(lev2 = 0)) %>%
+  arrange(open.date) %>%
+  group_by(network2) %>%
+  mutate(cumul.lev2 = cumsum(lev2)) 
+
+tail(dg,10)
+
+dmax = dg %>%
+  filter(cumul.lev2 == max(cumul.lev2), 
+         open.date  == max(open.date)) 
+dmax
+```
+
+```{r fig.width=7, fig.height=7}
+library(grid)
+title = "Level 2 Charging Stations, Jan 1, 2010 thru Jul 13, 2023" 
+g = ggplot(dg, 
+           aes(x = open.date, 
+               y = cumul.lev2, 
+               color = network2, 
+               label = network2))+
+  geom_text(data = dmax, hjust = 0, show.legend = F, nudge_x = 100)+
+  geom_line(show.legend = F)+
+  geom_point(data = dmax, show.legend = F)+
+  labs(title    = title,
+       caption  = 'As of July 13, 2023. Data: https://afdc.energy.gov/',
+       x = 'Open Date', 
+       y = 'Cumulative Number of Level 2 Charging Stations')+  
+  scale_x_date(
+    # limits = as.Date(c('2010-01-01', 
+    #                    '2023-01-15')),
+               breaks = seq.Date(from = as.Date('2010-01-01'), 
+                                 to   = as.Date('2023-07-13'), 
+                                 by   = 'year'), 
+               date_labels = '%Y') +
+  scale_y_continuous(labels = comma, 
+                     limits = c(0, 54000), 
+                     breaks = c(0, 27000, 54000))+ 
+  scale_color_manual(values = c('orange', 
+                                pubdarkgray, 
+                                pubred,  
+                                'forestgreen', 
+                                pubblue, 
+                                pubmediumgray))
+  
+g %>% 
+  pub('line', 
+      ylim = c(0, 60000), 
+      ybreaks = c(0, 2e4, 4e4, 6e4)) + 
+  theme(legend.title = element_blank(), 
+        plot.margin  = margin(t =  70*1/72*12/36,
+                              r = 300*1/72*12/36,
+                              b =  50*1/72*12/36,
+                              l =  50*1/72*12/36, 
+                              unit = 'in'))
+
+```
+
+
+## Level 3 Cumulative Charging Stations Over Time
+
+```{r}
+dg = d %>%
+  filter(status    == 'avail', 
+         open.date >= '2010-01-01', 
+         lev3      >  0) %>%
+  group_by(open.date, 
+           network3) %>%
+  summarise(lev3 = sum(lev3, na.rm = T)) %>%
+  ungroup() %>%
+  complete(open.date, 
+           network3, 
+           fill = list(lev3 = 0)) %>%
+  arrange(open.date) %>%
+  group_by(network3) %>%
+  mutate(cumul.lev3 = cumsum(lev3))
+
+tail(dg,12)
+
+dmax = dg %>%
+  filter(cumul.lev3 == max(cumul.lev3), 
+         open.date  == max(open.date)) 
+dmax
+
+```
+
+
+```{r fig.width = 7, fig.height = 7}
+title = "Level 3 Charging Stations" 
+g = ggplot(dg, # %>% filter(open.date>='2023-07-01'), 
+           aes(x     = open.date, 
+               y     = cumul.lev3, 
+               color = network3, 
+               group = network3, 
+               label = network3))+
+  # geom_text(data  = dmax, 
+  #           hjust = 0, 
+  #           show.legend = F, 
+  #           nudge_x     = 100)+
+  geom_line(show.legend = F)+
+  geom_point(show.legend = F) + ## point at each frame
+  geom_text(show.legend = F, 
+            hjust       = 0, 
+            nudge_x     = 0) +
+  # geom_point(data = dmax, 
+  #             show.legend = F)+
+  labs(title    = title,
+       subtitle = 'Opened January 1, 2010 through July 13, 2023',
+       caption  = 'Data: https://afdc.energy.gov/, retrieved July 13, 2023',
+       x = 'Open Date', 
+       y = 'Cumulative Number of Level 3 Charging Stations')+  
+  scale_color_manual(
+    values = c(pubred, 
+               'darkturquoise', 
+               'navy',
+               'darkorange', 
+               pubdarkgray, 
+               pubmediumgray)) ## company colors
+  
+g %>% 
+  pub('line', 
+      ylim = c(0, 25000)) + 
+  theme(plot.margin = margin(t =  70*1/72/3,
+                             r = 300*1/72/3,
+                             b =  50*1/72/3,
+                             l =  50*1/72/3, 
+                             unit = 'in'))
+
+# gg = g %>%
+#   pub('line', 
+#       base_size = 36, 
+#       ylim = c(0, 25000)) + 
+#   theme(plot.margin = margin(t =  70*1/72,
+#                              r = 300*1/72,
+#                              b =  50*1/72,
+#                              l =  50*1/72, 
+#                              unit = 'in'))
+# 
+# ggsave(filename=paste0("img/", gsub("%", " Perc", title), ".jpg"), 
+#        plot   = gg,
+#        width  = 20,   
+#        height = 20,  
+#        units  = 'in', 
+#        dpi    = 72)  
+```
+
+## Level 3 Cumulative Stations Line Animation
+
+Let's animate it. First a static version with points shown. 
+
+```{r}
+g %>%
+  pub('line', 
+      ylim = c(0, 25000), 
+      base_size = 36/4) + 
+  theme(plot.margin = margin(t =  70*1/72/4,
+                             r = 300*1/72/4,
+                             b =  50*1/72/4,
+                             l =  50*1/72/4, 
+                             unit = 'in'))
+```
+
+
+```{r}
+gg = g %>%
+  pub('line', 
+      ylim = c(0, 25000), 
+      base_size = 36) + 
+  # geom_point(show.legend = F) + ## point at each frame
+  # geom_text(show.legend = F, 
+  #           hjust       = 0, 
+  #           nudge_x     = 100) +
+  theme(plot.margin = margin(t =  70*1/72,
+                             r = 300*1/72,
+                             b =  50*1/72,
+                             l =  50*1/72, 
+                             unit = 'in')) +
+   transition_reveal(open.date) 
+
+# other animation settings
+## 2 frames/month, aka 6 months/sec, plus a 5 second pause
+## use same number of frames as maps
+## using dd here since dg doesn't have month.year
+# nframes = length(levels(dd$month.year))*2 
+# a3 = animate(gg,
+#              width   = 1440,
+#              height  = 1440,
+#              fps     = 12,
+#              nframes = nframes,
+#              start_pause = 0,
+#              end_pause   = 0)
+# a3
+# 
+# # ## save animation
+# anim_save(a3, filename = 'img/cumulative.EV.stations.animation3.gif')
+```
+
+![](img/cumulative.EV.stations.animation3.gif)
