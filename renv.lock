@@ -1875,42 +1875,6 @@
       ],
       "Hash": "d908914ae53b04d4c0c0fd72ecc35370"
     },
-    "leaflet": {
-      "Package": "leaflet",
-      "Version": "2.2.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "RColorBrewer",
-        "crosstalk",
-        "htmltools",
-        "htmlwidgets",
-        "jquerylib",
-        "leaflet.providers",
-        "magrittr",
-        "methods",
-        "png",
-        "raster",
-        "scales",
-        "sp",
-        "stats",
-        "viridisLite",
-        "xfun"
-      ],
-      "Hash": "ca012d4a706e21ce217ba15f22d402b2"
-    },
-    "leaflet.providers": {
-      "Package": "leaflet.providers",
-      "Version": "2.0.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "htmltools"
-      ],
-      "Hash": "c0b81ad9d5d932772f7a457ac398cf36"
-    },
     "lifecycle": {
       "Package": "lifecycle",
       "Version": "1.0.4",
@@ -2585,20 +2549,6 @@
       ],
       "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
     },
-    "raster": {
-      "Package": "raster",
-      "Version": "3.6-26",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "Rcpp",
-        "methods",
-        "sp",
-        "terra"
-      ],
-      "Hash": "7d6eda494f34a644420ac1bfd2a8023a"
-    },
     "rcmdcheck": {
       "Package": "rcmdcheck",
       "Version": "1.4.0",
@@ -3075,23 +3025,6 @@
       ],
       "Hash": "5f5a7629f956619d519205ec475fe647"
     },
-    "sp": {
-      "Package": "sp",
-      "Version": "2.1-4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "grDevices",
-        "graphics",
-        "grid",
-        "lattice",
-        "methods",
-        "stats",
-        "utils"
-      ],
-      "Hash": "75940133cca2e339afce15a586f85b11"
-    },
     "stringi": {
       "Package": "stringi",
       "Version": "1.8.4",
@@ -3156,18 +3089,6 @@
         "lifecycle"
       ],
       "Hash": "213b6b8ed5afbf934843e6c3b090d418"
-    },
-    "terra": {
-      "Package": "terra",
-      "Version": "1.7-78",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "Rcpp",
-        "methods"
-      ],
-      "Hash": "8f020def0792119cb98bd8f696dab22d"
     },
     "testthat": {
       "Package": "testthat",
@@ -3384,6 +3305,16 @@
         "cpp11"
       ],
       "Hash": "f561504ec2897f4d46f0c7657e488ae1"
+    },
+    "udunits2": {
+      "Package": "udunits2",
+      "Version": "0.13.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "b88cada8058e2370a1950ea8407328b4"
     },
     "units": {
       "Package": "units",
