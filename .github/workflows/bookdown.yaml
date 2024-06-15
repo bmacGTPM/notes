@@ -17,7 +17,12 @@ jobs:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
+    
     steps:
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libudunits2-dev
       - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
