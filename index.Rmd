@@ -242,6 +242,18 @@ It should be in the same folder as this R Markdown file. If that works, `gganima
 
 ![](img/test.gif)
 
+### Check `lmer`
+
+Let's check that `lmer` is working properly. This model doesn't make a ton of sense, but we just want to check the function. 
+
+```{r}
+library(lme4)
+m1 = lmer(Petal.Length ~ Sepal.Length + (1|Species), 
+          data = iris)
+summary(m1)
+ranef(m1)
+```
+
 
 ### Github
 
