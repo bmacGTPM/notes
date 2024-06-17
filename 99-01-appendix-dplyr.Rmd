@@ -238,6 +238,27 @@ Note that functions other than `mean` (e.g. `sum` and `sd`) can be used with `su
 
 You can use `summarise` or `summarize` (`s` or `z`). I usually use `s` because it is in the home position (middle row of keyboard, left hand: `a`, `s`, `d`, `f`; right hand `j`, `k`, `l`, `;`) so I find it easier to type. 
 
+## Summarize using `reframe` 
+
+The function `reframe` is similar to `summarise` except it doesn't require the output to have one row (or one row per group, as we'll see later). This finds all pairs of away and home teams, regardless if they played each other in this season (all pairs do play each other in the NBA, so this isn't necessary for the NBA, but could be used in e.g. college basketball). 
+
+```{r}
+pairs = d %>%
+  reframe(expand.grid(away = unique(away), 
+                      home = unique(home))) %>%
+  filter(away != home)
+dim(pairs)
+head(pairs)
+
+```
+
+ZZZ **Not a great example, maybe think of another one.**
+
+```{r}
+
+```
+
+
 ## Gluing data.frames using `bind_rows`
 
 Suppose we want to find average score by team. We'll have to rearrange the data a little since teams can appear in both the home and away column. Ideally, we would have one column with the team name, and one column with the score. Each game would then have two rows, one for the away team and one for the home team. We'll create two data.frames, one for home teams and one for away teams, and then bind them together using `bind_rows`. 
@@ -281,6 +302,17 @@ dd = dd %>%
 dd %>% 
   filter(team == 'PHI')
 ```
+
+## Using `reframe` and `group_by`
+
+ZZZ *Need an example* ZZZ
+
+```{r}
+dd %>%
+  group_by(team, opp) %>%
+  reframe(quantile(score, c(0.25, 0.5, 0.75)))
+```
+
 
 ## Using `mutate` and `ifelse`
 

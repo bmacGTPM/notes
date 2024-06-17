@@ -689,12 +689,15 @@ g +
 
 ![](img/normal-dist.gif)     
 
-## HTML formatting in ggplot
+## ggtext: HTML formatting in ggplot
 
 Use HTML to format text and include images in ggplot axes labels (`element_markdown`) and point labels (`geom_richtext`).
 
 - https://wilkelab.org/ggtext/
 - With country flags, downloaded from wikipedia https://www.r-bloggers.com/2019/08/ggtext-for-images-as-x-axis-labels/#google_vignette
+- Images below x-axis labels. https://stackoverflow.com/questions/67491715/adding-images-below-x-axis-labels-in-ggplot2
+- Images for y-axis labels. https://stackoverflow.com/questions/68747698/r-ggplot2-images-as-y-axis-labels
+
 
 ## Leaflet
 
@@ -720,7 +723,22 @@ ggplot(df,
 
 ```
 
+## `ggplot` versions of `plot.lm`
 
+If you are interested in creating diagnostic plots like plot(lm1), but in the style of `ggplot`, you can use the package `ggfortify` and the function `autoplot`:
+
+```{r}
+library(ggfortify)
+lm1 = lm(Petal.Width ~ Petal.Length, data = iris)
+autoplot(lm1, label.size = 3)
+```
+
+For more info, including the function `fortify` see here:
+- https://cran.r-project.org/web/packages/ggfortify/vignettes/basics.html
+- https://cran.r-project.org/web/packages/ggfortify/vignettes/plot_lm.html
+
+## 3D World Map
+https://datatricks.co.uk/3d-world-map-with-plotly
 
 # Analysis
 
@@ -733,13 +751,15 @@ ggplot(df,
 
 ## Other types of regression models
 
+- **Nice neg bin example using MLE?** https://stats.stackexchange.com/questions/384932/regarding-glm-nb-and-my-parameter
 - **Multinomial regression.** Like logistic regression, but for categorical outcomes with 2 or more categories. See ROS, 15.5. R package: `polr`. For multi-class log loss you can use the 
 `MultiLogLoss` from the `MLmetrics` package. See [here](https://rdrr.io/cran/MLmetrics/man/MultiLogLoss.html)
 - **Zero-inflated Poisson or Negative Binomial regression.** Can be useful for count outcomes where there are  more zeros than predicted by a (standard) Poisson or negative binomial regression model. This could potentially be used for the EV charging station data (we removed all census tracts with zero charging stations). See ROS 15.8 and BMLR 4.10. R Package: `zeroinfl`. 
 - **Harmonic regression.** Fit the best sine/cosine curve to data. https://rdrr.io/cran/HarmonicRegression/man/harmonic.regression.html
 - **Beta regression.** When outcome has values in the open interval (0,1) (not just 0 and 1, the *open interval* (0,1) and can be assumed to be y ~ Beta(\alpha, \beta). Like when the outcome is a proportion. Generalizable to an interval (a,b) using transformations. https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf. 
 - **Dirichlet regression.** Kind of like multinomial logit regression is a generalization of logistic regression, this is a generalization of Beta regression. Model the proportions of two or more outcomes, proportions sum to 1. Package: https://cran.r-project.org/web/packages/DirichletReg/DirichletReg.pdf
-- **Spline regression.** Piecewise polynomial
+- **Spline regression.** See ISLR https://www.statlearning.com/. Piecewise polynomial. 
+- **Generalized Additive Models.** See ISLR https://www.statlearning.com/. The workshop notes https://r.qcbs.ca/workshop08/book-en/ have some examples. 
 - **Discussion of Ridge, Lasso, and Bayes. **
 https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-and-ridge-regression.html
 - **Bayesian regression**. https://stat.columbia.edu/~gelman/book/
@@ -748,7 +768,8 @@ https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-a
 - **Regularized ordinal regression**. https://stackoverflow.com/questions/75790997/why-do-the-coefficents-from-orginal-regularized-regression-ordinalnet-have-the
 - **Mixed effects ordinal regression**. https://stats.stackexchange.com/questions/238581/how-to-use-ordinal-logistic-regression-with-random-effects
 - **Random Forest.** Packages `randomForest`, and maybe `Rborist`, `ranger`, `h20ai`. Some of these behaved weirdly, if I recall correctly.
-
+- **Non-linear.** `nls` and `nlme` (non-linear mixed effects), see example here: https://www.datacamp.com/tutorial/r-formula-tutorial
+- **Mixed Effects Random Forest** - https://rdrr.io/github/nguforche/MEml/man/MErf.html or https://rdrr.io/cran/MixRF/man/MixRF.html
 
 ### Multivariate regression
 
@@ -757,6 +778,7 @@ https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-a
 - Multivariate Poisson regression slides: http://www2.stat-athens.aueb.gr/%7Ekarlis/multivariate%20Poisson%20models.pdf
 - Bivariate Poisson https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9884.00366
 - Paper: A multivariate Poisson regression model for count data.  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9041711/
+- MNB - Multivariable negative binomial https://cran.r-project.org/web/packages/MNB/MNB.pdf
 
 ## Time series
 
@@ -766,6 +788,30 @@ https://ekamperi.github.io/mathematics/2020/08/02/bayesian-connection-to-lasso-a
 
 - Logistic regression is well-calibrated: https://stats.stackexchange.com/questions/208867/why-does-logistic-regression-produce-well-calibrated-models
 
+## Polychoric correlation, PCA
+
+- The `psych` package has a bunch of stuff for dealing with categorical variables (common in psych data).
+https://cran.r-project.org/web/packages/psych/psych.pdf. It looks like 
+
+- `fa` using the option cor="poly" will do factor analysis with polychoric correlations.
+- `principal` using `cor="poly"` will do PCA with polychoric correlations
+
+Random other resources:
+
+- https://medium.com/geekculture/everything-about-principal-component-analysis-3c7aed41e1f9#:~:text=Polychoric%20Correlation%20%2F%20PCA,-Polychoric%20correlation%20measures&text=Information%20about%20each%20unobserved%20variable,Olsson%201979%3B%20Drasgow%201986).
+
+## Model comparisons
+
+- CV MSE/RMSE, Log loss/Accuracy/Brier Score
+- Compare with previous best model, or a simpler but reasonable model.  If using some regression or classification model that is fancier than linear or logistic regression, compare with linear or logistic regression.
+- If the models have coefficients, do they have the expected sign? 
+- See the variable importance section. Can compare the importance of variables across models.
+- If the models have predictions, compare the predictions. What observations have the biggest differences? 
+- If the models have uncertainties, compare the uncertainties.
+
+## Variance Inflation Factor
+
+- https://www.r-bloggers.com/2021/11/variance-inflation-factor-vif-in-r/
 
 # Bayesian estimates
 
@@ -1568,6 +1614,32 @@ This doesn't mean you should never use `rbind` in a `for` loop. With smaller dat
 # Intro Prob/Stat
 
 ## Poisson approximates binomial
+
+# New computer setup
+
+Tips for migrating to a new computer. 
+
+Wifi passwords 
+
+- https://answers.microsoft.com/en-us/windows/forum/all/transferring-wifi-passwords/de17c47f-b9e4-4401-bb6d-c9b310c355d3
+- https://www.pcworld.com/article/1963799/how-to-transfer-wlan-passwords-to-another-computer.html
+
+AMD Ryzen Master. Tracks CPU temp, voltage, speed, and other.
+- https://www.amd.com/en/products/software/ryzen-master.html#download. Note: doesn't work with laptops? 
+
+"Gitignore" for OneDrive. Ignore certain files
+- Follow steps in the answer here (as of 2024-05-30) https://superuser.com/questions/1419247/is-there-a-gitignore-for-onedrive
+- This page was linked: https://learn.microsoft.com/en-us/sharepoint/use-group-policy#exclude-specific-kinds-of-files-from-being-uploaded
+
+- Remove user-specific directory from `.libPaths()` by setting an Environment Variable in Windows, as opposed to from within R. In Windows Search bar, type environment variables. Or Control Panel, System, Advanced System Settings, and in the Advanced tab click Environment Variables. 
+
+
+# Job search
+
+
+## Job sites
+
+
 
 # Random online resources
 - AI intro from MSFT. https://github.com/microsoft/AI-For-Beginners
