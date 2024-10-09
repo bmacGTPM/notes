@@ -67,6 +67,8 @@ The copying of packages to the old version of R to the new version sometimes doe
 installr::copy.packages.between.libraries()
 ```
 
+If these give warnings, you may need to right click `Rgui.exe` and select Run As Administrator. That fixed the warnings for me. 
+
 If that doesn't work, you can try to copy the packages manually by going to the library folder of your old version of R (e.g. `C:\Program Files\R\R-4.3.1\library`) and copying the folders of the packages you want to the library folder of your new version of R (e.g. `C:\Program Files\R\R-4.3.3\library`). Newly installed packages might be instead by in a user-specific folder (e.g. `C:\Users\USERNAME\AppData\Local\R\win-library\4.3`) by default. In that case, those should be copied into the new folder. 
 
 The updating of packages sometimes doesn't work either.  You can use `update.packages()` to update all packages, or `update.packages(ask = FALSE)` to update all packages without asking for permission.
@@ -127,7 +129,7 @@ install.packages("corrplot")
 install.packages("GGally")
 install.packages("ggmap")
 install.packages("shiny")
-install.packages("MASS")
+install.packages("MASS", exclude = 'select')
 install.packages("lme4")
 install.packages("arm")
 install.packages("pROC")
@@ -136,6 +138,9 @@ install.packages("viridis")
 install.packages("RSelenium")
 install.packages("rvest")
 install.packages("randomForest")
+install.packages("FNN")
+install.packages("caret")
+install.packages("pls")
 install.packages("devtools")
 install.packages("splines")
 install.packages("RecordLinkage")
@@ -147,6 +152,9 @@ install.packages('maps')
 install.packages('timeDate')
 install.packages('tidycensus')
 install.packages('pscl')
+install.packages('arrow')
+install.packages('pdftools')
+install.packages('bookdown')
 
 
 ## Install packages from my GitHub
@@ -166,8 +174,8 @@ Check that you can load all of the libraries by running this chunk of code and s
 library(knitr)
 library(scales)
 library(DT)
-library(leaflet) ## might need to comment out
-library(terra)   ## might need to comment out
+library(leaflet) 
+library(terra)   
 library(gganimate)
 library(gifski)
 library(png)
@@ -175,7 +183,7 @@ library(corrplot)
 library(GGally)
 library(ggmap)
 library(shiny)
-library(MASS)
+library(MASS, exclude = 'select')
 library(lme4)
 library(arm)
 library(pROC)
@@ -194,16 +202,21 @@ library(ff)
 library(rsconnect)
 library(grid)
 library(foreign)
-library(maps) ## leave uncommented. For some reason GitHub Actions had a problem when this wasn't explicitly loaded here. 
 library(timeDate)
-library(tidycensus) ## might need to comment
+library(tidycensus) 
 library(pscl)
+library(arrow)
+library(pdftools)
+library(bookdown)
 
 
 ## load tidyverse last!
 library(tidyverse)
 library(plotly)
 library(pubtheme)
+
+## Note to self: load this library explicitly. For some reason GitHub Actions had a problem when this wasn't explicitly loaded here.
+library(maps) 
 ```
 
 ### Check `gganimate`
@@ -252,6 +265,23 @@ Let's check that `lmer` is working properly. This model doesn't make a ton of se
 library(lme4)
 m1 = lmer(Petal.Length ~ Sepal.Length + (1|Species), 
           data = iris)
+summary(m1)
+ranef(m1)
+```
+
+Check `glmer`. 
+
+```{r}
+dm = iris %>% 
+  mutate(setosa = ifelse(Species == 'setosa', 1, 0), 
+         var1 = sample(x = c('A', 'B', 'C'), 
+                       size = nrow(iris), 
+                       replace = T))
+         
+m1 = glmer(setosa ~ Sepal.Length + Petal.Length + (1|var1), 
+           data = dm, 
+           family = binomial)
+
 summary(m1)
 ranef(m1)
 ```
@@ -542,6 +572,18 @@ g %>%
                                        vjust = .5, 
                                        hjust = 0))
 ```
+
+### Study/work habits
+
+The main think I wanted to say here is that you should your best to find long uninterrupted periods of time to work/study on your data analysis. Some things that may help
+
+- Turn off notifications on your phone and computer, including texts, emails, and social media.
+- Put your phone out of reach, and not on the table right next to your keyboard, so that it is less tempting to pick it up. 
+- Close your browser or email client so it less tempting to check. 
+- Turn off any shows you are streaming on your computer or TV.
+- Music in your earphones can be OK. Most people suggest that music without lyrics is best. For musicians, playing any kind of music can be distraction because they are tempted to listen to it closely. If I play music, I usually choose some soft classical music station on my streaming service. Sometimes I'll play something louder and with lyrics if I need to get energized. If you need to drown out noise, you can find a white noise track. 
+- You might find yourself more productive if you have the option to stand sometimes. This could be done at a high top table or a at an adjusted sit/stand desk.
+
 
 
 ## Learning Objectives
