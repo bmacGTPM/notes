@@ -14,7 +14,7 @@ https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC
 There are a lot of columns, and a lot of weird names, so let's clean things up a little bit. Let's keep only the rows for which `Fuel.Type.Code` is `ELEC`, so that we are dealing with only electric vehicle charging stations. This data set also has ethanol, hydrogen, etc., but we don't want to focus on those. Let's also rename some columns, and transform the `Status.Code` into something more human readable. Since there are some NA values in the `lev2` and `lev3` columns, we'll replace each NA with 0. We'll also clean up some network names, 
 
 ```{r}
-#library(leaflet)
+library(leaflet)
 library(htmltools)
 library(tidyverse)
 library(pubtheme)
