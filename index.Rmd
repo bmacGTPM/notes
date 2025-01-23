@@ -104,6 +104,7 @@ Recommended Settings:
 
 - Tools -> Global Options - General. Uncheck "Restore .RData into workspace at startup". Make sure "Save workspace to .RData on exit" is set to "Never". You will rarely/never want to save your workspace. If you write reproducible code, you won't need to save your workspace. You can reproduce the same results if you restart R/RStudio. If there are any outputs in particular you would like to save (e.g. because it takes a really long time to run), you can save individual objects using `saveRDS` or `write.csv`, or groups of objects with `save`. You can write these in your reproducible code. If for some reason you need to save the entire workspace, you can use `save.image`. However, I have literally never done this. 
 - If you prefer dark mode, Tools -> Global Options -> Appearance -> Editor Theme = Tomorrow Night Bright (or some other dark theme of your choice)
+- I prefer bulleted lists to be "tight" instead of "spaced". You can change this in Tools -> Global Options -> R Markdown -> Visual -> Markdown -> Default spacing betwee list items = Tight.
 
 
 
