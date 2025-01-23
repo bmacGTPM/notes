@@ -476,6 +476,28 @@ head(dd)
 # saveRDS(dd, file = filename)
 
 ```
+Census tracts
+
+```
+library(sf) ## st_centroid() function
+library(tigris) ## census shapefile.  tracts() function. fips_codes object.
+
+year=2019
+
+## vector of states
+us = unique(fips_codes$state)[1:51] 
+us
+
+## census tracts
+tracts = tracts(state = 'CT', 
+                county = 1:999, 
+                cb = TRUE, 
+                year = year)
+
+## centroids
+centroids = st_centroid(tracts, 
+                        of_largest_polygon = TRUE)
+```
 
 ## JSON
 
