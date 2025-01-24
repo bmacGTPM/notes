@@ -22,7 +22,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libudunits2-dev libproj-dev libgdal-dev
+          sudo apt-get install -y libudunits2-dev libproj-dev libgdal-dev libpoppler-dev
       - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
