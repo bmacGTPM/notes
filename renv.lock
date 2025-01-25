@@ -335,7 +335,7 @@
     },
     "arrow": {
       "Package": "arrow",
-      "Version": "17.0.0.1",
+      "Version": "18.1.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -353,7 +353,7 @@
         "utils",
         "vctrs"
       ],
-      "Hash": "14af96cb2973f6a6c220ce9c3e5b02cd"
+      "Hash": "0d1937a1096257bd7e4dddbf3e837d9f"
     },
     "askpass": {
       "Package": "askpass",
@@ -522,7 +522,6 @@
         "tibble",
         "tidyr"
       ],
-
       "Hash": "8fcc818f3b9887aebaf206f141437cc9"
     },
     "bslib": {
@@ -2559,7 +2558,7 @@
     },
     "qpdf": {
       "Package": "qpdf",
-      "Version": "1.3.3",
+      "Version": "1.3.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2567,7 +2566,7 @@
         "askpass",
         "curl"
       ],
-      "Hash": "479ebe6dca0a57c63d306e1b6a4bf30c"
+      "Hash": "949ca99a6d20c4ff8212026b3b5559af"
     },
     "ragg": {
       "Package": "ragg",
@@ -3139,7 +3138,7 @@
     },
     "survival": {
       "Package": "survival",
-      "Version": "3.6-4",
+      "Version": "3.7-0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -3151,7 +3150,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "e6e3071f471513e4b85f98ca041303c7"
+      "Hash": "5aaa9cbaf4aba20f8e06fdea1850a398"
     },
     "sys": {
       "Package": "sys",
