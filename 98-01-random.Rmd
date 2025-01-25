@@ -330,7 +330,7 @@ It gives a list of data frames, one data frame for each page, that contains each
 
 ## RSelenium, Docker
 
-I don't have much to write up yet, but here are some links taken from the RSelenlium CRAN page https://cran.r-project.org/web/packages/RSelenium/:
+I don't have much to write up yet, but here are some links taken from the RSelenium CRAN page https://cran.r-project.org/web/packages/RSelenium/:
 
 - Basics. https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html
 - Docker. https://cran.r-project.org/web/packages/RSelenium/vignettes/docker.html
@@ -476,12 +476,42 @@ head(dd)
 # saveRDS(dd, file = filename)
 
 ```
+Census tracts
+
+```
+library(sf) ## st_centroid() function
+library(tigris) ## census shapefile.  tracts() function. fips_codes object.
+
+year=2019
+
+## vector of states
+us = unique(fips_codes$state)[1:51] 
+us
+
+## census tracts
+tracts = tracts(state = 'CT', 
+                county = 1:999, 
+                cb = TRUE, 
+                year = year)
+
+## centroids
+centroids = st_centroid(tracts, 
+                        of_largest_polygon = TRUE)
+```
 
 ## JSON
 
 ## Connecting to SQL databases
 
-## Shape files .shp
+
+## Geospatial data
+
+See Geocomputation with R by Robin Lovelace, Jakub Nowosad, Jannes Muenchow: https://r.geocompx.org/
+
+### Shape files .shp
+
+### Geodatabase .gdb
+
 
 
 
@@ -591,8 +621,18 @@ Are uncertainties smaller than they should be? Without knowing a theoretical res
 str_to_title('hello there')
 ```
 
+### Identifying GEOIDs
+
+Often we are interested in identify which census tract a location is in. Given lat/lon coordinates for a location, and shape files for census tracts, we can determine which census tract the location is in using `point.in.polygon`.
+
+```{r}
+
+```
+
+
 ### Distance from point to line
 https://www.rdocumentation.org/packages/geosphere/versions/1.5-18/topics/dist2Line
+
 
 ### Holidays
 
@@ -812,6 +852,160 @@ Random other resources:
 ## Variance Inflation Factor
 
 - https://www.r-bloggers.com/2021/11/variance-inflation-factor-vif-in-r/
+- `car` library, function `vif`
+
+## Errors in variables, total least squares
+
+When predictors $x_1, x_2, \ldots, x_p$ are estimates and have errors, and are not known exactly the OLS estimates are biased. The total least squares method can be used to estimate the coefficients.
+
+Suppose that $y$ is linearly related to some $x$ plus some error (like simple linear regression) but we only known $x.star$, which is $x$ with some noise. 
+
+```{r}
+## Simulate data
+set.seed(1)
+n = 10000
+x = rnorm(n)
+y = .5 + 1*x + rnorm(n) ## true relationship
+x.star = x + 2*rnorm(n) ## noisy x
+df = data.frame(y, x, x.star)
+
+## Visualize
+dg = df %>%
+  pivot_longer(cols = c(x, x.star))
+
+g = ggplot(dg, 
+       aes(x = value, 
+           y = y, 
+           color = name))+
+  geom_point() +
+  facet_wrap(~name)
+
+g %>% 
+  pub(xlim = c(-8, 8), 
+      ylim = c(-8, 8))
+```
+
+Now let's show how the OLS estimates are different. 
+
+```{r}
+## OLS
+lm1 = lm(y ~ x     , data = df)
+lm2 = lm(y ~ x.star, data = df)
+summary(lm1)$coefficients
+summary(lm2)$coefficients ## slope is underestimated
+
+```
+
+The intercept is similar in both cases. Both are near 0.5. However the slope is much different in the second model with the noisy version of $x$. In particular the slope is underestimated.
+
+```{r}
+summary(lm1)$r.squared
+summary(lm2)$r.squared
+```
+
+Now let's use total least squares. 
+```{r}
+## Total least squares
+tls = lm(y ~ x + x.star, data = df)
+
+```
+
+## Perfect collinearity
+
+Suppose you have a categorical variable like GEOID and numeric variables like population, median income, etc., for each census tract. If you include both the categorical variable and any of the numeric variables in a regression model, you will get an error because of perfect collinearity. Why? Let's investigate a toy example. 
+
+```{r}
+set.seed(1)
+df = data.frame(x1 = c('A', 'B', 'A', 'A', 'B', 'C'), 
+                x2 = c(1, 2, 1, 1, 2, 3), 
+                x3 = c(5, 4, 5, 5, 4, 6), 
+                y = rnorm(6, 0, 1))
+head(df)
+```
+Let's building a model with just `x1`. 
+
+```{r}
+lm1 = lm(y ~ x1, data = df)
+summary(lm1)
+```
+All is fine. Now let's add `x2` to the model. 
+
+```{r}
+lm2 = lm(y ~ x1 + x2, data = df)
+summary(lm2)
+```
+
+There are NAs in the `x2` line. How about `x3`?
+
+```{r}
+lm3 = lm(y ~ x1 + x3, data = df)
+summary(lm3)
+```
+
+Same. Why? 
+
+```{r}
+mm = model.matrix(lm2) |>
+  as.data.frame()
+mm
+```
+
+If there is perfect collinearity, then `x2` can be written as a linear combination of other variables. 
+
+```{r}
+check = data.frame(x2 = mm$x2, 
+                   linear.combo = 1 + (2-1)*mm$x1B + (3-1)*mm$x1C)
+check
+```
+
+We can manually inspect these columns and see they are equal. For a large data set, we can use `identical`.
+
+```{r}
+identical(check$x2, 
+          check$linear.combo)
+```
+
+## Splines
+
+Just realized why the natural splines we were using did not have straight lines near the extremes. There is a Boundary.points argument to the ns function. Outside of those points, the spline will be linear. But the default setting is the end points of the data, so we never saw the linear part. If you set the Boundary.pointsto be, say, 1/10 and 9/10th percentiles, then you see straight lines at the ends.
+
+Here is some code, though this uses fake data, not real NBA data
+
+```{r}
+library(splines)
+
+## Generate fake data
+set.seed(123)
+n=200
+x = rnorm(n)
+y = 1-.25*x^2 + rnorm(n,0,1)
+d = data.frame(x=x, y=y)
+head(d)
+
+## Choose df
+df=5     ## number of knots
+df2=df*2 ## for calculating b.knots3
+
+## Define boundaries, outside of these it will be linear
+## For b.knots3, the linear part will be half as long
+b.knots2 = quantile(d$x, c(1/df , (df -1)/df )) ## e.g. 1/5 and 4/5
+b.knots3 = quantile(d$x, c(1/df2, (df2-1)/df2)) ## e.g. 1/10 and 9/10
+
+## Models
+m1 = lm(y ~ ns(x, df=df                             ), data=d) ## no linear
+m2 = lm(y ~ ns(x, df=df-2, Boundary.knots = b.knots2), data=d)
+m3 = lm(y ~ ns(x, df=df-2, Boundary.knots = b.knots3), data=d)
+d$pred1 = predict(m1)
+d$pred2 = predict(m2)
+d$pred3 = predict(m3)
+
+g = ggplot(d, aes(x=x, y=y))+
+  geom_point(color='gray')+
+  geom_line(aes(y=pred1), color='red'  , alpha=0.7, linewidth=1.5)+
+  geom_line(aes(y=pred2), color='blue' , alpha=0.7, linewidth=1.5)+
+  geom_line(aes(y=pred3), color='black', alpha=0.7, linewidth=1.5)
+print(g)
+```
 
 # Bayesian estimates
 
@@ -1611,6 +1805,85 @@ print(final.time2 - start.time2)
 The difference isn't huge in this case, but it can be very big 
 This doesn't mean you should never use `rbind` in a `for` loop. With smaller data, you won't notice the difference, and it is easier to code up. 
 
+## Measuring performance, Profiling
+
+Two options 
+
+- `profvis`. See 7.2 here https://csgillespie.github.io/efficientR/performance.html#
+- `lineprof`. See http://adv-r.had.co.nz/Profiling.html
+
+Here are two examples using the above `for` loop. First, we'll use `profvis`.
+
+```{r eval=F}
+library(profvis)
+pv = profvis({
+  start.time1 = Sys.time()
+  set.seed(1)
+  N = 100000000
+  J = 3
+  df1 = NULL
+  
+  for(j in 1:J){
+    
+    cat(j, '')
+    print(Sys.time())
+    
+    temp = data.frame(x = rnorm(N), 
+                      j = j)
+    df1 = rbind(df1, temp)
+    
+  }
+  
+  final.time1 = Sys.time()
+  print(final.time1)
+})
+
+pv
+
+```
+
+Now we'll use `lineprof`. 
+
+```{r eval=F}
+library(lineprof)
+lp = lineprof({
+  start.time1 = Sys.time()
+  set.seed(1)
+  N = 100000000
+  J = 3
+  df1 = NULL
+  
+  for(j in 1:J){
+    
+    cat(j, '')
+    print(Sys.time())
+    
+    temp = data.frame(x = rnorm(N), 
+                      j = j)
+    df1 = rbind(df1, temp)
+    
+  }
+  
+  final.time1 = Sys.time()
+  print(final.time1)
+})
+
+shine(lp)
+
+```
+
+The output of `profvis` seems to be more useful, at least for this example `for` loop. The `lineprof` has three separate entries for `rnorm` and `rbind`. Probably because this expects a function, not a `for` loop. 
+
+Let's see what `microbenchmark` does.
+
+```{r}
+microbenchmark::microbenchmark({
+  
+  
+})
+```
+
+
 # Intro Prob/Stat
 
 ## Poisson approximates binomial
@@ -1628,10 +1901,68 @@ AMD Ryzen Master. Tracks CPU temp, voltage, speed, and other.
 - https://www.amd.com/en/products/software/ryzen-master.html#download. Note: doesn't work with laptops? 
 
 "Gitignore" for OneDrive. Ignore certain files
+
 - Follow steps in the answer here (as of 2024-05-30) https://superuser.com/questions/1419247/is-there-a-gitignore-for-onedrive
 - This page was linked: https://learn.microsoft.com/en-us/sharepoint/use-group-policy#exclude-specific-kinds-of-files-from-being-uploaded
+- I got this to work for files. It does not work for folders. I even tried editing the registry as described in "Alterative" in the answer here https://superuser.com/questions/1662589/how-to-prevent-a-folder-from-being-synced-on-onedrive, except that I tried it with the key `HKLM\SOFTWARE\Policies\Microsoft\OneDrive\EnableODIgnoreFolderListFromGPO`, which is mentioned here but doesn't exist, so I'm not sure that this has been implemented. This post https://answers.microsoft.com/en-us/msoffice/forum/all/the-registry-key-enableodignorefolderlistfromgpo/45a8d0a7-20ce-4a3d-bfc1-f66e66ee801d from a few days ago suggests that "this parameter is not included in the latest OneDrive ADMX template"
+- A user suggested `insync` (one-time fee) https://forum.posit.co/t/rstudio-projects-in-onedrive/153275/2. I haven't tried this yet.
 
-- Remove user-specific directory from `.libPaths()` by setting an Environment Variable in Windows, as opposed to from within R. In Windows Search bar, type environment variables. Or Control Panel, System, Advanced System Settings, and in the Advanced tab click Environment Variables. 
+Remove folders from Windows Search Indexer
+
+- https://superuser.com/questions/986888/why-cant-i-change-window-10-registry-key
+- Change permission to edit the registry here https://superuser.com/questions/986888/why-cant-i-change-window-10-registry-key
+- it's not clear that this worked. 
+
+- Remove user-specific directory from `.libPaths()` by setting an Environment Variable in Windows, as opposed to from within R. In Windows Search bar, type environment variables. Or Control Panel, System, Advanced System Settings, and in the Advanced tab click Environment Variables. Create `R_LIBS_USER` to be e.g. a OneDrive folder that can be shared among two computers. 
+
+- Download the latest Rtools. https://cran.r-project.org/bin/windows/Rtools/
+
+## Tex
+- Download https://miktex.org/download
+- Download TexStudio
+
+When installing MikTex, 
+- For user, choose current user only, 
+- For paper, choose Letter, and 
+- For Installing packages, choose Yes.  
+
+Alternatively, use Overleaf, a web-based collaborative LaTeX editor https://www.overleaf.com/. 
+
+## php
+- Go to Turn Windows Features On or Off and enable IIS
+- Download PHP from https://windows.php.net/download/
+- Extract the zip file to `C:\php`
+- Follow the instructions here: https://www.php.net/manual/en/install.windows.manual.php
+- On the first installation, there was a `php.ini-development` and `php.ini-production`, but no `php.ini`. I had to copy one of those to `php.ini`, otherwise `mbstring` (required by OJS) wasn't being recognized. 
+- I created `test.php` in `ojs-3.3.0-19` folder that contains only 
+
+```
+<?php
+phpinfo();
+?>
+```
+
+Then I copied `http://localhost:8000/test.php` into the web browser. THere are a bunch of diagnostics. `mbstring` used to not appear, and now there is a whole section on it. Yay!
+- I need to enable `extension=pgsql` to get postgreSQL drivers to show up on the OJS installation page. 
+- Same with `extension=pdo_pgsql`
+
+## PostgreSQL
+I downloaded the installer here https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+and chose the defaults. 
+- Used Stack Builder to install ODBC 64-bit. Necessary? 
+- Followed these https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL.htm. Those included
+  - Add PostgreSQL bin folder to PATH
+
+## OJS
+- Download OJS from https://pkp.sfu.ca/ojs/ojs_download/
+- `php` and PostgreSQL (or mysql) must be installed first.
+- Extract the zip file to service/ojs-3.3.0-19. 
+- Followed the directions here https://docs.pkp.sfu.ca/admin-guide/en/getting-started
+- Make sure to Run `cmd` As Admin
+- In the installer, gotta give username and password for the postgreSQL. Hostname is localhost.
+- OAI settings. Unique ID ojs1
+
+
 
 
 # Job search
@@ -1645,15 +1976,13 @@ AMD Ryzen Master. Tracks CPU temp, voltage, speed, and other.
 - AI intro from MSFT. https://github.com/microsoft/AI-For-Beginners
 - 
 
-# Other
-
-## GitHub Copilot in RStudio
+# GitHub Copilot in RStudio
 
 https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
 
 - Verify you are a student or faculty member and get free access:  https://education.github.com/discount_requests/application
 
-- Then, in RStudio, go to Tools, Global Options, Copilot, and make sure Enable Github Copilot is checked. 
+- Then, in RStudio, go to Tools, Global Options, Copilot, and make sure Enable Github Copilot is checked. Say yes if it asks to install Copilot. 
 
 Other potentially helpful links: 
 - https://techcommunity.microsoft.com/t5/educator-developer-blog/step-by-step-setting-up-github-student-and-github-copilot-as-an/ba-p/3736279
@@ -1661,8 +1990,7 @@ Other potentially helpful links:
 - https://github.blog/2022-09-08-github-copilot-now-available-for-teachers/
 
 
-
-
+# Other
 
 
 ## Accessible Documents
@@ -1677,12 +2005,12 @@ Ways to improve accessibility of documents.
 
 ## Github Actions
 
-This section is very incomplete. All I'm gonna write right now is this reminder to myself:
+This section is very incomplete, but I'm gonna start writing reminders to myself:
 
-- Use `renv::snapshot()`, then commit the `renv.lock` file to the repo.     
+
 - Github Actions won't find new packages that I recently added to the notes unless the `renv.lock` file is updated. So gotta use `renv::snapshot()` and commit the `renv.lock` file to the repo after adding a new package. 
 - If `pubtheme` has been updated and re-installed on my machine, I need to reinstall it via `devtools::install_github("bmacGTPM/pubtheme")`. If I install it from the `pubtheme` package R project Build -> Install, then I think `renv` won't be able to automatically detect where the packages comes from. The `renv.lock` will say source unknown. It's not reproducible on another machine. If, however, I install it from Github, which is reproducible on another machine, then `renv` will auto-detect the source and all will be well. 
-- When updating packages, I should remember to install the binary versions when the source version is more recent. Github Actions wasn't able to find these. So I had to reinstall the binary versions.  If the project has been activate, check which packages are binary and which are source with `renv::status()`. If it hasn't been activate (like the first time I dealt with this), I installed a package that gave an error in Github Actions, reran Github Actions, see which package errored, install the binary version, and repeat.
+- When updating packages, I should remember to install the binary versions when the source version is more recent. Github Actions wasn't able to find these. So I had to reinstall the binary versions.  If the project has been activated, check which packages are binary and which are source with `renv::status()`. If it hasn't been activated (like the first time I dealt with this), I installed a package that gave an error in Github Actions, reran Github Actions, see which package errored, install the binary version, and repeat.
 - It seems like the Windows repo and Linux repo don't have the same package versions. For plotly, I downloaded 4.10.4, but version 4.10.3 was listed here
 
 I installed an earlier version using this
@@ -1720,7 +2048,9 @@ devtools::install_version('raster', version = "3.4-13")
 ```
 
 - I had issues with `units`, which is needed for `sf`, which is needed for `tidycensus`. So I removed `tidycensus` for now. 
-- I had issues with `terra`, which is needed for `raster`, which is needed for `leaflet.` But `terra` wasn't need for the earlier version `3.4-13` of `raster` that I was using. So installed that version. Didn't work. Tried downloading the dev version of terra using `install.packages('terra', repos='https://rspatial.r-universe.dev')`. Did this work? 
+    - The error says `libudunits2.so.0: cannot open shared object file: No such file or directory`. This is related to an **Ubuntu** library, and *NOT* the *R* library `ubunits2`
+    - I added `sudo apt-get install libudunits2-dev` to the yaml file and that worked. See `.github/bookdown.yaml`. Then I added `libproj-dev` and `libgdal-dev` because I got similar errors to the above, in particular, `xxxxxxx.xx.x: cannot open shared object file: No such file or directory`
+- I had issues with `terra`, which is needed for `raster`, which is needed for `leaflet.` But `terra` wasn't needed for the earlier version `3.4-13` of `raster` that I was using. So installed that version. Didn't work. Tried downloading the dev version of terra using `install.packages('terra', repos='https://rspatial.r-universe.dev')`. Did this work? 
 - Temporary fix: remove 50*.Rmd files, which require leaflet, from the main folder into the R folder
 
 

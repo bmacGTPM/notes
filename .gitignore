@@ -51,3 +51,4 @@ _main_files/
 
 # ignore all html files except:
 !**/mathjax_header.html
+-FAS-PF51PYJZ.Rhistory
