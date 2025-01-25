@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B.14 Text with geom_text | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B.14 Text with geom_text | Data Analysis" />
   <meta property="og:type" content="book" />
@@ -195,6 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.3" data-path="other-preparation.html"><a href="other-preparation.html#test-code-often"><i class="fa fa-check"></i><b>1.2.3</b> Test code often</a></li>
 <li class="chapter" data-level="1.2.4" data-path="other-preparation.html"><a href="other-preparation.html#dplyr-and-ggplot2"><i class="fa fa-check"></i><b>1.2.4</b> dplyr and ggplot2</a></li>
 <li class="chapter" data-level="1.2.5" data-path="other-preparation.html"><a href="other-preparation.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>1.2.5</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="1.2.6" data-path="other-preparation.html"><a href="other-preparation.html#studywork-habits"><i class="fa fa-check"></i><b>1.2.6</b> Study/work habits</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.3</b> Learning Objectives</a></li>
 <li class="chapter" data-level="1.4" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.4</b> Coding conventions</a>
@@ -270,7 +271,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>10.8</b> Census data with <code>tidycensus</code></a></li>
 <li class="chapter" data-level="10.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>10.9</b> JSON</a></li>
 <li class="chapter" data-level="10.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>10.10</b> Connecting to SQL databases</a></li>
-<li class="chapter" data-level="10.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>10.11</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11" data-path="geospatial-data.html"><a href="geospatial-data.html"><i class="fa fa-check"></i><b>10.11</b> Geospatial data</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="geospatial-data.html"><a href="geospatial-data.html#shape-files-.shp"><i class="fa fa-check"></i><b>10.11.1</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11.2" data-path="geospatial-data.html"><a href="geospatial-data.html#geodatabase-.gdb"><i class="fa fa-check"></i><b>10.11.2</b> Geodatabase .gdb</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>11</b> Data cleaning</a>
 <ul>
@@ -288,8 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>11.4</b> Random useful functions</a>
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>11.4.1</b> Formatting for display</a></li>
-<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.2</b> Distance from point to line</a></li>
-<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.3</b> Holidays</a></li>
+<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#identifying-geoids"><i class="fa fa-check"></i><b>11.4.2</b> Identifying GEOIDs</a></li>
+<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.3</b> Distance from point to line</a></li>
+<li class="chapter" data-level="11.4.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.4</b> Holidays</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>12</b> Data visualization</a>
@@ -315,6 +321,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.6" data-path="polychoric-correlation-pca.html"><a href="polychoric-correlation-pca.html"><i class="fa fa-check"></i><b>13.6</b> Polychoric correlation, PCA</a></li>
 <li class="chapter" data-level="13.7" data-path="model-comparisons.html"><a href="model-comparisons.html"><i class="fa fa-check"></i><b>13.7</b> Model comparisons</a></li>
 <li class="chapter" data-level="13.8" data-path="variance-inflation-factor.html"><a href="variance-inflation-factor.html"><i class="fa fa-check"></i><b>13.8</b> Variance Inflation Factor</a></li>
+<li class="chapter" data-level="13.9" data-path="errors-in-variables-total-least-squares.html"><a href="errors-in-variables-total-least-squares.html"><i class="fa fa-check"></i><b>13.9</b> Errors in variables, total least squares</a></li>
+<li class="chapter" data-level="13.10" data-path="perfect-collinearity.html"><a href="perfect-collinearity.html"><i class="fa fa-check"></i><b>13.10</b> Perfect collinearity</a></li>
+<li class="chapter" data-level="13.11" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>13.11</b> Splines</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>14</b> Bayesian estimates</a>
 <ul>
@@ -370,34 +379,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="21.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>21.1</b> Efficient R Programming online book</a></li>
 <li class="chapter" data-level="21.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>21.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+<li class="chapter" data-level="21.3" data-path="measuring-performance-profiling.html"><a href="measuring-performance-profiling.html"><i class="fa fa-check"></i><b>21.3</b> Measuring performance, Profiling</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>22</b> Intro Prob/Stat</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>22.1</b> Poisson approximates binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a></li>
+<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="tex.html"><a href="tex.html"><i class="fa fa-check"></i><b>23.1</b> Tex</a></li>
+<li class="chapter" data-level="23.2" data-path="php.html"><a href="php.html"><i class="fa fa-check"></i><b>23.2</b> php</a></li>
+<li class="chapter" data-level="23.3" data-path="postgresql.html"><a href="postgresql.html"><i class="fa fa-check"></i><b>23.3</b> PostgreSQL</a></li>
+<li class="chapter" data-level="23.4" data-path="ojs.html"><a href="ojs.html"><i class="fa fa-check"></i><b>23.4</b> OJS</a></li>
+</ul></li>
 <li class="chapter" data-level="24" data-path="job-search.html"><a href="job-search.html"><i class="fa fa-check"></i><b>24</b> Job search</a>
 <ul>
 <li class="chapter" data-level="24.1" data-path="job-sites.html"><a href="job-sites.html"><i class="fa fa-check"></i><b>24.1</b> Job sites</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="random-online-resources.html"><a href="random-online-resources.html"><i class="fa fa-check"></i><b>25</b> Random online resources</a></li>
-<li class="chapter" data-level="26" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>26</b> Other</a>
+<li class="chapter" data-level="26" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="27" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>27</b> Other</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26.1</b> GitHub Copilot in RStudio</a></li>
-<li class="chapter" data-level="26.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>26.2</b> Accessible Documents</a></li>
-<li class="chapter" data-level="26.3" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>26.3</b> Github Actions</a></li>
-<li class="chapter" data-level="26.4" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>26.4</b> Math symbols in plots</a></li>
-<li class="chapter" data-level="26.5" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>26.5</b> Writing R packages</a></li>
-<li class="chapter" data-level="26.6" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>26.6</b> Blogdown</a></li>
-<li class="chapter" data-level="26.7" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>26.7</b> Bookdown</a></li>
-<li class="chapter" data-level="26.8" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>26.8</b> Quarto</a></li>
-<li class="chapter" data-level="26.9" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>26.9</b> Multiple authors in R Markdown</a></li>
-<li class="chapter" data-level="26.10" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>26.10</b> Read pixel values of images</a></li>
-<li class="chapter" data-level="26.11" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>26.11</b> Cloud</a></li>
+<li class="chapter" data-level="27.1" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>27.1</b> Accessible Documents</a></li>
+<li class="chapter" data-level="27.2" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>27.2</b> Github Actions</a></li>
+<li class="chapter" data-level="27.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>27.3</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="27.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>27.4</b> Writing R packages</a></li>
+<li class="chapter" data-level="27.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>27.5</b> Blogdown</a></li>
+<li class="chapter" data-level="27.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>27.6</b> Bookdown</a></li>
+<li class="chapter" data-level="27.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>27.7</b> Quarto</a></li>
+<li class="chapter" data-level="27.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>27.8</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="27.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>27.9</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="27.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>27.10</b> Cloud</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>27</b> Not data science</a>
+<li class="chapter" data-level="28" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>28</b> Not data science</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>27.1</b> Dollar cost averaging example</a></li>
+<li class="chapter" data-level="28.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>28.1</b> Dollar cost averaging example</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
@@ -464,63 +480,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="text-with-geom_text" class="section level2 hasAnchor" number="29.14">
+<div id="text-with-geom_text" class="section level2 hasAnchor" number="30.14">
 <h2><span class="header-section-number">B.14</span> Text with <code>geom_text</code><a href="text-with-geom_text.html#text-with-geom_text" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can add text to a plot using <code>label</code> aesthetic and <code>geom_text</code>. Let’s add text to the bar plot we made after aggregating the data.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb283-1"><a href="text-with-geom_text.html#cb283-1" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span> </span>
-<span id="cb283-2"><a href="text-with-geom_text.html#cb283-2" tabindex="-1"></a>  <span class="fu">group_by</span>(team) <span class="sc">%&gt;%</span></span>
-<span id="cb283-3"><a href="text-with-geom_text.html#cb283-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">round</span>(<span class="fu">mean</span>(score),<span class="dv">1</span>)) </span>
-<span id="cb283-4"><a href="text-with-geom_text.html#cb283-4" tabindex="-1"></a></span>
-<span id="cb283-5"><a href="text-with-geom_text.html#cb283-5" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
-<span id="cb283-6"><a href="text-with-geom_text.html#cb283-6" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
-<span id="cb283-7"><a href="text-with-geom_text.html#cb283-7" tabindex="-1"></a>                   <span class="at">label =</span> score))<span class="sc">+</span></span>
-<span id="cb283-8"><a href="text-with-geom_text.html#cb283-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb283-9"><a href="text-with-geom_text.html#cb283-9" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, </span>
-<span id="cb283-10"><a href="text-with-geom_text.html#cb283-10" tabindex="-1"></a>            <span class="at">vjust =</span>  <span class="fl">0.4</span>)</span>
-<span id="cb283-11"><a href="text-with-geom_text.html#cb283-11" tabindex="-1"></a></span>
-<span id="cb283-12"><a href="text-with-geom_text.html#cb283-12" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb283-13"><a href="text-with-geom_text.html#cb283-13" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb352-1"><a href="text-with-geom_text.html#cb352-1" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span> </span>
+<span id="cb352-2"><a href="text-with-geom_text.html#cb352-2" tabindex="-1"></a>  <span class="fu">group_by</span>(team) <span class="sc">%&gt;%</span></span>
+<span id="cb352-3"><a href="text-with-geom_text.html#cb352-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">round</span>(<span class="fu">mean</span>(score),<span class="dv">1</span>)) </span>
+<span id="cb352-4"><a href="text-with-geom_text.html#cb352-4" tabindex="-1"></a></span>
+<span id="cb352-5"><a href="text-with-geom_text.html#cb352-5" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
+<span id="cb352-6"><a href="text-with-geom_text.html#cb352-6" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
+<span id="cb352-7"><a href="text-with-geom_text.html#cb352-7" tabindex="-1"></a>                   <span class="at">label =</span> score))<span class="sc">+</span></span>
+<span id="cb352-8"><a href="text-with-geom_text.html#cb352-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb352-9"><a href="text-with-geom_text.html#cb352-9" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, </span>
+<span id="cb352-10"><a href="text-with-geom_text.html#cb352-10" tabindex="-1"></a>            <span class="at">vjust =</span>  <span class="fl">0.4</span>)</span>
+<span id="cb352-11"><a href="text-with-geom_text.html#cb352-11" tabindex="-1"></a></span>
+<span id="cb352-12"><a href="text-with-geom_text.html#cb352-12" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb352-13"><a href="text-with-geom_text.html#cb352-13" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-179-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-196-1.png" width="576" style="display: block; margin: auto;" /></p>
+<pre><code>[1] 85.89991
+[1] 80
+[1] 20
+[1] 185.8999</code></pre>
 <p>Note that without aggregating the bar plot looks the same, but it will plot separate text for each row in the data, and all the text will be overlapping along the left.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb284-1"><a href="text-with-geom_text.html#cb284-1" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
-<span id="cb284-2"><a href="text-with-geom_text.html#cb284-2" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
-<span id="cb284-3"><a href="text-with-geom_text.html#cb284-3" tabindex="-1"></a>                   <span class="at">label =</span> score))<span class="sc">+</span></span>
-<span id="cb284-4"><a href="text-with-geom_text.html#cb284-4" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>, </span>
-<span id="cb284-5"><a href="text-with-geom_text.html#cb284-5" tabindex="-1"></a>           <span class="at">fill  =</span> pubmediumgray)<span class="sc">+</span></span>
-<span id="cb284-6"><a href="text-with-geom_text.html#cb284-6" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>)</span>
-<span id="cb284-7"><a href="text-with-geom_text.html#cb284-7" tabindex="-1"></a></span>
-<span id="cb284-8"><a href="text-with-geom_text.html#cb284-8" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb284-9"><a href="text-with-geom_text.html#cb284-9" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb354-1"><a href="text-with-geom_text.html#cb354-1" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dd, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
+<span id="cb354-2"><a href="text-with-geom_text.html#cb354-2" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
+<span id="cb354-3"><a href="text-with-geom_text.html#cb354-3" tabindex="-1"></a>                   <span class="at">label =</span> score))<span class="sc">+</span></span>
+<span id="cb354-4"><a href="text-with-geom_text.html#cb354-4" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="cn">NA</span>, </span>
+<span id="cb354-5"><a href="text-with-geom_text.html#cb354-5" tabindex="-1"></a>           <span class="at">fill  =</span> pubmediumgray)<span class="sc">+</span></span>
+<span id="cb354-6"><a href="text-with-geom_text.html#cb354-6" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>)</span>
+<span id="cb354-7"><a href="text-with-geom_text.html#cb354-7" tabindex="-1"></a></span>
+<span id="cb354-8"><a href="text-with-geom_text.html#cb354-8" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb354-9"><a href="text-with-geom_text.html#cb354-9" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-180-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-197-1.png" width="576" style="display: block; margin: auto;" /></p>
+<pre><code>[1] 85.89991
+[1] 80
+[1] 20
+[1] 185.8999</code></pre>
 <p>To use <code>geom_text</code> with <code>position_dodge</code>, add <code>label</code> like before, but also add <code>group</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb285-1"><a href="text-with-geom_text.html#cb285-1" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
-<span id="cb285-2"><a href="text-with-geom_text.html#cb285-2" tabindex="-1"></a>  <span class="fu">group_by</span>(team, season.type) <span class="sc">%&gt;%</span></span>
-<span id="cb285-3"><a href="text-with-geom_text.html#cb285-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">sum</span>(score), </span>
-<span id="cb285-4"><a href="text-with-geom_text.html#cb285-4" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
-<span id="cb285-5"><a href="text-with-geom_text.html#cb285-5" tabindex="-1"></a></span>
-<span id="cb285-6"><a href="text-with-geom_text.html#cb285-6" tabindex="-1"></a>post.teams <span class="ot">=</span> <span class="fu">unique</span>(dg<span class="sc">$</span>team[dg<span class="sc">$</span>season.type <span class="sc">==</span> <span class="st">&#39;post&#39;</span>])</span>
-<span id="cb285-7"><a href="text-with-geom_text.html#cb285-7" tabindex="-1"></a>dg <span class="ot">=</span> dg <span class="sc">%&gt;%</span> <span class="fu">filter</span>(team <span class="sc">%in%</span> post.teams)</span>
-<span id="cb285-8"><a href="text-with-geom_text.html#cb285-8" tabindex="-1"></a></span>
-<span id="cb285-9"><a href="text-with-geom_text.html#cb285-9" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
-<span id="cb285-10"><a href="text-with-geom_text.html#cb285-10" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
-<span id="cb285-11"><a href="text-with-geom_text.html#cb285-11" tabindex="-1"></a>                   <span class="at">fill  =</span> season.type, </span>
-<span id="cb285-12"><a href="text-with-geom_text.html#cb285-12" tabindex="-1"></a>                   <span class="at">label =</span> score, </span>
-<span id="cb285-13"><a href="text-with-geom_text.html#cb285-13" tabindex="-1"></a>                   <span class="at">group =</span> season.type))<span class="sc">+</span></span>
-<span id="cb285-14"><a href="text-with-geom_text.html#cb285-14" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> .<span class="dv">9</span>), </span>
-<span id="cb285-15"><a href="text-with-geom_text.html#cb285-15" tabindex="-1"></a>           <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb285-16"><a href="text-with-geom_text.html#cb285-16" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span>.<span class="dv">1</span>, </span>
-<span id="cb285-17"><a href="text-with-geom_text.html#cb285-17" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="fl">0.3</span>, </span>
-<span id="cb285-18"><a href="text-with-geom_text.html#cb285-18" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> .<span class="dv">9</span>))</span>
-<span id="cb285-19"><a href="text-with-geom_text.html#cb285-19" tabindex="-1"></a></span>
-<span id="cb285-20"><a href="text-with-geom_text.html#cb285-20" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
-<span id="cb285-21"><a href="text-with-geom_text.html#cb285-21" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb356-1"><a href="text-with-geom_text.html#cb356-1" tabindex="-1"></a>dg <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
+<span id="cb356-2"><a href="text-with-geom_text.html#cb356-2" tabindex="-1"></a>  <span class="fu">group_by</span>(team, season.type) <span class="sc">%&gt;%</span></span>
+<span id="cb356-3"><a href="text-with-geom_text.html#cb356-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">sum</span>(score), </span>
+<span id="cb356-4"><a href="text-with-geom_text.html#cb356-4" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span>
+<span id="cb356-5"><a href="text-with-geom_text.html#cb356-5" tabindex="-1"></a></span>
+<span id="cb356-6"><a href="text-with-geom_text.html#cb356-6" tabindex="-1"></a>post.teams <span class="ot">=</span> <span class="fu">unique</span>(dg<span class="sc">$</span>team[dg<span class="sc">$</span>season.type <span class="sc">==</span> <span class="st">&#39;post&#39;</span>])</span>
+<span id="cb356-7"><a href="text-with-geom_text.html#cb356-7" tabindex="-1"></a>dg <span class="ot">=</span> dg <span class="sc">%&gt;%</span> <span class="fu">filter</span>(team <span class="sc">%in%</span> post.teams)</span>
+<span id="cb356-8"><a href="text-with-geom_text.html#cb356-8" tabindex="-1"></a></span>
+<span id="cb356-9"><a href="text-with-geom_text.html#cb356-9" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">ggplot</span>(dg, <span class="fu">aes</span>(<span class="at">x =</span> score, </span>
+<span id="cb356-10"><a href="text-with-geom_text.html#cb356-10" tabindex="-1"></a>                   <span class="at">y =</span> team, </span>
+<span id="cb356-11"><a href="text-with-geom_text.html#cb356-11" tabindex="-1"></a>                   <span class="at">fill  =</span> season.type, </span>
+<span id="cb356-12"><a href="text-with-geom_text.html#cb356-12" tabindex="-1"></a>                   <span class="at">label =</span> score, </span>
+<span id="cb356-13"><a href="text-with-geom_text.html#cb356-13" tabindex="-1"></a>                   <span class="at">group =</span> season.type))<span class="sc">+</span></span>
+<span id="cb356-14"><a href="text-with-geom_text.html#cb356-14" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> .<span class="dv">9</span>), </span>
+<span id="cb356-15"><a href="text-with-geom_text.html#cb356-15" tabindex="-1"></a>           <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb356-16"><a href="text-with-geom_text.html#cb356-16" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">hjust =</span> <span class="sc">-</span>.<span class="dv">1</span>, </span>
+<span id="cb356-17"><a href="text-with-geom_text.html#cb356-17" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="fl">0.3</span>, </span>
+<span id="cb356-18"><a href="text-with-geom_text.html#cb356-18" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> .<span class="dv">9</span>))</span>
+<span id="cb356-19"><a href="text-with-geom_text.html#cb356-19" tabindex="-1"></a></span>
+<span id="cb356-20"><a href="text-with-geom_text.html#cb356-20" tabindex="-1"></a>g <span class="sc">%&gt;%</span> </span>
+<span id="cb356-21"><a href="text-with-geom_text.html#cb356-21" tabindex="-1"></a>  <span class="fu">pub</span>(<span class="at">type =</span> <span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
 </details>
-<p><img src="_main_files/figure-html/unnamed-chunk-181-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-198-1.png" width="576" style="display: block; margin: auto;" /></p>
+<pre><code>[1] 85.89991
+[1] 80
+[1] 20
+[1] 185.8999</code></pre>
 <p>You can use <code>geom_text</code> with <code>geom_point</code>, <code>geom_line</code>, etc as well.</p>
 </div>
             </section>

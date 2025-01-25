@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.2 Parsing HTML tables | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.2 Parsing HTML tables | Data Analysis" />
   <meta property="og:type" content="book" />
@@ -195,6 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.3" data-path="other-preparation.html"><a href="other-preparation.html#test-code-often"><i class="fa fa-check"></i><b>1.2.3</b> Test code often</a></li>
 <li class="chapter" data-level="1.2.4" data-path="other-preparation.html"><a href="other-preparation.html#dplyr-and-ggplot2"><i class="fa fa-check"></i><b>1.2.4</b> dplyr and ggplot2</a></li>
 <li class="chapter" data-level="1.2.5" data-path="other-preparation.html"><a href="other-preparation.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>1.2.5</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="1.2.6" data-path="other-preparation.html"><a href="other-preparation.html#studywork-habits"><i class="fa fa-check"></i><b>1.2.6</b> Study/work habits</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.3</b> Learning Objectives</a></li>
 <li class="chapter" data-level="1.4" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.4</b> Coding conventions</a>
@@ -270,7 +271,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>10.8</b> Census data with <code>tidycensus</code></a></li>
 <li class="chapter" data-level="10.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>10.9</b> JSON</a></li>
 <li class="chapter" data-level="10.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>10.10</b> Connecting to SQL databases</a></li>
-<li class="chapter" data-level="10.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>10.11</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11" data-path="geospatial-data.html"><a href="geospatial-data.html"><i class="fa fa-check"></i><b>10.11</b> Geospatial data</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="geospatial-data.html"><a href="geospatial-data.html#shape-files-.shp"><i class="fa fa-check"></i><b>10.11.1</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11.2" data-path="geospatial-data.html"><a href="geospatial-data.html#geodatabase-.gdb"><i class="fa fa-check"></i><b>10.11.2</b> Geodatabase .gdb</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>11</b> Data cleaning</a>
 <ul>
@@ -288,8 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>11.4</b> Random useful functions</a>
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>11.4.1</b> Formatting for display</a></li>
-<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.2</b> Distance from point to line</a></li>
-<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.3</b> Holidays</a></li>
+<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#identifying-geoids"><i class="fa fa-check"></i><b>11.4.2</b> Identifying GEOIDs</a></li>
+<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.3</b> Distance from point to line</a></li>
+<li class="chapter" data-level="11.4.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.4</b> Holidays</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>12</b> Data visualization</a>
@@ -315,6 +321,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.6" data-path="polychoric-correlation-pca.html"><a href="polychoric-correlation-pca.html"><i class="fa fa-check"></i><b>13.6</b> Polychoric correlation, PCA</a></li>
 <li class="chapter" data-level="13.7" data-path="model-comparisons.html"><a href="model-comparisons.html"><i class="fa fa-check"></i><b>13.7</b> Model comparisons</a></li>
 <li class="chapter" data-level="13.8" data-path="variance-inflation-factor.html"><a href="variance-inflation-factor.html"><i class="fa fa-check"></i><b>13.8</b> Variance Inflation Factor</a></li>
+<li class="chapter" data-level="13.9" data-path="errors-in-variables-total-least-squares.html"><a href="errors-in-variables-total-least-squares.html"><i class="fa fa-check"></i><b>13.9</b> Errors in variables, total least squares</a></li>
+<li class="chapter" data-level="13.10" data-path="perfect-collinearity.html"><a href="perfect-collinearity.html"><i class="fa fa-check"></i><b>13.10</b> Perfect collinearity</a></li>
+<li class="chapter" data-level="13.11" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>13.11</b> Splines</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>14</b> Bayesian estimates</a>
 <ul>
@@ -370,34 +379,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="21.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>21.1</b> Efficient R Programming online book</a></li>
 <li class="chapter" data-level="21.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>21.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+<li class="chapter" data-level="21.3" data-path="measuring-performance-profiling.html"><a href="measuring-performance-profiling.html"><i class="fa fa-check"></i><b>21.3</b> Measuring performance, Profiling</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>22</b> Intro Prob/Stat</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>22.1</b> Poisson approximates binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a></li>
+<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="tex.html"><a href="tex.html"><i class="fa fa-check"></i><b>23.1</b> Tex</a></li>
+<li class="chapter" data-level="23.2" data-path="php.html"><a href="php.html"><i class="fa fa-check"></i><b>23.2</b> php</a></li>
+<li class="chapter" data-level="23.3" data-path="postgresql.html"><a href="postgresql.html"><i class="fa fa-check"></i><b>23.3</b> PostgreSQL</a></li>
+<li class="chapter" data-level="23.4" data-path="ojs.html"><a href="ojs.html"><i class="fa fa-check"></i><b>23.4</b> OJS</a></li>
+</ul></li>
 <li class="chapter" data-level="24" data-path="job-search.html"><a href="job-search.html"><i class="fa fa-check"></i><b>24</b> Job search</a>
 <ul>
 <li class="chapter" data-level="24.1" data-path="job-sites.html"><a href="job-sites.html"><i class="fa fa-check"></i><b>24.1</b> Job sites</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="random-online-resources.html"><a href="random-online-resources.html"><i class="fa fa-check"></i><b>25</b> Random online resources</a></li>
-<li class="chapter" data-level="26" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>26</b> Other</a>
+<li class="chapter" data-level="26" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="27" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>27</b> Other</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26.1</b> GitHub Copilot in RStudio</a></li>
-<li class="chapter" data-level="26.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>26.2</b> Accessible Documents</a></li>
-<li class="chapter" data-level="26.3" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>26.3</b> Github Actions</a></li>
-<li class="chapter" data-level="26.4" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>26.4</b> Math symbols in plots</a></li>
-<li class="chapter" data-level="26.5" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>26.5</b> Writing R packages</a></li>
-<li class="chapter" data-level="26.6" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>26.6</b> Blogdown</a></li>
-<li class="chapter" data-level="26.7" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>26.7</b> Bookdown</a></li>
-<li class="chapter" data-level="26.8" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>26.8</b> Quarto</a></li>
-<li class="chapter" data-level="26.9" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>26.9</b> Multiple authors in R Markdown</a></li>
-<li class="chapter" data-level="26.10" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>26.10</b> Read pixel values of images</a></li>
-<li class="chapter" data-level="26.11" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>26.11</b> Cloud</a></li>
+<li class="chapter" data-level="27.1" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>27.1</b> Accessible Documents</a></li>
+<li class="chapter" data-level="27.2" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>27.2</b> Github Actions</a></li>
+<li class="chapter" data-level="27.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>27.3</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="27.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>27.4</b> Writing R packages</a></li>
+<li class="chapter" data-level="27.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>27.5</b> Blogdown</a></li>
+<li class="chapter" data-level="27.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>27.6</b> Bookdown</a></li>
+<li class="chapter" data-level="27.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>27.7</b> Quarto</a></li>
+<li class="chapter" data-level="27.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>27.8</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="27.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>27.9</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="27.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>27.10</b> Cloud</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>27</b> Not data science</a>
+<li class="chapter" data-level="28" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>28</b> Not data science</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>27.1</b> Dollar cost averaging example</a></li>
+<li class="chapter" data-level="28.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>28.1</b> Dollar cost averaging example</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
@@ -468,107 +484,109 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.2</span> Parsing HTML tables<a href="parsing-html-tables.html#parsing-html-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>html_table</code> gives a list of data frames, one for every HTML table in the page.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb100-1"><a href="parsing-html-tables.html#cb100-1" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb116-1"><a href="parsing-html-tables.html#cb116-1" tabindex="-1"></a>d2 <span class="sc">%&gt;%</span> <span class="fu">html_table</span>() </span></code></pre></div>
 </details>
 <pre><code>[[1]]
-# A tibble: 2 × 5
-  Watchlist       `Change Today` `1 Month Return` `1 Year Return` `Total Return`
-  &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;         
-1 Most Active Sm… +1075459.71%   -                -               -             
-2 ^GSPC           -0.10%         +2.23%           +23.64%         +5734.86%     
-
-[[2]]
-# A tibble: 30 × 9
-   Symbol `Company Name`     `Last Price` Change `% Change` `Market Time` Volume
-   &lt;chr&gt;  &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt; 
- 1 EQX    Equinox Gold Corp.         5.22 +0.06  +1.09%     10:04 AM EDT  671.0…
- 2 UPST   Upstart Holdings,…        22.6  +0.19  +0.85%     10:04 AM EDT  696.5…
- 3 IREN   Iris Energy Limit…        13.3  +0.11  +0.83%     10:04 AM EDT  3.06M 
- 4 JBLU   JetBlue Airways C…         5.48 +0.04  +0.64%     10:04 AM EDT  704.5…
- 5 GRND   Grindr Inc.               10.3  +0.16  +1.63%     10:04 AM EDT  345.5…
- 6 AG     First Majestic Si…         6.06 -0.06  -0.90%     10:04 AM EDT  642.4…
- 7 CORZ   Core Scientific, …         9.74 -0.60  -5.76%     10:04 AM EDT  3.06M 
- 8 TDOC   Teladoc Health, I…         9.81 -0.19  -1.90%     10:04 AM EDT  823.0…
- 9 TCNNF  Trulieve Cannabis…         8.58 +0.03  +0.35%     9:45 AM EDT   20.78k
-10 IONQ   IonQ, Inc.                 7.42 -0.28  -3.64%     10:04 AM EDT  1.55M 
-# ℹ 20 more rows
-# ℹ 2 more variables: `Avg Vol (3 month)` &lt;chr&gt;, `Market Cap` &lt;chr&gt;</code></pre>
+# A tibble: 25 × 13
+      `` Symbol  Name     `1D Chart` `Price (Intraday)` Change `Change %` Volume
+   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;lgl&gt;                   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt; 
+ 1     1 ATUS    Altice … NA                       3.11   0.2  +6.87%     4.387M
+ 2     2 S  SID  Companh… NA                       1.47   0.1  +7.30%     2.273M
+ 3     3 K  KOS  Kosmos … NA                       3.43  -0.02 -0.58%     15.44…
+ 4     4 M  MPLN MultiPl… NA                      16.0    0.19 +1.20%     94,625
+ 5     5 D  DOLE Dole plc NA                      13.5   -0.12 -0.88%     659,9…
+ 6     6 A  AVIR Atea Ph… NA                       3.16   0.06 +1.94%     308,4…
+ 7     7 L  LAC  Lithium… NA                       3.15  -0.03 -0.94%     6.572M
+ 8     8 SONO    Sonos, … NA                      13.9   -0.17 -1.21%     1.063M
+ 9     9 VMEO    Vimeo, … NA                       6.52   0.15 +2.35%     884,8…
+10    10 GPRO    GoPro, … NA                       1.04  -0.02 -1.89%     1.765M
+# ℹ 15 more rows
+# ℹ 5 more variables: `Avg Vol (3M)` &lt;chr&gt;, `Market Cap` &lt;chr&gt;,
+#   `P/E Ratio (TTM)` &lt;dbl&gt;, `52 Week Range` &lt;lgl&gt;, Follow &lt;lgl&gt;</code></pre>
 <p>The <code>readHTMLTable</code> function is similar.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb102-1"><a href="parsing-html-tables.html#cb102-1" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
-<span id="cb102-2"><a href="parsing-html-tables.html#cb102-2" tabindex="-1"></a>d1 <span class="sc">%&gt;%</span> <span class="fu">readHTMLTable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb118-1"><a href="parsing-html-tables.html#cb118-1" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
+<span id="cb118-2"><a href="parsing-html-tables.html#cb118-2" tabindex="-1"></a>d1 <span class="sc">%&gt;%</span> <span class="fu">readHTMLTable</span>()</span></code></pre></div>
 </details>
 <pre><code>$`NULL`
-                     Watchlist Change Today 1 Month Return 1 Year Return
-1 Most Active Small-Cap Stocks +1075459.71%              -             -
-2                        ^GSPC       -0.10%         +2.23%       +23.64%
-  Total Return
-1            -
-2    +5734.81%
-
-$`NULL`
-   Symbol                                               Company Name Last Price
-1     EQX                                         Equinox Gold Corp.      5.216
-2    UPST                                     Upstart Holdings, Inc.      22.58
-3    IREN                                        Iris Energy Limited      13.32
-4    JBLU                                JetBlue Airways Corporation      5.485
-5    GRND                                                Grindr Inc.     10.315
-6      AG                                First Majestic Silver Corp.      6.055
-7    CORZ                                      Core Scientific, Inc.      9.735
-8    TDOC                                       Teladoc Health, Inc.       9.81
-9   TCNNF                                    Trulieve Cannabis Corp.       8.58
-10   IONQ                                                 IonQ, Inc.       7.42
-11    HUT                                                Hut 8 Corp.     11.085
-12   FSLY                                               Fastly, Inc.       7.09
-13    SOC                                       Sable Offshore Corp.      14.75
-14   OCUL                                   Ocular Therapeutix, Inc.       5.71
-15   SNPO                                    Snap One Holdings Corp.      10.75
-16    SMR                                  NuScale Power Corporation       8.78
-17   HUMA                                             Humacyte, Inc.     6.1599
-18   RDFN                                         Redfin Corporation       6.03
-19    UVE                         Universal Insurance Holdings, Inc.      18.37
-20    WIW Western Asset Inflation-Linked Opportunities &amp; Income Fund      8.598
-21   AMCX                                          AMC Networks Inc.      11.68
-22   BYND                                          Beyond Meat, Inc.      6.425
-23    ALT                                            Altimmune, Inc.     5.8684
-24    AAN                                  The Aaron&#39;s Company, Inc.       9.98
-25   ALTG                                  Alta Equipment Group Inc.       8.43
-26   BCHG                               Grayscale Bitcoin Cash Trust       8.79
-27    NNE                                   NANO Nuclear Energy Inc.       8.67
-28   TGAA                          Target Global Acquisition I Corp.      11.39
-29   SCNI                             Scinai Immunotherapeutics Ltd.       5.96
-30   SONG                                      Music Licensing, Inc.         32
-   Change % Change  Market Time  Volume Avg Vol (3 month) Market Cap
-1   +0.06   +1.09% 10:04 AM EDT 671.02k             3.47M      2.02B
-2   +0.19   +0.85% 10:04 AM EDT 696.55k             4.81M      1.98B
-3   +0.10   +0.76% 10:04 AM EDT   3.06M            12.49M      1.95B
-4   +0.04   +0.64% 10:04 AM EDT 704.51k            12.05M      1.87B
-5   +0.16   +1.63% 10:04 AM EDT 345.53k           401.11k      1.81B
-6   -0.06   -0.90% 10:04 AM EDT 642.47k             9.19M      1.76B
-7   -0.60   -5.76% 10:04 AM EDT   3.06M             6.50M      1.73B
-8   -0.19   -1.90% 10:04 AM EDT 823.00k             4.62M      1.66B
-9   +0.03   +0.35%  9:45 AM EDT  20.78k           553.66k      1.61B
-10  -0.28   -3.64% 10:04 AM EDT   1.55M             4.69M      1.57B
-11  -0.19   -1.73% 10:04 AM EDT 726.17k             3.53M      1.00B
-12  -0.11   -1.53% 10:04 AM EDT 599.35k             3.69M    968.65M
-13  -0.03   -0.20% 10:00 AM EDT  12.41k           261.32k    887.45M
-14  -0.04   -0.70% 10:04 AM EDT 364.07k             2.33M    884.42M
-15  +0.01   +0.09%  4:00 PM EDT 911.09k           485.85k    822.76M
-16  +0.59   +7.20% 10:04 AM EDT   1.08M             5.81M    777.37M
-17  -0.89  -12.64% 10:04 AM EDT   1.28M             2.09M    733.55M
-18  -0.10   -1.63% 10:04 AM EDT 406.09k             4.83M    720.41M
-19  +0.05   +0.27%  9:59 AM EDT   8.51k           162.85k    528.30M
-20  -0.02   -0.26% 10:02 AM EDT  13.22k           148.34k    526.06M
-21  -4.03  -25.65% 10:04 AM EDT   1.06M           634.47k    514.43M
-22  -0.22   -3.38% 10:04 AM EDT 369.91k             2.43M    416.88M
-23  -0.24   -3.96% 10:04 AM EDT 540.09k             3.08M    416.08M
-24  +2.44  +32.36% 10:04 AM EDT   2.15M           233.33k    305.64M
-25  -0.12   -1.40% 10:02 AM EDT  10.50k           366.42k    279.43M
-26  -0.37   -3.99%  9:49 AM EDT  27.87k           532.13k    279.31M
-27  -0.70   -7.45% 10:04 AM EDT 756.18k             1.08M    251.03M
-28      -        -  9:45 AM EDT  119.00             9.93k    106.00M
-29  +2.47  +70.77% 10:04 AM EDT  22.20M            43.93k      3.46M
-30      -        - 10:03 AM EDT  10.54M             75.00     51.36k</code></pre>
+        Symbol                                 Name    1D Chart  
+1    1      ATUS                     Altice USA, Inc.            
+2    2    S  SID       Companhia Siderúrgica Nacional            
+3    3    K  KOS                   Kosmos Energy Ltd.            
+4    4   M  MPLN                MultiPlan Corporation            
+5    5   D  DOLE                             Dole plc            
+6    6   A  AVIR           Atea Pharmaceuticals, Inc.            
+7    7    L  LAC               Lithium Americas Corp.            
+8    8      SONO                          Sonos, Inc.            
+9    9      VMEO                          Vimeo, Inc.            
+10  10      GPRO                          GoPro, Inc.            
+11  11   I  INFN                 Infinera Corporation            
+12  12    P  PBI                    Pitney Bowes Inc.            
+13  13   B  BFLY              Butterfly Network, Inc.            
+14  14      PLYA          Playa Hotels &amp; Resorts N.V.            
+15  15   A  ABCL             AbCellera Biologics Inc.            
+16  16      CHGG                          Chegg, Inc.            
+17  17   P  PGRE                Paramount Group, Inc.            
+18  18   B  BMBL                          Bumble Inc.            
+19  19   N  NOVA    Sunnova Energy International Inc.            
+20  20    B  BDN              Brandywine Realty Trust            
+21  21     W  WW               WW International, Inc.            
+22  22     Y  YQ 17 Education &amp; Technology Group Inc.            
+23  23   S  STEM                           Stem, Inc.            
+24  24   S  SAND                  Sandstorm Gold Ltd.            
+25  25       BKD         Brookdale Senior Living Inc.            
+    Price (Intraday)    Change    Change %    Volume    Avg Vol (3M)  
+1                 3.11     +0.20      +6.87%    4.387M          3.547M
+2                 1.47     +0.10      +7.30%    2.273M          2.523M
+3                 3.43     -0.02      -0.58%   15.449M          9.605M
+4                16.01     +0.19      +1.20%    94,625         159,781
+5                13.52     -0.12      -0.88%   659,931         516,725
+6                 3.16     +0.06      +1.94%   308,470         374,073
+7                 3.15     -0.03      -0.94%    6.572M           7.35M
+8                13.93     -0.17      -1.21%    1.063M          1.924M
+9                 6.52     +0.15      +2.35%   884,806          1.678M
+10                1.04     -0.02      -1.89%    1.765M          1.753M
+11                6.61     -0.01      -0.15%   618,427         760,016
+12                8.48     +0.24      +2.91%    2.156M          1.954M
+13                3.90     -0.24      -5.80%    3.235M          3.693M
+14               12.25     -0.11      -0.89%   603,212          1.256M
+15                3.48     -0.04      -1.14%    4.429M          2.987M
+16                1.47      0.00       0.00%    1.445M          3.744M
+17                4.60      0.00       0.00%   754,982          1.006M
+18                7.50      0.00       0.00%    1.478M           2.31M
+19                3.24     +0.03      +0.93%   10.054M         11.287M
+20                5.35     +0.04      +0.75%    2.281M          2.051M
+21                1.15     +0.04      +3.60%    2.106M          4.021M
+22                1.92     +0.12      +6.67%    10,047          23,141
+23                0.78     +0.09     +13.07%   15.678M         13.012M
+24                5.76     +0.01      +0.17%    6.659M           3.83M
+25                4.92      0.00       0.00%    3.307M          1.888M
+    Market Cap    P/E Ratio (TTM)    52 Week Range    Follow  
+1         1.434B              -7.24                           
+2         1.949B             -10.23                           
+3         1.619B              +8.65                           
+4       258.901M              -0.09                           
+5         1.285B              +9.60                           
+6       266.903M              -1.62                           
+7       687.891M             -23.81                           
+8         1.696B             -45.42                           
+9         1.081B             +33.64                           
+10      160.951M              -0.52                           
+11        1.565B             -13.91                           
+12        1.541B              -5.50                           
+13      830.942M              -5.80                           
+14        1.489B             +19.85                           
+15        1.028B              -4.79                           
+16      153.331M              -0.20                           
+17        1.093B              -5.20                           
+18        1.173B              -1.75                           
+19      404.848M              -1.02                           
+20      926.524M              -2.90                           
+21       91.843M              -0.16                           
+22        14.92M              -0.40                           
+23      127.241M              -0.07                           
+24         1.71B             +45.31                           
+25      980.128M              -5.89                           </code></pre>
 </div>
             </section>
 

@@ -12,6 +12,7 @@ backing-up-work
 test-code-often
 dplyr-and-ggplot2
 minimal-reproducible-examples
+studywork-habits
 learning-objectives
 coding-conventions
 exception-well-use-not---for-assignments
@@ -65,7 +66,9 @@ excel
 census-data-with-tidycensus
 json
 connecting-to-sql-databases
+geospatial-data
 shape-files-.shp
+geodatabase-.gdb
 data-cleaning
 recordlinkage
 example-data
@@ -76,6 +79,7 @@ data-imputation
 example-with-simulations
 random-useful-functions
 formatting-for-display
+identifying-geoids
 distance-from-point-to-line
 holidays
 data-visualization
@@ -96,6 +100,9 @@ calibration
 polychoric-correlation-pca
 model-comparisons
 variance-inflation-factor
+errors-in-variables-total-least-squares
+perfect-collinearity
+splines
 bayesian-estimates
 beta-binomial
 normal
@@ -133,14 +140,19 @@ parallel-processing-with-foreach
 efficient-programming
 efficient-r-programming-online-book
 alternatives-to-rbind-for-big-data-frames
+measuring-performance-profiling
 intro-probstat
 poisson-approximates-binomial
 new-computer-setup
+tex
+php
+postgresql
+ojs
 job-search
 job-sites
 random-online-resources
-other
 github-copilot-in-rstudio
+other
 accessible-documents
 github-actions
 math-symbols-in-plots

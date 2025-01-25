@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16.3 Click leaflet map | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16.3 Click leaflet map | Data Analysis" />
   <meta property="og:type" content="book" />
@@ -195,6 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.3" data-path="other-preparation.html"><a href="other-preparation.html#test-code-often"><i class="fa fa-check"></i><b>1.2.3</b> Test code often</a></li>
 <li class="chapter" data-level="1.2.4" data-path="other-preparation.html"><a href="other-preparation.html#dplyr-and-ggplot2"><i class="fa fa-check"></i><b>1.2.4</b> dplyr and ggplot2</a></li>
 <li class="chapter" data-level="1.2.5" data-path="other-preparation.html"><a href="other-preparation.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>1.2.5</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="1.2.6" data-path="other-preparation.html"><a href="other-preparation.html#studywork-habits"><i class="fa fa-check"></i><b>1.2.6</b> Study/work habits</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.3</b> Learning Objectives</a></li>
 <li class="chapter" data-level="1.4" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.4</b> Coding conventions</a>
@@ -270,7 +271,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>10.8</b> Census data with <code>tidycensus</code></a></li>
 <li class="chapter" data-level="10.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>10.9</b> JSON</a></li>
 <li class="chapter" data-level="10.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>10.10</b> Connecting to SQL databases</a></li>
-<li class="chapter" data-level="10.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>10.11</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11" data-path="geospatial-data.html"><a href="geospatial-data.html"><i class="fa fa-check"></i><b>10.11</b> Geospatial data</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="geospatial-data.html"><a href="geospatial-data.html#shape-files-.shp"><i class="fa fa-check"></i><b>10.11.1</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11.2" data-path="geospatial-data.html"><a href="geospatial-data.html#geodatabase-.gdb"><i class="fa fa-check"></i><b>10.11.2</b> Geodatabase .gdb</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>11</b> Data cleaning</a>
 <ul>
@@ -288,8 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>11.4</b> Random useful functions</a>
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>11.4.1</b> Formatting for display</a></li>
-<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.2</b> Distance from point to line</a></li>
-<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.3</b> Holidays</a></li>
+<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#identifying-geoids"><i class="fa fa-check"></i><b>11.4.2</b> Identifying GEOIDs</a></li>
+<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.3</b> Distance from point to line</a></li>
+<li class="chapter" data-level="11.4.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.4</b> Holidays</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>12</b> Data visualization</a>
@@ -315,6 +321,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.6" data-path="polychoric-correlation-pca.html"><a href="polychoric-correlation-pca.html"><i class="fa fa-check"></i><b>13.6</b> Polychoric correlation, PCA</a></li>
 <li class="chapter" data-level="13.7" data-path="model-comparisons.html"><a href="model-comparisons.html"><i class="fa fa-check"></i><b>13.7</b> Model comparisons</a></li>
 <li class="chapter" data-level="13.8" data-path="variance-inflation-factor.html"><a href="variance-inflation-factor.html"><i class="fa fa-check"></i><b>13.8</b> Variance Inflation Factor</a></li>
+<li class="chapter" data-level="13.9" data-path="errors-in-variables-total-least-squares.html"><a href="errors-in-variables-total-least-squares.html"><i class="fa fa-check"></i><b>13.9</b> Errors in variables, total least squares</a></li>
+<li class="chapter" data-level="13.10" data-path="perfect-collinearity.html"><a href="perfect-collinearity.html"><i class="fa fa-check"></i><b>13.10</b> Perfect collinearity</a></li>
+<li class="chapter" data-level="13.11" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>13.11</b> Splines</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>14</b> Bayesian estimates</a>
 <ul>
@@ -370,34 +379,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="21.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>21.1</b> Efficient R Programming online book</a></li>
 <li class="chapter" data-level="21.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>21.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+<li class="chapter" data-level="21.3" data-path="measuring-performance-profiling.html"><a href="measuring-performance-profiling.html"><i class="fa fa-check"></i><b>21.3</b> Measuring performance, Profiling</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>22</b> Intro Prob/Stat</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>22.1</b> Poisson approximates binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a></li>
+<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="tex.html"><a href="tex.html"><i class="fa fa-check"></i><b>23.1</b> Tex</a></li>
+<li class="chapter" data-level="23.2" data-path="php.html"><a href="php.html"><i class="fa fa-check"></i><b>23.2</b> php</a></li>
+<li class="chapter" data-level="23.3" data-path="postgresql.html"><a href="postgresql.html"><i class="fa fa-check"></i><b>23.3</b> PostgreSQL</a></li>
+<li class="chapter" data-level="23.4" data-path="ojs.html"><a href="ojs.html"><i class="fa fa-check"></i><b>23.4</b> OJS</a></li>
+</ul></li>
 <li class="chapter" data-level="24" data-path="job-search.html"><a href="job-search.html"><i class="fa fa-check"></i><b>24</b> Job search</a>
 <ul>
 <li class="chapter" data-level="24.1" data-path="job-sites.html"><a href="job-sites.html"><i class="fa fa-check"></i><b>24.1</b> Job sites</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="random-online-resources.html"><a href="random-online-resources.html"><i class="fa fa-check"></i><b>25</b> Random online resources</a></li>
-<li class="chapter" data-level="26" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>26</b> Other</a>
+<li class="chapter" data-level="26" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="27" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>27</b> Other</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26.1</b> GitHub Copilot in RStudio</a></li>
-<li class="chapter" data-level="26.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>26.2</b> Accessible Documents</a></li>
-<li class="chapter" data-level="26.3" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>26.3</b> Github Actions</a></li>
-<li class="chapter" data-level="26.4" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>26.4</b> Math symbols in plots</a></li>
-<li class="chapter" data-level="26.5" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>26.5</b> Writing R packages</a></li>
-<li class="chapter" data-level="26.6" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>26.6</b> Blogdown</a></li>
-<li class="chapter" data-level="26.7" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>26.7</b> Bookdown</a></li>
-<li class="chapter" data-level="26.8" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>26.8</b> Quarto</a></li>
-<li class="chapter" data-level="26.9" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>26.9</b> Multiple authors in R Markdown</a></li>
-<li class="chapter" data-level="26.10" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>26.10</b> Read pixel values of images</a></li>
-<li class="chapter" data-level="26.11" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>26.11</b> Cloud</a></li>
+<li class="chapter" data-level="27.1" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>27.1</b> Accessible Documents</a></li>
+<li class="chapter" data-level="27.2" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>27.2</b> Github Actions</a></li>
+<li class="chapter" data-level="27.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>27.3</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="27.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>27.4</b> Writing R packages</a></li>
+<li class="chapter" data-level="27.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>27.5</b> Blogdown</a></li>
+<li class="chapter" data-level="27.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>27.6</b> Bookdown</a></li>
+<li class="chapter" data-level="27.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>27.7</b> Quarto</a></li>
+<li class="chapter" data-level="27.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>27.8</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="27.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>27.9</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="27.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>27.10</b> Cloud</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>27</b> Not data science</a>
+<li class="chapter" data-level="28" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>28</b> Not data science</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>27.1</b> Dollar cost averaging example</a></li>
+<li class="chapter" data-level="28.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>28.1</b> Dollar cost averaging example</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
@@ -469,47 +485,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Some info about using leaflet with shiny. <a href="https://rstudio.github.io/leaflet/shiny.html" class="uri">https://rstudio.github.io/leaflet/shiny.html</a></p>
 <p>Example of clicking on a leaflet map and getting coordinates</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb140-1"><a href="click-leaflet-map.html#cb140-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb140-2"><a href="click-leaflet-map.html#cb140-2" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb140-3"><a href="click-leaflet-map.html#cb140-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb140-4"><a href="click-leaflet-map.html#cb140-4" tabindex="-1"></a></span>
-<span id="cb140-5"><a href="click-leaflet-map.html#cb140-5" tabindex="-1"></a><span class="co"># Define UI</span></span>
-<span id="cb140-6"><a href="click-leaflet-map.html#cb140-6" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb140-7"><a href="click-leaflet-map.html#cb140-7" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Example&quot;</span>),</span>
-<span id="cb140-8"><a href="click-leaflet-map.html#cb140-8" tabindex="-1"></a>  <span class="fu">mainPanel</span>(<span class="fu">leafletOutput</span>(<span class="st">&quot;map&quot;</span>))</span>
-<span id="cb140-9"><a href="click-leaflet-map.html#cb140-9" tabindex="-1"></a>)</span>
-<span id="cb140-10"><a href="click-leaflet-map.html#cb140-10" tabindex="-1"></a></span>
-<span id="cb140-11"><a href="click-leaflet-map.html#cb140-11" tabindex="-1"></a><span class="co"># Define server logic, and account for User interaction</span></span>
-<span id="cb140-12"><a href="click-leaflet-map.html#cb140-12" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb140-13"><a href="click-leaflet-map.html#cb140-13" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({ </span>
-<span id="cb140-14"><a href="click-leaflet-map.html#cb140-14" tabindex="-1"></a>    mymap <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb140-15"><a href="click-leaflet-map.html#cb140-15" tabindex="-1"></a>      <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb140-16"><a href="click-leaflet-map.html#cb140-16" tabindex="-1"></a>      <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">73.95</span>, </span>
-<span id="cb140-17"><a href="click-leaflet-map.html#cb140-17" tabindex="-1"></a>              <span class="at">lat =</span> <span class="fl">40.73</span>, </span>
-<span id="cb140-18"><a href="click-leaflet-map.html#cb140-18" tabindex="-1"></a>              <span class="at">zoom =</span> <span class="dv">12</span>)</span>
-<span id="cb140-19"><a href="click-leaflet-map.html#cb140-19" tabindex="-1"></a>    mymap</span>
-<span id="cb140-20"><a href="click-leaflet-map.html#cb140-20" tabindex="-1"></a>  })</span>
-<span id="cb140-21"><a href="click-leaflet-map.html#cb140-21" tabindex="-1"></a>  </span>
-<span id="cb140-22"><a href="click-leaflet-map.html#cb140-22" tabindex="-1"></a>  <span class="co"># when map is clicked, get the coordinates and show marker on the map </span></span>
-<span id="cb140-23"><a href="click-leaflet-map.html#cb140-23" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>map_click, {</span>
-<span id="cb140-24"><a href="click-leaflet-map.html#cb140-24" tabindex="-1"></a>    click <span class="ot">&lt;-</span> input<span class="sc">$</span>map_click</span>
-<span id="cb140-25"><a href="click-leaflet-map.html#cb140-25" tabindex="-1"></a>    </span>
-<span id="cb140-26"><a href="click-leaflet-map.html#cb140-26" tabindex="-1"></a>    <span class="do">## print coords to the console</span></span>
-<span id="cb140-27"><a href="click-leaflet-map.html#cb140-27" tabindex="-1"></a>    <span class="fu">print</span>(click)</span>
-<span id="cb140-28"><a href="click-leaflet-map.html#cb140-28" tabindex="-1"></a>    </span>
-<span id="cb140-29"><a href="click-leaflet-map.html#cb140-29" tabindex="-1"></a>    <span class="do">## display the click on the map</span></span>
-<span id="cb140-30"><a href="click-leaflet-map.html#cb140-30" tabindex="-1"></a>    proxy <span class="ot">&lt;-</span> <span class="fu">leafletProxy</span>(<span class="st">&quot;map&quot;</span>)</span>
-<span id="cb140-31"><a href="click-leaflet-map.html#cb140-31" tabindex="-1"></a>    proxy <span class="sc">%&gt;%</span> </span>
-<span id="cb140-32"><a href="click-leaflet-map.html#cb140-32" tabindex="-1"></a>      <span class="fu">clearGroup</span>(<span class="st">&quot;new_point&quot;</span>) <span class="sc">%&gt;%</span> <span class="do">## remove the previous point</span></span>
-<span id="cb140-33"><a href="click-leaflet-map.html#cb140-33" tabindex="-1"></a>      <span class="fu">addCircles</span>(click<span class="sc">$</span>lng, </span>
-<span id="cb140-34"><a href="click-leaflet-map.html#cb140-34" tabindex="-1"></a>                 click<span class="sc">$</span>lat,</span>
-<span id="cb140-35"><a href="click-leaflet-map.html#cb140-35" tabindex="-1"></a>                 <span class="at">radius =</span> <span class="dv">100</span>, </span>
-<span id="cb140-36"><a href="click-leaflet-map.html#cb140-36" tabindex="-1"></a>                 <span class="at">color  =</span> <span class="st">&quot;red&quot;</span>, </span>
-<span id="cb140-37"><a href="click-leaflet-map.html#cb140-37" tabindex="-1"></a>                 <span class="at">group  =</span> <span class="st">&quot;new_point&quot;</span>)</span>
-<span id="cb140-38"><a href="click-leaflet-map.html#cb140-38" tabindex="-1"></a>  })</span>
-<span id="cb140-39"><a href="click-leaflet-map.html#cb140-39" tabindex="-1"></a>}</span>
-<span id="cb140-40"><a href="click-leaflet-map.html#cb140-40" tabindex="-1"></a></span>
-<span id="cb140-41"><a href="click-leaflet-map.html#cb140-41" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb186-1"><a href="click-leaflet-map.html#cb186-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb186-2"><a href="click-leaflet-map.html#cb186-2" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb186-3"><a href="click-leaflet-map.html#cb186-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb186-4"><a href="click-leaflet-map.html#cb186-4" tabindex="-1"></a></span>
+<span id="cb186-5"><a href="click-leaflet-map.html#cb186-5" tabindex="-1"></a><span class="co"># Define UI</span></span>
+<span id="cb186-6"><a href="click-leaflet-map.html#cb186-6" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb186-7"><a href="click-leaflet-map.html#cb186-7" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">&quot;Example&quot;</span>),</span>
+<span id="cb186-8"><a href="click-leaflet-map.html#cb186-8" tabindex="-1"></a>  <span class="fu">mainPanel</span>(<span class="fu">leafletOutput</span>(<span class="st">&quot;map&quot;</span>))</span>
+<span id="cb186-9"><a href="click-leaflet-map.html#cb186-9" tabindex="-1"></a>)</span>
+<span id="cb186-10"><a href="click-leaflet-map.html#cb186-10" tabindex="-1"></a></span>
+<span id="cb186-11"><a href="click-leaflet-map.html#cb186-11" tabindex="-1"></a><span class="co"># Define server logic, and account for User interaction</span></span>
+<span id="cb186-12"><a href="click-leaflet-map.html#cb186-12" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb186-13"><a href="click-leaflet-map.html#cb186-13" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({ </span>
+<span id="cb186-14"><a href="click-leaflet-map.html#cb186-14" tabindex="-1"></a>    mymap <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb186-15"><a href="click-leaflet-map.html#cb186-15" tabindex="-1"></a>      <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb186-16"><a href="click-leaflet-map.html#cb186-16" tabindex="-1"></a>      <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">73.95</span>, </span>
+<span id="cb186-17"><a href="click-leaflet-map.html#cb186-17" tabindex="-1"></a>              <span class="at">lat =</span> <span class="fl">40.73</span>, </span>
+<span id="cb186-18"><a href="click-leaflet-map.html#cb186-18" tabindex="-1"></a>              <span class="at">zoom =</span> <span class="dv">12</span>)</span>
+<span id="cb186-19"><a href="click-leaflet-map.html#cb186-19" tabindex="-1"></a>    mymap</span>
+<span id="cb186-20"><a href="click-leaflet-map.html#cb186-20" tabindex="-1"></a>  })</span>
+<span id="cb186-21"><a href="click-leaflet-map.html#cb186-21" tabindex="-1"></a>  </span>
+<span id="cb186-22"><a href="click-leaflet-map.html#cb186-22" tabindex="-1"></a>  <span class="co"># when map is clicked, get the coordinates and show marker on the map </span></span>
+<span id="cb186-23"><a href="click-leaflet-map.html#cb186-23" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>map_click, {</span>
+<span id="cb186-24"><a href="click-leaflet-map.html#cb186-24" tabindex="-1"></a>    click <span class="ot">&lt;-</span> input<span class="sc">$</span>map_click</span>
+<span id="cb186-25"><a href="click-leaflet-map.html#cb186-25" tabindex="-1"></a>    </span>
+<span id="cb186-26"><a href="click-leaflet-map.html#cb186-26" tabindex="-1"></a>    <span class="do">## print coords to the console</span></span>
+<span id="cb186-27"><a href="click-leaflet-map.html#cb186-27" tabindex="-1"></a>    <span class="fu">print</span>(click)</span>
+<span id="cb186-28"><a href="click-leaflet-map.html#cb186-28" tabindex="-1"></a>    </span>
+<span id="cb186-29"><a href="click-leaflet-map.html#cb186-29" tabindex="-1"></a>    <span class="do">## display the click on the map</span></span>
+<span id="cb186-30"><a href="click-leaflet-map.html#cb186-30" tabindex="-1"></a>    proxy <span class="ot">&lt;-</span> <span class="fu">leafletProxy</span>(<span class="st">&quot;map&quot;</span>)</span>
+<span id="cb186-31"><a href="click-leaflet-map.html#cb186-31" tabindex="-1"></a>    proxy <span class="sc">%&gt;%</span> </span>
+<span id="cb186-32"><a href="click-leaflet-map.html#cb186-32" tabindex="-1"></a>      <span class="fu">clearGroup</span>(<span class="st">&quot;new_point&quot;</span>) <span class="sc">%&gt;%</span> <span class="do">## remove the previous point</span></span>
+<span id="cb186-33"><a href="click-leaflet-map.html#cb186-33" tabindex="-1"></a>      <span class="fu">addCircles</span>(click<span class="sc">$</span>lng, </span>
+<span id="cb186-34"><a href="click-leaflet-map.html#cb186-34" tabindex="-1"></a>                 click<span class="sc">$</span>lat,</span>
+<span id="cb186-35"><a href="click-leaflet-map.html#cb186-35" tabindex="-1"></a>                 <span class="at">radius =</span> <span class="dv">100</span>, </span>
+<span id="cb186-36"><a href="click-leaflet-map.html#cb186-36" tabindex="-1"></a>                 <span class="at">color  =</span> <span class="st">&quot;red&quot;</span>, </span>
+<span id="cb186-37"><a href="click-leaflet-map.html#cb186-37" tabindex="-1"></a>                 <span class="at">group  =</span> <span class="st">&quot;new_point&quot;</span>)</span>
+<span id="cb186-38"><a href="click-leaflet-map.html#cb186-38" tabindex="-1"></a>  })</span>
+<span id="cb186-39"><a href="click-leaflet-map.html#cb186-39" tabindex="-1"></a>}</span>
+<span id="cb186-40"><a href="click-leaflet-map.html#cb186-40" tabindex="-1"></a></span>
+<span id="cb186-41"><a href="click-leaflet-map.html#cb186-41" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div>
 </details>
 </div>
             </section>

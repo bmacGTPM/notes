@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17.2 Code | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17.2 Code | Data Analysis" />
   <meta property="og:type" content="book" />
@@ -195,6 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.3" data-path="other-preparation.html"><a href="other-preparation.html#test-code-often"><i class="fa fa-check"></i><b>1.2.3</b> Test code often</a></li>
 <li class="chapter" data-level="1.2.4" data-path="other-preparation.html"><a href="other-preparation.html#dplyr-and-ggplot2"><i class="fa fa-check"></i><b>1.2.4</b> dplyr and ggplot2</a></li>
 <li class="chapter" data-level="1.2.5" data-path="other-preparation.html"><a href="other-preparation.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>1.2.5</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="1.2.6" data-path="other-preparation.html"><a href="other-preparation.html#studywork-habits"><i class="fa fa-check"></i><b>1.2.6</b> Study/work habits</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.3</b> Learning Objectives</a></li>
 <li class="chapter" data-level="1.4" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.4</b> Coding conventions</a>
@@ -270,7 +271,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>10.8</b> Census data with <code>tidycensus</code></a></li>
 <li class="chapter" data-level="10.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>10.9</b> JSON</a></li>
 <li class="chapter" data-level="10.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>10.10</b> Connecting to SQL databases</a></li>
-<li class="chapter" data-level="10.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>10.11</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11" data-path="geospatial-data.html"><a href="geospatial-data.html"><i class="fa fa-check"></i><b>10.11</b> Geospatial data</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="geospatial-data.html"><a href="geospatial-data.html#shape-files-.shp"><i class="fa fa-check"></i><b>10.11.1</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11.2" data-path="geospatial-data.html"><a href="geospatial-data.html#geodatabase-.gdb"><i class="fa fa-check"></i><b>10.11.2</b> Geodatabase .gdb</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>11</b> Data cleaning</a>
 <ul>
@@ -288,8 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>11.4</b> Random useful functions</a>
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>11.4.1</b> Formatting for display</a></li>
-<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.2</b> Distance from point to line</a></li>
-<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.3</b> Holidays</a></li>
+<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#identifying-geoids"><i class="fa fa-check"></i><b>11.4.2</b> Identifying GEOIDs</a></li>
+<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.3</b> Distance from point to line</a></li>
+<li class="chapter" data-level="11.4.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.4</b> Holidays</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>12</b> Data visualization</a>
@@ -315,6 +321,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.6" data-path="polychoric-correlation-pca.html"><a href="polychoric-correlation-pca.html"><i class="fa fa-check"></i><b>13.6</b> Polychoric correlation, PCA</a></li>
 <li class="chapter" data-level="13.7" data-path="model-comparisons.html"><a href="model-comparisons.html"><i class="fa fa-check"></i><b>13.7</b> Model comparisons</a></li>
 <li class="chapter" data-level="13.8" data-path="variance-inflation-factor.html"><a href="variance-inflation-factor.html"><i class="fa fa-check"></i><b>13.8</b> Variance Inflation Factor</a></li>
+<li class="chapter" data-level="13.9" data-path="errors-in-variables-total-least-squares.html"><a href="errors-in-variables-total-least-squares.html"><i class="fa fa-check"></i><b>13.9</b> Errors in variables, total least squares</a></li>
+<li class="chapter" data-level="13.10" data-path="perfect-collinearity.html"><a href="perfect-collinearity.html"><i class="fa fa-check"></i><b>13.10</b> Perfect collinearity</a></li>
+<li class="chapter" data-level="13.11" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>13.11</b> Splines</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>14</b> Bayesian estimates</a>
 <ul>
@@ -370,34 +379,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="21.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>21.1</b> Efficient R Programming online book</a></li>
 <li class="chapter" data-level="21.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>21.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+<li class="chapter" data-level="21.3" data-path="measuring-performance-profiling.html"><a href="measuring-performance-profiling.html"><i class="fa fa-check"></i><b>21.3</b> Measuring performance, Profiling</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>22</b> Intro Prob/Stat</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>22.1</b> Poisson approximates binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a></li>
+<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="tex.html"><a href="tex.html"><i class="fa fa-check"></i><b>23.1</b> Tex</a></li>
+<li class="chapter" data-level="23.2" data-path="php.html"><a href="php.html"><i class="fa fa-check"></i><b>23.2</b> php</a></li>
+<li class="chapter" data-level="23.3" data-path="postgresql.html"><a href="postgresql.html"><i class="fa fa-check"></i><b>23.3</b> PostgreSQL</a></li>
+<li class="chapter" data-level="23.4" data-path="ojs.html"><a href="ojs.html"><i class="fa fa-check"></i><b>23.4</b> OJS</a></li>
+</ul></li>
 <li class="chapter" data-level="24" data-path="job-search.html"><a href="job-search.html"><i class="fa fa-check"></i><b>24</b> Job search</a>
 <ul>
 <li class="chapter" data-level="24.1" data-path="job-sites.html"><a href="job-sites.html"><i class="fa fa-check"></i><b>24.1</b> Job sites</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="random-online-resources.html"><a href="random-online-resources.html"><i class="fa fa-check"></i><b>25</b> Random online resources</a></li>
-<li class="chapter" data-level="26" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>26</b> Other</a>
+<li class="chapter" data-level="26" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="27" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>27</b> Other</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26.1</b> GitHub Copilot in RStudio</a></li>
-<li class="chapter" data-level="26.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>26.2</b> Accessible Documents</a></li>
-<li class="chapter" data-level="26.3" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>26.3</b> Github Actions</a></li>
-<li class="chapter" data-level="26.4" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>26.4</b> Math symbols in plots</a></li>
-<li class="chapter" data-level="26.5" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>26.5</b> Writing R packages</a></li>
-<li class="chapter" data-level="26.6" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>26.6</b> Blogdown</a></li>
-<li class="chapter" data-level="26.7" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>26.7</b> Bookdown</a></li>
-<li class="chapter" data-level="26.8" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>26.8</b> Quarto</a></li>
-<li class="chapter" data-level="26.9" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>26.9</b> Multiple authors in R Markdown</a></li>
-<li class="chapter" data-level="26.10" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>26.10</b> Read pixel values of images</a></li>
-<li class="chapter" data-level="26.11" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>26.11</b> Cloud</a></li>
+<li class="chapter" data-level="27.1" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>27.1</b> Accessible Documents</a></li>
+<li class="chapter" data-level="27.2" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>27.2</b> Github Actions</a></li>
+<li class="chapter" data-level="27.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>27.3</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="27.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>27.4</b> Writing R packages</a></li>
+<li class="chapter" data-level="27.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>27.5</b> Blogdown</a></li>
+<li class="chapter" data-level="27.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>27.6</b> Bookdown</a></li>
+<li class="chapter" data-level="27.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>27.7</b> Quarto</a></li>
+<li class="chapter" data-level="27.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>27.8</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="27.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>27.9</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="27.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>27.10</b> Cloud</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>27</b> Not data science</a>
+<li class="chapter" data-level="28" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>28</b> Not data science</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>27.1</b> Dollar cost averaging example</a></li>
+<li class="chapter" data-level="28.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>28.1</b> Dollar cost averaging example</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
@@ -468,38 +484,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">17.2</span> Code<a href="code.html#code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can actually see the contents of a function by typing <code>sd</code> (with no <code>?</code> and no parentheses). Sometimes we will see the function explicitly written out. Here is the code for <code>sd</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb143-1"><a href="code.html#cb143-1" tabindex="-1"></a>sd</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb189-1"><a href="code.html#cb189-1" tabindex="-1"></a>sd</span></code></pre></div>
 </details>
 <pre><code>function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-&lt;bytecode: 0x560d0e038980&gt;
+&lt;bytecode: 0x55e4e24b9410&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <p>The code for <code>sd</code> finds the square root of the variance of <code>x</code>.</p>
 <div id="generic-functions" class="section level3 hasAnchor" number="17.2.1">
 <h3><span class="header-section-number">17.2.1</span> Generic functions<a href="code.html#generic-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we try to look at the code for <code>print</code>, we’ll see this.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb145-1"><a href="code.html#cb145-1" tabindex="-1"></a>print</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb191-1"><a href="code.html#cb191-1" tabindex="-1"></a>print</span></code></pre></div>
 </details>
 <pre><code>standardGeneric for &quot;print&quot; defined from package &quot;base&quot;
 
 function (x, ...) 
 standardGeneric(&quot;print&quot;)
-&lt;environment: 0x560d07bb1ba0&gt;
+&lt;environment: 0x55e4e2117780&gt;
 Methods may be defined for arguments: x
 Use  showMethods(print)  for currently available ones.</code></pre>
 <p>All we see here is <code>UseMethod("print")</code> because <code>print</code> is a generic function that will use different code depending on whether we give it a <code>data.frame</code>, <code>list</code> or some other object. For example, if we give <code>print</code> a <code>list</code>, it will show each object in the list, each labeled with <code>$nameoftheobject</code> and separated by a blank line.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb147-1"><a href="code.html#cb147-1" tabindex="-1"></a>mylist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
-<span id="cb147-2"><a href="code.html#cb147-2" tabindex="-1"></a>              <span class="at">x2 =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>, </span>
-<span id="cb147-3"><a href="code.html#cb147-3" tabindex="-1"></a>              <span class="at">x3 =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>, </span>
-<span id="cb147-4"><a href="code.html#cb147-4" tabindex="-1"></a>              <span class="at">x4 =</span> <span class="dv">31</span><span class="sc">:</span><span class="dv">40</span>, </span>
-<span id="cb147-5"><a href="code.html#cb147-5" tabindex="-1"></a>              <span class="at">x5 =</span> <span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>, </span>
-<span id="cb147-6"><a href="code.html#cb147-6" tabindex="-1"></a>              <span class="at">x6 =</span> <span class="dv">51</span><span class="sc">:</span><span class="dv">60</span>, </span>
-<span id="cb147-7"><a href="code.html#cb147-7" tabindex="-1"></a>              <span class="at">x7 =</span> <span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>)</span>
-<span id="cb147-8"><a href="code.html#cb147-8" tabindex="-1"></a><span class="fu">is</span>(mylist)</span>
-<span id="cb147-9"><a href="code.html#cb147-9" tabindex="-1"></a><span class="fu">print</span>(mylist)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb193-1"><a href="code.html#cb193-1" tabindex="-1"></a>mylist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb193-2"><a href="code.html#cb193-2" tabindex="-1"></a>              <span class="at">x2 =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>, </span>
+<span id="cb193-3"><a href="code.html#cb193-3" tabindex="-1"></a>              <span class="at">x3 =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>, </span>
+<span id="cb193-4"><a href="code.html#cb193-4" tabindex="-1"></a>              <span class="at">x4 =</span> <span class="dv">31</span><span class="sc">:</span><span class="dv">40</span>, </span>
+<span id="cb193-5"><a href="code.html#cb193-5" tabindex="-1"></a>              <span class="at">x5 =</span> <span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>, </span>
+<span id="cb193-6"><a href="code.html#cb193-6" tabindex="-1"></a>              <span class="at">x6 =</span> <span class="dv">51</span><span class="sc">:</span><span class="dv">60</span>, </span>
+<span id="cb193-7"><a href="code.html#cb193-7" tabindex="-1"></a>              <span class="at">x7 =</span> <span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>)</span>
+<span id="cb193-8"><a href="code.html#cb193-8" tabindex="-1"></a><span class="fu">is</span>(mylist)</span>
+<span id="cb193-9"><a href="code.html#cb193-9" tabindex="-1"></a><span class="fu">print</span>(mylist)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;list&quot;   &quot;vector&quot;
 $x1
@@ -524,9 +540,9 @@ $x7
  [1] 61 62 63 64 65 66 67 68 69 70</code></pre>
 <p>If this <code>list</code> were a <code>data.frame</code> object, it would show a table of data.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb149-1"><a href="code.html#cb149-1" tabindex="-1"></a>my.df <span class="ot">=</span> <span class="fu">as.data.frame</span>(mylist)</span>
-<span id="cb149-2"><a href="code.html#cb149-2" tabindex="-1"></a><span class="fu">is</span>(my.df)</span>
-<span id="cb149-3"><a href="code.html#cb149-3" tabindex="-1"></a><span class="fu">print</span>(my.df)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb195-1"><a href="code.html#cb195-1" tabindex="-1"></a>my.df <span class="ot">=</span> <span class="fu">as.data.frame</span>(mylist)</span>
+<span id="cb195-2"><a href="code.html#cb195-2" tabindex="-1"></a><span class="fu">is</span>(my.df)</span>
+<span id="cb195-3"><a href="code.html#cb195-3" tabindex="-1"></a><span class="fu">print</span>(my.df)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;data.frame&quot; &quot;list&quot;       &quot;oldClass&quot;   &quot;vector&quot;    
    x1 x2 x3 x4 x5 x6 x7
@@ -542,10 +558,10 @@ $x7
 10 10 20 30 40 50 60 70</code></pre>
 <p>If we have an <code>lm</code> object that is the result of fitting a linear regression to data using the function <code>lm</code>, <code>print</code> shows some basic information about the model.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb151-1"><a href="code.html#cb151-1" tabindex="-1"></a>lm1 <span class="ot">=</span> <span class="fu">lm</span>(mpg  <span class="sc">~</span> wt, </span>
-<span id="cb151-2"><a href="code.html#cb151-2" tabindex="-1"></a>         <span class="at">data =</span> mtcars)</span>
-<span id="cb151-3"><a href="code.html#cb151-3" tabindex="-1"></a><span class="fu">is</span>(lm1)</span>
-<span id="cb151-4"><a href="code.html#cb151-4" tabindex="-1"></a><span class="fu">print</span>(lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb197-1"><a href="code.html#cb197-1" tabindex="-1"></a>lm1 <span class="ot">=</span> <span class="fu">lm</span>(mpg  <span class="sc">~</span> wt, </span>
+<span id="cb197-2"><a href="code.html#cb197-2" tabindex="-1"></a>         <span class="at">data =</span> mtcars)</span>
+<span id="cb197-3"><a href="code.html#cb197-3" tabindex="-1"></a><span class="fu">is</span>(lm1)</span>
+<span id="cb197-4"><a href="code.html#cb197-4" tabindex="-1"></a><span class="fu">print</span>(lm1)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;lm&quot;       &quot;oldClass&quot;
 
@@ -557,9 +573,9 @@ Coefficients:
      37.285       -5.344  </code></pre>
 <p>If we have a <code>summary.lm</code> object, <code>print</code> will give an output with coefficients, standard errors, <em>t</em>-statistics, <em>p</em>-values, the significance stars, <span class="math inline">\(R^2\)</span>, Adjusted <span class="math inline">\(R^2\)</span>, and so on</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb153-1"><a href="code.html#cb153-1" tabindex="-1"></a>lm1.summary <span class="ot">=</span> <span class="fu">summary</span>(lm1)</span>
-<span id="cb153-2"><a href="code.html#cb153-2" tabindex="-1"></a><span class="fu">is</span>(lm1.summary)</span>
-<span id="cb153-3"><a href="code.html#cb153-3" tabindex="-1"></a><span class="fu">print</span>(lm1.summary)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb199-1"><a href="code.html#cb199-1" tabindex="-1"></a>lm1.summary <span class="ot">=</span> <span class="fu">summary</span>(lm1)</span>
+<span id="cb199-2"><a href="code.html#cb199-2" tabindex="-1"></a><span class="fu">is</span>(lm1.summary)</span>
+<span id="cb199-3"><a href="code.html#cb199-3" tabindex="-1"></a><span class="fu">print</span>(lm1.summary)</span></code></pre></div>
 </details>
 <pre><code>[1] &quot;summary.lm&quot;
 
@@ -585,7 +601,7 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <h3><span class="header-section-number">17.2.2</span> <code>methods</code><a href="code.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use <code>methods</code> to see what objects the function <code>print</code> has methods for.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb155-1"><a href="code.html#cb155-1" tabindex="-1"></a><span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb201-1"><a href="code.html#cb201-1" tabindex="-1"></a><span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">20</span>)</span></code></pre></div>
 </details>
 <pre><code> [1] &quot;print,ANY-method&quot;            &quot;print,bayesglm-method&quot;      
  [3] &quot;print,bayespolr-method&quot;      &quot;print,diagonalMatrix-method&quot;
@@ -599,14 +615,14 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 [19] &quot;print.anova.loglm&quot;           &quot;print.any_vars&quot;             </code></pre>
 <p>We are using <code>head</code> (also generic!) to only show the first 20 methods. There are actually several hundred!</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb157-1"><a href="code.html#cb157-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb203-1"><a href="code.html#cb203-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>))</span></code></pre></div>
 </details>
-<pre><code>[1] 756</code></pre>
+<pre><code>[1] 854</code></pre>
 <p>Here are the methods that contain the character string <code>lm</code> as part of the name.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb159-1"><a href="code.html#cb159-1" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&#39;lm&#39;</span>, </span>
-<span id="cb159-2"><a href="code.html#cb159-2" tabindex="-1"></a>     <span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>), </span>
-<span id="cb159-3"><a href="code.html#cb159-3" tabindex="-1"></a>     <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb205-1"><a href="code.html#cb205-1" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&#39;lm&#39;</span>, </span>
+<span id="cb205-2"><a href="code.html#cb205-2" tabindex="-1"></a>     <span class="fu">methods</span>(<span class="st">&#39;print&#39;</span>), </span>
+<span id="cb205-3"><a href="code.html#cb205-3" tabindex="-1"></a>     <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </details>
 <pre><code> [1] &quot;print,bayesglm-method&quot;  &quot;print.anova.lme&quot;        &quot;print.anova.loglm&quot;     
  [4] &quot;print.gelman.diag&quot;      &quot;print.glm&quot;              &quot;print.glm.dose&quot;        
@@ -621,7 +637,7 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <h3><span class="header-section-number">17.2.3</span> <code>getAnywhere</code><a href="code.html#getanywhere" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we want to see the code for one of these methods, we can use <code>getAnywhere</code>. Let’s see the code for <code>print.lm</code> and <code>print.summary.lm</code>. Since the output of <code>print(summary.lm)</code> above is much more detailed than <code>print(lm1)</code>, it is not surprising that the code for <code>print.summary.lm</code> is much more involved than the code for <code>print.lm</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb161-1"><a href="code.html#cb161-1" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb207-1"><a href="code.html#cb207-1" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.lm&#39;</span>)</span></code></pre></div>
 </details>
 <pre><code>A single object matching &#39;print.lm&#39; was found
 It was found in the following places
@@ -642,10 +658,10 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), ...)
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x560d0faf8d98&gt;
+&lt;bytecode: 0x55e4ecb638d8&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb163-1"><a href="code.html#cb163-1" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.summary.lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb209-1"><a href="code.html#cb209-1" tabindex="-1"></a><span class="fu">getAnywhere</span>(<span class="st">&#39;print.summary.lm&#39;</span>)</span></code></pre></div>
 </details>
 <pre><code>A single object matching &#39;print.summary.lm&#39; was found
 It was found in the following places
@@ -733,7 +749,7 @@ function (x, digits = max(3L, getOption(&quot;digits&quot;) - 3L), symbolic.cor 
     cat(&quot;\n&quot;)
     invisible(x)
 }
-&lt;bytecode: 0x560d0f1a7210&gt;
+&lt;bytecode: 0x55e4dce10870&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 <div id="other-resources" class="section level3 hasAnchor" number="17.2.4">

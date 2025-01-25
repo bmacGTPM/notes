@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.3 Scraping pages that require log-in | Data Analysis</title>
   <meta name="description" content="Course notes for Data Analysis." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.3 Scraping pages that require log-in | Data Analysis" />
   <meta property="og:type" content="book" />
@@ -195,6 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.3" data-path="other-preparation.html"><a href="other-preparation.html#test-code-often"><i class="fa fa-check"></i><b>1.2.3</b> Test code often</a></li>
 <li class="chapter" data-level="1.2.4" data-path="other-preparation.html"><a href="other-preparation.html#dplyr-and-ggplot2"><i class="fa fa-check"></i><b>1.2.4</b> dplyr and ggplot2</a></li>
 <li class="chapter" data-level="1.2.5" data-path="other-preparation.html"><a href="other-preparation.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>1.2.5</b> Minimal reproducible examples</a></li>
+<li class="chapter" data-level="1.2.6" data-path="other-preparation.html"><a href="other-preparation.html#studywork-habits"><i class="fa fa-check"></i><b>1.2.6</b> Study/work habits</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>1.3</b> Learning Objectives</a></li>
 <li class="chapter" data-level="1.4" data-path="coding-conventions.html"><a href="coding-conventions.html"><i class="fa fa-check"></i><b>1.4</b> Coding conventions</a>
@@ -270,7 +271,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="census-data-with-tidycensus.html"><a href="census-data-with-tidycensus.html"><i class="fa fa-check"></i><b>10.8</b> Census data with <code>tidycensus</code></a></li>
 <li class="chapter" data-level="10.9" data-path="json.html"><a href="json.html"><i class="fa fa-check"></i><b>10.9</b> JSON</a></li>
 <li class="chapter" data-level="10.10" data-path="connecting-to-sql-databases.html"><a href="connecting-to-sql-databases.html"><i class="fa fa-check"></i><b>10.10</b> Connecting to SQL databases</a></li>
-<li class="chapter" data-level="10.11" data-path="shape-files-.html"><a href="shape-files-.html"><i class="fa fa-check"></i><b>10.11</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11" data-path="geospatial-data.html"><a href="geospatial-data.html"><i class="fa fa-check"></i><b>10.11</b> Geospatial data</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="geospatial-data.html"><a href="geospatial-data.html#shape-files-.shp"><i class="fa fa-check"></i><b>10.11.1</b> Shape files .shp</a></li>
+<li class="chapter" data-level="10.11.2" data-path="geospatial-data.html"><a href="geospatial-data.html#geodatabase-.gdb"><i class="fa fa-check"></i><b>10.11.2</b> Geodatabase .gdb</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>11</b> Data cleaning</a>
 <ul>
@@ -288,8 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html"><i class="fa fa-check"></i><b>11.4</b> Random useful functions</a>
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="random-useful-functions.html"><a href="random-useful-functions.html#formatting-for-display"><i class="fa fa-check"></i><b>11.4.1</b> Formatting for display</a></li>
-<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.2</b> Distance from point to line</a></li>
-<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.3</b> Holidays</a></li>
+<li class="chapter" data-level="11.4.2" data-path="random-useful-functions.html"><a href="random-useful-functions.html#identifying-geoids"><i class="fa fa-check"></i><b>11.4.2</b> Identifying GEOIDs</a></li>
+<li class="chapter" data-level="11.4.3" data-path="random-useful-functions.html"><a href="random-useful-functions.html#distance-from-point-to-line"><i class="fa fa-check"></i><b>11.4.3</b> Distance from point to line</a></li>
+<li class="chapter" data-level="11.4.4" data-path="random-useful-functions.html"><a href="random-useful-functions.html#holidays"><i class="fa fa-check"></i><b>11.4.4</b> Holidays</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>12</b> Data visualization</a>
@@ -315,6 +321,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.6" data-path="polychoric-correlation-pca.html"><a href="polychoric-correlation-pca.html"><i class="fa fa-check"></i><b>13.6</b> Polychoric correlation, PCA</a></li>
 <li class="chapter" data-level="13.7" data-path="model-comparisons.html"><a href="model-comparisons.html"><i class="fa fa-check"></i><b>13.7</b> Model comparisons</a></li>
 <li class="chapter" data-level="13.8" data-path="variance-inflation-factor.html"><a href="variance-inflation-factor.html"><i class="fa fa-check"></i><b>13.8</b> Variance Inflation Factor</a></li>
+<li class="chapter" data-level="13.9" data-path="errors-in-variables-total-least-squares.html"><a href="errors-in-variables-total-least-squares.html"><i class="fa fa-check"></i><b>13.9</b> Errors in variables, total least squares</a></li>
+<li class="chapter" data-level="13.10" data-path="perfect-collinearity.html"><a href="perfect-collinearity.html"><i class="fa fa-check"></i><b>13.10</b> Perfect collinearity</a></li>
+<li class="chapter" data-level="13.11" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>13.11</b> Splines</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bayesian-estimates.html"><a href="bayesian-estimates.html"><i class="fa fa-check"></i><b>14</b> Bayesian estimates</a>
 <ul>
@@ -370,34 +379,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="21.1" data-path="efficient-r-programming-online-book.html"><a href="efficient-r-programming-online-book.html"><i class="fa fa-check"></i><b>21.1</b> Efficient R Programming online book</a></li>
 <li class="chapter" data-level="21.2" data-path="alternatives-to-rbind-for-big-data-frames.html"><a href="alternatives-to-rbind-for-big-data-frames.html"><i class="fa fa-check"></i><b>21.2</b> Alternatives to <code>rbind</code> for big data frames</a></li>
+<li class="chapter" data-level="21.3" data-path="measuring-performance-profiling.html"><a href="measuring-performance-profiling.html"><i class="fa fa-check"></i><b>21.3</b> Measuring performance, Profiling</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="intro-probstat.html"><a href="intro-probstat.html"><i class="fa fa-check"></i><b>22</b> Intro Prob/Stat</a>
 <ul>
 <li class="chapter" data-level="22.1" data-path="poisson-approximates-binomial.html"><a href="poisson-approximates-binomial.html"><i class="fa fa-check"></i><b>22.1</b> Poisson approximates binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a></li>
+<li class="chapter" data-level="23" data-path="new-computer-setup.html"><a href="new-computer-setup.html"><i class="fa fa-check"></i><b>23</b> New computer setup</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="tex.html"><a href="tex.html"><i class="fa fa-check"></i><b>23.1</b> Tex</a></li>
+<li class="chapter" data-level="23.2" data-path="php.html"><a href="php.html"><i class="fa fa-check"></i><b>23.2</b> php</a></li>
+<li class="chapter" data-level="23.3" data-path="postgresql.html"><a href="postgresql.html"><i class="fa fa-check"></i><b>23.3</b> PostgreSQL</a></li>
+<li class="chapter" data-level="23.4" data-path="ojs.html"><a href="ojs.html"><i class="fa fa-check"></i><b>23.4</b> OJS</a></li>
+</ul></li>
 <li class="chapter" data-level="24" data-path="job-search.html"><a href="job-search.html"><i class="fa fa-check"></i><b>24</b> Job search</a>
 <ul>
 <li class="chapter" data-level="24.1" data-path="job-sites.html"><a href="job-sites.html"><i class="fa fa-check"></i><b>24.1</b> Job sites</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="random-online-resources.html"><a href="random-online-resources.html"><i class="fa fa-check"></i><b>25</b> Random online resources</a></li>
-<li class="chapter" data-level="26" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>26</b> Other</a>
+<li class="chapter" data-level="26" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26</b> GitHub Copilot in RStudio</a></li>
+<li class="chapter" data-level="27" data-path="other.html"><a href="other.html"><i class="fa fa-check"></i><b>27</b> Other</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="github-copilot-in-rstudio.html"><a href="github-copilot-in-rstudio.html"><i class="fa fa-check"></i><b>26.1</b> GitHub Copilot in RStudio</a></li>
-<li class="chapter" data-level="26.2" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>26.2</b> Accessible Documents</a></li>
-<li class="chapter" data-level="26.3" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>26.3</b> Github Actions</a></li>
-<li class="chapter" data-level="26.4" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>26.4</b> Math symbols in plots</a></li>
-<li class="chapter" data-level="26.5" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>26.5</b> Writing R packages</a></li>
-<li class="chapter" data-level="26.6" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>26.6</b> Blogdown</a></li>
-<li class="chapter" data-level="26.7" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>26.7</b> Bookdown</a></li>
-<li class="chapter" data-level="26.8" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>26.8</b> Quarto</a></li>
-<li class="chapter" data-level="26.9" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>26.9</b> Multiple authors in R Markdown</a></li>
-<li class="chapter" data-level="26.10" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>26.10</b> Read pixel values of images</a></li>
-<li class="chapter" data-level="26.11" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>26.11</b> Cloud</a></li>
+<li class="chapter" data-level="27.1" data-path="accessible-documents.html"><a href="accessible-documents.html"><i class="fa fa-check"></i><b>27.1</b> Accessible Documents</a></li>
+<li class="chapter" data-level="27.2" data-path="github-actions.html"><a href="github-actions.html"><i class="fa fa-check"></i><b>27.2</b> Github Actions</a></li>
+<li class="chapter" data-level="27.3" data-path="math-symbols-in-plots.html"><a href="math-symbols-in-plots.html"><i class="fa fa-check"></i><b>27.3</b> Math symbols in plots</a></li>
+<li class="chapter" data-level="27.4" data-path="writing-r-packages.html"><a href="writing-r-packages.html"><i class="fa fa-check"></i><b>27.4</b> Writing R packages</a></li>
+<li class="chapter" data-level="27.5" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>27.5</b> Blogdown</a></li>
+<li class="chapter" data-level="27.6" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>27.6</b> Bookdown</a></li>
+<li class="chapter" data-level="27.7" data-path="quarto.html"><a href="quarto.html"><i class="fa fa-check"></i><b>27.7</b> Quarto</a></li>
+<li class="chapter" data-level="27.8" data-path="multiple-authors-in-r-markdown.html"><a href="multiple-authors-in-r-markdown.html"><i class="fa fa-check"></i><b>27.8</b> Multiple authors in R Markdown</a></li>
+<li class="chapter" data-level="27.9" data-path="read-pixel-values-of-images.html"><a href="read-pixel-values-of-images.html"><i class="fa fa-check"></i><b>27.9</b> Read pixel values of images</a></li>
+<li class="chapter" data-level="27.10" data-path="cloud.html"><a href="cloud.html"><i class="fa fa-check"></i><b>27.10</b> Cloud</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>27</b> Not data science</a>
+<li class="chapter" data-level="28" data-path="not-data-science.html"><a href="not-data-science.html"><i class="fa fa-check"></i><b>28</b> Not data science</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>27.1</b> Dollar cost averaging example</a></li>
+<li class="chapter" data-level="28.1" data-path="dollar-cost-averaging-example.html"><a href="dollar-cost-averaging-example.html"><i class="fa fa-check"></i><b>28.1</b> Dollar cost averaging example</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="data-exploration-with-dplyr.html"><a href="data-exploration-with-dplyr.html"><i class="fa fa-check"></i><b>A</b> Data exploration with <code>dplyr</code></a>
@@ -468,127 +484,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.3</span> Scraping pages that require log-in<a href="scraping-pages-that-require-log-in.html#scraping-pages-that-require-log-in" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here is an example of scraping CBS sports fantasy baseball stats. To use this you would have to create a CBS sports log-in, and possibly a fantasy baseball league. But you should be able to easily modify it for another page that you have a log-in for. The main steps are before the for loop: <code>userid</code>, <code>password</code>, <code>uastring</code>, <code>login.url</code>, and then using <code>session</code>, <code>html_form</code>, <code>html_form_set</code>, <code>session_submit</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb104-1"><a href="scraping-pages-that-require-log-in.html#cb104-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb104-2"><a href="scraping-pages-that-require-log-in.html#cb104-2" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb104-3"><a href="scraping-pages-that-require-log-in.html#cb104-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb104-4"><a href="scraping-pages-that-require-log-in.html#cb104-4" tabindex="-1"></a></span>
-<span id="cb104-5"><a href="scraping-pages-that-require-log-in.html#cb104-5" tabindex="-1"></a><span class="do">## You will need to change the `userid` and `password` in line 22-23.  </span></span>
-<span id="cb104-6"><a href="scraping-pages-that-require-log-in.html#cb104-6" tabindex="-1"></a></span>
-<span id="cb104-7"><a href="scraping-pages-that-require-log-in.html#cb104-7" tabindex="-1"></a><span class="do">## I recommend creating a Custom Report on the CBS player stats page </span></span>
-<span id="cb104-8"><a href="scraping-pages-that-require-log-in.html#cb104-8" tabindex="-1"></a><span class="do">## that has the same columns as those listed in lines 91-101 below. </span></span>
-<span id="cb104-9"><a href="scraping-pages-that-require-log-in.html#cb104-9" tabindex="-1"></a><span class="do">## You&#39;ll have to do it four times, (batting, pitching, one for each league)</span></span>
-<span id="cb104-10"><a href="scraping-pages-that-require-log-in.html#cb104-10" tabindex="-1"></a><span class="do">## which is annoying, but worth it to scrape Salary and Contract.</span></span>
-<span id="cb104-11"><a href="scraping-pages-that-require-log-in.html#cb104-11" tabindex="-1"></a><span class="do">## Call the custom report ForSpreadsheet.</span></span>
-<span id="cb104-12"><a href="scraping-pages-that-require-log-in.html#cb104-12" tabindex="-1"></a></span>
-<span id="cb104-13"><a href="scraping-pages-that-require-log-in.html#cb104-13" tabindex="-1"></a><span class="do">## Otherwise, you&#39;ll have to change line 24 to report.name = &#39;standard&#39;</span></span>
-<span id="cb104-14"><a href="scraping-pages-that-require-log-in.html#cb104-14" tabindex="-1"></a><span class="do">## and edit lines 91-101 to have the columns in the standard report. </span></span>
-<span id="cb104-15"><a href="scraping-pages-that-require-log-in.html#cb104-15" tabindex="-1"></a></span>
-<span id="cb104-16"><a href="scraping-pages-that-require-log-in.html#cb104-16" tabindex="-1"></a><span class="do">## settings</span></span>
-<span id="cb104-17"><a href="scraping-pages-that-require-log-in.html#cb104-17" tabindex="-1"></a>years     <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2013</span><span class="sc">:</span><span class="dv">2022</span>, <span class="st">&#39;proj&#39;</span>) <span class="do">## 10 seasons, and projections</span></span>
-<span id="cb104-18"><a href="scraping-pages-that-require-log-in.html#cb104-18" tabindex="-1"></a>leagues   <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;al&#39;</span>, <span class="st">&#39;nl&#39;</span>)</span>
-<span id="cb104-19"><a href="scraping-pages-that-require-log-in.html#cb104-19" tabindex="-1"></a>positions <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;h&#39;</span> , <span class="st">&#39;p&#39;</span>) </span>
-<span id="cb104-20"><a href="scraping-pages-that-require-log-in.html#cb104-20" tabindex="-1"></a></span>
-<span id="cb104-21"><a href="scraping-pages-that-require-log-in.html#cb104-21" tabindex="-1"></a>userid      <span class="ot">=</span> <span class="st">&#39;myusername&#39;</span></span>
-<span id="cb104-22"><a href="scraping-pages-that-require-log-in.html#cb104-22" tabindex="-1"></a>password    <span class="ot">=</span> <span class="st">&#39;mypassword&#39;</span></span>
-<span id="cb104-23"><a href="scraping-pages-that-require-log-in.html#cb104-23" tabindex="-1"></a>report.name <span class="ot">=</span> <span class="st">&#39;ForSpreadsheet&#39;</span></span>
-<span id="cb104-24"><a href="scraping-pages-that-require-log-in.html#cb104-24" tabindex="-1"></a></span>
-<span id="cb104-25"><a href="scraping-pages-that-require-log-in.html#cb104-25" tabindex="-1"></a><span class="do">## log in to CBS sports</span></span>
-<span id="cb104-26"><a href="scraping-pages-that-require-log-in.html#cb104-26" tabindex="-1"></a>uastring <span class="ot">&lt;-</span> <span class="st">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36&#39;</span></span>
-<span id="cb104-27"><a href="scraping-pages-that-require-log-in.html#cb104-27" tabindex="-1"></a></span>
-<span id="cb104-28"><a href="scraping-pages-that-require-log-in.html#cb104-28" tabindex="-1"></a>login.url <span class="ot">=</span> <span class="st">&#39;https://www.cbssports.com/login&#39;</span></span>
-<span id="cb104-29"><a href="scraping-pages-that-require-log-in.html#cb104-29" tabindex="-1"></a></span>
-<span id="cb104-30"><a href="scraping-pages-that-require-log-in.html#cb104-30" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">session</span>(login.url, </span>
-<span id="cb104-31"><a href="scraping-pages-that-require-log-in.html#cb104-31" tabindex="-1"></a>           <span class="fu">user_agent</span>(uastring))</span>
-<span id="cb104-32"><a href="scraping-pages-that-require-log-in.html#cb104-32" tabindex="-1"></a>s</span>
-<span id="cb104-33"><a href="scraping-pages-that-require-log-in.html#cb104-33" tabindex="-1"></a></span>
-<span id="cb104-34"><a href="scraping-pages-that-require-log-in.html#cb104-34" tabindex="-1"></a>f<span class="ot">&lt;-</span><span class="fu">html_form</span>(s)[[<span class="dv">1</span>]]</span>
-<span id="cb104-35"><a href="scraping-pages-that-require-log-in.html#cb104-35" tabindex="-1"></a>f</span>
-<span id="cb104-36"><a href="scraping-pages-that-require-log-in.html#cb104-36" tabindex="-1"></a></span>
-<span id="cb104-37"><a href="scraping-pages-that-require-log-in.html#cb104-37" tabindex="-1"></a>ff<span class="ot">&lt;-</span><span class="fu">html_form_set</span>(f, </span>
-<span id="cb104-38"><a href="scraping-pages-that-require-log-in.html#cb104-38" tabindex="-1"></a>                  <span class="at">userid   =</span> userid, </span>
-<span id="cb104-39"><a href="scraping-pages-that-require-log-in.html#cb104-39" tabindex="-1"></a>                  <span class="at">password =</span> password)</span>
-<span id="cb104-40"><a href="scraping-pages-that-require-log-in.html#cb104-40" tabindex="-1"></a>ff</span>
-<span id="cb104-41"><a href="scraping-pages-that-require-log-in.html#cb104-41" tabindex="-1"></a></span>
-<span id="cb104-42"><a href="scraping-pages-that-require-log-in.html#cb104-42" tabindex="-1"></a><span class="fu">session_submit</span>(s, </span>
-<span id="cb104-43"><a href="scraping-pages-that-require-log-in.html#cb104-43" tabindex="-1"></a>               <span class="at">form   =</span> ff, </span>
-<span id="cb104-44"><a href="scraping-pages-that-require-log-in.html#cb104-44" tabindex="-1"></a>               <span class="at">submit =</span> <span class="st">&#39;_submit&#39;</span>)</span>
-<span id="cb104-45"><a href="scraping-pages-that-require-log-in.html#cb104-45" tabindex="-1"></a></span>
-<span id="cb104-46"><a href="scraping-pages-that-require-log-in.html#cb104-46" tabindex="-1"></a></span>
-<span id="cb104-47"><a href="scraping-pages-that-require-log-in.html#cb104-47" tabindex="-1"></a><span class="do">## now that your logged in, loop over year, league, and batter/pitcher</span></span>
-<span id="cb104-48"><a href="scraping-pages-that-require-log-in.html#cb104-48" tabindex="-1"></a></span>
-<span id="cb104-49"><a href="scraping-pages-that-require-log-in.html#cb104-49" tabindex="-1"></a><span class="cf">for</span>(year <span class="cf">in</span> years){</span>
-<span id="cb104-50"><a href="scraping-pages-that-require-log-in.html#cb104-50" tabindex="-1"></a>  <span class="fu">cat</span>(year, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb104-51"><a href="scraping-pages-that-require-log-in.html#cb104-51" tabindex="-1"></a>  </span>
-<span id="cb104-52"><a href="scraping-pages-that-require-log-in.html#cb104-52" tabindex="-1"></a>  <span class="cf">for</span>(lg <span class="cf">in</span> leagues){</span>
-<span id="cb104-53"><a href="scraping-pages-that-require-log-in.html#cb104-53" tabindex="-1"></a>    <span class="fu">cat</span>(lg, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb104-54"><a href="scraping-pages-that-require-log-in.html#cb104-54" tabindex="-1"></a>    </span>
-<span id="cb104-55"><a href="scraping-pages-that-require-log-in.html#cb104-55" tabindex="-1"></a>    <span class="cf">for</span>(pos <span class="cf">in</span> positions){</span>
-<span id="cb104-56"><a href="scraping-pages-that-require-log-in.html#cb104-56" tabindex="-1"></a>      <span class="fu">cat</span>(pos, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb104-57"><a href="scraping-pages-that-require-log-in.html#cb104-57" tabindex="-1"></a>      </span>
-<span id="cb104-58"><a href="scraping-pages-that-require-log-in.html#cb104-58" tabindex="-1"></a>      <span class="cf">if</span>(lg   <span class="sc">==</span> <span class="st">&#39;al&#39;</span>  ){site.name <span class="ot">=</span> <span class="st">&#39;thegbsl&#39;</span>}</span>
-<span id="cb104-59"><a href="scraping-pages-that-require-log-in.html#cb104-59" tabindex="-1"></a>      <span class="cf">if</span>(lg   <span class="sc">==</span> <span class="st">&#39;nl&#39;</span>  ){site.name <span class="ot">=</span> <span class="st">&#39;ohdean&#39;</span>}</span>
-<span id="cb104-60"><a href="scraping-pages-that-require-log-in.html#cb104-60" tabindex="-1"></a>      <span class="cf">if</span>(pos  <span class="sc">==</span> <span class="st">&#39;h&#39;</span>   ){pos.url   <span class="ot">=</span> <span class="st">&#39;C:1B:2B:3B:SS:MI:CI:OF:DH&#39;</span>}</span>
-<span id="cb104-61"><a href="scraping-pages-that-require-log-in.html#cb104-61" tabindex="-1"></a>      <span class="cf">if</span>(pos  <span class="sc">==</span> <span class="st">&#39;p&#39;</span>   ){pos.url   <span class="ot">=</span> <span class="st">&#39;P&#39;</span>}</span>
-<span id="cb104-62"><a href="scraping-pages-that-require-log-in.html#cb104-62" tabindex="-1"></a>      <span class="cf">if</span>(year <span class="sc">==</span> <span class="st">&#39;proj&#39;</span>){year.url  <span class="ot">=</span> <span class="st">&#39;as-restofseason&#39;</span>}</span>
-<span id="cb104-63"><a href="scraping-pages-that-require-log-in.html#cb104-63" tabindex="-1"></a>      <span class="cf">if</span>(year <span class="sc">!=</span> <span class="st">&#39;proj&#39;</span>){year.url  <span class="ot">=</span> year}</span>
-<span id="cb104-64"><a href="scraping-pages-that-require-log-in.html#cb104-64" tabindex="-1"></a>      </span>
-<span id="cb104-65"><a href="scraping-pages-that-require-log-in.html#cb104-65" tabindex="-1"></a>      url <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;https://&#39;</span>, </span>
-<span id="cb104-66"><a href="scraping-pages-that-require-log-in.html#cb104-66" tabindex="-1"></a>                   site.name, <span class="st">&#39;.baseball.cbssports.com/stats/stats-main/all:&#39;</span>, </span>
-<span id="cb104-67"><a href="scraping-pages-that-require-log-in.html#cb104-67" tabindex="-1"></a>                   pos.url, <span class="st">&#39;/&#39;</span>, </span>
-<span id="cb104-68"><a href="scraping-pages-that-require-log-in.html#cb104-68" tabindex="-1"></a>                   year.url, <span class="st">&#39;:p/&#39;</span>, </span>
-<span id="cb104-69"><a href="scraping-pages-that-require-log-in.html#cb104-69" tabindex="-1"></a>                   report.name, <span class="st">&#39;?print_rows=9999&#39;</span>)</span>
-<span id="cb104-70"><a href="scraping-pages-that-require-log-in.html#cb104-70" tabindex="-1"></a>      url <span class="do">## check</span></span>
-<span id="cb104-71"><a href="scraping-pages-that-require-log-in.html#cb104-71" tabindex="-1"></a></span>
-<span id="cb104-72"><a href="scraping-pages-that-require-log-in.html#cb104-72" tabindex="-1"></a>      <span class="do">## go to desired page</span></span>
-<span id="cb104-73"><a href="scraping-pages-that-require-log-in.html#cb104-73" tabindex="-1"></a>      page <span class="ot">=</span> <span class="fu">session_jump_to</span>(s, url)</span>
-<span id="cb104-74"><a href="scraping-pages-that-require-log-in.html#cb104-74" tabindex="-1"></a>      page</span>
-<span id="cb104-75"><a href="scraping-pages-that-require-log-in.html#cb104-75" tabindex="-1"></a>      </span>
-<span id="cb104-76"><a href="scraping-pages-that-require-log-in.html#cb104-76" tabindex="-1"></a>      <span class="do">## extract the table</span></span>
-<span id="cb104-77"><a href="scraping-pages-that-require-log-in.html#cb104-77" tabindex="-1"></a>      d <span class="ot">=</span> page <span class="sc">%&gt;%</span> </span>
-<span id="cb104-78"><a href="scraping-pages-that-require-log-in.html#cb104-78" tabindex="-1"></a>        <span class="fu">html_table</span>(<span class="at">header =</span> T)</span>
-<span id="cb104-79"><a href="scraping-pages-that-require-log-in.html#cb104-79" tabindex="-1"></a>      </span>
-<span id="cb104-80"><a href="scraping-pages-that-require-log-in.html#cb104-80" tabindex="-1"></a>      dd <span class="ot">=</span> d[[<span class="dv">2</span>]] <span class="sc">%&gt;%</span> <span class="do">## table is in the second item of the list</span></span>
-<span id="cb104-81"><a href="scraping-pages-that-require-log-in.html#cb104-81" tabindex="-1"></a>        <span class="fu">as.data.frame</span>()</span>
-<span id="cb104-82"><a href="scraping-pages-that-require-log-in.html#cb104-82" tabindex="-1"></a>      </span>
-<span id="cb104-83"><a href="scraping-pages-that-require-log-in.html#cb104-83" tabindex="-1"></a>      <span class="do">## the first row should be the column names, so</span></span>
-<span id="cb104-84"><a href="scraping-pages-that-require-log-in.html#cb104-84" tabindex="-1"></a>      <span class="do">## put the first row there,</span></span>
-<span id="cb104-85"><a href="scraping-pages-that-require-log-in.html#cb104-85" tabindex="-1"></a>      <span class="do">## and remove the first row</span></span>
-<span id="cb104-86"><a href="scraping-pages-that-require-log-in.html#cb104-86" tabindex="-1"></a>      <span class="do">## Also, remove the first column, which looks like garbage</span></span>
-<span id="cb104-87"><a href="scraping-pages-that-require-log-in.html#cb104-87" tabindex="-1"></a>      <span class="fu">colnames</span>(dd) <span class="ot">=</span> dd[<span class="dv">1</span>,] </span>
-<span id="cb104-88"><a href="scraping-pages-that-require-log-in.html#cb104-88" tabindex="-1"></a>      <span class="fu">head</span>(dd)</span>
-<span id="cb104-89"><a href="scraping-pages-that-require-log-in.html#cb104-89" tabindex="-1"></a>      </span>
-<span id="cb104-90"><a href="scraping-pages-that-require-log-in.html#cb104-90" tabindex="-1"></a>      dd <span class="ot">=</span> dd[<span class="sc">-</span><span class="dv">1</span>,] <span class="do">## now remove 1st row</span></span>
-<span id="cb104-91"><a href="scraping-pages-that-require-log-in.html#cb104-91" tabindex="-1"></a>      <span class="fu">head</span>(dd)</span>
-<span id="cb104-92"><a href="scraping-pages-that-require-log-in.html#cb104-92" tabindex="-1"></a>      </span>
-<span id="cb104-93"><a href="scraping-pages-that-require-log-in.html#cb104-93" tabindex="-1"></a>      <span class="do">## remove last row</span></span>
-<span id="cb104-94"><a href="scraping-pages-that-require-log-in.html#cb104-94" tabindex="-1"></a>      dd <span class="ot">=</span> dd[<span class="sc">-</span><span class="fu">nrow</span>(dd), ]</span>
-<span id="cb104-95"><a href="scraping-pages-that-require-log-in.html#cb104-95" tabindex="-1"></a>      </span>
-<span id="cb104-96"><a href="scraping-pages-that-require-log-in.html#cb104-96" tabindex="-1"></a>      <span class="do">## select columns and save</span></span>
-<span id="cb104-97"><a href="scraping-pages-that-require-log-in.html#cb104-97" tabindex="-1"></a>      <span class="cf">if</span>(pos <span class="sc">==</span> <span class="st">&#39;h&#39;</span>){</span>
-<span id="cb104-98"><a href="scraping-pages-that-require-log-in.html#cb104-98" tabindex="-1"></a>        dd <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
-<span id="cb104-99"><a href="scraping-pages-that-require-log-in.html#cb104-99" tabindex="-1"></a>          <span class="fu">select</span>(Player, Avail, Eligible, Salary, Contract, </span>
-<span id="cb104-100"><a href="scraping-pages-that-require-log-in.html#cb104-100" tabindex="-1"></a>               G, AB, H, R, HR, RBI, SB, BB, TB, HP, Rank) </span>
-<span id="cb104-101"><a href="scraping-pages-that-require-log-in.html#cb104-101" tabindex="-1"></a>      }</span>
-<span id="cb104-102"><a href="scraping-pages-that-require-log-in.html#cb104-102" tabindex="-1"></a>      </span>
-<span id="cb104-103"><a href="scraping-pages-that-require-log-in.html#cb104-103" tabindex="-1"></a>      <span class="cf">if</span>(pos <span class="sc">==</span> <span class="st">&#39;p&#39;</span>){</span>
-<span id="cb104-104"><a href="scraping-pages-that-require-log-in.html#cb104-104" tabindex="-1"></a>        dd <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
-<span id="cb104-105"><a href="scraping-pages-that-require-log-in.html#cb104-105" tabindex="-1"></a>          <span class="fu">select</span>(Player, Avail, Eligible, Salary, Contract, </span>
-<span id="cb104-106"><a href="scraping-pages-that-require-log-in.html#cb104-106" tabindex="-1"></a>                 APP, W, S, H, HR, ER, BB, K, INN, Rank) </span>
-<span id="cb104-107"><a href="scraping-pages-that-require-log-in.html#cb104-107" tabindex="-1"></a>      }</span>
-<span id="cb104-108"><a href="scraping-pages-that-require-log-in.html#cb104-108" tabindex="-1"></a>        </span>
-<span id="cb104-109"><a href="scraping-pages-that-require-log-in.html#cb104-109" tabindex="-1"></a>      <span class="fu">head</span>(dd)</span>
-<span id="cb104-110"><a href="scraping-pages-that-require-log-in.html#cb104-110" tabindex="-1"></a>      </span>
-<span id="cb104-111"><a href="scraping-pages-that-require-log-in.html#cb104-111" tabindex="-1"></a>      filename <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;data/&#39;</span>, </span>
-<span id="cb104-112"><a href="scraping-pages-that-require-log-in.html#cb104-112" tabindex="-1"></a>                        lg, <span class="st">&#39;-stats-&#39;</span>, </span>
-<span id="cb104-113"><a href="scraping-pages-that-require-log-in.html#cb104-113" tabindex="-1"></a>                        year, <span class="st">&#39;-&#39;</span>, </span>
-<span id="cb104-114"><a href="scraping-pages-that-require-log-in.html#cb104-114" tabindex="-1"></a>                        pos, <span class="st">&#39;.csv&#39;</span>)</span>
-<span id="cb104-115"><a href="scraping-pages-that-require-log-in.html#cb104-115" tabindex="-1"></a>      filename</span>
-<span id="cb104-116"><a href="scraping-pages-that-require-log-in.html#cb104-116" tabindex="-1"></a>      </span>
-<span id="cb104-117"><a href="scraping-pages-that-require-log-in.html#cb104-117" tabindex="-1"></a>      <span class="fu">write.csv</span>(dd, <span class="at">file =</span> filename, <span class="at">row.names =</span> F)</span>
-<span id="cb104-118"><a href="scraping-pages-that-require-log-in.html#cb104-118" tabindex="-1"></a>      </span>
-<span id="cb104-119"><a href="scraping-pages-that-require-log-in.html#cb104-119" tabindex="-1"></a>    }</span>
-<span id="cb104-120"><a href="scraping-pages-that-require-log-in.html#cb104-120" tabindex="-1"></a>  }</span>
-<span id="cb104-121"><a href="scraping-pages-that-require-log-in.html#cb104-121" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb120-1"><a href="scraping-pages-that-require-log-in.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb120-2"><a href="scraping-pages-that-require-log-in.html#cb120-2" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb120-3"><a href="scraping-pages-that-require-log-in.html#cb120-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb120-4"><a href="scraping-pages-that-require-log-in.html#cb120-4" tabindex="-1"></a></span>
+<span id="cb120-5"><a href="scraping-pages-that-require-log-in.html#cb120-5" tabindex="-1"></a><span class="do">## You will need to change the `userid` and `password` in line 22-23.  </span></span>
+<span id="cb120-6"><a href="scraping-pages-that-require-log-in.html#cb120-6" tabindex="-1"></a></span>
+<span id="cb120-7"><a href="scraping-pages-that-require-log-in.html#cb120-7" tabindex="-1"></a><span class="do">## I recommend creating a Custom Report on the CBS player stats page </span></span>
+<span id="cb120-8"><a href="scraping-pages-that-require-log-in.html#cb120-8" tabindex="-1"></a><span class="do">## that has the same columns as those listed in lines 91-101 below. </span></span>
+<span id="cb120-9"><a href="scraping-pages-that-require-log-in.html#cb120-9" tabindex="-1"></a><span class="do">## You&#39;ll have to do it four times, (batting, pitching, one for each league)</span></span>
+<span id="cb120-10"><a href="scraping-pages-that-require-log-in.html#cb120-10" tabindex="-1"></a><span class="do">## which is annoying, but worth it to scrape Salary and Contract.</span></span>
+<span id="cb120-11"><a href="scraping-pages-that-require-log-in.html#cb120-11" tabindex="-1"></a><span class="do">## Call the custom report ForSpreadsheet.</span></span>
+<span id="cb120-12"><a href="scraping-pages-that-require-log-in.html#cb120-12" tabindex="-1"></a></span>
+<span id="cb120-13"><a href="scraping-pages-that-require-log-in.html#cb120-13" tabindex="-1"></a><span class="do">## Otherwise, you&#39;ll have to change line 24 to report.name = &#39;standard&#39;</span></span>
+<span id="cb120-14"><a href="scraping-pages-that-require-log-in.html#cb120-14" tabindex="-1"></a><span class="do">## and edit lines 91-101 to have the columns in the standard report. </span></span>
+<span id="cb120-15"><a href="scraping-pages-that-require-log-in.html#cb120-15" tabindex="-1"></a></span>
+<span id="cb120-16"><a href="scraping-pages-that-require-log-in.html#cb120-16" tabindex="-1"></a><span class="do">## settings</span></span>
+<span id="cb120-17"><a href="scraping-pages-that-require-log-in.html#cb120-17" tabindex="-1"></a>years     <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2013</span><span class="sc">:</span><span class="dv">2022</span>, <span class="st">&#39;proj&#39;</span>) <span class="do">## 10 seasons, and projections</span></span>
+<span id="cb120-18"><a href="scraping-pages-that-require-log-in.html#cb120-18" tabindex="-1"></a>leagues   <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;al&#39;</span>, <span class="st">&#39;nl&#39;</span>)</span>
+<span id="cb120-19"><a href="scraping-pages-that-require-log-in.html#cb120-19" tabindex="-1"></a>positions <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;h&#39;</span> , <span class="st">&#39;p&#39;</span>) </span>
+<span id="cb120-20"><a href="scraping-pages-that-require-log-in.html#cb120-20" tabindex="-1"></a></span>
+<span id="cb120-21"><a href="scraping-pages-that-require-log-in.html#cb120-21" tabindex="-1"></a>userid      <span class="ot">=</span> <span class="st">&#39;myusername&#39;</span></span>
+<span id="cb120-22"><a href="scraping-pages-that-require-log-in.html#cb120-22" tabindex="-1"></a>password    <span class="ot">=</span> <span class="st">&#39;mypassword&#39;</span></span>
+<span id="cb120-23"><a href="scraping-pages-that-require-log-in.html#cb120-23" tabindex="-1"></a>report.name <span class="ot">=</span> <span class="st">&#39;ForSpreadsheet&#39;</span></span>
+<span id="cb120-24"><a href="scraping-pages-that-require-log-in.html#cb120-24" tabindex="-1"></a></span>
+<span id="cb120-25"><a href="scraping-pages-that-require-log-in.html#cb120-25" tabindex="-1"></a><span class="do">## log in to CBS sports</span></span>
+<span id="cb120-26"><a href="scraping-pages-that-require-log-in.html#cb120-26" tabindex="-1"></a>uastring <span class="ot">&lt;-</span> <span class="st">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36&#39;</span></span>
+<span id="cb120-27"><a href="scraping-pages-that-require-log-in.html#cb120-27" tabindex="-1"></a></span>
+<span id="cb120-28"><a href="scraping-pages-that-require-log-in.html#cb120-28" tabindex="-1"></a>login.url <span class="ot">=</span> <span class="st">&#39;https://www.cbssports.com/login&#39;</span></span>
+<span id="cb120-29"><a href="scraping-pages-that-require-log-in.html#cb120-29" tabindex="-1"></a></span>
+<span id="cb120-30"><a href="scraping-pages-that-require-log-in.html#cb120-30" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">session</span>(login.url, </span>
+<span id="cb120-31"><a href="scraping-pages-that-require-log-in.html#cb120-31" tabindex="-1"></a>           <span class="fu">user_agent</span>(uastring))</span>
+<span id="cb120-32"><a href="scraping-pages-that-require-log-in.html#cb120-32" tabindex="-1"></a>s</span>
+<span id="cb120-33"><a href="scraping-pages-that-require-log-in.html#cb120-33" tabindex="-1"></a></span>
+<span id="cb120-34"><a href="scraping-pages-that-require-log-in.html#cb120-34" tabindex="-1"></a>f<span class="ot">&lt;-</span><span class="fu">html_form</span>(s)[[<span class="dv">1</span>]]</span>
+<span id="cb120-35"><a href="scraping-pages-that-require-log-in.html#cb120-35" tabindex="-1"></a>f</span>
+<span id="cb120-36"><a href="scraping-pages-that-require-log-in.html#cb120-36" tabindex="-1"></a></span>
+<span id="cb120-37"><a href="scraping-pages-that-require-log-in.html#cb120-37" tabindex="-1"></a>ff<span class="ot">&lt;-</span><span class="fu">html_form_set</span>(f, </span>
+<span id="cb120-38"><a href="scraping-pages-that-require-log-in.html#cb120-38" tabindex="-1"></a>                  <span class="at">userid   =</span> userid, </span>
+<span id="cb120-39"><a href="scraping-pages-that-require-log-in.html#cb120-39" tabindex="-1"></a>                  <span class="at">password =</span> password)</span>
+<span id="cb120-40"><a href="scraping-pages-that-require-log-in.html#cb120-40" tabindex="-1"></a>ff</span>
+<span id="cb120-41"><a href="scraping-pages-that-require-log-in.html#cb120-41" tabindex="-1"></a></span>
+<span id="cb120-42"><a href="scraping-pages-that-require-log-in.html#cb120-42" tabindex="-1"></a><span class="fu">session_submit</span>(s, </span>
+<span id="cb120-43"><a href="scraping-pages-that-require-log-in.html#cb120-43" tabindex="-1"></a>               <span class="at">form   =</span> ff, </span>
+<span id="cb120-44"><a href="scraping-pages-that-require-log-in.html#cb120-44" tabindex="-1"></a>               <span class="at">submit =</span> <span class="st">&#39;_submit&#39;</span>)</span>
+<span id="cb120-45"><a href="scraping-pages-that-require-log-in.html#cb120-45" tabindex="-1"></a></span>
+<span id="cb120-46"><a href="scraping-pages-that-require-log-in.html#cb120-46" tabindex="-1"></a></span>
+<span id="cb120-47"><a href="scraping-pages-that-require-log-in.html#cb120-47" tabindex="-1"></a><span class="do">## now that your logged in, loop over year, league, and batter/pitcher</span></span>
+<span id="cb120-48"><a href="scraping-pages-that-require-log-in.html#cb120-48" tabindex="-1"></a></span>
+<span id="cb120-49"><a href="scraping-pages-that-require-log-in.html#cb120-49" tabindex="-1"></a><span class="cf">for</span>(year <span class="cf">in</span> years){</span>
+<span id="cb120-50"><a href="scraping-pages-that-require-log-in.html#cb120-50" tabindex="-1"></a>  <span class="fu">cat</span>(year, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb120-51"><a href="scraping-pages-that-require-log-in.html#cb120-51" tabindex="-1"></a>  </span>
+<span id="cb120-52"><a href="scraping-pages-that-require-log-in.html#cb120-52" tabindex="-1"></a>  <span class="cf">for</span>(lg <span class="cf">in</span> leagues){</span>
+<span id="cb120-53"><a href="scraping-pages-that-require-log-in.html#cb120-53" tabindex="-1"></a>    <span class="fu">cat</span>(lg, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb120-54"><a href="scraping-pages-that-require-log-in.html#cb120-54" tabindex="-1"></a>    </span>
+<span id="cb120-55"><a href="scraping-pages-that-require-log-in.html#cb120-55" tabindex="-1"></a>    <span class="cf">for</span>(pos <span class="cf">in</span> positions){</span>
+<span id="cb120-56"><a href="scraping-pages-that-require-log-in.html#cb120-56" tabindex="-1"></a>      <span class="fu">cat</span>(pos, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb120-57"><a href="scraping-pages-that-require-log-in.html#cb120-57" tabindex="-1"></a>      </span>
+<span id="cb120-58"><a href="scraping-pages-that-require-log-in.html#cb120-58" tabindex="-1"></a>      <span class="cf">if</span>(lg   <span class="sc">==</span> <span class="st">&#39;al&#39;</span>  ){site.name <span class="ot">=</span> <span class="st">&#39;thegbsl&#39;</span>}</span>
+<span id="cb120-59"><a href="scraping-pages-that-require-log-in.html#cb120-59" tabindex="-1"></a>      <span class="cf">if</span>(lg   <span class="sc">==</span> <span class="st">&#39;nl&#39;</span>  ){site.name <span class="ot">=</span> <span class="st">&#39;ohdean&#39;</span>}</span>
+<span id="cb120-60"><a href="scraping-pages-that-require-log-in.html#cb120-60" tabindex="-1"></a>      <span class="cf">if</span>(pos  <span class="sc">==</span> <span class="st">&#39;h&#39;</span>   ){pos.url   <span class="ot">=</span> <span class="st">&#39;C:1B:2B:3B:SS:MI:CI:OF:DH&#39;</span>}</span>
+<span id="cb120-61"><a href="scraping-pages-that-require-log-in.html#cb120-61" tabindex="-1"></a>      <span class="cf">if</span>(pos  <span class="sc">==</span> <span class="st">&#39;p&#39;</span>   ){pos.url   <span class="ot">=</span> <span class="st">&#39;P&#39;</span>}</span>
+<span id="cb120-62"><a href="scraping-pages-that-require-log-in.html#cb120-62" tabindex="-1"></a>      <span class="cf">if</span>(year <span class="sc">==</span> <span class="st">&#39;proj&#39;</span>){year.url  <span class="ot">=</span> <span class="st">&#39;as-restofseason&#39;</span>}</span>
+<span id="cb120-63"><a href="scraping-pages-that-require-log-in.html#cb120-63" tabindex="-1"></a>      <span class="cf">if</span>(year <span class="sc">!=</span> <span class="st">&#39;proj&#39;</span>){year.url  <span class="ot">=</span> year}</span>
+<span id="cb120-64"><a href="scraping-pages-that-require-log-in.html#cb120-64" tabindex="-1"></a>      </span>
+<span id="cb120-65"><a href="scraping-pages-that-require-log-in.html#cb120-65" tabindex="-1"></a>      url <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;https://&#39;</span>, </span>
+<span id="cb120-66"><a href="scraping-pages-that-require-log-in.html#cb120-66" tabindex="-1"></a>                   site.name, <span class="st">&#39;.baseball.cbssports.com/stats/stats-main/all:&#39;</span>, </span>
+<span id="cb120-67"><a href="scraping-pages-that-require-log-in.html#cb120-67" tabindex="-1"></a>                   pos.url, <span class="st">&#39;/&#39;</span>, </span>
+<span id="cb120-68"><a href="scraping-pages-that-require-log-in.html#cb120-68" tabindex="-1"></a>                   year.url, <span class="st">&#39;:p/&#39;</span>, </span>
+<span id="cb120-69"><a href="scraping-pages-that-require-log-in.html#cb120-69" tabindex="-1"></a>                   report.name, <span class="st">&#39;?print_rows=9999&#39;</span>)</span>
+<span id="cb120-70"><a href="scraping-pages-that-require-log-in.html#cb120-70" tabindex="-1"></a>      url <span class="do">## check</span></span>
+<span id="cb120-71"><a href="scraping-pages-that-require-log-in.html#cb120-71" tabindex="-1"></a></span>
+<span id="cb120-72"><a href="scraping-pages-that-require-log-in.html#cb120-72" tabindex="-1"></a>      <span class="do">## go to desired page</span></span>
+<span id="cb120-73"><a href="scraping-pages-that-require-log-in.html#cb120-73" tabindex="-1"></a>      page <span class="ot">=</span> <span class="fu">session_jump_to</span>(s, url)</span>
+<span id="cb120-74"><a href="scraping-pages-that-require-log-in.html#cb120-74" tabindex="-1"></a>      page</span>
+<span id="cb120-75"><a href="scraping-pages-that-require-log-in.html#cb120-75" tabindex="-1"></a>      </span>
+<span id="cb120-76"><a href="scraping-pages-that-require-log-in.html#cb120-76" tabindex="-1"></a>      <span class="do">## extract the table</span></span>
+<span id="cb120-77"><a href="scraping-pages-that-require-log-in.html#cb120-77" tabindex="-1"></a>      d <span class="ot">=</span> page <span class="sc">%&gt;%</span> </span>
+<span id="cb120-78"><a href="scraping-pages-that-require-log-in.html#cb120-78" tabindex="-1"></a>        <span class="fu">html_table</span>(<span class="at">header =</span> T)</span>
+<span id="cb120-79"><a href="scraping-pages-that-require-log-in.html#cb120-79" tabindex="-1"></a>      </span>
+<span id="cb120-80"><a href="scraping-pages-that-require-log-in.html#cb120-80" tabindex="-1"></a>      dd <span class="ot">=</span> d[[<span class="dv">2</span>]] <span class="sc">%&gt;%</span> <span class="do">## table is in the second item of the list</span></span>
+<span id="cb120-81"><a href="scraping-pages-that-require-log-in.html#cb120-81" tabindex="-1"></a>        <span class="fu">as.data.frame</span>()</span>
+<span id="cb120-82"><a href="scraping-pages-that-require-log-in.html#cb120-82" tabindex="-1"></a>      </span>
+<span id="cb120-83"><a href="scraping-pages-that-require-log-in.html#cb120-83" tabindex="-1"></a>      <span class="do">## the first row should be the column names, so</span></span>
+<span id="cb120-84"><a href="scraping-pages-that-require-log-in.html#cb120-84" tabindex="-1"></a>      <span class="do">## put the first row there,</span></span>
+<span id="cb120-85"><a href="scraping-pages-that-require-log-in.html#cb120-85" tabindex="-1"></a>      <span class="do">## and remove the first row</span></span>
+<span id="cb120-86"><a href="scraping-pages-that-require-log-in.html#cb120-86" tabindex="-1"></a>      <span class="do">## Also, remove the first column, which looks like garbage</span></span>
+<span id="cb120-87"><a href="scraping-pages-that-require-log-in.html#cb120-87" tabindex="-1"></a>      <span class="fu">colnames</span>(dd) <span class="ot">=</span> dd[<span class="dv">1</span>,] </span>
+<span id="cb120-88"><a href="scraping-pages-that-require-log-in.html#cb120-88" tabindex="-1"></a>      <span class="fu">head</span>(dd)</span>
+<span id="cb120-89"><a href="scraping-pages-that-require-log-in.html#cb120-89" tabindex="-1"></a>      </span>
+<span id="cb120-90"><a href="scraping-pages-that-require-log-in.html#cb120-90" tabindex="-1"></a>      dd <span class="ot">=</span> dd[<span class="sc">-</span><span class="dv">1</span>,] <span class="do">## now remove 1st row</span></span>
+<span id="cb120-91"><a href="scraping-pages-that-require-log-in.html#cb120-91" tabindex="-1"></a>      <span class="fu">head</span>(dd)</span>
+<span id="cb120-92"><a href="scraping-pages-that-require-log-in.html#cb120-92" tabindex="-1"></a>      </span>
+<span id="cb120-93"><a href="scraping-pages-that-require-log-in.html#cb120-93" tabindex="-1"></a>      <span class="do">## remove last row</span></span>
+<span id="cb120-94"><a href="scraping-pages-that-require-log-in.html#cb120-94" tabindex="-1"></a>      dd <span class="ot">=</span> dd[<span class="sc">-</span><span class="fu">nrow</span>(dd), ]</span>
+<span id="cb120-95"><a href="scraping-pages-that-require-log-in.html#cb120-95" tabindex="-1"></a>      </span>
+<span id="cb120-96"><a href="scraping-pages-that-require-log-in.html#cb120-96" tabindex="-1"></a>      <span class="do">## select columns and save</span></span>
+<span id="cb120-97"><a href="scraping-pages-that-require-log-in.html#cb120-97" tabindex="-1"></a>      <span class="cf">if</span>(pos <span class="sc">==</span> <span class="st">&#39;h&#39;</span>){</span>
+<span id="cb120-98"><a href="scraping-pages-that-require-log-in.html#cb120-98" tabindex="-1"></a>        dd <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
+<span id="cb120-99"><a href="scraping-pages-that-require-log-in.html#cb120-99" tabindex="-1"></a>          <span class="fu">select</span>(Player, Avail, Eligible, Salary, Contract, </span>
+<span id="cb120-100"><a href="scraping-pages-that-require-log-in.html#cb120-100" tabindex="-1"></a>               G, AB, H, R, HR, RBI, SB, BB, TB, HP, Rank) </span>
+<span id="cb120-101"><a href="scraping-pages-that-require-log-in.html#cb120-101" tabindex="-1"></a>      }</span>
+<span id="cb120-102"><a href="scraping-pages-that-require-log-in.html#cb120-102" tabindex="-1"></a>      </span>
+<span id="cb120-103"><a href="scraping-pages-that-require-log-in.html#cb120-103" tabindex="-1"></a>      <span class="cf">if</span>(pos <span class="sc">==</span> <span class="st">&#39;p&#39;</span>){</span>
+<span id="cb120-104"><a href="scraping-pages-that-require-log-in.html#cb120-104" tabindex="-1"></a>        dd <span class="ot">=</span> dd <span class="sc">%&gt;%</span></span>
+<span id="cb120-105"><a href="scraping-pages-that-require-log-in.html#cb120-105" tabindex="-1"></a>          <span class="fu">select</span>(Player, Avail, Eligible, Salary, Contract, </span>
+<span id="cb120-106"><a href="scraping-pages-that-require-log-in.html#cb120-106" tabindex="-1"></a>                 APP, W, S, H, HR, ER, BB, K, INN, Rank) </span>
+<span id="cb120-107"><a href="scraping-pages-that-require-log-in.html#cb120-107" tabindex="-1"></a>      }</span>
+<span id="cb120-108"><a href="scraping-pages-that-require-log-in.html#cb120-108" tabindex="-1"></a>        </span>
+<span id="cb120-109"><a href="scraping-pages-that-require-log-in.html#cb120-109" tabindex="-1"></a>      <span class="fu">head</span>(dd)</span>
+<span id="cb120-110"><a href="scraping-pages-that-require-log-in.html#cb120-110" tabindex="-1"></a>      </span>
+<span id="cb120-111"><a href="scraping-pages-that-require-log-in.html#cb120-111" tabindex="-1"></a>      filename <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;data/&#39;</span>, </span>
+<span id="cb120-112"><a href="scraping-pages-that-require-log-in.html#cb120-112" tabindex="-1"></a>                        lg, <span class="st">&#39;-stats-&#39;</span>, </span>
+<span id="cb120-113"><a href="scraping-pages-that-require-log-in.html#cb120-113" tabindex="-1"></a>                        year, <span class="st">&#39;-&#39;</span>, </span>
+<span id="cb120-114"><a href="scraping-pages-that-require-log-in.html#cb120-114" tabindex="-1"></a>                        pos, <span class="st">&#39;.csv&#39;</span>)</span>
+<span id="cb120-115"><a href="scraping-pages-that-require-log-in.html#cb120-115" tabindex="-1"></a>      filename</span>
+<span id="cb120-116"><a href="scraping-pages-that-require-log-in.html#cb120-116" tabindex="-1"></a>      </span>
+<span id="cb120-117"><a href="scraping-pages-that-require-log-in.html#cb120-117" tabindex="-1"></a>      <span class="fu">write.csv</span>(dd, <span class="at">file =</span> filename, <span class="at">row.names =</span> F)</span>
+<span id="cb120-118"><a href="scraping-pages-that-require-log-in.html#cb120-118" tabindex="-1"></a>      </span>
+<span id="cb120-119"><a href="scraping-pages-that-require-log-in.html#cb120-119" tabindex="-1"></a>    }</span>
+<span id="cb120-120"><a href="scraping-pages-that-require-log-in.html#cb120-120" tabindex="-1"></a>  }</span>
+<span id="cb120-121"><a href="scraping-pages-that-require-log-in.html#cb120-121" tabindex="-1"></a>}</span></code></pre></div>
 </details>
 </div>
             </section>
