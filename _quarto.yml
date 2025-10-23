@@ -1,0 +1,53 @@
+project:
+  type: book
+
+book:
+  title: "S&DS 3610 Notes"
+  author: "Brian Macdonald"
+  date: "10/22/2025"
+  page-navigation: true
+  page-footer: 
+    left: 
+      - icon: github
+        href: https://github.com/bmacgtpm
+      - icon: twitter 
+        href: https://twitter.com/bmacgtpm 
+    center: "© 2025 Brian Macdonald"
+    right: "S&DS 3610 Notes"
+    background: light
+
+  chapters:
+    - index.qmd
+    - part: intro.qmd
+      chapters:
+        - example1.qmd
+        - example2.qmd
+    - part: "Part 2"
+      chapters: 
+        - example3.qmd
+        - summary.qmd
+
+  appendices:
+    - references.qmd
+  
+toc-depth: 3
+number-depth: 3
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    toc-depth: 4
+  pdf:
+    documentclass: scrreprt
+    include-in-header: 
+      text: |
+        \usepackage{imakeidx}
+        \makeindex[intoc=true, columns=3, columnseprule=true, options=-s latex/indexstyles.ist]
+    include-after-body: 
+      text: |
+        \printindex
+
+
