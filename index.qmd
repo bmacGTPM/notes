@@ -4,4 +4,66 @@ This is a Quarto book.
 
 To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
+
+## Section 1
+Here is an easy plot
+
+```{r}
+plot(cars)
+```
+
+### Subsection 1.1
+A ggplot version of the same plot. 
+```{r}
+library(ggplot2)
+
+ggplot(cars, aes(x = speed, y = dist)) +
+    geom_point()
+```
+
+### Subsection 1.2
+
+```{r}
+library(pubtheme)
+dg = mtcars %>% 
+  select(wt, mpg, cyl) %>%
+  mutate(Cylinders = as.factor(cyl)) %>%
+  rename(MPG = mpg)
+
+title = "Title in Upper Lower" 
+g = ggplot(dg, 
+           aes(x     = wt, 
+               y     = MPG, 
+               color = Cylinders, 
+               size  = MPG)) +
+  geom_point() +
+  labs(title    = title,
+       subtitle = 'Optional Subtitle In Upper Lower',
+       caption  = "Optional caption giving more info, X handle, or shameless promotion of pubtheme",
+       x = 'Horizontal Axis Label in Upper Lower',
+       y = 'Vertical Axis Label in Upper Lower')
+
+g %>% 
+  pub(xlim = c(0, 6),
+      ylim = c(0, 40))
+```
+
+#### Subsubsection 1.2.1
+
+Here is an easy computation:
+```{r}
+1 + 1
+```
+
+
+## Section 2
+
+Here is an easy `plotly` plot:
+```{r}
+library(plotly)
+plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length, color = ~Species)
+```
+
+
 ## Acknowledgments {.unnumbered}
+
