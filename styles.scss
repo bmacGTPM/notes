@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+
+/* Doesn't work
+$link-color:#3498DB
+$link-color-rgb:52,152,219;
+*/
+
+$h1-margin-top: 2rem;   // Custom top margin for H1
+$h1-margin-bottom: 1rem; // Custom bottom margin for H1
+$h2-margin-top: 2rem;   // Custom top margin for H2
+$h2-margin-bottom: 1rem; // Custom bottom margin for H2
+$h3-margin-top: 3rem;   // Custom top margin for H3
+$h3-margin-bottom: 1rem; // Custom bottom margin for H3
+
+/* Custom CSS rules to override Bootstrap defaults */
+h1 {
+  /*margin-top: 2.25rem !important;*/
+  margin-bottom: 1rem !important;
+}
+
+h2 {
+  margin-top: 2.25rem !important;
+  margin-bottom: 1rem !important;
+}
+
+h3 {
+  margin-top: 2.25rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Doesn't work
+$--bs-primary-rgb: 55, 90, 127;
+$--bs-success-rgb: 52, 152, 219;
+$--bs-info-rgb: 0, 188, 140;
+$--bs-primary-text-emphasis: #162433;
+$--bs-success-text-emphasis: #153d58;
+$--bs-info-text-emphasis:  #004b38;
+*/
